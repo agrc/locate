@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="28"
+   height="24"
+   id="svg7961"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="utilities.svg">
+  <defs
+     id="defs7963" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.5"
+     inkscape:cx="14.000005"
+     inkscape:cy="12.000007"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="730"
+     inkscape:window-height="412"
+     inkscape:window-x="266"
+     inkscape:window-y="267"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7966">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-361,-520.36218)">
+    <g
+       transform="matrix(0.37958595,0,0,0.31290743,263.40086,371.54341)"
+       id="_x31_41-lamp.png"
+       style="fill:#ffffff">
+      <g
+         id="g5235"
+         style="fill:#ffffff">
+        <path
+           style="fill:#ffffff"
+           inkscape:connector-curvature="0"
+           id="path5237"
+           d="m 330.3,508.3 -24.7,-30.2 c -1.1,-1.4 -3.5,-2.5 -5.2,-2.5 h -12.8 c -1.8,0 -4.1,1.1 -5.2,2.5 l -24.7,30.2 c -1.1,1.4 -0.6,2.5 1.2,2.5 h 31.9 v 35.1 H 278 l -3.2,6.4 h 38.3 l -3.2,-6.4 H 297.1 V 510.8 H 310 v 14.4 c 0,0.9 0.7,1.6 1.6,1.6 0.9,0 1.6,-0.7 1.6,-1.6 v -14.4 h 16 c 1.7,-0.1 2.2,-1.2 1.1,-2.5 z" />
+      </g>
+    </g>
+  </g>
+</svg>
