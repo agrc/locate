@@ -219,93 +219,6 @@ h2 {
   padding-bottom: 20px;
 }
 
-#layers {
-  background-color: #454E56;
-  width: 30%;
-  float: right;
-  border-radius: 10px;
-  box-shadow: 3px 3px 5px rgba( 0, 0, 0, .6);
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  margin-top: 20px;
-  padding: 10px;
-}
-
-#layers p {
-  color: #F1F1F2;
-}
-
-#reloLayers ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-weight: normal;
-}
-
-#reloLayers ul li a {
-  color: #FFFFFF;
-  padding: 15px 15px 15px 50px;
-  display: block;
-  text-shadow: 0 1px 0 #666;
-}
-
-#reloLayers ul li ul li {
-  color: #FFFFFF;
-  padding: 5px 7px 5px 20px;
-  font-size: .9em;
-}
-
-/* Colors for first level layer nav */
-
-/*ul li.utilities {background:#E09525 url(img/icons-utilities.png) center left no-repeat; }*/
-
-ul li.broadband {
-  background: #000000 url(img/icons/broadband.svg) 15px 15px no-repeat;
-}
-
-ul li.utilities {
-  background: #E09525 url(img/icons/utilities.svg) 15px 15px no-repeat;
-}
-
-ul li.transportation {
-  background: #107A89 url(img/icons/transportation.svg) 15px 15px no-repeat;
-}
-
-ul li.lifestyle {
-  background: #0D8C44 url(img/icons/lifestyle.svg) 15px 15px no-repeat;
-}
-
-ul li.demographics {
-  background: #C22127 url(img/icons/demographics.svg) 15px 15px no-repeat;
-}
-
-/* Colors for second level layer nav */
-
-.broadband ul {
-  background-color: #333333;
-  display: none;
-}
-
-.utilities ul {
-  background-color: #AD6F29;
-  display: none;
-}
-
-.transportation ul {
-  background-color: #0C5D63;
-  display: none;
-}
-
-.lifestyle ul {
-  background-color: #0D6634;
-  display: none;
-}
-
-.demographics ul {
-  background-color: #9B1D21;
-  display: none;
-}
-
 /* Report Tables */
 
 .tableTitle {
@@ -593,10 +506,6 @@ and (orientation : portrait) {
   #searchform_main .searchButton {
     margin-left: 1px;
   }
-
-  #layers {
-    width: 35%;
-  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -609,9 +518,6 @@ and (orientation : portrait) {
   }
   #searchform_main .searchButton {
     margin-left: 1px;
-  }
-  #layers {
-    width: 35%;
   }
 }
 
@@ -671,13 +577,6 @@ and (orientation : portrait) {
   #header-container #header-wrapper #header {
     height: auto;
     position: relative;
-  }
-
-  #layers {
-    width: 100%;
-    float: none;
-    margin: auto;
-    margin-bottom: 10px;
   }
 
   #mobile-searchbutton {

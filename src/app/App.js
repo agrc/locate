@@ -1,6 +1,7 @@
 define([
     'app/config',
     'app/CurrentLocation',
+    'app/Layers',
 
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
@@ -10,10 +11,12 @@ define([
     'dojo/_base/declare',
     'dojo/text!app/templates/App.html',
 
+    'bootstrap',
     'xstyle/css!app/resources/App.css'
 ], function(
     config,
     CurrentLocation,
+    Layers,
 
     _TemplatedMixin,
     _WidgetBase,
@@ -59,7 +62,8 @@ define([
             // this.initMap();
 
             this.childWidgets.push(
-                new CurrentLocation({}, this.currentLocationDiv)
+                new CurrentLocation({}, this.currentLocationDiv),
+                new Layers({}, this.layersDiv)
             );
 
             this.inherited(arguments);

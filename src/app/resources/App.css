@@ -1,3 +1,14 @@
 @import 'custom-bootstrap.css';
 @import '../../esri/css/esri.css';
 @import 'designer.css';
+
+a, a:visited {
+    text-decoration: none;
+}
+
+.layers, .current-location {
+    background-color: #454E56;
+    float: right;
+    padding: 10px;
+    color: #fff;
+}

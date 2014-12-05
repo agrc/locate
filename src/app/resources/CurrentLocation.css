@@ -1,9 +1,6 @@
 .current-location {
     width: 320px;
     height: 122px;
-    background-color: #454E56;
-    float: right;
-    box-sizing: border-box;
     padding: 10px;
 }
 
@@ -28,6 +25,11 @@
 }
 
 @media only screen and (max-width: 765px) {
+    .current-location {
+        width: 100%;
+        height: auto;
+        clear: both;
+    }
     .current-location h4 {
         padding-bottom: 0;
     }
@@ -37,11 +39,6 @@
     .current-location .address2 {
         width: 100%;
         margin-top: 5px;
-    }
-    .current-location {
-        width: 100%;
-        height: auto;
-        clear: both;
     }
     .current-location h4 {
         padding-bottom: 0;
