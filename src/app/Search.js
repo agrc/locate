@@ -1,19 +1,15 @@
 define([
-    'app/Search',
-
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
 
     'dojo/_base/declare',
-    'dojo/text!app/templates/Layers.html',
+    'dojo/text!app/templates/Search.html',
 
-    'xstyle/css!app/resources/Layers.css'
+    'xstyle/css!app/resources/Search.css'
 ], function(
-    Search,
-
     _TemplatedMixin,
     _WidgetBase,
-
+    
     declare,
     template
 ) {
@@ -22,7 +18,7 @@ define([
         //      
 
         templateString: template,
-        baseClass: 'layers',
+        baseClass: 'search',
 
         // Properties to be sent into constructor
 
@@ -31,11 +27,7 @@ define([
             //      Overrides method of same name in dijit._Widget.
             // tags:
             //      private
-            console.log('app.Layers::postCreate', arguments);
-
-            var search = new Search({}, this.searchDiv);
-            search.startup();
-            this.own(search);
+            console.log('app.Search::postCreate', arguments);
 
             this.setupConnections();
 
@@ -45,7 +37,7 @@ define([
             // summary:
             //      wire events, and such
             //
-            console.log('app.Layers::setupConnections', arguments);
+            console.log('app.Search::setupConnections', arguments);
 
         }
     });
