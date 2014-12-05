@@ -1,5 +1,6 @@
 define([
     'app/config',
+    'app/CurrentLocation',
 
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
@@ -12,6 +13,7 @@ define([
     'xstyle/css!app/resources/App.css'
 ], function(
     config,
+    CurrentLocation,
 
     _TemplatedMixin,
     _WidgetBase,
@@ -57,7 +59,7 @@ define([
             // this.initMap();
 
             this.childWidgets.push(
-
+                new CurrentLocation({}, this.currentLocationDiv)
             );
 
             this.inherited(arguments);

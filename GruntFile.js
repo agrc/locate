@@ -205,6 +205,17 @@ module.exports = function(grunt) {
                 jshintrc: '.jshintrc'
             }
         },
+        less: {
+            dev: {
+                options: {
+
+                },
+                files: {
+                    'src/app/resources/custom-bootstrap.css':
+                        'src/app/resources/custom-bootstrap.less'
+                }
+            }
+        },
         processhtml: {
             options: {},
             main: {
@@ -264,6 +275,10 @@ module.exports = function(grunt) {
             }
         },
         watch: {
+            less: {
+                files: 'src/app/**/*.less',
+                tasks: ['less:dev']
+            },
             jshint: {
                 files: jshintFiles,
                 tasks: ['newer:jshint:main', 'jasmine:main:build']

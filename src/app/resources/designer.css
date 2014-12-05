@@ -75,17 +75,6 @@ body {
   box-sizing: border-box;
 }
 
-a:link,
-a:visited {
-  color: #961B1E;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #961B1E;
-  text-decoration: underline;
-}
-
 h2,
 h3,
 h4 {
@@ -154,47 +143,6 @@ h4 {
   float: left;
   background-size: contain;
   margin-top: 15px;
-}
-
-#locationSummary {
-  width: 30%;
-  height: 122px;
-  background-color: #454E56;
-  float: right;
-  box-sizing: border-box;
-  padding: 10px 10px 0 10px;
-}
-
-#locationSummary h4 {
-  color: #FFFFFF;
-  font-size: 1em;
-  padding-bottom: 15px;
-}
-
-.address {
-  width: 60%;
-  float: left;
-}
-
-.address2 {
-  width: 38%;
-  float: right;
-}
-
-#locationSummary ul {
-  font-size: .8em;
-  margin: 0;
-  padding: 0;
-}
-
-#locationSummary ul li {
-  list-style: none;
-  color: #F1F1F2;
-}
-
-#locationSummary a {
-  font-size: .8em;
-  line-height: 1.25;
 }
 
 #reportLocation ul {
@@ -459,48 +407,8 @@ tr:last-of-type td:last-child {
   box-shadow: inset -1px -1px 0 #fff;
 }
 
-/* Buttons */
-
-.button {
-  color: #fff;
-  text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
-  /*display: block;*/
-  padding: 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-  outline: 0;
-  text-align: center;
-}
-
-.button:hover {
-  -webkit-box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.75) inset;
-  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.75) inset;
-}
-
-a.button {
-  color: #FFFFFF;
-}
-
-.yellow {
-  background-color: #E09525;
-}
-
-.primary {
-  background-color: #0C5D63;
-}
 
 /* ********************** Alignments ********************** */
-
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
-}
-
 #footer-wrapper {
   background-color: #D1D2D3;
 }
@@ -540,14 +448,6 @@ a.button {
   width: 35%;
 }
 
-.right {
-  float: right;
-}
-
-.left {
-  float: left;
-}
-
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -560,8 +460,6 @@ a.button {
   background-color: transparent;
   border: 0;
   overflow: hidden;
-  /* IE 6/7 fallback */
-  *text-indent: -9999px;
 }
 
 .ir:before {
@@ -623,24 +521,11 @@ a.button {
   clear: both;
 }
 
-/*
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-
-.clearfix {
-  *zoom: 1;
-}
-
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
-}
 
 /* == iPad/iPhone [portrait + landscape] == */
 
@@ -712,125 +597,6 @@ and (orientation : portrait) {
   #layers {
     width: 35%;
   }
-
-  .address {
-    width: 100%;
-    float: left;
-  }
-
-  .address2 {
-    width: 100%;
-    float: left;
-  }
-
-  #locationSummary {
-    width: 30%;
-    height: 122px;
-    background-color: #454E56;
-    float: right;
-    box-sizing: border-box;
-    padding: 10px 10px 0 10px;
-  }
-
-  #locationSummary h4 {
-    color: #FFFFFF;
-    font-size: 1em;
-    padding-bottom: 0;
-  }
-
-  #locationSummary ul {
-    font-size: .8em;
-    margin: 0;
-    padding: 0;
-  }
-
-  #locationSummary ul li {
-    list-style: none;
-    color: #F1F1F2;
-  }
-
-  #locationSummary a {
-    font-size: .8em;
-    line-height: 1.25;
-  }
-
-  #locationSummary .button {
-    color: #fff;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
-    /*display: block;*/
-    padding: 3px 5px;
-    border-radius: 5px;
-    text-decoration: none;
-    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-    outline: 0;
-    text-align: center;
-  }
-
-  #locationSummary .button:hover {
-    -webkit-box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.75) inset;
-    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.75) inset;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  #cse-search-box {
-    width: 200px;
-    padding: 7px;
-  }
-
-  #searchform_main input[type="text"] {
-    width: 150px;
-  }
-
-  #searchform_main .searchButton {
-    margin-left: 1px;
-  }
-
-  #layers {
-    width: 35%;
-  }
-
-  .address {
-    width: 100%;
-    float: left;
-  }
-
-  .address2 {
-    width: 100%;
-    float: left;
-  }
-
-  #locationSummary {
-    width: 30%;
-    height: 122px;
-    background-color: #454E56;
-    float: right;
-    box-sizing: border-box;
-    padding: 10px 10px 0 10px;
-  }
-
-  #locationSummary h4 {
-    color: #FFFFFF;
-    font-size: 1em;
-    padding-bottom: 0;
-  }
-
-  #locationSummary ul {
-    font-size: .8em;
-    margin: 0;
-    padding: 0;
-  }
-
-  #locationSummary ul li {
-    list-style: none;
-    color: #F1F1F2;
-  }
-
-  #locationSummary a {
-    font-size: .8em;
-    line-height: 1.25;
-  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -838,89 +604,14 @@ and (orientation : portrait) {
     width: 170px;
     padding: 7px;
   }
-
   #searchform_main input[type="text"] {
     width: 160px;
   }
-
   #searchform_main .searchButton {
     margin-left: 1px;
   }
-
   #layers {
     width: 35%;
-  }
-
-  .address {
-    width: 100%;
-    float: left;
-  }
-
-  .address2 {
-    width: 100%;
-    float: left;
-    clear: both;
-    margin-top: 5px;
-  }
-
-  #locationSummary {
-    width: 100%;
-    height: 90px;
-    background-color: #454E56;
-    float: right;
-    box-sizing: border-box;
-    padding: 10px 10px 0 10px;
-    clear: both;
-  }
-
-  #locationSummary #cse-search-box {
-    width: 60%;
-    padding: 7px;
-  }
-
-  #locationSummary #searchform_main input[type="text"] {
-    width: 80%;
-  }
-
-  #locationSummary h4 {
-    color: #FFFFFF;
-    font-size: 1em;
-    padding-bottom: 0;
-  }
-
-  #locationSummary ul {
-    font-size: .8em;
-    margin: 0;
-    padding: 0;
-  }
-
-  #locationSummary ul li {
-    list-style: none;
-    color: #F1F1F2;
-    float: left;
-  }
-
-  #locationSummary a {
-    font-size: .8em;
-    line-height: 1.25;
-  }
-
-  #locationSummary .button {
-    color: #fff;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
-    /*display: block;*/
-    padding: 5px;
-    border-radius: 5px;
-    text-decoration: none;
-    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-    outline: 0;
-    text-align: center;
-  }
-
-  #locationSummary .button:hover {
-    -webkit-box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.75) inset;
-    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.75) inset;
   }
 }
 
@@ -1045,15 +736,5 @@ and (orientation : portrait) {
     display: inline-block;
     color: rgba(0,0,0,0);
     margin-left: 7px;
-  }
-
-  #locationSummary #cse-search-box {
-    width: 60%;
-    padding: 7px;
-    margin: 5px auto;
-  }
-
-  #locationSummary #searchform_main input[type="text"] {
-    width: 80%;
   }
 }
