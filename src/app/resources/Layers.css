@@ -1,8 +1,7 @@
 .layers {
     border-radius: 10px;
     box-shadow: 3px 3px 5px rgba( 0, 0, 0, .6);
-    margin-top: 20px;
-    margin-right: -15px;
+    margin: 20px 0;
     width: 320px;
 }
 .layers ul {
@@ -69,7 +68,6 @@ ul li.demographics {
     .layers {
         width: 100%;
         float: none;
-        margin: auto;
-        margin-bottom: 10px;
+        margin: 10px 0;
     }
 }
