@@ -1,4 +1,6 @@
 define([
+    'agrc/widgets/map/BaseMap',
+
     'app/config',
     'app/CurrentLocation',
     'app/Layers',
@@ -9,11 +11,18 @@ define([
 
     'dojo/_base/array',
     'dojo/_base/declare',
+    'dojo/_base/lang',
     'dojo/text!app/templates/App.html',
+    'dojo/topic',
+
+    'esri/geometry/Point',
 
     'bootstrap',
+    'dijit/layout/ContentPane',
     'xstyle/css!app/resources/App.css'
 ], function(
+    BaseMap,
+
     config,
     CurrentLocation,
     Layers,
@@ -24,7 +33,11 @@ define([
 
     array,
     declare,
-    template
+    lang,
+    template,
+    topic,
+
+    Point
 ) {
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         // summary:
@@ -59,8 +72,6 @@ define([
             // set version number
             // this.version.innerHTML = config.version;
 
-            // this.initMap();
-
             this.childWidgets.push(
                 new CurrentLocation({}, this.currentLocationDiv),
                 new Layers({}, this.layersDiv)
@@ -79,6 +90,8 @@ define([
                 widget.startup();
             });
 
+            this.initMap();
+
             this.inherited(arguments);
         },
         initMap: function() {
@@ -86,10 +99,18 @@ define([
             //      Sets up the map
             console.info('app.App::initMap', arguments);
 
-            // this.map = new BaseMap(this.mapDiv, {
-            //     useDefaultBaseMap: false,
-            //     showAttribution: false
-            // });
+            this.map = new BaseMap(this.mapDiv, {
+                defaultBaseMap: 'Terrain',
+                showAttribution: false,
+                center: new Point(config.initialExtent.center, {
+                    wkid: 26912
+                }),
+                scale: config.initialExtent.scale
+            });
+            this.map.disableScrollWheelZoom();
+
+            topic.subscribe(config.topics.layers.resize, 
+                lang.hitch(this.map, 'resize'));
 
             // this.childWidgets.push(
             //     new BaseMapSelector({

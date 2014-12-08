@@ -17,10 +17,21 @@ define(['dojo/has', 'esri/config'], function (has, esriConfig) {
         //      The api key used for services on api.mapserv.utah.gov
         apiKey: '', // acquire at developer.mapserv.utah.gov
 
+        // initialExtent: Object
+        //      Defines in what extent the map is initially loaded
+        initialExtent: {
+            scale: 144447.638572,
+            // center: [-121.887, 40.76]
+            center: [425132, 4512466]
+        },
+        topics: {
+            layers: {
+                resize: 'layers.resize'
+            }
+        },
         urls: {
 
         },
-
         fieldNames: {
 
         }

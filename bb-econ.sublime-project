@@ -25,7 +25,7 @@
 				"src/util"
 			],
 			"follow_symlinks": true,
-			"path": ""
+			"path": "/"
 		},
 		{
 			"follow_symlinks": true,
@@ -34,7 +34,6 @@
 	],
 	"settings":
 	{
-		"amd_butler_packages_base_path": "src",
-		"amd_packages_base_path": false
+		"amd_butler_packages_base_path": "src"
 	}
 }

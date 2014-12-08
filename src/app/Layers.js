@@ -1,4 +1,5 @@
 define([
+    'app/config',
     'app/Search',
 
     'dijit/_TemplatedMixin',
@@ -6,16 +7,19 @@ define([
 
     'dojo/_base/declare',
     'dojo/text!app/templates/Layers.html',
+    'dojo/topic',
 
     'xstyle/css!app/resources/Layers.css'
 ], function(
+    config,
     Search,
 
     _TemplatedMixin,
     _WidgetBase,
 
     declare,
-    template
+    template,
+    topic
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
         // description:
@@ -47,6 +51,9 @@ define([
             //
             console.log('app.Layers::setupConnections', arguments);
 
+            $('.collapse', this.domNode).on('shown.bs.collapse hidden.bs.collapse', function () {
+                topic.publish(config.topics.layers.resize);
+            });
         }
     });
 });

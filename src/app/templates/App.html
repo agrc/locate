@@ -14,10 +14,12 @@
         </div>
     </div>
     
-    <div id="content-wrapper" class="site-full clearfix">
-        <div id="content" class="site-full">
-            <div id="content-main" class="site">
-                <div data-dojo-attach-point='layersDiv'></div>
+    <div class="site-full clearfix">
+        <div class="site-full" data-dojo-attach-point='mapContainer'>
+            <div data-dojo-attach-point="mapDiv" class='map'></div>
+            <div class="site">
+                <div data-dojo-attach-point='layersDiv' class='layers'></div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>
@@ -36,7 +38,7 @@
     
                 <div class="col pull-right">
                     <p>Phone: (801) 571-0900
-                        <br /> Email: <a href="mailto:lonepeakfire@utah.gov">broadband@utah.gov</a>
+                        <br /> Email: <a href="mailto:broadband@utah.gov">broadband@utah.gov</a>
                     </p>
                 </div>
                 <div class="clearfix"></div>
