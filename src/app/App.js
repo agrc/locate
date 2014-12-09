@@ -4,6 +4,7 @@ define([
     'app/config',
     'app/CurrentLocation',
     'app/Layers',
+    'app/MapController',
 
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
@@ -11,11 +12,7 @@ define([
 
     'dojo/_base/array',
     'dojo/_base/declare',
-    'dojo/_base/lang',
     'dojo/text!app/templates/App.html',
-    'dojo/topic',
-
-    'esri/geometry/Point',
 
     'bootstrap',
     'dijit/layout/ContentPane'
@@ -25,6 +22,7 @@ define([
     config,
     CurrentLocation,
     Layers,
+    MapController,
 
     _TemplatedMixin,
     _WidgetBase,
@@ -32,11 +30,7 @@ define([
 
     array,
     declare,
-    lang,
-    template,
-    topic,
-
-    Point
+    template
 ) {
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         // summary:
@@ -89,35 +83,9 @@ define([
                 widget.startup();
             });
 
-            this.initMap();
+            MapController.initMap(this.mapDiv);
 
             this.inherited(arguments);
-        },
-        initMap: function() {
-            // summary:
-            //      Sets up the map
-            console.info('app.App::initMap', arguments);
-
-            this.map = new BaseMap(this.mapDiv, {
-                defaultBaseMap: 'Terrain',
-                showAttribution: false,
-                center: new Point(config.initialExtent.center, {
-                    wkid: 26912
-                }),
-                scale: config.initialExtent.scale
-            });
-            this.map.disableScrollWheelZoom();
-
-            topic.subscribe(config.topics.layers.resize, 
-                lang.hitch(this.map, 'resize'));
-
-            // this.childWidgets.push(
-            //     new BaseMapSelector({
-            //         map: this.map,
-            //         id: 'claro',
-            //         position: 'TR'
-            //     })
-            // );
         }
     });
 });

@@ -27,10 +27,11 @@ define(['dojo/has', 'esri/config'], function (has, esriConfig) {
         topics: {
             layers: {
                 resize: 'layers.resize'
-            }
+            },
+            addLayer: 'addLayer'
         },
         urls: {
-
+            mapService: '/arcgis/rest/services/BBEcon/MapServer'
         },
         fieldNames: {
 
