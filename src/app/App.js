@@ -4,7 +4,7 @@ define([
     'app/config',
     'app/CurrentLocation',
     'app/Layers',
-    'app/MapController',
+    'app/mapController',
 
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
@@ -15,14 +15,15 @@ define([
     'dojo/text!app/templates/App.html',
 
     'bootstrap',
-    'dijit/layout/ContentPane'
+    'dijit/layout/ContentPane',
+    'xstyle/css!app/resources/App.css'
 ], function(
     BaseMap,
 
     config,
     CurrentLocation,
     Layers,
-    MapController,
+    mapController,
 
     _TemplatedMixin,
     _WidgetBase,
@@ -83,7 +84,7 @@ define([
                 widget.startup();
             });
 
-            MapController.initMap(this.mapDiv);
+            mapController.initMap(this.mapDiv);
 
             this.inherited(arguments);
         }
