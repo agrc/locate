@@ -18,8 +18,7 @@ define([
     'esri/geometry/Point',
 
     'bootstrap',
-    'dijit/layout/ContentPane',
-    'xstyle/css!app/resources/App.css'
+    'dijit/layout/ContentPane'
 ], function(
     BaseMap,
 
