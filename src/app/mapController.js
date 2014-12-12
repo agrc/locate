@@ -4,6 +4,7 @@ define([
     'app/config',
 
     'dojo/_base/lang',
+    'dojo/dom-style',
     'dojo/topic',
 
     'esri/geometry/Point',
@@ -14,6 +15,7 @@ define([
     config,
 
     lang,
+    domStyle,
     topic,
 
     Point,
@@ -37,6 +39,11 @@ define([
                 scale: config.initialExtent.scale
             });
             this.map.disableScrollWheelZoom();
+
+            // force map to auto height
+            // required for proper alignment in firefox
+            domStyle.set(mapDiv, 'height', 'auto');
+            this.map.resize();
 
             topic.subscribe(config.topics.layers.resize, 
                 lang.hitch(this.map, 'resize'));

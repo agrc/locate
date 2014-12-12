@@ -10,12 +10,12 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64.599998"
-   height="92.800003"
+   width="26"
+   height="35"
    id="svg6927"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="New document 15">
+   sodipodi:docname="parks.svg">
   <defs
      id="defs6929">
     <linearGradient
@@ -69,6 +69,16 @@
        id="linearGradient6925"
        xlink:href="#SVGID_20_"
        inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#SVGID_20_"
+       id="linearGradient3046"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(97.914286,374.96218)"
+       x1="487.849"
+       y1="183.7742"
+       x2="487.849"
+       y2="91" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -77,9 +87,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="-178.41429"
-     inkscape:cy="26.399997"
+     inkscape:zoom="2.5431034"
+     inkscape:cx="12.999999"
+     inkscape:cy="17.499995"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -87,10 +97,10 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="472"
+     inkscape:window-width="730"
      inkscape:window-height="412"
-     inkscape:window-x="729"
-     inkscape:window-y="278"
+     inkscape:window-x="79"
+     inkscape:window-y="400"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata6932">
@@ -100,7 +110,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -108,21 +118,25 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-553.41429,-465.96218)">
-    <path
-       inkscape:connector-curvature="0"
-       style="fill:url(#linearGradient6925)"
-       id="path5601"
-       d="m 618.01429,498.26218 c 0,34.7 -32.3,60.5 -32.3,60.5 0,0 -32.3,-27.4 -32.3,-60.5 0,-17.8 14.4,-32.3 32.3,-32.3 17.9,0 32.3,14.4 32.3,32.3 z" />
+     transform="translate(-572.71429,-494.86218)">
     <g
-       transform="translate(97.914286,374.96218)"
-       id="_x35_2-pine-tree.png_2_">
+       id="g3040"
+       transform="matrix(0.40247678,0,0,0.37715517,349.97789,319.12213)">
+      <path
+         d="m 618.01429,498.26218 c 0,34.7 -32.3,60.5 -32.3,60.5 0,0 -32.3,-27.4 -32.3,-60.5 0,-17.8 14.4,-32.3 32.3,-32.3 17.9,0 32.3,14.4 32.3,32.3 z"
+         id="path5601"
+         style="fill:url(#linearGradient3046)"
+         inkscape:connector-curvature="0" />
       <g
-         id="g5604">
-        <polygon
-           style="fill:#ffffff"
-           id="polygon5606"
-           points="483.5,142.2 483.5,150.2 492.2,150.2 492.2,142.2 507.5,142.2 497.1,129.1 505.3,129.1 495.3,117.4 501,117.4 491.1,106.5 494.4,106.5 487.8,97.8 481.3,106.5 484.6,106.5 474.7,117.4 480.4,117.4 470.4,129.1 478.6,129.1 468.2,142.2 " />
+         id="_x35_2-pine-tree.png_2_"
+         transform="translate(97.914286,374.96218)">
+        <g
+           id="g5604">
+          <polygon
+             points="507.5,142.2 497.1,129.1 505.3,129.1 495.3,117.4 501,117.4 491.1,106.5 494.4,106.5 487.8,97.8 481.3,106.5 484.6,106.5 474.7,117.4 480.4,117.4 470.4,129.1 478.6,129.1 468.2,142.2 483.5,142.2 483.5,150.2 492.2,150.2 492.2,142.2 "
+             id="polygon5606"
+             style="fill:#ffffff" />
+        </g>
       </g>
     </g>
   </g>

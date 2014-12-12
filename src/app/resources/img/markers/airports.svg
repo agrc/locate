@@ -10,8 +10,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="30"
-   height="43.095974"
+   width="26"
+   height="35"
    id="svg7087"
    version="1.1"
    inkscape:version="0.48.5 r10040"
@@ -65,6 +65,16 @@
        y1="290.7742"
        x2="236.8512"
        y2="198" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#SVGID_22_"
+       id="linearGradient2995"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(138.2,287.96218)"
+       x1="236.8512"
+       y1="290.7742"
+       x2="236.8512"
+       y2="198" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -73,9 +83,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="15"
-     inkscape:cy="21.547987"
+     inkscape:zoom="7.3556754"
+     inkscape:cx="13.000002"
+     inkscape:cy="17.500002"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -85,8 +95,8 @@
      fit-margin-bottom="0"
      inkscape:window-width="812"
      inkscape:window-height="493"
-     inkscape:window-x="729"
-     inkscape:window-y="278"
+     inkscape:window-x="58"
+     inkscape:window-y="483"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata7092">
@@ -104,14 +114,14 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-360,-510.81419)">
+     transform="translate(-361.99999,-514.86218)">
     <g
        id="g3388"
-       transform="matrix(0.46439628,0,0,0.46439628,200.85139,285.13516)">
+       transform="matrix(0.40247678,0,0,0.37715517,224.0712,331.57903)">
       <path
          d="m 407.3,518.26218 c 0,34.7 -32.3,60.5 -32.3,60.5 0,0 -32.3,-27.4 -32.3,-60.5 0,-17.8 14.4,-32.3 32.3,-32.3 17.9,0 32.3,14.4 32.3,32.3 z"
          id="path5637"
-         style="fill:url(#linearGradient3394)"
+         style="fill:url(#linearGradient2995)"
          inkscape:connector-curvature="0" />
       <g
          id="_x33_8-airplane.png_2_"
