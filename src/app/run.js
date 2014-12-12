@@ -27,6 +27,10 @@
                 location: './bootstrap',
                 main: 'dist/js/bootstrap'
             },{
+                name: 'slider',
+                location: './seiyria-bootstrap-slider',
+                main: 'js/bootstrap-slider'
+            },{
                 name: 'jquery',
                 location: './jquery/dist',
                 main: 'jquery'

@@ -4,6 +4,7 @@ define([
     'app/config',
 
     'dojo/_base/lang',
+    'dojo/dom-style',
     'dojo/topic',
 
     'esri/geometry/Point',
@@ -14,6 +15,7 @@ define([
     config,
 
     lang,
+    domStyle,
     topic,
 
     Point,
@@ -38,6 +40,11 @@ define([
             });
             this.map.disableScrollWheelZoom();
 
+            // force map to auto height
+            // required for proper alignment in firefox
+            domStyle.set(mapDiv, 'height', 'auto');
+            this.map.resize();
+
             topic.subscribe(config.topics.layers.resize, 
                 lang.hitch(this.map, 'resize'));
 
@@ -46,6 +53,9 @@ define([
 
             topic.subscribe(config.topics.layer.toggleDynamicLayer, 
                 lang.hitch(this, 'toggleDynamicLayer'));
+
+            topic.subscribe(config.topics.slider.change,
+                lang.hitch(this, 'onSliderChange'));
 
             this.dLayer = new ArcGISDynamicMapServiceLayer(config.urls.mapService, {
                 opacity: 0.5
@@ -83,6 +93,15 @@ define([
             }
 
             this.dLayer.setVisibleLayers(layerIds);
+        },
+        onSliderChange: function (newValue) {
+            // summary:
+            //      the user is changing the tranparency slider
+            // newValue: Number
+            //      0 - 100
+            console.log('mapController:onSliderChange', arguments);
+        
+            this.dLayer.setOpacity(newValue/100);
         }
     };
 });

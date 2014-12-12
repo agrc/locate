@@ -1,6 +1,7 @@
 define([
     'app/config',
     'app/Layer',
+    'app/Slider',
 
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
@@ -14,6 +15,7 @@ define([
 ], function(
     config,
     Layer,
+    Slider,
 
     _TemplatedMixin,
     _WidgetBase,
@@ -77,6 +79,34 @@ define([
                 that.layerWidgets.push(
                     new Layer(l, domConstruct.create('div', null, that.layersContainer))
                 );
+            });
+
+            var slider = new Slider();
+            slider.startup();
+            var title = 'Map Layer Transparency';
+            var titleDiv = domConstruct.create('div', {
+                innerHTML: title
+            });
+            domConstruct.create('button', {
+                'class': 'close',
+                innerHTML: '&times;',
+                click: function () {
+                    $(that.popoverBtn).popover('hide');
+                }
+            }, titleDiv);
+            $(this.popoverBtn).popover({
+                content: slider.domNode,
+                container: 'body',
+                html: true,
+                title: titleDiv,
+                placement: 'left'
+            });
+            this.popoverBtn.title = title;
+
+            // this is needed because the event wiring is broken
+            // each time the popover is hidden
+            $(this.popoverBtn).on('shown.bs.popover', function () {
+                slider.wireEvents();
             });
 
             this.inherited(arguments);
