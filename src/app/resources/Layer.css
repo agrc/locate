@@ -1,13 +1,18 @@
 @import '../../awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css';
 /* use glyphicons instead of font-awesome for awesome-bootstrap-checkbox */
-.checkbox input[type=checkbox]:checked + label:after {
+.layer.checkbox input[type=checkbox]:checked + label:after {
     font-family: 'Glyphicons Halflings';
     content: "\e013";
 }
-.checkbox label:after {
+.layer.checkbox label:after {
     padding-left: 4px;
     padding-top: 2px;
     font-size: 9px;
+}
+
+/* needed for built version */
+.layer.checkbox input[type='checkbox'] {
+    opacity: 0;
 }
 
 .layer {

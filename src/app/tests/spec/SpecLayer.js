@@ -1,5 +1,5 @@
 require([
-    'agrc-jasmine-matchers/src/topics',
+    'matchers/src/topics',
 
     'app/config',
     'app/Layer',

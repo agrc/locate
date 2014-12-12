@@ -11,14 +11,15 @@
             ) ? '/src': './',
         packages: [
             'agrc',
-            'agrc-jasmine-matchers',
             'app',
+            'awesome-bootstrap-checkbox',
             'dgrid',
             'dijit',
             'dojo',
             'dojox',
             'esri',
             'ijit',
+            'matchers',
             'put-selector',
             'xstyle',
             {
