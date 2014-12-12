@@ -21,21 +21,105 @@ define(['dojo/has', 'esri/config'], function (has, esriConfig) {
         //      Defines in what extent the map is initially loaded
         initialExtent: {
             scale: 144447.638572,
-            // center: [-121.887, 40.76]
             center: [425132, 4512466]
         },
         topics: {
             layers: {
                 resize: 'layers.resize'
             },
-            addLayer: 'addLayer'
+            addLayer: 'addLayer',
+            layer: {
+                toggleDynamicLayer: 'layer.toggleDynamicLayer'
+            }
         },
         urls: {
             mapService: '/arcgis/rest/services/BBEcon/MapServer'
         },
         fieldNames: {
 
-        }
+        },
+        markerSymbolHeight: 35,
+        markerSymbolWidth: 26,
+        groups: [{
+            groupClass: 'broadband',
+            name: 'Broadband',
+            layers: [{
+                name: 'Fiber Short Term',
+                type: 'dynamic',
+                layerId: '0',
+                onByDefault: true
+            }, {
+                name: 'Fiber Custom Order',
+                type: 'dynamic',
+                layerId: '1',
+                onByDefault: true
+            }, {
+                name: 'Other Fixed Broadband',
+                type: 'dynamic',
+                layerId: '2, 3, 4',
+                onByDefault: false
+            }]
+        }, {
+            groupClass: 'transportation',
+            name: 'Transportation',
+            layers: [{
+                name: 'International Airport',
+                type: 'feature',
+                layerId: '5',
+                controlledByParent: true,
+                marker: 'airports.svg'
+            }, {
+                name: 'Regional Commercial Airports',
+                type: 'feature',
+                layerId: '6',
+                controlledByParent: true,
+                marker: 'airports.svg'
+            }, {
+                name: 'Major and Regional Airports with Paved Runways',
+                type: 'feature',
+                layerId: '7',
+                controlledByParent: true,
+                marker: 'airports.svg'
+            }]
+        }, {
+            groupClass: 'demographics',
+            name: 'Workforce',
+            layers: [{
+                name: 'Higher Education Schools',
+                type: 'feature',
+                layerId: '8',
+                controlledByParent: true,
+                marker: 'universities.svg'
+            }]
+        }, {
+            groupClass: 'lifestyle',
+            name: 'Lifestyle',
+            layers: [{
+                name: 'National Parks, National Monuments, State Parks',
+                type: 'feature',
+                layerId: '9',
+                controlledByParent: true,
+                marker: 'parks.svg'
+            }, {
+                name: 'Ski Areas',
+                type: 'feature',
+                layerId: '10',
+                controlledByParent: true,
+                marker: 'skiing.svg'
+            }, {
+                name: 'Golf Courses',
+                type: 'feature',
+                layerId: '11',
+                controlledByParent: true,
+                marker: 'golfing.svg'
+            }, {
+                name: 'Hospitals',
+                type: 'feature',
+                layerId: '12',
+                controlledByParent: true,
+                marker: 'hospitals.svg'
+            }]
+        }]
     };
 
     if (has('agrc-api-key') === 'prod') {

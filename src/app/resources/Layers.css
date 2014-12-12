@@ -10,59 +10,6 @@
     list-style: none;
     font-weight: normal;
 }
-.layers ul li a {
-    padding: 15px 15px 15px 50px;
-    display: block;
-    text-shadow: 0 1px 0 #666;
-    color: #fff;
-}
-.layers ul li ul li {
-    padding: 5px 7px 5px 20px;
-    font-size: .9em;
-}
-
-/* Colors for first level layer nav */
-ul li.broadband {
-  background: #000000 url(img/icons/broadband.svg) 15px 15px no-repeat;
-}
-
-ul li.utilities {
-  background: #E09525 url(img/icons/utilities.svg) 15px 15px no-repeat;
-}
-
-ul li.transportation {
-  background: #107A89 url(img/icons/transportation.svg) 15px 15px no-repeat;
-}
-
-ul li.lifestyle {
-  background: #0D8C44 url(img/icons/lifestyle.svg) 15px 15px no-repeat;
-}
-
-ul li.demographics {
-  background: #C22127 url(img/icons/demographics.svg) 15px 15px no-repeat;
-}
-
-/* Colors for second level layer nav */
-
-.broadband ul {
-  background-color: #333333;
-}
-
-.utilities ul {
-  background-color: #AD6F29;
-}
-
-.transportation ul {
-  background-color: #0C5D63;
-}
-
-.lifestyle ul {
-  background-color: #0D6634;
-}
-
-.demographics ul {
-  background-color: #9B1D21;
-}
 
 @media only screen and (max-width: 600px) {
     .layers {

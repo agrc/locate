@@ -1,0 +1,42 @@
+@import '../../awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css';
+/* use glyphicons instead of font-awesome for awesome-bootstrap-checkbox */
+.checkbox input[type=checkbox]:checked + label:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e013";
+}
+.checkbox label:after {
+    padding-left: 4px;
+    padding-top: 2px;
+    font-size: 9px;
+}
+
+.layer {
+    margin: 0 !important;
+    padding: 5px 7px 0px 10px;
+    font-size: .9em;
+}
+.layer:last-child {
+    padding-bottom: 5px;
+}
+.layer img {
+    position: absolute;
+    margin-left: 8px;
+    margin-top: 4px;
+}
+.layer.checkbox label {
+    padding-left: 5px;
+    width: 250px;
+}
+.layer.checkbox input[type='checkbox'] {
+    position: inherit;
+    margin-left: 9px;
+}
+.layer.checkbox label.hide-checkbox::before {
+    display: none;
+}
+.layer.checkbox label.hide-checkbox::after {
+    display: none;
+}
+.layer.no-pointer label {
+    cursor: default;
+}

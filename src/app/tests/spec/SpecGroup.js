@@ -1,5 +1,5 @@
 require([
-    'app/Layers',
+    'app/Group',
 
     'dojo/dom-construct'
 ], function(
@@ -7,7 +7,7 @@ require([
 
     domConstruct
 ) {
-    describe('app/Layers', function() {
+    describe('app/Group', function() {
         var widget;
         var destroy = function (widget) {
             widget.destroyRecursive();
@@ -15,7 +15,9 @@ require([
         };
 
         beforeEach(function() {
-            widget = new WidgetUnderTest(null, domConstruct.create('div', null, document.body));
+            widget = new WidgetUnderTest({
+                layers: []
+            }, domConstruct.create('div', null, document.body));
             widget.startup();
         });
 
@@ -26,7 +28,7 @@ require([
         });
 
         describe('Sanity', function() {
-            it('should create a Layers', function() {
+            it('should create a Group', function() {
                 expect(widget).toEqual(jasmine.any(WidgetUnderTest));
             });
         });

@@ -8,7 +8,9 @@ deploy
 dist/
 node_modules/
 secrets.json
+src/agrc-jasmine-matchers/
 src/agrc/
+src/awesome-bootstrap-checkbox
 src/bootstrap/
 src/components-jasmine/
 src/dgrid/

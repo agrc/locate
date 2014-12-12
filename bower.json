@@ -2,7 +2,7 @@
   "name": "bb-econ",
   "version": "0.0.0",
   "dependencies": {
-    "agrc": "agrc-widgets#2.8.5",
+    "agrc": "agrc-widgets#2.9.1",
     "bootstrap": "~3.2",
     "dijit": "~1.10",
     "dojo": "~1.10",
@@ -12,7 +12,9 @@
     "stubmodule": "0.6.0",
     "util": "dojo-util#~1.10",
     "jasmine-jsreporter": "~0.1.2",
-    "xstyle": "c339f40e1ad8d7f35a723d627405fc4adcd2a042"
+    "xstyle": "c339f40e1ad8d7f35a723d627405fc4adcd2a042",
+    "agrc-jasmine-matchers": "~0.1.0",
+    "awesome-bootstrap-checkbox": "~0.2.3"
   },
   "resolutions": {
     "xstyle": "c339f40e1ad8d7f35a723d627405fc4adcd2a042"

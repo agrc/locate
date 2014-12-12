@@ -6,7 +6,8 @@ define([
     'dojo/_base/lang',
     'dojo/topic',
 
-    'esri/geometry/Point'
+    'esri/geometry/Point',
+    'esri/layers/ArcGISDynamicMapServiceLayer'
 ], function(
     BaseMap,
 
@@ -15,7 +16,8 @@ define([
     lang,
     topic,
 
-    Point
+    Point,
+    ArcGISDynamicMapServiceLayer
 ) {
     return {
         // map: BaseMap
@@ -42,13 +44,13 @@ define([
             topic.subscribe(config.topics.addLayer,
                 lang.hitch(this, 'addLayer'));
 
-            // this.childWidgets.push(
-            //     new BaseMapSelector({
-            //         map: this.map,
-            //         id: 'claro',
-            //         position: 'TR'
-            //     })
-            // );
+            topic.subscribe(config.topics.layer.toggleDynamicLayer, 
+                lang.hitch(this, 'toggleDynamicLayer'));
+
+            this.dLayer = new ArcGISDynamicMapServiceLayer(config.urls.mapService, {
+                opacity: 0.5
+            });
+            this.addLayer(this.dLayer);
         },
         addLayer: function (lyr) {
             // summary:
@@ -58,6 +60,29 @@ define([
         
             this.map.addLayer(lyr);
             this.map.addLoaderToLayer(lyr);
+        },
+        toggleDynamicLayer: function (layerId, show) {
+            // summary:
+            //      sets the appropriate visible layers on the dynamic service
+            // layerId: String
+            //      The id (or id's separated by a comma)
+            // show: Boolean
+            console.log('app/mapController:toggleDynamicLayer', arguments);
+        
+            var toggleIds = layerId.split(',').map(function (idTxt) {
+                return parseInt(idTxt, 10);
+            });
+            var layerIds;
+
+            if (show) {
+                layerIds = toggleIds.concat(this.dLayer.visibleLayers);
+            } else {
+                layerIds = this.dLayer.visibleLayers.filter(function (id) {
+                    return toggleIds.indexOf(id) === -1;
+                });
+            }
+
+            this.dLayer.setVisibleLayers(layerIds);
         }
     };
 });

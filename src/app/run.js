@@ -11,6 +11,7 @@
             ) ? '/src': './',
         packages: [
             'agrc',
+            'agrc-jasmine-matchers',
             'app',
             'dgrid',
             'dijit',

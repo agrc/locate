@@ -1,0 +1,53 @@
+.group a {
+    padding: 15px 15px 15px 50px;
+    display: block;
+    text-shadow: 0 1px 0 #666;
+    color: #fff;
+}
+.group a:hover, .group a:focus {
+    color: #fff;
+}
+
+
+/* Colors for first level layer nav */
+.broadband.group {
+  background: #000000 url(img/icons/broadband.svg) 15px 15px no-repeat;
+}
+
+.utilities.group {
+  background: #E09525 url(img/icons/utilities.svg) 15px 15px no-repeat;
+}
+
+.transportation.group {
+  background: #107A89 url(img/icons/transportation.svg) 15px 15px no-repeat;
+}
+
+.lifestyle.group {
+  background: #0D8C44 url(img/icons/lifestyle.svg) 15px 15px no-repeat;
+}
+
+.demographics.group {
+  background: #C22127 url(img/icons/demographics.svg) 15px 15px no-repeat;
+}
+
+/* Colors for second level layer nav */
+
+.broadband ul {
+  background-color: #333333;
+}
+
+.utilities ul {
+  background-color: #AD6F29;
+}
+
+.transportation ul {
+  background-color: #0C5D63;
+}
+
+.lifestyle ul {
+  background-color: #0D6634;
+}
+
+.demographics ul {
+  background-color: #9B1D21;
+}
