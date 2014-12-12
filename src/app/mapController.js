@@ -47,6 +47,9 @@ define([
             topic.subscribe(config.topics.layer.toggleDynamicLayer, 
                 lang.hitch(this, 'toggleDynamicLayer'));
 
+            topic.subscribe(config.topics.slider.change,
+                lang.hitch(this, 'onSliderChange'));
+
             this.dLayer = new ArcGISDynamicMapServiceLayer(config.urls.mapService, {
                 opacity: 0.5
             });
@@ -83,6 +86,15 @@ define([
             }
 
             this.dLayer.setVisibleLayers(layerIds);
+        },
+        onSliderChange: function (newValue) {
+            // summary:
+            //      the user is changing the tranparency slider
+            // newValue: Number
+            //      0 - 100
+            console.log('mapController:onSliderChange', arguments);
+        
+            this.dLayer.setOpacity(newValue/100);
         }
     };
 });

@@ -30,6 +30,9 @@ define(['dojo/has', 'esri/config'], function (has, esriConfig) {
             addLayer: 'addLayer',
             layer: {
                 toggleDynamicLayer: 'layer.toggleDynamicLayer'
+            },
+            slider: {
+                change: 'slider.change'
             }
         },
         urls: {

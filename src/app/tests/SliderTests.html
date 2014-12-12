@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Group Tests</title>
+    <title>Slider Tests</title>
 
     <!-- META TAGS -->
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -37,40 +37,18 @@
                 main: 'dist/js/bootstrap'
             }]
         }, [
-            'app/Group',
+            'app/Slider',
 
-            'dojo/domReady!',
-            'xstyle/css!app/resources/layers.css',
-            'jquery',
-            'bootstrap'
+            'dojo/domReady!'
         ], function(Module) {
             widgetUnderTest = new Module({
-                groupClass: 'broadband',
-                name: 'Broadband',
-                layers: [{
-                name: 'Fiber Short Term',
-                type: 'dynamic',
-                layerIds: [0]
-            }, {
-                name: 'Fiber Custom Order',
-                type: 'dynamic',
-                layerIds: [1]
-            }, {
-                name: 'Other Fixed Broadband',
-                type: 'dynamic',
-                layerIds: [2, 3, 4]
-            }]
             }, 'node');
 
             widgetUnderTest.startup();
         });
 </script>
 </head>
-<body>
-    <div class='layers'>
-        <ul>
-            <div id="node"></div>
-        </ul>
-    </div>
+<body class='claro'>
+    <div id="node"></div>
 </body>
 </html>

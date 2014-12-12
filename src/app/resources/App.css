@@ -24,6 +24,10 @@ body {
     line-height: 1.4;
     font-family: sans-serif;
 }
+.popover-title button.close {
+    margin-top: -4px;
+    padding-left: 10px;
+}
 ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;
