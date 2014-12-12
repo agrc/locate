@@ -10,8 +10,7 @@ define([
     'dojo/topic',
 
     'slider',
-    'xstyle/css!app/resources/Slider.css',
-    'xstyle/css!slider/css/bootstrap-slider.css'
+    'xstyle/css!app/resources/Slider.css'
 ], function(
     config,
 
