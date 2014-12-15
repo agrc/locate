@@ -1,5 +1,6 @@
 define([
     'agrc/widgets/locate/FindAddress',
+    'agrc/widgets/locate/MagicZoom',
 
     'app/config',
     'app/mapController',
@@ -14,6 +15,7 @@ define([
     'xstyle/css!app/resources/Search.css'
 ], function(
     FindAddress,
+    MagicZoom,
 
     config,
     mapController,
@@ -47,7 +49,19 @@ define([
                     map: mapController.map,
                     apiKey: config.apiKey
                 }, that.findAddressDiv);
+                findAddress.btnGeocode.innerHTML = 'Find Address';
                 findAddress.startup();
+
+                var magicZoom = new MagicZoom({
+                    map: mapController.map,
+                    // promptMessage: '',
+                    mapServiceURL: config.urls.mapService,
+                    searchLayerIndex: config.zoomLocationsIndex,
+                    searchField: config.zoomLocationsField,
+                    placeHolder: 'search by place name...',
+                    maxResultsToDisplay: 10
+                }, that.magicZoomDiv);
+                magicZoom.startup();
             });
 
             this.inherited(arguments);

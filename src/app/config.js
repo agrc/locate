@@ -38,6 +38,8 @@ define(['dojo/has', 'esri/config'], function (has, esriConfig) {
         urls: {
             mapService: '/arcgis/rest/services/BBEcon/MapServer'
         },
+        zoomLocationsIndex: 13,
+        zoomLocationsField: 'Name',
         fieldNames: {
 
         },
