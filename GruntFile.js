@@ -77,7 +77,8 @@ module.exports = function(grunt) {
             browsers: browsers,
             testname: 'bb-econ',
             maxRetries: 5,
-            'public': 'public'
+            'public': 'public',
+            maxPollRetries: 10
         };
     try {
         secrets = grunt.file.readJSON('secrets.json');
