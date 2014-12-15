@@ -1,16 +1,28 @@
 define([
+    'agrc/widgets/locate/FindAddress',
+
+    'app/config',
+    'app/mapController',
+
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
 
     'dojo/_base/declare',
+    'dojo/aspect',
     'dojo/text!app/templates/Search.html',
 
     'xstyle/css!app/resources/Search.css'
 ], function(
+    FindAddress,
+
+    config,
+    mapController,
+
     _TemplatedMixin,
     _WidgetBase,
-    
+
     declare,
+    aspect,
     template
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
@@ -29,16 +41,16 @@ define([
             //      private
             console.log('app.Search::postCreate', arguments);
 
-            this.setupConnections();
+            var that = this;
+            aspect.after(mapController, 'initMap', function () {
+                var findAddress = new FindAddress({
+                    map: mapController.map,
+                    apiKey: config.apiKey
+                }, that.findAddressDiv);
+                findAddress.startup();
+            });
 
             this.inherited(arguments);
-        },
-        setupConnections: function() {
-            // summary:
-            //      wire events, and such
-            //
-            console.log('app.Search::setupConnections', arguments);
-
         }
     });
 });

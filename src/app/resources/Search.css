@@ -1,3 +1,8 @@
+@import '../../agrc/resources/locate/FindAddress.css';
 .search {
     margin: 10px 0;
+}
+.search .find-address label.control-label {
+    font-size: 14px;
+    font-weight: normal;
 }
