@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="15"
-   height="9.545455"
+   height="15"
    id="svg3226"
    version="1.1"
    inkscape:version="0.48.5 r10040"
@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="26.785715"
-     inkscape:cy="4.7727252"
+     inkscape:zoom="18.333333"
+     inkscape:cx="0.65454587"
+     inkscape:cy="7.3456311"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -34,8 +34,8 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="743"
-     inkscape:window-height="412"
+     inkscape:window-width="738"
+     inkscape:window-height="526"
      inkscape:window-x="875"
      inkscape:window-y="411"
      inkscape:window-maximized="0" />
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,9 +55,9 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-23.928571,-339.01803)">
+     transform="translate(-23.928571,-333.56348)">
     <g
-       transform="matrix(0.29644269,0,0,0.29644269,-12.593168,242.52593)"
+       transform="matrix(0.29644269,0,0,0.29644269,-12.593168,239.79866)"
        id="_x38_97-graduation-cap-toolbar-selected_x40_2x.png_2_">
       <g
          id="g5676">

@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="15.000689"
-   height="9.6750002"
+   width="15"
+   height="15"
    id="svg3408"
    version="1.1"
    inkscape:version="0.48.5 r10040"
@@ -25,7 +25,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="15.732612"
-     inkscape:cx="7.5003474"
+     inkscape:cx="-0.47671324"
      inkscape:cy="4.8374992"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -34,8 +34,8 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="730"
-     inkscape:window-height="412"
+     inkscape:window-width="717"
+     inkscape:window-height="676"
      inkscape:window-x="556"
      inkscape:window-y="286"
      inkscape:window-maximized="0" />
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,10 +55,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-715.35679,-447.52468)">
+     transform="translate(-715.35679,-442.19968)">
     <g
        id="_x38_79-mountains-selected_x40_2x.png_2_"
-       transform="matrix(0.31559633,0,0,0.31559633,675.94374,414.03301)">
+       transform="matrix(0.29052247,0,0,0.29810213,679.67062,413.49518)">
       <g
          id="g3995">
         <path
