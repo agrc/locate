@@ -2,15 +2,20 @@
     <h4>Current Location</h4>
     <div class="clearfix"></div>
 
-    <div class="address pull-left">
-        <ul>
-            <li>3200 West 6100 South</li>
-            <li>Taylorsville, UT 84129</li>
-            <li>Salt Lake County</li>
-        </ul>
-    </div>
-
-    <div class="address2 pull-right">
-        <a href="#" class="btn btn-default">Print Summary</a>
+    <p data-dojo-attach-point='helpTxt'>Click on the map to get info about the current location.</p>
+    <div data-dojo-attach-point="addressContainer" class='hidden'>
+        <div class="address pull-left">
+            <ul>
+                <li data-dojo-attach-point='addressNode'>3200 West 6100 South</li>
+                <li>
+                    <span data-dojo-attach-point='cityNode'>Taylorsville</span>, UT <span data-dojo-attach-point="zipNode">84129</span>
+                </li>
+                <li data-dojo-attach-point='countyNode'>Salt Lake County</li>
+            </ul>
+        </div>
+        
+        <div class="address2 pull-right">
+            <a href="#" class="btn btn-default">Print Summary</a>
+        </div>
     </div>
 </div>

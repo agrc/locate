@@ -47,7 +47,8 @@ define([
             aspect.after(mapController, 'initMap', function () {
                 var findAddress = new FindAddress({
                     map: mapController.map,
-                    apiKey: config.apiKey
+                    apiKey: config.apiKey,
+                    symbol: config.currentLocationSymbol
                 }, that.findAddressDiv);
                 findAddress.btnGeocode.innerHTML = 'Find Address';
                 findAddress.startup();

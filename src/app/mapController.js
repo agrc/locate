@@ -8,6 +8,7 @@ define([
     'dojo/topic',
 
     'esri/geometry/Point',
+    'esri/graphic',
     'esri/layers/ArcGISDynamicMapServiceLayer'
 ], function(
     BaseMap,
@@ -19,6 +20,7 @@ define([
     topic,
 
     Point,
+    Graphic,
     ArcGISDynamicMapServiceLayer
 ) {
     return {
@@ -56,6 +58,8 @@ define([
 
             topic.subscribe(config.topics.slider.change,
                 lang.hitch(this, 'onSliderChange'));
+
+            this.map.on('click', lang.hitch(this, 'onMapClick'));
 
             this.dLayer = new ArcGISDynamicMapServiceLayer(config.urls.mapService, {
                 opacity: 0.5
@@ -102,6 +106,16 @@ define([
             console.log('mapController:onSliderChange', arguments);
         
             this.dLayer.setOpacity(newValue/100);
+        },
+        onMapClick: function (evt) {
+            // summary:
+            //      user clicks on the map
+            // evt: MapClick Event Object
+            console.log('mapController:onMapClick', arguments);
+        
+            this.map.graphics.clear();
+            this.map.graphics.add(new Graphic(evt.mapPoint, config.currentLocationSymbol));
+            topic.publish(config.topics.mapClick, evt.mapPoint);
         }
     };
 });

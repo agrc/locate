@@ -1,9 +1,22 @@
 /* jshint maxlen:false */
-define(['dojo/has', 'esri/config'], function (has, esriConfig) {
+define([
+    'dojo/has',
+
+    'esri/config',
+    'esri/symbols/PictureMarkerSymbol'
+], function (
+    has,
+
+    esriConfig,
+    PictureMarkerSymbol
+) {
     // force api to use CORS on mapserv thus removing the test request on app load
     // e.g. http://mapserv.utah.gov/ArcGIS/rest/info?f=json
     esriConfig.defaults.io.corsEnabledServers.push('mapserv.utah.gov');
-    
+
+
+    var markerSymbolWidth = 26;
+    var markerSymbolHeight = 35;
     window.AGRC = {
         // app: app.App
         //      global reference to App
@@ -33,18 +46,34 @@ define(['dojo/has', 'esri/config'], function (has, esriConfig) {
             },
             slider: {
                 change: 'slider.change'
-            }
+            },
+            mapClick: 'mapContoller.mapClick'
+        },
+        messages: {
+            noValueFound: '<No ${0} found>'
         },
         urls: {
             mapService: '/arcgis/rest/services/BBEcon/MapServer'
         },
         zoomLocationsIndex: 13,
         zoomLocationsField: 'Name',
-        fieldNames: {
-
+        currentLocationSymbol: new PictureMarkerSymbol(
+            'app/resources/img/markers/currentLocation.svg',
+            markerSymbolWidth,
+            markerSymbolHeight
+        ),
+        featureClassNames: {
+            city: 'SGID10.BOUNDARIES.Municipalities',
+            zip: 'SGID10.BOUNDARIES.ZipCodes',
+            county: 'SGID10.BOUNDARIES.Counties'
         },
-        markerSymbolHeight: 35,
-        markerSymbolWidth: 26,
+        fieldNames: {
+            city: {NAME: 'NAME'},
+            zip: {ZIP5: 'ZIP5'},
+            county: {NAME: 'NAME'}
+        },
+        markerSymbolWidth: markerSymbolWidth,
+        markerSymbolHeight: markerSymbolHeight,
         groups: [{
             groupClass: 'broadband',
             name: 'Broadband',
@@ -126,6 +155,8 @@ define(['dojo/has', 'esri/config'], function (has, esriConfig) {
             }]
         }]
     };
+
+    window.AGRC.currentLocationSymbol.setOffset(0, markerSymbolHeight/2);
 
     if (has('agrc-api-key') === 'prod') {
         // mapserv.utah.gov
