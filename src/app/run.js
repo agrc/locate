@@ -27,9 +27,9 @@
                 location: './bootstrap',
                 main: 'dist/js/bootstrap'
             },{
-                name: 'slider',
-                location: './seiyria-bootstrap-slider',
-                main: 'js/bootstrap-slider'
+                name: 'handlebars',
+                location: './handlebars',
+                main: 'handlebars'
             },{
                 name: 'jquery',
                 location: './jquery/dist',
@@ -42,6 +42,10 @@
                 name: 'mustache',
                 location: './mustache',
                 main: 'mustache'
+            },{
+                name: 'slider',
+                location: './seiyria-bootstrap-slider',
+                main: 'js/bootstrap-slider'
             },{
                 name: 'spin',
                 location: './spinjs',
