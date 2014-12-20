@@ -42,6 +42,14 @@ var profile = {
         // We aren’t loading tests in production
         'dojo-test-sniff':0
     },
+    packages: [{
+        name: 'handlebars',
+        resourceTags: {
+            copyOnly: function(filename, mid) {
+                return (/.*\.amd.?/).test(mid);
+            }
+        }
+    }],
     plugins: {
         'xstyle/css': 'xstyle/build/amd-css'
     },

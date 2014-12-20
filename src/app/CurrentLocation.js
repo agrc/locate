@@ -58,6 +58,9 @@ define([
         county: null,
         _setCountyAttr: {node: 'countyNode', type: 'innerHTML'},
 
+        // lastPoint: {x: ..., y: ...}
+        lastPoint: null,
+
 
         // Properties to be sent into constructor
 
@@ -110,6 +113,8 @@ define([
                 domClass.remove(that.addressContainer, 'hidden');
                 domClass.add(that.helpTxt, 'hidden');
             });
+
+            this.lastPoint = point;
         },
         onSearchReturn: function (type, field, results) {
             // summary:
@@ -149,6 +154,13 @@ define([
         
             var value = entities.encode(dojoString.substitute(config.messages.noValueFound, ['address']));
             this.set('address', value);
+        },
+        generateReport: function () {
+            // summary:
+            //      description
+            console.log('app/CurrentLocation:generateReport', arguments);
+        
+            topic.publish(config.topics.generateReport, this);
         }
     });
 });

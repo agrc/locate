@@ -47,13 +47,17 @@ define([
             slider: {
                 change: 'slider.change'
             },
-            mapClick: 'mapContoller.mapClick'
+            mapClick: 'mapContoller.mapClick',
+            generateReport: 'generateReport',
+            hideReport: 'hideReport'
         },
         messages: {
-            noValueFound: '<No ${0} found>'
+            noValueFound: '<No ${0} found>',
+            reportError: 'There was an error generating the report!'
         },
         urls: {
-            mapService: '/arcgis/rest/services/BBEcon/MapServer'
+            mapService: '/arcgis/rest/services/BBEcon/MapService/MapServer',
+            gpService: '/arcgis/rest/services/BBEcon/GenerateReport/GPServer/Generate Report/execute'
         },
         zoomLocationsIndex: 13,
         zoomLocationsField: 'Name',

@@ -1,0 +1,304 @@
+{
+    "broadband": {
+        "fiber": [{
+            "URL": "http://wwwb.comcast.com/",
+            "Colloquial": "Comcast",
+            "ServiceClass": "Short term",
+            "ProvName": "Comcast"
+        }, {
+            "URL": "http://www.syringanetworks.net/",
+            "Colloquial": "Syringa Networks",
+            "ServiceClass": "Short term",
+            "ProvName": "Syringa"
+        }],
+        "fixed": [{
+            "URL": "http://www.thebluezone.com/",
+            "Colloquial": "The Blue Zone",
+            "UTProvCode": "Blue Zone"
+        }, {
+            "URL": "http://digis.net/",
+            "Colloquial": "Digis",
+            "UTProvCode": "Digis"
+        }, {
+            "URL": "http://www.keystone-broadband.com/",
+            "Colloquial": "Keystone Broadband",
+            "UTProvCode": "Keystone"
+        }, {
+            "URL": "http://www.utahbroadband.com/",
+            "Colloquial": "Utah Broadband",
+            "UTProvCode": "Utah Broadband"
+        }, {
+            "URL": "http://www.centurylink.com/",
+            "Colloquial": "CenturyLink",
+            "UTProvCode": "CenturyLink"
+        }, {
+            "URL": "http://wwwb.comcast.com/",
+            "Colloquial": "Comcast",
+            "UTProvCode": "Comcast"
+        }, {
+            "URL": "http://www.integratelecom.com/Pages/default.aspx",
+            "Colloquial": "Integra Telecom",
+            "UTProvCode": "Integra"
+        }, {
+            "URL": "http://www.megapath.com/",
+            "Colloquial": "MegaPath",
+            "UTProvCode": "MegaPath"
+        }, {
+            "URL": "http://www.syringanetworks.net/",
+            "Colloquial": "Syringa Networks",
+            "UTProvCode": "Syringa"
+        }]
+    },
+    "recreation": {
+        "nat_parks": [{
+            "name": "Capitol Reef National Park",
+            "drive_time": "< 240 min"
+        }, {
+            "name": "Arches National Park",
+            "drive_time": "< 240 min"
+        }, {
+            "name": "Bryce Canyon National Park",
+            "drive_time": "< 240 min"
+        }, {
+            "name": "Zion National Park",
+            "drive_time": "< 300 min"
+        }, {
+            "name": "Canyonlands National Park",
+            "drive_time": "< 300 min"
+        }],
+        "ski": [{
+            "name": "Canyons Resort",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Park City Mountain Resort",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Brighton Ski Resort",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Deer Valley Resort",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Solitude Mountain Resort",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Snowbird Ski and Summer Resort",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Alta Ski Area",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Sundance Resort",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Snowbasin",
+            "drive_time": "< 90 min"
+        }, {
+            "name": "Powder Mountain",
+            "drive_time": "< 90 min"
+        }, {
+            "name": "Nordic Valley",
+            "drive_time": "< 90 min"
+        }],
+        "state_parks": [{
+            "name": "Deer Creek State Park",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Timpanogos Cave National Monument",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "East Canyon State Park",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Flight Park State Recreation Area",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Utah Lake State Park",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "This Is The Place Heritage Park",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Great Salt Lake State Park",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Rockport State Park",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Jordanelle State Park",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Jordan River OHV Center",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "Hyrum State Park",
+            "drive_time": "< 120 min"
+        }, {
+            "name": "Historic Union Pacific Rail Trail",
+            "drive_time": "< 120 min"
+        }, {
+            "name": "Golden Spike National Historic Site",
+            "drive_time": "< 120 min"
+        }, {
+            "name": "Wasatch Mountain State Park",
+            "drive_time": "< 120 min"
+        }, {
+            "name": "Willard Bay State Park",
+            "drive_time": "< 120 min"
+        }, {
+            "name": "Camp Floyd State Park Museum",
+            "drive_time": "< 120 min"
+        }, {
+            "name": "Skofield State Park",
+            "drive_time": "< 120 min"
+        }, {
+            "name": "Yuba State Park",
+            "drive_time": "< 120 min"
+        }, {
+            "name": "Antelope Island State Park",
+            "drive_time": "< 120 min"
+        }, {
+            "name": "Fremont Indian State Park and Museum",
+            "drive_time": "< 180 min"
+        }, {
+            "name": "Starvation State Park",
+            "drive_time": "< 180 min"
+        }, {
+            "name": "Territorial Statehouse State Park Museum",
+            "drive_time": "< 180 min"
+        }, {
+            "name": "Bear Lake State Park",
+            "drive_time": "< 180 min"
+        }, {
+            "name": "Palisade State Park",
+            "drive_time": "< 180 min"
+        }, {
+            "name": "Millsite State Park",
+            "drive_time": "< 180 min"
+        }, {
+            "name": "Huntington State Park",
+            "drive_time": "< 180 min"
+        }]
+    },
+    "transportation": {
+        "roads": ["FASHION BLVD", "3600 W", "TO 9400", "SHIELDS LN", "500 W", "7800 S", "BANGERTER HWY", "I-15 SB FWY", "2700 W", "WASATCH ST", "1300 E", "SKYE DR", "I-215E WB FWY", "1300 W", "SOUTH UNION AVE", "PIONEER ST", "CANAL ST", "5400 S", "7200 S", "SKI CONNECT RD", "FORT UNION BLVD", "WINCHESTER ST", "5600 W", "5600 S", "7000 S", "9800 S", "5300 S", "I-215W WB FWY", "SEGO LILY DR", "8000 S", "1000 E", "5415 S", "11800 S", "SANDY PKWY", "I-215W SB FWY", "CENTER ST", "3200 W", "MURRAY BLVD", "5900 S", "JAGUAR DR", "10600 S", "11000 S", "9120 S", "COTTONWOOD ST", "TAYLORSVILLE EXPY", "8680 S", "FORBUSH LN", "TEMPLE DR", "6600 S", "UNION PARK AVE", "11400 S", "4700 S", "725 E", "300 W", "PETUNIA WAY", "MAIN ST", "AIRPORT RD", "MURRAY TAYLORSVILLE RD", "HILLCREST HIGH DR", "6235 S", "4500 S", "4800 S", "4800 W", "CREEK RD", "10000 S", "HWY 48", "6200 S", "900 E", "LONE PEAK PKWY", "OLD BINGHAM HWY", "9400 S", "I-215W EB FWY", "6400 S", "700 E", "STATE ST", "4000 W", "RIVERSIDE DR", "700 W", "SOUTH JORDAN PKWY", "GREENWOOD AVE", "7500 S", "4015 W", "VINE ST", "I-215E EB FWY", "JORDAN RIVER BLVD", "685 E", "2200 W", "6100 S", "SIXTH AVE", "NEWCASTLE DR", "NEW BINGHAM HWY", "1020 E", "8600 S", "REDWOOD RD", "HUSKY HWY", "HOLDEN ST", "CONSTITUTION BLVD", "9000 S", "I-15 NB FWY", "7755 S", "JORDAN GATEWAY", "I-215W NB FWY"],
+        "airports": {
+            "regional_commercial": [{
+                "name": "OGDEN-HINCKLEY",
+                "drive_time": "< 60 min"
+            }, {
+                "name": "PROVO MUNI",
+                "drive_time": "< 60 min"
+            }, {
+                "name": "WENDOVER",
+                "drive_time": "< 120 min"
+            }, {
+                "name": "LOGAN-CACHE",
+                "drive_time": "< 120 min"
+            }],
+            "local": [{
+                "name": "SKYPARK",
+                "drive_time": "< 30 min"
+            }, {
+                "name": "SOUTH VALLEY RGNL",
+                "drive_time": "< 30 min"
+            }, {
+                "name": "JAKE GARN",
+                "drive_time": "< 60 min"
+            }, {
+                "name": "HEBER CITY MUNI - RUSS MCDONALD FIELD",
+                "drive_time": "< 60 min"
+            }, {
+                "name": "SPANISH FORK-SPRINGVILLE-WOODHOUSE FIELD",
+                "drive_time": "< 60 min"
+            }, {
+                "name": "BOLINDER FIELD-TOOELE VALLEY",
+                "drive_time": "< 60 min"
+            }, {
+                "name": "MORGAN COUNTY",
+                "drive_time": "< 60 min"
+            }, {
+                "name": "NEPHI MUNI",
+                "drive_time": "< 90 min"
+            }, {
+                "name": "BRIGHAM CITY",
+                "drive_time": "< 90 min"
+            }, {
+                "name": "MANTI-EPHRAIM",
+                "drive_time": "< 120 min"
+            }, {
+                "name": "MOUNT PLEASANT",
+                "drive_time": "< 120 min"
+            }],
+            "sl": {
+                "name": "Salt Lake International",
+                "drive_time": "< 60 min"
+            }
+        }
+    },
+    "utilities": {
+        "rural": [{
+            "WEBLINK": "http://www.centurylink.com/",
+            "PROVIDER": "CENTURYLINK"
+        }],
+        "natural_gas": "Yes",
+        "electrical": [{
+            "WEBLINK": "https://www.rockymountainpower.net",
+            "PROVIDER": "Rocky Mountain Power"
+        }]
+    },
+    "workforce": {
+        "schools": [{
+            "name": "STEVENS HENAGER COLLEGE",
+            "drive_time": "< 30 min"
+        }, {
+            "name": "LDS BUSINESS COLLEGE",
+            "drive_time": "< 30 min"
+        }, {
+            "name": "UNIVERSITY OF UTAH",
+            "drive_time": "< 30 min"
+        }, {
+            "name": "SALT LAKE COMMUNITY COLLEGE",
+            "drive_time": "< 30 min"
+        }, {
+            "name": "WESTMINSTER COLLEGE",
+            "drive_time": "< 30 min"
+        }, {
+            "name": "SOUTH CITY CAMPUS",
+            "drive_time": "< 30 min"
+        }, {
+            "name": "WESTERN GOVERNORS UNIVERSITY",
+            "drive_time": "< 30 min"
+        }, {
+            "name": "SALT LAKE SKILL CENTER",
+            "drive_time": "< 30 min"
+        }, {
+            "name": "WEBER STATE UNIVERSITY",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "UTAH VALLEY UNIVERSITY",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "TOOELE APPLIED TECHNOLOGY COLLEGE",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "BRIGHAM YOUNG UNIVERSITY",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "DAVIS APPLIED TECH COLLEGE",
+            "drive_time": "< 60 min"
+        }, {
+            "name": "OGDEN-WEBER ATC",
+            "drive_time": "< 90 min"
+        }, {
+            "name": "SNOW COLLEGE",
+            "drive_time": "< 120 min"
+        }, {
+            "name": "BRIDGERLAND ATC",
+            "drive_time": "< 120 min"
+        }, {
+            "name": "UTAH STATE UNIVERSITY",
+            "drive_time": "< 120 min"
+        }]
+    }
+}
