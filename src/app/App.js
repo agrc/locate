@@ -5,6 +5,7 @@ define([
     'app/CurrentLocation',
     'app/Layers',
     'app/mapController',
+    'app/Report',
 
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
@@ -12,7 +13,10 @@ define([
 
     'dojo/_base/array',
     'dojo/_base/declare',
+    'dojo/_base/lang',
+    'dojo/dom-class',
     'dojo/text!app/templates/App.html',
+    'dojo/topic',
 
     'bootstrap',
     'dijit/layout/ContentPane',
@@ -24,6 +28,7 @@ define([
     CurrentLocation,
     Layers,
     mapController,
+    Report,
 
     _TemplatedMixin,
     _WidgetBase,
@@ -31,7 +36,10 @@ define([
 
     array,
     declare,
-    template
+    lang,
+    domClass,
+    template,
+    topic
 ) {
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         // summary:
@@ -68,10 +76,34 @@ define([
 
             this.childWidgets.push(
                 new CurrentLocation({}, this.currentLocationDiv),
-                new Layers({}, this.layersDiv)
+                new Layers({}, this.layersDiv),
+                new Report({}, this.reportDiv)
+            );
+
+            this.own(
+                topic.subscribe(config.topics.generateReport, lang.hitch(this, 'showReport')),
+                topic.subscribe(config.topics.hideReport, lang.hitch(this, 'hideReport'))
             );
 
             this.inherited(arguments);
+        },
+        showReport: function () {
+            // summary:
+            //      description
+            console.log('app/App:showReport', arguments);
+        
+            mapController.map.setVisibility(false);
+            domClass.add(this.mapContainer, 'hidden');
+            domClass.remove(this.reportContainer, 'hidden');
+        },
+        hideReport: function () {
+            // summary:
+            //      description
+            console.log('app/App:hideReport', arguments);
+        
+            domClass.add(this.reportContainer, 'hidden');
+            domClass.remove(this.mapContainer, 'hidden');
+            mapController.map.setVisibility(true);
         },
         startup: function() {
             // summary:

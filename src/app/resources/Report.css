@@ -1,8 +1,32 @@
+.report {
+    margin-top: 20px;
+}
+.report .location ul {
+    margin: 0;
+    padding: 0;
+}
+.report .location ul li {
+    list-style: none;
+}
+.report .location {
+    width: 100%;
+    margin-bottom: 15px;
+}
 .report .glyphicon-refresh {
     -webkit-animation: spin 2s infinite linear;
     animation: spin 2s infinite linear;
     font-size: 14px;
 }
+
+/* modify address css for report */
+.report .pull-left {
+    float: none !important;
+}
+.report .address2 {
+    visibility: hidden;
+    display: none;
+}
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);
@@ -33,6 +57,7 @@
 }
 .report h4 {
     padding: 5px 15px;
+    margin: 0;
     color: #fff;
 }
 .report h4.no-background {
@@ -86,4 +111,11 @@ tr:last-of-type td:first-child {
 }
 tr:last-of-type td:last-child {
     box-shadow: inset -1px -1px 0 #fff;
+}
+@media print {
+    .report .btn, 
+    .current-location {
+        visibility: hidden;
+        display: none;
+    }
 }

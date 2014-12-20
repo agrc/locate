@@ -59,7 +59,7 @@ define([
 
             this.inherited(arguments);
         },
-        generateReport: function (x, y) {
+        generateReport: function (currentLocationWidget) {
             // summary:
             //      kicks off gp task
             // x: float
@@ -67,10 +67,12 @@ define([
             console.log('app/Report:generateReport', arguments);
         
             this.showLoader();
+            var pnt = currentLocationWidget.lastPoint;
+            this.locationContainer.innerHTML = currentLocationWidget.addressContainer.innerHTML;
 
             request.get(config.urls.gpService, {
                 handleAs: 'json',
-                query: {x: x, y: y, f: 'json'}
+                query: {x: pnt.x, y: pnt.y, f: 'json'}
             }).then(lang.hitch(this, 'onReportComplete'),
                 lang.hitch(this, 'onError')
             );
@@ -94,6 +96,7 @@ define([
             console.log('app/Report:onError', arguments);
         
             this.showErrMsg(config.messages.reportError);
+            domClass.add(this.loader, 'hidden');
         },
         onReportComplete: function (response) {
             // summary:
@@ -108,6 +111,20 @@ define([
             } else {
                 this.showErrMsg(config.messages.reportError);
             }
+        },
+        hideReport: function () {
+            // summary:
+            //      description
+            console.log('app/Report:hideReport', arguments);
+        
+            topic.publish(config.topics.hideReport);
+        },
+        print: function () {
+            // summary:
+            //      description
+            console.log('app/Report:print', arguments);
+        
+            window.print();
         }
     });
 });

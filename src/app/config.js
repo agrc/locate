@@ -48,7 +48,8 @@ define([
                 change: 'slider.change'
             },
             mapClick: 'mapContoller.mapClick',
-            generateReport: 'generateReport'
+            generateReport: 'generateReport',
+            hideReport: 'hideReport'
         },
         messages: {
             noValueFound: '<No ${0} found>',

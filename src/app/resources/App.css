@@ -56,15 +56,6 @@ body {
     box-sizing: border-box;
     z-index: 200;
 }
-h2, h3, h4 {
-    margin: 0;
-    padding: 0;
-}
-.btn,
-.btn:focus,
-.btn:hover {
-    color: #fff;
-}
 #header-container #header-wrapper {
     background: rgb(209, 210, 211);
     /* Old browsers */
@@ -126,16 +117,6 @@ h2, h3, h4 {
     float: left;
     background-size: contain;
     margin-top: 15px;
-}
-#reportLocation ul {
-    margin: 0;
-    padding: 0;
-}
-#reportLocation ul li {
-    list-style: none;
-}
-#reportLocation {
-    width: 100%;
 }
 #header-container #mobilemenu {
     display: none;

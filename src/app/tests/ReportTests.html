@@ -45,7 +45,15 @@
             widgetUnderTest.startup();
 
             document.getElementById('testBtn').onclick = function () {
-                widgetUnderTest.generateReport(421080.8375008911, 4495496.979720714);
+                widgetUnderTest.generateReport({
+                    lastPoint: {
+                        x: 421080.8375008911,
+                        y: 4495496.979720714
+                    },
+                    addressContainer: {
+                        innerHTML: "<div class='address pull-left'> <ul> <li data-dojo-attach-point='addressNode'>3200 West 6100 South</li> <li> <span data-dojo-attach-point='cityNode'>Taylorsville</span>, UT <span data-dojo-attach-point='zipNode'>84129</span> </li> <li data-dojo-attach-point='countyNode'>Salt Lake County</li> </ul> </div>"
+                    }
+                });
             };
         });
 </script>

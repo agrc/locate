@@ -22,7 +22,7 @@ def get_fiber(point):
     records = []
     with da.SearchCursor(SERVICE_AREAS,
                          [fieldnames.ServiceClass, fieldnames.ProvName],
-                         '{} = {}'.format(fieldnames.HexID, hex_id),
+                         '{} = {} AND {} <> 0'.format(fieldnames.HexID, hex_id, fieldnames.ServiceClass),
                          sql_clause=(None, 'ORDER BY ' + fieldnames.ProvName)) as sa_cursor:
         for sa in sa_cursor:
             records.append({fieldnames.ServiceClass: FIBER_TERMS[sa[0]],
@@ -142,10 +142,10 @@ def get_airports(point):
 
 
 if __name__ == '__main__':
-    # x = 421080.8375008911
-    # y = 4495496.979720714
-    x = float(GetParameterAsText(0))
-    y = float(GetParameterAsText(1))
+    x = 422991.7632080179
+    y = 4504669.423114922
+    # x = float(GetParameterAsText(0))
+    # y = float(GetParameterAsText(1))
 
     pnt = PointGeometry(Point(x, y), SpatialReference(26912))
 
