@@ -1,5 +1,6 @@
 define([
     'app/config',
+    'app/mapController',
 
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
@@ -18,6 +19,7 @@ define([
     'xstyle/css!app/resources/Layer.css'
 ], function(
     config,
+    mapController,
 
     _TemplatedMixin,
     _WidgetBase,
@@ -120,6 +122,8 @@ define([
             // show: Boolean
             console.log('app/Layer:toggleLayer', arguments);
             
+            var popup = mapController.map.infoWindow;
+            var that = this;
             if (this.type === 'feature') {
                 if (!this.fLayer) {
                     var sym = new PictureMarkerSymbol(
@@ -128,8 +132,20 @@ define([
                         config.markerSymbolHeight
                     );
                     sym.setOffset(0, config.markerSymbolHeight/2);
-                    this.fLayer = new FeatureLayer(config.urls.mapService + '/' + this.layerId);
+                    this.fLayer = new FeatureLayer(config.urls.mapService + '/' + this.layerId, {
+                        outFields: ['*']
+                    });
                     this.fLayer.setRenderer(new SimpleRenderer(sym));
+                    this.fLayer.on('load', function () {
+                        that.fLayer.on('mouse-over', function (evt) {
+                            var g = evt.graphic;
+                            popup.setContent(g.attributes[that.fLayer.displayField]);
+                            popup.show(g.geometry);
+                        });
+                        that.fLayer.on('mouse-out', function () {
+                            popup.hide();
+                        });
+                    });
                     topic.publish(config.topics.addLayer, this.fLayer);
                 }
                 this.fLayer.setVisibility(show);
