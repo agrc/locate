@@ -101,19 +101,9 @@ define([
             groupClass: 'transportation',
             name: 'Transportation',
             layers: [{
-                name: 'International Airport',
+                name: 'Airports',
                 type: 'feature',
                 layerId: '5',
-                marker: 'airports.svg'
-            }, {
-                name: 'Regional Commercial Airports',
-                type: 'feature',
-                layerId: '6',
-                marker: 'airports.svg'
-            }, {
-                name: 'Major and Regional Airports with Paved Runways',
-                type: 'feature',
-                layerId: '7',
                 marker: 'airports.svg'
             }]
         }, {
@@ -122,7 +112,7 @@ define([
             layers: [{
                 name: 'Higher Education Schools',
                 type: 'feature',
-                layerId: '8',
+                layerId: '6',
                 marker: 'universities.svg'
             }]
         }, {
@@ -131,22 +121,22 @@ define([
             layers: [{
                 name: 'National Parks, National Monuments, State Parks',
                 type: 'feature',
-                layerId: '9',
+                layerId: '7',
                 marker: 'parks.svg'
             }, {
                 name: 'Ski Areas',
                 type: 'feature',
-                layerId: '10',
+                layerId: '8',
                 marker: 'skiing.svg'
             }, {
                 name: 'Golf Courses',
                 type: 'feature',
-                layerId: '11',
+                layerId: '9',
                 marker: 'golfing.svg'
             }, {
                 name: 'Hospitals',
                 type: 'feature',
-                layerId: '12',
+                layerId: '10',
                 marker: 'hospitals.svg'
             }]
         }]
