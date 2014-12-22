@@ -27,9 +27,7 @@
 
 /* hide transparency buttons for layers that it doesn't apply to */
 .transportation>button,
-.utilities>button,
-.lifestyle>button,
-.demographics>button {
+.lifestyle>button {
     display: none;
     visibility: hidden;
 }

@@ -20,29 +20,30 @@ require([
         });
         describe('toggleDynamicLayer', function () {
             var lyr;
+            var groupName = 'blah';
             beforeEach(function () {
                 lyr = {
                     visibleLayers: [],
                     setVisibleLayers: jasmine.createSpy('setVisibleLayers')
                 };
-                objectUnderTest.dLayer = lyr;
+                objectUnderTest.dLayers[groupName] = lyr;
             });
             it('adds new layer ids', function () {
-                objectUnderTest.toggleDynamicLayer('0,2', true);
+                objectUnderTest.toggleDynamicLayer('0,2', true, groupName);
 
                 expect(lyr.setVisibleLayers).toHaveBeenCalledWith([0, 2]);
             });
             it('preserves existing layer ids', function () {
                 lyr.visibleLayers = [1, 2];
 
-                objectUnderTest.toggleDynamicLayer('3', true);
+                objectUnderTest.toggleDynamicLayer('3', true, groupName);
 
                 expect(lyr.setVisibleLayers).toHaveBeenCalledWith([3, 1, 2]);
             });
             it('removes layer ids', function () {
                 lyr.visibleLayers = [1, 3];
 
-                objectUnderTest.toggleDynamicLayer('3', false);
+                objectUnderTest.toggleDynamicLayer('3', false, groupName);
 
                 expect(lyr.setVisibleLayers).toHaveBeenCalledWith([1]);
             });

@@ -98,6 +98,26 @@ define([
                 onByDefault: false
             }]
         }, {
+            groupClass: 'utilities',
+            name: 'Utilities',
+            layers: [{
+                name: 'Natural Gas Service Areas',
+                type: 'dynamic',
+                layerId: '12'
+            }, {
+                name: 'Electrical Service Providers',
+                type: 'dynamic',
+                layerId: '14'
+            }, {
+                name: 'Telephone Service Areas',
+                type: 'dynamic',
+                layerId: '15'
+            }, {
+                name: 'Culinary Water',
+                type: 'dynamic',
+                layerId: '13'
+            }]
+        }, {
             groupClass: 'transportation',
             name: 'Transportation',
             layers: [{
@@ -105,6 +125,15 @@ define([
                 type: 'feature',
                 layerId: '5',
                 marker: 'airports.svg'
+            }, {
+                name: 'Trax Stations',
+                type: 'feature',
+                layerId: '17',
+                marker: 'lightrail.svg'
+            }, {
+                name: 'Railroads',
+                type: 'dynamic',
+                layerId: '16'
             }]
         }, {
             groupClass: 'demographics',
@@ -114,6 +143,10 @@ define([
                 type: 'feature',
                 layerId: '6',
                 marker: 'universities.svg'
+            }, {
+                name: 'Enterprise Zones',
+                type: 'dynamic',
+                layerId: '18'
             }]
         }, {
             groupClass: 'lifestyle',

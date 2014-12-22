@@ -69,6 +69,9 @@ define([
         //      svg file name to use as a marker for this layer
         marker: null,
 
+        // groupName: String
+        groupName: null,
+
 
         postCreate: function() {
             // summary:
@@ -131,7 +134,7 @@ define([
                 }
                 this.fLayer.setVisibility(show);
             } else {
-                topic.publish(config.topics.layer.toggleDynamicLayer, this.layerId, show);
+                topic.publish(config.topics.layer.toggleDynamicLayer, this.layerId, show, this.groupName);
             }
         }
     });

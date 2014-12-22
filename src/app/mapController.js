@@ -27,6 +27,10 @@ define([
         // map: BaseMap
         map: null,
 
+        // dLayers: Object
+        //      dynamic layers
+        dLayers: {},
+
         initMap: function(mapDiv) {
             // summary:
             //      Sets up the map
@@ -60,11 +64,6 @@ define([
                 lang.hitch(this, 'onSliderChange'));
 
             this.map.on('click', lang.hitch(this, 'onMapClick'));
-
-            this.dLayer = new ArcGISDynamicMapServiceLayer(config.urls.mapService, {
-                opacity: 0.5
-            });
-            this.addLayer(this.dLayer);
         },
         addLayer: function (lyr) {
             // summary:
@@ -75,7 +74,7 @@ define([
             this.map.addLayer(lyr);
             this.map.addLoaderToLayer(lyr);
         },
-        toggleDynamicLayer: function (layerId, show) {
+        toggleDynamicLayer: function (layerId, show, groupName) {
             // summary:
             //      sets the appropriate visible layers on the dynamic service
             // layerId: String
@@ -83,29 +82,45 @@ define([
             // show: Boolean
             console.log('app/mapController:toggleDynamicLayer', arguments);
         
+            var dLayer;
+            var that = this;
+            if (!this.dLayers[groupName]) {
+                dLayer = this.dLayers[groupName] = new ArcGISDynamicMapServiceLayer(config.urls.mapService, {
+                    opacity: 0.5
+                });
+                this.map.addLayer(dLayer);
+                this.map.addLoaderToLayer(dLayer);
+                dLayer.on('load', function () {
+                    that.toggleDynamicLayer(layerId, show, groupName);
+                });
+                return;
+            } else {
+                dLayer = this.dLayers[groupName];
+            }
+
             var toggleIds = layerId.split(',').map(function (idTxt) {
                 return parseInt(idTxt, 10);
             });
             var layerIds;
 
             if (show) {
-                layerIds = toggleIds.concat(this.dLayer.visibleLayers);
+                layerIds = toggleIds.concat(dLayer.visibleLayers);
             } else {
-                layerIds = this.dLayer.visibleLayers.filter(function (id) {
+                layerIds = dLayer.visibleLayers.filter(function (id) {
                     return toggleIds.indexOf(id) === -1;
                 });
             }
 
-            this.dLayer.setVisibleLayers(layerIds);
+            dLayer.setVisibleLayers(layerIds);
         },
-        onSliderChange: function (newValue) {
+        onSliderChange: function (newValue, groupName) {
             // summary:
             //      the user is changing the tranparency slider
             // newValue: Number
             //      0 - 100
             console.log('mapController:onSliderChange', arguments);
         
-            this.dLayer.setOpacity(newValue/100);
+            this.dLayers[groupName].setOpacity(newValue/100);
         },
         onMapClick: function (evt) {
             // summary:

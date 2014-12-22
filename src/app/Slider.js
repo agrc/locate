@@ -30,6 +30,8 @@ define([
         baseClass: 'slider',
 
         // Properties to be sent into constructor
+        // groupName: String
+        groupName: null,
 
         postCreate: function() {
             // summary:
@@ -60,7 +62,7 @@ define([
             // evt: Event Object
             // console.log('app/Slider:onChange', arguments);
         
-            topic.publish(config.topics.slider.change, evt.value);
+            topic.publish(config.topics.slider.change, evt.value, this.groupName);
         }
     });
 });

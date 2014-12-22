@@ -76,12 +76,13 @@ define([
 
             this.layerWidgets = [];
             this.layers.forEach(function (l) {
+                l.groupName = that.name;
                 that.layerWidgets.push(
                     new Layer(l, domConstruct.create('div', null, that.layersContainer))
                 );
             });
 
-            var slider = new Slider();
+            var slider = new Slider({groupName: this.name});
             slider.startup();
             var title = 'Map Layer Transparency';
             var titleDiv = domConstruct.create('div', {
