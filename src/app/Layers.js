@@ -62,6 +62,8 @@ define([
                 that.own(new Group(g, domConstruct.create('div', null, that.groupsContainer)));
             });
 
+            this.groupsContainer.children[0].children[0].click();
+
             this.inherited(arguments);
         }
     });
