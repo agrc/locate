@@ -79,6 +79,8 @@ define([
             //      user clicked on the map
             // point: Object {x: , y: }
             console.log('app/CurrentLocation:onMapClick', arguments);
+
+            domClass.remove(this.loader, 'hidden');
         
             if (!this.webAPI) {
                 this.webAPI = new WebAPI({apiKey: config.apiKey});

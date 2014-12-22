@@ -2,7 +2,12 @@
     <h4>Current Location</h4>
     <div class="clearfix"></div>
 
-    <p data-dojo-attach-point='helpTxt'>Click on the map to get info about the current location.</p>
+    <p data-dojo-attach-point='helpTxt'>
+        <span class="glyphicon glyphicon-refresh hidden"
+            data-dojo-attach-point='loader'></span>
+        Click on the map to get info about the current location.
+    </p>
+    
     <div data-dojo-attach-point="addressContainer" class='hidden'>
         <div class="address pull-left">
             <ul>
