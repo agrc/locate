@@ -104,19 +104,16 @@ define([
                 name: 'International Airport',
                 type: 'feature',
                 layerId: '5',
-                controlledByParent: true,
                 marker: 'airports.svg'
             }, {
                 name: 'Regional Commercial Airports',
                 type: 'feature',
                 layerId: '6',
-                controlledByParent: true,
                 marker: 'airports.svg'
             }, {
                 name: 'Major and Regional Airports with Paved Runways',
                 type: 'feature',
                 layerId: '7',
-                controlledByParent: true,
                 marker: 'airports.svg'
             }]
         }, {
@@ -126,7 +123,6 @@ define([
                 name: 'Higher Education Schools',
                 type: 'feature',
                 layerId: '8',
-                controlledByParent: true,
                 marker: 'universities.svg'
             }]
         }, {
@@ -136,25 +132,21 @@ define([
                 name: 'National Parks, National Monuments, State Parks',
                 type: 'feature',
                 layerId: '9',
-                controlledByParent: true,
                 marker: 'parks.svg'
             }, {
                 name: 'Ski Areas',
                 type: 'feature',
                 layerId: '10',
-                controlledByParent: true,
                 marker: 'skiing.svg'
             }, {
                 name: 'Golf Courses',
                 type: 'feature',
                 layerId: '11',
-                controlledByParent: true,
                 marker: 'golfing.svg'
             }, {
                 name: 'Hospitals',
                 type: 'feature',
                 layerId: '12',
-                controlledByParent: true,
                 marker: 'hospitals.svg'
             }]
         }]

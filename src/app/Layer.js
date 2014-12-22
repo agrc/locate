@@ -87,7 +87,7 @@ define([
             if (this.marker) {
                 domConstruct.create('img', {
                     src: 'app/resources/img/icons/' + this.marker
-                }, this.checkbox, 'before');
+                }, this.label);
             }
 
             if (!this.controlledByParent) {
