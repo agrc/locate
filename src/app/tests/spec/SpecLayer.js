@@ -1,19 +1,21 @@
 require([
-    'matchers/src/topics',
-
     'app/config',
     'app/Layer',
+    'app/mapController',
 
     'dojo/dom-construct',
 
+    'matchers/src/topics',
+
     'stubmodule'
 ], function(
-    topics,
-
     config,
     WidgetUnderTest,
+    mapController,
 
     domConstruct,
+
+    topics,
 
     stubmodule
 ) {
@@ -23,6 +25,7 @@ require([
             widget.destroyRecursive();
             widget = null;
         };
+        mapController.map = {infoWindow: {}};
 
         beforeEach(function() {
             widget = new WidgetUnderTest({
@@ -75,8 +78,7 @@ require([
                 });
 
                 stubmodule('app/Layer', {
-                    'esri/layers/FeatureLayer': spy,
-                    'app/mapController': {map: {infoWindow: {}}}
+                    'esri/layers/FeatureLayer': spy
                 }).then(function (StubbedModule) {
                     var testWidget2 = new StubbedModule({
                         type: 'feature',
