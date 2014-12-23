@@ -10,7 +10,10 @@ define([
 
     'dojo/_base/declare',
     'dojo/aspect',
+    'dojo/dom-class',
     'dojo/text!app/templates/Search.html',
+
+    'put-selector/put',
 
     'xstyle/css!app/resources/Search.css'
 ], function(
@@ -25,7 +28,10 @@ define([
 
     declare,
     aspect,
-    template
+    domClass,
+    template,
+
+    put
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
         // description:
@@ -48,7 +54,8 @@ define([
                 var findAddress = new FindAddress({
                     map: mapController.map,
                     apiKey: config.apiKey,
-                    symbol: config.currentLocationSymbol
+                    symbol: config.currentLocationSymbol,
+                    graphicsLayer: mapController.map.graphics
                 }, that.findAddressDiv);
                 findAddress.btnGeocode.innerHTML = 'Find Address';
                 findAddress.startup();
@@ -63,6 +70,16 @@ define([
                     maxResultsToDisplay: 10
                 }, that.magicZoomDiv);
                 magicZoom.startup();
+                magicZoom.spinnerDiv.innerHTML = '';
+                var spinner = put(magicZoom.spinnerDiv, 'span.glyphicon.glyphicon-refresh.hidden');
+                magicZoom.showSpinner = function () {
+                    domClass.add(this.searchIconSpan, 'hidden');
+                    domClass.remove(spinner, 'hidden');
+                };
+                magicZoom.hideSpinner = function () {
+                    domClass.remove(this.searchIconSpan, 'hidden');
+                    domClass.add(spinner, 'hidden');
+                };
             });
 
             this.inherited(arguments);

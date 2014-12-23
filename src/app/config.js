@@ -59,7 +59,7 @@ define([
             mapService: '/arcgis/rest/services/BBEcon/MapService/MapServer',
             gpService: '/arcgis/rest/services/BBEcon/GenerateReport/GPServer/Generate Report/execute'
         },
-        zoomLocationsIndex: 13,
+        zoomLocationsIndex: 11,
         zoomLocationsField: 'Name',
         currentLocationSymbol: new PictureMarkerSymbol(
             'app/resources/img/markers/currentLocation.svg',

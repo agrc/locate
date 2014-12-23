@@ -63,6 +63,12 @@ define([
             topic.subscribe(config.topics.slider.change,
                 lang.hitch(this, 'onSliderChange'));
 
+            var that = this;
+            this.map.on('load', function () {
+                topic.subscribe('agrc.widgets.locate.FindAddress.OnFindStart',
+                    lang.hitch(that.map.graphics, 'clear'));
+            });
+
             this.map.on('click', lang.hitch(this, 'onMapClick'));
         },
         addLayer: function (lyr) {

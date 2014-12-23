@@ -71,8 +71,19 @@ define([
             //      private
             console.log('app.CurrentLocation::postCreate', arguments);
 
-            topic.subscribe(config.topics.mapClick, lang.hitch(this, 'onMapClick'));
+            this.own(
+                topic.subscribe(config.topics.mapClick, lang.hitch(this, 'onMapClick')),
+                topic.subscribe('agrc.widgets.locate.FindAddress.OnFind', lang.hitch(this, 'onFindAddress'))
+            );
             this.inherited(arguments);
+        },
+        onFindAddress: function (data) {
+            // summary:
+            //      FindAddress successfully found a point
+            // {location: {x: ..., y: ...}}
+            console.log('app/CurrentLocation:onFindAddress', arguments);
+        
+            this.onMapClick(data[0].location);
         },
         onMapClick: function (point) {
             // summary:
