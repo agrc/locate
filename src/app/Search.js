@@ -77,6 +77,7 @@ define([
                     domClass.remove(spinner, 'hidden');
                 };
                 magicZoom.hideSpinner = function () {
+                    clearTimeout(this._spinTimer);
                     domClass.remove(this.searchIconSpan, 'hidden');
                     domClass.add(spinner, 'hidden');
                 };
