@@ -70,16 +70,19 @@ require([
             it('creates a new feature layer', function (done) {
                 var spy = jasmine.createSpy('FeatureLayer').and.returnValue({
                     setVisibility: function () {},
-                    setRenderer: function () {}
+                    setRenderer: function () {},
+                    on: function () {}
                 });
 
                 stubmodule('app/Layer', {
-                    'esri/layers/FeatureLayer': spy
+                    'esri/layers/FeatureLayer': spy,
+                    'app/mapController': {map: {infoWindow: {}}}
                 }).then(function (StubbedModule) {
                     var testWidget2 = new StubbedModule({
                         type: 'feature',
                         layerId: '0',
-                        name: 'hello2'
+                        name: 'hello2',
+                        groupName: 'blah'
                     }, domConstruct.create('div', {}, document.body));
 
                     testWidget2.toggleLayer(true);
