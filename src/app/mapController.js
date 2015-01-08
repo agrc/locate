@@ -1,5 +1,6 @@
 define([
     'agrc/widgets/map/BaseMap',
+    'agrc/widgets/map/BaseMapSelector',
 
     'app/config',
 
@@ -12,6 +13,7 @@ define([
     'esri/layers/ArcGISDynamicMapServiceLayer'
 ], function(
     BaseMap,
+    BaseMapSelector,
 
     config,
 
@@ -37,7 +39,7 @@ define([
             console.info('app/mapController:initMap', arguments);
 
             this.map = new BaseMap(mapDiv, {
-                defaultBaseMap: 'Terrain',
+                useDefaultBaseMap: false,
                 showAttribution: false,
                 center: new Point(config.initialExtent.center, {
                     wkid: 26912
@@ -45,6 +47,11 @@ define([
                 scale: config.initialExtent.scale
             });
             this.map.disableScrollWheelZoom();
+            new BaseMapSelector({
+                map: this.map,
+                id: 'claro',
+                position: 'TL'
+            });
 
             // force map to auto height
             // required for proper alignment in firefox

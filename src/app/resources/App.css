@@ -1,6 +1,8 @@
 @import 'custom-bootstrap.css';
 @import '../../esri/css/esri.css';
 @import '../../agrc/resources/map/BaseMap.css';
+@import '../../agrc/resources/map/BaseMapSelector.css';
+@import '../../dijit/themes/claro/claro.css';
 
 .map {
     top: 0;
@@ -15,6 +17,10 @@
 }
 .app {
     position: relative;
+}
+.app .map .selectorMain {
+    left: 50px;
+    top: 17px;
 }
 a, a:visited {
     text-decoration: none;
@@ -327,6 +333,10 @@ h4.demographics {
     #content {
         background-color: #FFF;
     }
+    .app .map .selectorMain,
+    .app .map .esriSimpleSlider {
+        top: 50px;
+    }
 }
 @media only screen and (max-width: 600px) {
     /* Style adjustments for mobile screens (600px or lower) */
@@ -395,5 +405,9 @@ h4.demographics {
         color: #FFFFFF;
         text-decoration: none;
         font-size: .9em;
+    }
+    .app .map {
+        display: none;
+        visibility: hidden;
     }
 }
