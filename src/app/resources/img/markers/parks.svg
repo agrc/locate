@@ -10,7 +10,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="26"
+   width="24"
    height="35"
    id="svg6927"
    version="1.1"
@@ -87,9 +87,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.5431034"
-     inkscape:cx="12.999999"
-     inkscape:cy="17.499995"
+     inkscape:zoom="6.7428572"
+     inkscape:cx="11.999998"
+     inkscape:cy="17.5"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -99,8 +99,8 @@
      fit-margin-bottom="0"
      inkscape:window-width="730"
      inkscape:window-height="412"
-     inkscape:window-x="79"
-     inkscape:window-y="400"
+     inkscape:window-x="668"
+     inkscape:window-y="191"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata6932">
@@ -118,10 +118,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-572.71429,-494.86218)">
+     transform="translate(-573.71429,-494.86218)">
     <g
        id="g3040"
-       transform="matrix(0.40247678,0,0,0.37715517,349.97789,319.12213)">
+       transform="matrix(0.37151703,0,0,0.37715517,368.11146,319.12213)">
       <path
          d="m 618.01429,498.26218 c 0,34.7 -32.3,60.5 -32.3,60.5 0,0 -32.3,-27.4 -32.3,-60.5 0,-17.8 14.4,-32.3 32.3,-32.3 17.9,0 32.3,14.4 32.3,32.3 z"
          id="path5601"
@@ -133,7 +133,7 @@
         <g
            id="g5604">
           <polygon
-             points="507.5,142.2 497.1,129.1 505.3,129.1 495.3,117.4 501,117.4 491.1,106.5 494.4,106.5 487.8,97.8 481.3,106.5 484.6,106.5 474.7,117.4 480.4,117.4 470.4,129.1 478.6,129.1 468.2,142.2 483.5,142.2 483.5,150.2 492.2,150.2 492.2,142.2 "
+             points="501,117.4 491.1,106.5 494.4,106.5 487.8,97.8 481.3,106.5 484.6,106.5 474.7,117.4 480.4,117.4 470.4,129.1 478.6,129.1 468.2,142.2 483.5,142.2 483.5,150.2 492.2,150.2 492.2,142.2 507.5,142.2 497.1,129.1 505.3,129.1 495.3,117.4 "
              id="polygon5606"
              style="fill:#ffffff" />
         </g>

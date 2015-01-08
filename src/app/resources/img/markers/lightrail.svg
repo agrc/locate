@@ -10,12 +10,12 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64.599998"
-   height="92.800003"
+   width="24"
+   height="35"
    id="svg7008"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="New document 18">
+   sodipodi:docname="lightrail.svg">
   <defs
      id="defs7010">
     <linearGradient
@@ -65,6 +65,16 @@
        id="linearGradient7006"
        xlink:href="#SVGID_21_"
        inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#SVGID_21_"
+       id="linearGradient3000"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(59.971429,405.10504)"
+       x1="148.61301"
+       y1="290.7742"
+       x2="148.61301"
+       y2="198" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -73,9 +83,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="198.72857"
-     inkscape:cy="163.54286"
+     inkscape:zoom="2.5431034"
+     inkscape:cx="12.000002"
+     inkscape:cy="17.499994"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -83,7 +93,7 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="472"
+     inkscape:window-width="730"
      inkscape:window-height="412"
      inkscape:window-x="729"
      inkscape:window-y="278"
@@ -96,7 +106,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -104,22 +114,26 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-176.27143,-603.10504)">
-    <path
-       inkscape:connector-curvature="0"
-       style="fill:url(#linearGradient7006)"
-       id="path5619"
-       d="m 240.87143,635.40504 c 0,34.7 -32.3,60.5 -32.3,60.5 0,0 -32.3,-27.4 -32.3,-60.5 0,-17.8 14.4,-32.3 32.3,-32.3 17.9,0 32.3,14.4 32.3,32.3 z" />
+     transform="translate(-196.57143,-632.00503)">
     <g
-       transform="translate(59.971429,405.10504)"
-       id="_x35_25-train.png_4_">
+       id="g2994"
+       transform="matrix(0.37151703,0,0,0.37715517,131.08359,404.54085)">
+      <path
+         d="m 240.87143,635.40504 c 0,34.7 -32.3,60.5 -32.3,60.5 0,0 -32.3,-27.4 -32.3,-60.5 0,-17.8 14.4,-32.3 32.3,-32.3 17.9,0 32.3,14.4 32.3,32.3 z"
+         id="path5619"
+         style="fill:url(#linearGradient3000)"
+         inkscape:connector-curvature="0" />
       <g
-         id="g5622">
-        <path
-           style="fill:#ffffff"
-           inkscape:connector-curvature="0"
-           id="path5624"
-           d="m 153.9,251.7 0.9,1.8 h -12.3 l 0.9,-1.8 h -5.3 l -3.5,7 h 5.3 l 0.9,-1.8 h 15.8 l 0.9,1.8 h 5.3 l -3.5,-7 h -5.4 z m 7,-38.6 h -5.3 v -1.8 c 0,-1 -0.8,-1.8 -1.8,-1.8 H 152 c -1,0 -1.8,0.8 -1.8,1.8 v 1.8 h -3.5 v -1.8 c 0,-1 -0.8,-1.8 -1.8,-1.8 h -1.8 c -1,0 -1.8,0.8 -1.8,1.8 v 1.8 H 136 c -1.9,0 -3.5,1.6 -3.5,3.5 v 29.9 c 0,1.9 1.6,3.5 3.5,3.5 h 24.6 c 1.9,0 3.5,-1.6 3.5,-3.5 v -29.9 c 0.3,-2 -1.2,-3.5 -3.2,-3.5 z m -15.8,3.5 h 7 c 1,0 1.8,0.8 1.8,1.8 0,1 -0.8,1.8 -1.8,1.8 h -7 c -1,0 -1.8,-0.8 -1.8,-1.8 0,-1 0.8,-1.8 1.8,-1.8 z m -4.4,28.1 c -1.5,0 -2.6,-1.2 -2.6,-2.6 0,-1.5 1.2,-2.6 2.6,-2.6 1.5,0 2.6,1.2 2.6,2.6 0,1.4 -1.1,2.6 -2.6,2.6 z m 15.8,0 c -1.5,0 -2.6,-1.2 -2.6,-2.6 0,-1.5 1.2,-2.6 2.6,-2.6 1.5,0 2.6,1.2 2.6,2.6 0.1,1.4 -1.1,2.6 -2.6,2.6 z m 4.4,-12.3 c 0,1 -0.8,1.8 -1.8,1.8 H 138 c -1,0 -1.8,-0.8 -1.8,-1.8 v -7 c 0,-1 0.8,-1.8 1.8,-1.8 h 21.1 c 1,0 1.8,0.8 1.8,1.8 v 7 z" />
+         id="_x35_25-train.png_4_"
+         transform="translate(59.971429,405.10504)">
+        <g
+           id="g5622">
+          <path
+             d="m 153.9,251.7 0.9,1.8 h -12.3 l 0.9,-1.8 h -5.3 l -3.5,7 h 5.3 l 0.9,-1.8 h 15.8 l 0.9,1.8 h 5.3 l -3.5,-7 h -5.4 z m 7,-38.6 h -5.3 v -1.8 c 0,-1 -0.8,-1.8 -1.8,-1.8 H 152 c -1,0 -1.8,0.8 -1.8,1.8 v 1.8 h -3.5 v -1.8 c 0,-1 -0.8,-1.8 -1.8,-1.8 h -1.8 c -1,0 -1.8,0.8 -1.8,1.8 v 1.8 H 136 c -1.9,0 -3.5,1.6 -3.5,3.5 v 29.9 c 0,1.9 1.6,3.5 3.5,3.5 h 24.6 c 1.9,0 3.5,-1.6 3.5,-3.5 v -29.9 c 0.3,-2 -1.2,-3.5 -3.2,-3.5 z m -15.8,3.5 h 7 c 1,0 1.8,0.8 1.8,1.8 0,1 -0.8,1.8 -1.8,1.8 h -7 c -1,0 -1.8,-0.8 -1.8,-1.8 0,-1 0.8,-1.8 1.8,-1.8 z m -4.4,28.1 c -1.5,0 -2.6,-1.2 -2.6,-2.6 0,-1.5 1.2,-2.6 2.6,-2.6 1.5,0 2.6,1.2 2.6,2.6 0,1.4 -1.1,2.6 -2.6,2.6 z m 15.8,0 c -1.5,0 -2.6,-1.2 -2.6,-2.6 0,-1.5 1.2,-2.6 2.6,-2.6 1.5,0 2.6,1.2 2.6,2.6 0.1,1.4 -1.1,2.6 -2.6,2.6 z m 4.4,-12.3 c 0,1 -0.8,1.8 -1.8,1.8 H 138 c -1,0 -1.8,-0.8 -1.8,-1.8 v -7 c 0,-1 0.8,-1.8 1.8,-1.8 h 21.1 c 1,0 1.8,0.8 1.8,1.8 v 7 z"
+             id="path5624"
+             inkscape:connector-curvature="0"
+             style="fill:#ffffff" />
+        </g>
       </g>
     </g>
   </g>

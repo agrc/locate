@@ -15,7 +15,7 @@ define([
     esriConfig.defaults.io.corsEnabledServers.push('mapserv.utah.gov');
 
 
-    var markerSymbolWidth = 26;
+    var markerSymbolWidth = 24;
     var markerSymbolHeight = 35;
     window.AGRC = {
         // app: app.App
@@ -126,7 +126,7 @@ define([
                 layerId: '5',
                 marker: 'airports.svg'
             }, {
-                name: 'Trax Stations',
+                name: 'Light/Commuter Rail',
                 type: 'feature',
                 layerId: '17',
                 marker: 'lightrail.svg'
@@ -146,7 +146,7 @@ define([
             }, {
                 name: 'Enterprise Zones',
                 type: 'dynamic',
-                layerId: '18'
+                layerId: '19'
             }]
         }, {
             groupClass: 'lifestyle',
