@@ -63,6 +63,9 @@ define([
         // onByDefault: Boolean (optional)
         onByDefault: false,
 
+        // defaultOpacity: Number
+        defaultOpacity: null,
+
         // controlledByParent: Boolean (optional)
         //      This sublayer turns on and off when it's group is toggled
         controlledByParent: false,
@@ -105,6 +108,10 @@ define([
             }
 
             this.inherited(arguments);
+
+            if (this.hidden) {
+                domClass.add(this.domNode, 'hidden');
+            }
         },
         activate: function () {
             // summary:
@@ -150,7 +157,11 @@ define([
                 }
                 this.fLayer.setVisibility(show);
             } else {
-                topic.publish(config.topics.layer.toggleDynamicLayer, this.layerId, show, this.groupName);
+                topic.publish(config.topics.layer.toggleDynamicLayer,
+                    this.layerId,
+                    show,
+                    this.groupName,
+                    this.defaultOpacity);
             }
         }
     });

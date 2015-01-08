@@ -131,9 +131,17 @@ define([
                 layerId: '17',
                 marker: 'lightrail.svg'
             }, {
+                // this is hidden and linked to the layer above
+                name: 'commuter rail (hidden)',
+                type: 'dynamic',
+                layerId: '18',
+                defaultOpacity: 1,
+                hidden: true
+            }, {
                 name: 'Railroads',
                 type: 'dynamic',
-                layerId: '16'
+                layerId: '16',
+                defaultOpacity: 1
             }]
         }, {
             groupClass: 'demographics',

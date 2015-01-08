@@ -94,7 +94,7 @@ define([
             this.map.addLayer(lyr);
             this.map.addLoaderToLayer(lyr);
         },
-        toggleDynamicLayer: function (layerId, show, groupName) {
+        toggleDynamicLayer: function (layerId, show, groupName, defaultOpacity) {
             // summary:
             //      sets the appropriate visible layers on the dynamic service
             // layerId: String
@@ -106,7 +106,7 @@ define([
             var that = this;
             if (!this.dLayers[groupName]) {
                 dLayer = this.dLayers[groupName] = new ArcGISDynamicMapServiceLayer(config.urls.mapService, {
-                    opacity: 0.5
+                    opacity: defaultOpacity || 0.5
                 });
                 this.map.addLayer(dLayer, 1);
                 this.map.addLoaderToLayer(dLayer);

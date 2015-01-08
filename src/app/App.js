@@ -15,6 +15,8 @@ define([
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dojo/dom-class',
+    'dojo/on',
+    'dojo/query',
     'dojo/text!app/templates/App.html',
     'dojo/topic',
 
@@ -38,6 +40,8 @@ define([
     declare,
     lang,
     domClass,
+    on,
+    query,
     template,
     topic
 ) {
@@ -79,6 +83,15 @@ define([
                 new Layers({}, this.layersDiv),
                 new Report({}, this.reportDiv)
             );
+
+            // hack to wire together the commuter rail layers since
+            // they don't support feature and dynamic in the same layer
+            var hiddenCheckbox = query('.layer input[value="18"]')[0];
+            var lrCheckbox = query('.layer input[value="17"]')[0];
+            on(lrCheckbox, 'change', function (evt) {
+                hiddenCheckbox.checked = evt.srcElement.checked;
+                on.emit(hiddenCheckbox, 'change', {bubbles: true});
+            });
 
             this.own(
                 topic.subscribe(config.topics.generateReport, lang.hitch(this, 'showReport')),
