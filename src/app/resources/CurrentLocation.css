@@ -9,6 +9,11 @@
     padding: 0 0 15px 0;
     margin: 0;
 }
+.current-location .glyphicon-refresh {
+    font-size: 34px;
+    margin-left: -18px;
+    left: 50%;
+}
 .current-location ul {
     font-size: .8em;
     margin: 0;
