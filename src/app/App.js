@@ -119,6 +119,14 @@ define([
             mapController.initMap(this.mapDiv);
 
             this.inherited(arguments);
+        },
+        destroy: function () {
+            // summary:
+            //      description
+            console.log('app/App:destroy', arguments);
+        
+            mapController.destroy();
+            this.inherited(arguments);
         }
     });
 });

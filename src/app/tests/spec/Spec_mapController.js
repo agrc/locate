@@ -14,8 +14,11 @@ require([
     describe('app/mapController', function() {
         describe('initMap', function() {
             it('create a map', function() {
-                objectUnderTest.initMap(domConstruct.create('div'));
+                var div = domConstruct.create('div', null, document.body);
+                objectUnderTest.initMap(div);
                 expect(objectUnderTest.map).toEqual(jasmine.any(BaseMap));
+                objectUnderTest.destroy();
+                domConstruct.destroy(div);
             });
         });
         describe('toggleDynamicLayer', function () {

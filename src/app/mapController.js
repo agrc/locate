@@ -33,6 +33,9 @@ define([
         //      dynamic layers
         dLayers: {},
 
+        // childWidgets: Object[]
+        childWidgets: [],
+
         initMap: function(mapDiv) {
             // summary:
             //      Sets up the map
@@ -47,11 +50,15 @@ define([
                 scale: config.initialExtent.scale
             });
             this.map.disableScrollWheelZoom();
-            new BaseMapSelector({
-                map: this.map,
-                id: 'claro',
-                position: 'TL'
-            });
+
+            this.childWidgets.push(
+                new BaseMapSelector({
+                    map: this.map,
+                    id: 'claro',
+                    position: 'TL'
+                })
+            );
+            this.childWidgets.push(this.map);
 
             // force map to auto height
             // required for proper alignment in firefox
@@ -144,6 +151,15 @@ define([
             this.map.graphics.clear();
             this.map.graphics.add(new Graphic(evt.mapPoint, config.currentLocationSymbol));
             topic.publish(config.topics.mapClick, evt.mapPoint);
+        },
+        destroy: function () {
+            // summary:
+            //      
+            console.log('mapController:destroy', arguments);
+        
+            this.childWidgets.forEach(function (w) {
+                w.destroy();
+            });
         }
     };
 });
