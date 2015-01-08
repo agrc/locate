@@ -142,10 +142,10 @@ def get_airports(point):
 
 
 if __name__ == '__main__':
-    x = 422991.7632080179
-    y = 4504669.423114922
-    # x = float(GetParameterAsText(0))
-    # y = float(GetParameterAsText(1))
+    # x = 422991.7632080179
+    # y = 4504669.423114922
+    x = float(GetParameterAsText(0))
+    y = float(GetParameterAsText(1))
 
     pnt = PointGeometry(Point(x, y), SpatialReference(26912))
 
