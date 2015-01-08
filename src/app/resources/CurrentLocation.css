@@ -29,6 +29,15 @@
 .current-location a:hover {
     color: #fff;
 }
+.current-location .address {
+    width: 60%;
+}
+.current-location .address li {
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
 
 @media only screen and (max-width: 765px) {
     .current-location {
