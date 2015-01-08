@@ -108,7 +108,7 @@ define([
                 dLayer = this.dLayers[groupName] = new ArcGISDynamicMapServiceLayer(config.urls.mapService, {
                     opacity: 0.5
                 });
-                this.map.addLayer(dLayer, 0);
+                this.map.addLayer(dLayer, 1);
                 this.map.addLoaderToLayer(dLayer);
                 dLayer.on('load', function () {
                     that.toggleDynamicLayer(layerId, show, groupName);
