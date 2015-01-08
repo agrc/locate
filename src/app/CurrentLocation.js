@@ -85,13 +85,39 @@ define([
         
             this.onMapClick(data[0].location);
         },
+        toggleLoader: function (show) {
+            // summary:
+            //      description
+            // show: Boolean
+            console.log('app/CurrentLocation:toggleLoader', arguments);
+        
+            var that = this;
+            var showLoader = function () {
+                domClass.remove(that.loader, 'hidden');
+                domClass.add(that.helpTxt, 'hidden');
+                domClass.add(that.addressContainer, 'hidden');
+            };
+            if (this.loaderTimer) {
+                clearTimeout(this.loaderTimer);
+            }
+            if (show) {
+                if (!domClass.contains(this.helpTxt, 'hidden')) {
+                    showLoader();
+                } else {
+                    this.loaderTimer = setTimeout(showLoader, 500);
+                }
+            } else {
+                domClass.add(this.loader, 'hidden');
+                domClass.remove(this.addressContainer, 'hidden');
+            }
+        },
         onMapClick: function (point) {
             // summary:
             //      user clicked on the map
             // point: Object {x: , y: }
             console.log('app/CurrentLocation:onMapClick', arguments);
 
-            domClass.remove(this.loader, 'hidden');
+            this.toggleLoader(true);
         
             if (!this.webAPI) {
                 this.webAPI = new WebAPI({apiKey: config.apiKey});
@@ -121,11 +147,7 @@ define([
                         lang.partial(lang.hitch(this, 'onSearchError'), 'county')
                 )
             ];
-            var that = this;
-            new DeferredList(defs).then(function() {
-                domClass.remove(that.addressContainer, 'hidden');
-                domClass.add(that.helpTxt, 'hidden');
-            });
+            new DeferredList(defs).then(lang.partial(lang.hitch(this, 'toggleLoader'), false));
 
             this.lastPoint = point;
         },
