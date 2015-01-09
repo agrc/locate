@@ -16,7 +16,7 @@ NATURAL_GAS = SGID_GDB + r'\NaturalGasService_Approx'
 ELECTRICAL = SGID_GDB + r'\ElectricalService'
 RURAL_TEL = SGID_GDB + r'\RuralTelcomBoundaries'
 ROADS = SGID_GDB + r'\Roads'
-ROADS_WHERE = "CARTOCODE in ( '1', '2', '3', '4', '5', '8')"
+ROADS_WHERE = "CARTOCODE in ( '1', '2', '3', '4', '5')"
 ROADS_BUFFER = '5 Miles'
 
 BBECON_GDB = DATA_PATH + r'\BBEcon.gdb'
