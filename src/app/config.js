@@ -132,13 +132,14 @@ define([
                 marker: 'lightrail.svg'
             }, {
                 // this is hidden and linked to the layer above
+                // see app/App:postCreate
                 name: 'commuter rail (hidden)',
                 type: 'dynamic',
                 layerId: '18',
                 defaultOpacity: 1,
                 hidden: true
             }, {
-                name: 'Railroads',
+                name: 'Heavy Rail',
                 type: 'dynamic',
                 layerId: '16',
                 defaultOpacity: 1
