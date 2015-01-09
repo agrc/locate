@@ -1,4 +1,5 @@
 define([
+    'agrc/modules/Formatting',
     'agrc/modules/WebAPI',
 
     'app/config',
@@ -18,6 +19,7 @@ define([
 
     'xstyle/css!app/resources/CurrentLocation.css'
 ], function(
+    Formatting,
     WebAPI,
 
     config,
@@ -161,7 +163,7 @@ define([
         
             var value = (results.length) ? results[0].attributes[field] : 
                 entities.encode(dojoString.substitute(config.messages.noValueFound, [type]));
-            this.set(type, value);
+            this.set(type, Formatting.titlize(value));
         },
         onSearchError: function (type) {
             // summary:

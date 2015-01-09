@@ -2,7 +2,7 @@
   "name": "bb-econ",
   "version": "0.0.0",
   "dependencies": {
-    "agrc": "agrc-widgets#2.9.1",
+    "agrc": "agrc-widgets#~2.10",
     "bootstrap": "~3.2",
     "dijit": "~1.10",
     "dojo": "~1.10",

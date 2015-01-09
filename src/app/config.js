@@ -52,7 +52,7 @@ define([
             hideReport: 'hideReport'
         },
         messages: {
-            noValueFound: '<No ${0} found>',
+            noValueFound: '[No ${0} found]',
             reportError: 'There was an error generating the report!'
         },
         urls: {
