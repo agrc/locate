@@ -50,6 +50,13 @@ require([
 
                 expect(lyr.setVisibleLayers).toHaveBeenCalledWith([1]);
             });
+            it('shows only one layer at a time for radios', function () {
+                lyr.visibleLayers = [2];
+
+                objectUnderTest.toggleDynamicLayer('1', true, groupName, null, true);
+
+                expect(lyr.setVisibleLayers).toHaveBeenCalledWith([1]);
+            });
         });
     });
 });

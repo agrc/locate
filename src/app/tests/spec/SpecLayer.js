@@ -49,13 +49,6 @@ require([
             it('calls toggle with appropriate arguments', function () {
                 spyOn(widget, 'toggleLayer');
 
-                widget.controlledByParent = true;
-
-                widget.activate();
-
-                expect(widget.toggleLayer).toHaveBeenCalledWith(true);
-
-                widget.controlledByParent = false;
                 widget.checkbox.checked = true;
 
                 widget.activate();
@@ -66,7 +59,7 @@ require([
 
                 widget.activate();
 
-                expect(widget.toggleLayer.calls.count()).toBe(2);
+                expect(widget.toggleLayer.calls.count()).toBe(1);
             });
         });
         describe('toggleLayer', function () {
@@ -109,10 +102,18 @@ require([
 
                 widget.type = 'dynamic';
                 widget.layerId = '0';
+                widget.groupName = 'gn';
+                widget.defaultOpacity = 4;
+                widget.checkboxType = 'radio';
 
                 widget.toggleLayer(true);
 
-                expect(config.topics.layer.toggleDynamicLayer).toHaveBeenPublishedWith(widget.layerId, true);
+                expect(config.topics.layer.toggleDynamicLayer).toHaveBeenPublishedWith(
+                    widget.layerId,
+                    true,
+                    'gn',
+                    4,
+                    true);
             });
         });
     });

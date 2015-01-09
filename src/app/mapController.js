@@ -95,12 +95,16 @@ define([
             this.map.addLayer(lyr);
             this.map.addLoaderToLayer(lyr);
         },
-        toggleDynamicLayer: function (layerId, show, groupName, defaultOpacity) {
+        toggleDynamicLayer: function (layerId, show, groupName, defaultOpacity, isRadio) {
             // summary:
             //      sets the appropriate visible layers on the dynamic service
             // layerId: String
             //      The id (or id's separated by a comma)
             // show: Boolean
+            // groupName: String
+            // defaultOpacity: Number
+            // isRadio: Boolean
+            //      Determines if more than one layer can be shown at a time in a group
             console.log('app/mapController:toggleDynamicLayer', arguments);
         
             var dLayer;
@@ -125,7 +129,11 @@ define([
             var layerIds;
 
             if (show) {
-                layerIds = toggleIds.concat(dLayer.visibleLayers);
+                if (isRadio) {
+                    layerIds = toggleIds;
+                } else {
+                    layerIds = toggleIds.concat(dLayer.visibleLayers);
+                }
             } else {
                 layerIds = dLayer.visibleLayers.filter(function (id) {
                     return toggleIds.indexOf(id) === -1;

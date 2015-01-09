@@ -39,11 +39,13 @@
     margin-left: 8px;
     margin-top: 2px;
 }
-.layer.checkbox label {
+.layer.checkbox label,
+.layer.radio label {
     padding-left: 5px;
     width: 250px;
 }
-.layer.checkbox input[type='checkbox'] {
+.layer.checkbox input[type='checkbox'],
+.layer.radio input[type='radio'] {
     position: inherit;
     margin-left: 9px;
 }
@@ -52,7 +54,4 @@
 }
 .layer.checkbox label.hide-checkbox::after {
     display: none;
-}
-.layer.no-pointer label {
-    cursor: default;
 }

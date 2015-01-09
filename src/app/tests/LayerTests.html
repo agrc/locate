@@ -23,7 +23,6 @@
         var baseUrl = window.location.pathname.replace(/\/[^\/]+$/, '') + '/' + '../../';
         var widgetUnderTest;
         var widgetUnderTest2;
-        var widgetUnderTest3;
         var widgetUnderTest4;
 
         require({
@@ -58,14 +57,6 @@
             }, 'node2');
             widgetUnderTest2.startup();
 
-            widgetUnderTest3 = new Module({
-                name: 'Controlled by Parent',
-                type: 'dynamic',
-                layerIds: [1],
-                controlledByParent: true
-            }, 'node3');
-            widgetUnderTest3.startup();
-
             widgetUnderTest4 = new Module({
                 name: 'National Parks, National Monuments, State Parks',
                 type: 'dynamic',
@@ -80,7 +71,6 @@
 <body class='claro'>
     <div id="node"></div>
     <div id="node2"></div>
-    <div id="node3"></div>
     <div id="node4"></div>
 </body>
 </html>

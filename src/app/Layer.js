@@ -66,16 +66,16 @@ define([
         // defaultOpacity: Number
         defaultOpacity: null,
 
-        // controlledByParent: Boolean (optional)
-        //      This sublayer turns on and off when it's group is toggled
-        controlledByParent: false,
-
         // marker: String
         //      svg file name to use as a marker for this layer
         marker: null,
 
         // groupName: String
         groupName: null,
+
+        // checkboxType: String
+        //      if 'radio' then converts to radio button
+        checkboxType: null,
 
 
         postCreate: function() {
@@ -85,11 +85,16 @@ define([
             //      private
             console.log('app.Layer::postCreate', arguments);
 
+            // convert to radio button
+            if (this.checkboxType === 'radio') {
+                this.checkbox.type = 'radio';
+                this.checkbox.name = this.groupName;
+                domClass.remove(this.domNode, 'checkbox');
+                domClass.add(this.domNode, 'radio');
+            }
+
             if (this.onByDefault) {
                 this.checkbox.checked = true;
-            } else if (this.controlledByParent) {
-                this.checkbox.checked = true;
-                domClass.add(this.label, 'hide-checkbox');
             }
 
             if (this.marker) {
@@ -98,14 +103,10 @@ define([
                 }, this.label);
             }
 
-            if (!this.controlledByParent) {
-                var that = this;
-                on(this.checkbox, 'change', function () {
-                    that.toggleLayer(that.checkbox.checked);
-                });
-            } else {
-                domClass.add(this.domNode, 'no-pointer');
-            }
+            var that = this;
+            on(this.checkbox, 'change', function () {
+                that.toggleLayer(that.checkbox.checked);
+            });
 
             this.inherited(arguments);
 
@@ -115,11 +116,10 @@ define([
         },
         activate: function () {
             // summary:
-            //      shows the layer if the checkbox is selected or
-            //      controlledByParent is true
+            //      shows the layer if the checkbox is selected
             console.log('app/Layer:activate', arguments);
         
-            if (this.controlledByParent || this.checkbox.checked) {
+            if (this.checkbox.checked) {
                 this.toggleLayer(true);
             }
         },
@@ -161,7 +161,8 @@ define([
                     this.layerId,
                     show,
                     this.groupName,
-                    this.defaultOpacity);
+                    this.defaultOpacity,
+                    this.checkboxType === 'radio');
             }
         }
     });

@@ -103,19 +103,23 @@ define([
             layers: [{
                 name: 'Natural Gas Service Areas',
                 type: 'dynamic',
-                layerId: '12'
+                layerId: '12',
+                checkboxType: 'radio'
             }, {
                 name: 'Electric Provider',
                 type: 'dynamic',
-                layerId: '14'
+                layerId: '14',
+                checkboxType: 'radio'
             }, {
                 name: 'Local Exchange Areas',
                 type: 'dynamic',
-                layerId: '15'
+                layerId: '15',
+                checkboxType: 'radio'
             }, {
                 name: 'Culinary Water',
                 type: 'dynamic',
-                layerId: '13'
+                layerId: '13',
+                checkboxType: 'radio'
             }]
         }, {
             groupClass: 'transportation',
