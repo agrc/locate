@@ -49,7 +49,7 @@
 </table>
 
 <h3 class="utilities">Utilities</h3>
-<h4 class="utilities">Rural Telecom</h4>
+<h4 class="utilities">Local Exchange Areas</h4>
 <table class='table'>
     <thead>
         <tr>
@@ -72,7 +72,7 @@
         {{/each}}
     </tbody>
 </table>
-<h4 class="utilities">Electrical</h4>
+<h4 class="utilities">Electric Utility</h4>
 <table class='table'>
     <thead>
         <tr>
@@ -98,7 +98,14 @@
 <table class='table'>
     <tbody>
         <td>
-            Natural gas service: <strong>{{utilities.natural_gas}}</strong>
+            Natural gas service: 
+            <strong>
+                {{#if utilities.natural_gas}}
+                <a href='https://www.questargas.com/'>Questar Gas (https://www.questargas.com/)</a>
+                {{else}}
+                Unknown
+                {{/if}}
+            </strong>
         </td>
     </tbody>
 </table>

@@ -105,11 +105,11 @@ define([
                 type: 'dynamic',
                 layerId: '12'
             }, {
-                name: 'Electrical Service Providers',
+                name: 'Electric Provider',
                 type: 'dynamic',
                 layerId: '14'
             }, {
-                name: 'Telephone Service Areas',
+                name: 'Local Exchange Areas',
                 type: 'dynamic',
                 layerId: '15'
             }, {

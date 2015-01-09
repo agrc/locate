@@ -72,9 +72,9 @@ def get_natural_gas(point):
 
     count_result = GetCount_management(lyr)
     if int(count_result.getOutput(0)) > 0:
-        return 'Yes'
+        return True
     else:
-        return 'No'
+        return False
 
 
 def get_records(lyr, fields, sort_field):

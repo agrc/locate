@@ -241,7 +241,7 @@
             "WEBLINK": "http://www.centurylink.com/",
             "PROVIDER": "CENTURYLINK"
         }],
-        "natural_gas": "Yes",
+        "natural_gas": true,
         "electrical": [{
             "WEBLINK": "https://www.rockymountainpower.net",
             "PROVIDER": "Rocky Mountain Power"
