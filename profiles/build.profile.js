@@ -15,6 +15,7 @@ var profile = {
                 'dojo/domReady',
                 'app/run',
                 'app/App',
+                'app/Report',
                 'dojox/gfx/path',
                 'dojox/gfx/svg',
                 'dojox/gfx/shape'

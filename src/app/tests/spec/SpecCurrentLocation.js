@@ -60,5 +60,20 @@ require([
                 jasmine.clock().uninstall();
             });
         });
+        describe('refreshReportLink', function () {
+            it('builds the correct URL', function () {
+                widget.lastPoint = {x:1, y:2};
+                widget.address = 'add';
+                widget.city = 'city';
+                widget.zip = 'zip';
+                widget.county = 'county';
+
+                widget.refreshReportLink();
+
+                var expected = 'report.html?x=1&y=2&address=add&city=city&zip=zip&county=county';
+
+                expect(widget.getSummaryLink.href).toContain(expected);
+            });
+        });
     });
 });

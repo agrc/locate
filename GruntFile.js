@@ -37,6 +37,7 @@ module.exports = function(grunt) {
             'src/app/**/*.html',
             'src/app/**/*.css',
             'src/index.html',
+            'src/report.html',
             'src/ChangeLog.html'
         ],
         gruntFile = 'GruntFile.js',
@@ -222,7 +223,7 @@ module.exports = function(grunt) {
             main: {
                 files: {
                     'dist/index.html': ['src/index.html'],
-                    'dist/user_admin.html': ['src/user_admin.html']
+                    'dist/report.html': ['src/report.html']
                 }
             }
         },

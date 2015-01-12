@@ -1,20 +1,73 @@
 <div>
-    <button class="btn btn-default"
-        data-dojo-attach-event='click: hideReport'>
-        <span class="glyphicon glyphicon-arrow-left"></span>
-        Go back to map
-    </button>
-    <button class="btn btn-default"
-        data-dojo-attach-event="click: print">
-        Print
-    </button>
-    <h2>Location Summary Report</h2>
+    <div id="header-container" class="site-full">
+        <div id="header-wrapper" class="site-full">
+            <div id="header" class="site">
+                <span id="broadband-logo" class="ir"></span>
+            </div>
+        </div>
+    </div>
 
-    <div class='location' data-dojo-attach-point='locationContainer'></div>
-    <div data-dojo-attach-point="reportContainer"></div>
+    <div class="site clearfix main">
+        <button class="btn btn-default"
+            data-dojo-attach-event="click: print">
+            Print
+        </button>
+        <h2>Location Summary Report</h2>
 
-    <div data-dojo-attach-point="errMsg" class="alert alert-danger hidden"></div>
-    <div data-dojo-attach-point="loader" class="alert alert-info hidden">
-        Generating report... <span class="glyphicon glyphicon-refresh"></span>
+        <div class='location' data-dojo-attach-point='locationContainer'>
+            <div class="address pull-left">
+                <ul>
+                    <li data-dojo-attach-point='addressNode'></li>
+                    <li>
+                        <span data-dojo-attach-point='cityNode'></span>, UT <span data-dojo-attach-point="zipNode"></span>
+                    </li>
+                    <li><span data-dojo-attach-point='countyNode'></span> County</li>
+                </ul>
+            </div>
+            
+            <div class="address2 pull-right">
+                <a href="#" class="btn btn-default" target="_blank"
+                    data-dojo-attach-point='getSummaryLink'>Get Summary</a>
+            </div>
+        </div>
+        <div data-dojo-attach-point="reportContainer"></div>
+
+        <div data-dojo-attach-point="errMsg" class="alert alert-danger hidden"></div>
+        <div data-dojo-attach-point="loader" class="alert alert-info hidden">
+            Generating report... <span class="glyphicon glyphicon-refresh"></span>
+        </div>
+    </div>
+
+    <div id="footer-wrapper" class="site-full">
+        <div id="footer" class="site">
+            <div id="goed-logo" class="pull-left"></div>
+            <div class="col35 pull-left">
+                <p>Governor's Office of Economic Development (GOED)</p>
+                <div class="col pull-left">
+                    <address>
+                        271 West Bitterbrush Lane
+                        <br /> Salt Lake City, Utah 84020
+                    </address>
+                </div>
+    
+                <div class="col pull-right">
+                    <p>Phone: (801) 571-0900
+                        <br /> Email: <a href="mailto:broadband@utah.gov">broadband@utah.gov</a>
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+    
+            <div class="col20 pull-right">
+                <ul>
+                    <li><a href="http://www.utah.gov/main/index">Utah.gov</a></li>
+                    <li><a href="http://www.utah.gov/disclaimer.html">Terms of Use</a></li>
+                    <li><a href="http://www.utah.gov/privacypolicy.html">Privacy Policy</a></li>
+                    <li><a href="http://www.utah.gov/accessibility.html">Accessibility Policy</a></li>
+                    <li><a href="http://www.utah.gov/translate.html">Translate</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
     </div>
 </div>

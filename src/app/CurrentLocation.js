@@ -11,6 +11,7 @@ define([
     'dojo/_base/lang',
     'dojo/DeferredList',
     'dojo/dom-class',
+    'dojo/io-query',
     'dojo/string',
     'dojo/text!app/templates/CurrentLocation.html',
     'dojo/topic',
@@ -31,6 +32,7 @@ define([
     lang,
     DeferredList,
     domClass,
+    ioQuery,
     dojoString,
     template,
     topic,
@@ -152,6 +154,7 @@ define([
             new DeferredList(defs).then(lang.partial(lang.hitch(this, 'toggleLoader'), false));
 
             this.lastPoint = point;
+            this.refreshReportLink();
         },
         onSearchReturn: function (type, field, results) {
             // summary:
@@ -164,6 +167,7 @@ define([
             var value = (results.length) ? results[0].attributes[field] : 
                 entities.encode(dojoString.substitute(config.messages.noValueFound, [type]));
             this.set(type, Formatting.titlize(value));
+            this.refreshReportLink();
         },
         onSearchError: function (type) {
             // summary:
@@ -173,6 +177,7 @@ define([
         
             var value = entities.encode(dojoString.substitute(config.messages.noValueFound, [type]));
             this.set(type, value);
+            this.refreshReportLink();
         },
         onReverseGeocodeComplete: function (result) {
             // summary:
@@ -183,6 +188,7 @@ define([
             var value = (result.address) ? result.address.street : 
                 entities.encode(dojoString.substitute(config.messages.noValueFound, ['address']));
             this.set('address', value);
+            this.refreshReportLink();
         },
         onReverseGeocodeError: function () {
             // summary:
@@ -191,13 +197,23 @@ define([
         
             var value = entities.encode(dojoString.substitute(config.messages.noValueFound, ['address']));
             this.set('address', value);
+            this.refreshReportLink();
         },
-        generateReport: function () {
+        refreshReportLink: function () {
             // summary:
             //      description
-            console.log('app/CurrentLocation:generateReport', arguments);
+            console.log('app/CurrentLocation:refreshReportLink', arguments);
         
-            topic.publish(config.topics.generateReport, this);
+            var reportProps = {
+                x: this.lastPoint.x,
+                y: this.lastPoint.y,
+                address: this.address,
+                city: this.city,
+                zip: this.zip,
+                county: this.county
+            };
+
+            this.getSummaryLink.href = 'report.html?' + ioQuery.objectToQuery(reportProps);
         }
     });
 });

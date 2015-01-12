@@ -1,11 +1,15 @@
 require([
     'app/Report',
 
-    'dojo/dom-construct'
+    'dojo/dom-construct',
+
+    'stubmodule'
 ], function(
     WidgetUnderTest,
 
-    domConstruct
+    domConstruct,
+
+    stubmodule
 ) {
     describe('app/Report', function() {
         var widget;
@@ -14,9 +18,17 @@ require([
             widget = null;
         };
 
-        beforeEach(function() {
-            widget = new WidgetUnderTest(null, domConstruct.create('div', null, document.body));
-            widget.startup();
+        beforeEach(function(done) {
+            stubmodule('app/Report', {
+                'dojo/io-query': {queryToObject: function () {
+                    return {};
+                }}
+            }).then(function (StubbedModule) {
+                WidgetUnderTest = StubbedModule;
+                widget = new WidgetUnderTest({}, domConstruct.create('div', {}, document.body));
+                widget.startup();
+                done();
+            });
         });
 
         afterEach(function() {
