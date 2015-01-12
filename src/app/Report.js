@@ -1,6 +1,8 @@
 define([
     'app/config',
 
+    'bootstrap',
+
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
 
@@ -8,6 +10,8 @@ define([
     'dojo/_base/lang',
     'dojo/dom-class',
     'dojo/io-query',
+    'dojo/on',
+    'dojo/query',
     'dojo/request',
     'dojo/text!app/templates/Report.html',
     'dojo/text!app/templates/ReportTemplate.html',
@@ -22,6 +26,8 @@ define([
 ], function(
     config,
 
+    bootstrap,
+
     _TemplatedMixin,
     _WidgetBase,
 
@@ -29,6 +35,8 @@ define([
     lang,
     domClass,
     ioQuery,
+    on,
+    query,
     request,
     template,
     reportTemplateTxt,
@@ -68,6 +76,9 @@ define([
             this.countyNode.innerHTML = props.county;
 
             this.generateReport(props.x, props.y);
+            query('a[data-toggle]').on('click', function (evt) {
+                evt.preventDefault();
+            });
             this.inherited(arguments);
         },
         generateReport: function (x, y) {

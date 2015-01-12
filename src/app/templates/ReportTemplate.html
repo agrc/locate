@@ -1,250 +1,270 @@
-<h3 class="broadband">Broadband</h3>
-<h4 class='broadband'>Fiber Providers</h4>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>Provider</th>
-            <!-- <th>Phone</th> -->
-            <!-- <th>City</th> -->
-            <!-- <th>Email</th> -->
-            <th>Web Site</th>
-            <th>Providing Fiber in:</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each broadband.fiber}}
-        <tr>
-            <td>{{Colloquial}}</td>
-            <!-- <td>801-111-1234</td> -->
-            <!-- <td>West Jordan</td> -->
-            <!-- <td><a href="#">email@company.com</a></td> -->
-            <td><a href="#">{{URL}}</a></td>
-            <td>{{ServiceClass}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-<h4 class="broadband">Other Fixed Broadband Providers</h4>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>Provider</th>
-            <!-- <th>Phone</th> -->
-            <!-- <th>City</th> -->
-            <!-- <th>Email</th> -->
-            <th>Web Site</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each broadband.fixed}}
-        <tr>
-            <td>{{Colloquial}}</td>
-            <!-- <td>801-111-1234</td> -->
-            <!-- <td>West Jordan</td> -->
-            <!-- <td><a href="#">email@company.com</a></td> -->
-            <td><a href="#">{{URL}}</a></td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+<a href="#broadband" data-toggle="collapse">
+    <h3 class="broadband">Broadband</h3>
+</a>
+<div id="broadband" class='collapse in'>
+    <h4 class='broadband'>Fiber Providers</h4>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Provider</th>
+                <!-- <th>Phone</th> -->
+                <!-- <th>City</th> -->
+                <!-- <th>Email</th> -->
+                <th>Web Site</th>
+                <th>Providing Fiber in:</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each broadband.fiber}}
+            <tr>
+                <td>{{Colloquial}}</td>
+                <!-- <td>801-111-1234</td> -->
+                <!-- <td>West Jordan</td> -->
+                <!-- <td><a href="#">email@company.com</a></td> -->
+                <td><a href="#">{{URL}}</a></td>
+                <td>{{ServiceClass}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <h4 class="broadband">Other Fixed Broadband Providers</h4>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Provider</th>
+                <!-- <th>Phone</th> -->
+                <!-- <th>City</th> -->
+                <!-- <th>Email</th> -->
+                <th>Web Site</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each broadband.fixed}}
+            <tr>
+                <td>{{Colloquial}}</td>
+                <!-- <td>801-111-1234</td> -->
+                <!-- <td>West Jordan</td> -->
+                <!-- <td><a href="#">email@company.com</a></td> -->
+                <td><a href="#">{{URL}}</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
 
-<h3 class="utilities">Utilities</h3>
-<h4 class="utilities">Local Exchange Areas</h4>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>Provider</th>
-            <!-- <th>Phone</th> -->
-            <!-- <th>City</th> -->
-            <!-- <th>Email</th> -->
-            <th>Web Site</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each utilities.rural}}
-        <tr>
-            <td>{{PROVIDER}}</td>
-            <!-- <td>801-111-1234</td> -->
-            <!-- <td>Taylorsville</td> -->
-            <!-- <td><a href="#">email@company.com</a></td> -->
-            <td><a href="#">{{WEBLINK}}</a></td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-<h4 class="utilities">Electric Utility</h4>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>Provider</th>
-            <!-- <th>Phone</th> -->
-            <!-- <th>City</th> -->
-            <!-- <th>Email</th> -->
-            <th>Web Site</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each utilities.electrical}}
-        <tr>
-            <td>{{PROVIDER}}</td>
-            <!-- <td>801-111-1234</td> -->
-            <!-- <td>Taylorsville</td> -->
-            <!-- <td><a href="#">email@company.com</a></td> -->
-            <td><a href="#">{{WEBLINK}}</a></td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-<table class='table'>
-    <tbody>
-        <td>
-            Natural gas service: 
-            <strong>
-                {{#if utilities.natural_gas}}
-                <a href='https://www.questargas.com/'>Questar Gas (https://www.questargas.com/)</a>
-                {{else}}
-                Unknown
-                {{/if}}
-            </strong>
-        </td>
-    </tbody>
-</table>
+<a href="#utilities" data-toggle="collapse">
+    <h3 class="utilities">Utilities</h3>
+</a>
+<div class="collapse" id="utilities">
+    <h4 class="utilities">Local Exchange Areas</h4>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Provider</th>
+                <!-- <th>Phone</th> -->
+                <!-- <th>City</th> -->
+                <!-- <th>Email</th> -->
+                <th>Web Site</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each utilities.rural}}
+            <tr>
+                <td>{{PROVIDER}}</td>
+                <!-- <td>801-111-1234</td> -->
+                <!-- <td>Taylorsville</td> -->
+                <!-- <td><a href="#">email@company.com</a></td> -->
+                <td><a href="#">{{WEBLINK}}</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <h4 class="utilities">Electric Utility</h4>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Provider</th>
+                <!-- <th>Phone</th> -->
+                <!-- <th>City</th> -->
+                <!-- <th>Email</th> -->
+                <th>Web Site</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each utilities.electrical}}
+            <tr>
+                <td>{{PROVIDER}}</td>
+                <!-- <td>801-111-1234</td> -->
+                <!-- <td>Taylorsville</td> -->
+                <!-- <td><a href="#">email@company.com</a></td> -->
+                <td><a href="#">{{WEBLINK}}</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <table class='table'>
+        <tbody>
+            <td>
+                Natural gas service: 
+                <strong>
+                    {{#if utilities.natural_gas}}
+                    <a href='https://www.questargas.com/'>Questar Gas (https://www.questargas.com/)</a>
+                    {{else}}
+                    Unknown
+                    {{/if}}
+                </strong>
+            </td>
+        </tbody>
+    </table>
+</div>
 
-<h3 class="transportation">Transportation</h3>
-<h4 class="transportation">Major Roads, Freeways, US Highways and State Highways within 5 Miles</h4>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each transportation.roads}}
-        <tr>
-            <td>{{.}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-<h4 class="transportation">Airports - International</h4>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Drive Time</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{transportation.airports.sl.name}}</td>
-            <td>{{transportation.airports.sl.drive_time}}</td>
-        </tr>
-    </tbody>
-</table>
-<h4 class="transportation">Airports - Regional/Commercial</h4>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Drive Time</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each transportation.airports.regional_commercial}}
-        <tr>
-            <td>{{name}}</td>
-            <td>{{drive_time}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-<h4 class="transportation">Airports - Local</h4>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Drive Time</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each transportation.airports.local}}
-        <tr>
-            <td>{{name}}</td>
-            <td>{{drive_time}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+<a href="#transportation" data-toggle="collapse">
+    <h3 class="transportation">Transportation</h3>
+</a>
+<div id="transportation" class="collapse">
+    <h4 class="transportation">Major Roads, Freeways, US Highways and State Highways within 5 Miles</h4>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each transportation.roads}}
+            <tr>
+                <td>{{.}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <h4 class="transportation">Airports - International</h4>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Drive Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{transportation.airports.sl.name}}</td>
+                <td>{{transportation.airports.sl.drive_time}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h4 class="transportation">Airports - Regional/Commercial</h4>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Drive Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each transportation.airports.regional_commercial}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{drive_time}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <h4 class="transportation">Airports - Local</h4>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Drive Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each transportation.airports.local}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{drive_time}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
 
-<h3 class="demographics">Workforce</h3>
-<h4 class="demographics">Higher Education Schools</h4>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Drive Time</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each workforce.schools}}
-        <tr>
-            <td>{{name}}</td>
-            <td>{{drive_time}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+<a href="#demographics" data-toggle="collapse">
+    <h3 class="demographics">Workforce</h3>
+</a>
+<div id="demographics" class="collapse">
+    <h4 class="demographics">Higher Education Schools</h4>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Drive Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each workforce.schools}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{drive_time}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
 
-<h3 class="lifestyle">Lifestyle/Recreation</h3>
-<h4 class="lifestyle">National Parks</h4>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Drive Time</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each recreation.nat_parks}}
-        <tr>
-            <td>{{name}}</td>
-            <td>{{drive_time}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-
-<h4 class="lifestyle">State Parks</h4>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Drive Time</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each recreation.state_parks}}
-        <tr>
-            <td>{{name}}</td>
-            <td>{{drive_time}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-<h4 class="lifestyle">Ski Resorts</h4>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Drive Time</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each recreation.ski}}
-        <tr>
-            <td>{{name}}</td>
-            <td>{{drive_time}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+<a href='#lifestyle' data-toggle='collapse'>
+    <h3 class="lifestyle">Lifestyle/Recreation</h3>
+</a>
+<div id="lifestyle" class="collapse">
+    <h4 class="lifestyle">National Parks</h4>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Drive Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each recreation.nat_parks}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{drive_time}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    
+    <h4 class="lifestyle">State Parks</h4>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Drive Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each recreation.state_parks}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{drive_time}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <h4 class="lifestyle">Ski Resorts</h4>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Drive Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each recreation.ski}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{drive_time}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
