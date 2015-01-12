@@ -16,7 +16,7 @@ WEBLINK = 'WEBLINK'
 
 #Roads
 CARTOCODE = 'CARTOCODE'
-FULLNAME = 'FULLNAME'
+FULLNAME = 'HWYNAME'
 
 #Drive Times
 ToBreak = 'ToBreak'
