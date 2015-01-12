@@ -165,10 +165,15 @@ define([
             groupClass: 'lifestyle',
             name: 'Lifestyle',
             layers: [{
-                name: 'National Parks, National Monuments, State Parks',
+                name: 'State Parks',
                 type: 'feature',
                 layerId: '7',
-                marker: 'parks.svg'
+                marker: 'stateparks.svg'
+            }, {
+                name: 'National Parks & Monuments',
+                type: 'feature',
+                layerId: '20',
+                marker: 'nationalparks.svg'
             }, {
                 name: 'Ski Areas',
                 type: 'feature',
