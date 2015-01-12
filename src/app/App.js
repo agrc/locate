@@ -5,7 +5,6 @@ define([
     'app/CurrentLocation',
     'app/Layers',
     'app/mapController',
-    'app/Report',
 
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
@@ -18,7 +17,6 @@ define([
     'dojo/on',
     'dojo/query',
     'dojo/text!app/templates/App.html',
-    'dojo/topic',
 
     'bootstrap',
     'dijit/layout/ContentPane',
@@ -30,7 +28,6 @@ define([
     CurrentLocation,
     Layers,
     mapController,
-    Report,
 
     _TemplatedMixin,
     _WidgetBase,
@@ -42,8 +39,7 @@ define([
     domClass,
     on,
     query,
-    template,
-    topic
+    template
 ) {
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         // summary:
@@ -80,8 +76,7 @@ define([
 
             this.childWidgets.push(
                 new CurrentLocation({}, this.currentLocationDiv),
-                new Layers({}, this.layersDiv),
-                new Report({}, this.reportDiv)
+                new Layers({}, this.layersDiv)
             );
 
             // hack to wire together the commuter rail layers since
@@ -92,11 +87,6 @@ define([
                 hiddenCheckbox.checked = evt.srcElement.checked;
                 on.emit(hiddenCheckbox, 'change', {bubbles: true});
             });
-
-            this.own(
-                topic.subscribe(config.topics.generateReport, lang.hitch(this, 'showReport')),
-                topic.subscribe(config.topics.hideReport, lang.hitch(this, 'hideReport'))
-            );
 
             this.inherited(arguments);
         },

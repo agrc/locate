@@ -25,10 +25,6 @@
     color: #F1F1F2;
 }
 
-.current-location a,
-.current-location a:hover {
-    color: #fff;
-}
 .current-location .address {
     width: 60%;
 }

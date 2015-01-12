@@ -7,6 +7,7 @@ define([
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dojo/dom-class',
+    'dojo/io-query',
     'dojo/request',
     'dojo/text!app/templates/Report.html',
     'dojo/text!app/templates/ReportTemplate.html',
@@ -16,6 +17,7 @@ define([
 
     'ijit/modules/_ErrorMessageMixin',
 
+    'xstyle/css!app/resources/App.css',
     'xstyle/css!app/resources/Report.css'
 ], function(
     config,
@@ -26,6 +28,7 @@ define([
     declare,
     lang,
     domClass,
+    ioQuery,
     request,
     template,
     reportTemplateTxt,
@@ -55,24 +58,30 @@ define([
             //      private
             console.log('app.Report::postCreate', arguments);
 
-            topic.subscribe(config.topics.generateReport, lang.hitch(this, 'generateReport'));
+            AGRC.report = this;
 
+            var props = ioQuery.queryToObject(window.location.href.split('?')[1]);
+
+            this.addressNode.innerHTML = props.address;
+            this.cityNode.innerHTML = props.city;
+            this.zipNode.innerHTML = props.zip;
+            this.countyNode.innerHTML = props.county;
+
+            this.generateReport(props.x, props.y);
             this.inherited(arguments);
         },
-        generateReport: function (currentLocationWidget) {
+        generateReport: function (x, y) {
             // summary:
             //      kicks off gp task
-            // x: float
-            // y: float
+            // x: Number
+            // y: Number
             console.log('app/Report:generateReport', arguments);
         
             this.showLoader();
-            var pnt = currentLocationWidget.lastPoint;
-            this.locationContainer.innerHTML = currentLocationWidget.addressContainer.innerHTML;
 
             request.get(config.urls.gpService, {
                 handleAs: 'json',
-                query: {x: pnt.x, y: pnt.y, f: 'json'}
+                query: {x: x, y: y, f: 'json'}
             }).then(lang.hitch(this, 'onReportComplete'),
                 lang.hitch(this, 'onError')
             );
@@ -111,13 +120,6 @@ define([
             } else {
                 this.showErrMsg(config.messages.reportError);
             }
-        },
-        hideReport: function () {
-            // summary:
-            //      description
-            console.log('app/Report:hideReport', arguments);
-        
-            topic.publish(config.topics.hideReport);
         },
         print: function () {
             // summary:
