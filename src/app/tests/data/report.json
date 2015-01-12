@@ -4,12 +4,18 @@
             "URL": "http://wwwb.comcast.com/",
             "Colloquial": "Comcast",
             "ServiceClass": "Short term",
-            "ProvName": "Comcast"
+            "ProvName": "Comcast",
+            "ContactName": "Scott Davis",
+            "ContactPhone": "801-123-4589",
+            "ContactEmail": "test@test.com"
         }, {
             "URL": "http://www.syringanetworks.net/",
             "Colloquial": "Syringa Networks",
             "ServiceClass": "Short term",
-            "ProvName": "Syringa"
+            "ProvName": "Syringa",
+            "ContactName": "Scott Davis",
+            "ContactPhone": "801-123-4589",
+            "ContactEmail": "test@test.com"
         }],
         "fixed": [{
             "URL": "http://www.thebluezone.com/",

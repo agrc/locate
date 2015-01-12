@@ -33,14 +33,24 @@ def get_fiber(point):
 
 
 def add_provider_info(items, code_field):
+    fields = [
+        fieldnames.Colloquial,
+        fieldnames.URL,
+        fieldnames.ContactName,
+        fieldnames.ContactPhone,
+        fieldnames.ContactEmail
+    ]
     for it in items:
         where = '{} = \'{}\''.format(fieldnames.Code, it[code_field])
         with da.SearchCursor(PROVIDERS,
-                             [fieldnames.Colloquial, fieldnames.URL],
+                             fields,
                              where) as prov_cursor:
             prov = prov_cursor.next()
             it.update({fieldnames.Colloquial: prov[0],
-                       fieldnames.URL: prov[1]})
+                       fieldnames.URL: prov[1],
+                       fieldnames.ContactName: prov[2],
+                       fieldnames.ContactPhone: prov[3],
+                       fieldnames.ContactEmail: prov[4]})
 
 
 def get_fixed(point):

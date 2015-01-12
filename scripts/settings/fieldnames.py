@@ -9,6 +9,9 @@ ProvName = 'ProvName'
 Colloquial = 'Colloquial'
 Code = 'Code'
 URL = 'URL'
+ContactName = 'ContactName'
+ContactPhone = 'ContactPhone'
+ContactEmail = 'ContactEmail'
 
 #Utilities
 PROVIDER = 'PROVIDER'

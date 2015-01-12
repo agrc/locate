@@ -7,22 +7,22 @@
         <thead>
             <tr>
                 <th>Provider</th>
-                <!-- <th>Phone</th> -->
-                <!-- <th>City</th> -->
-                <!-- <th>Email</th> -->
                 <th>Web Site</th>
                 <th>Providing Fiber in:</th>
+                <th>Contact Name</th>
+                <th>Contact Phone</th>
+                <th>Contact Email</th>
             </tr>
         </thead>
         <tbody>
             {{#each broadband.fiber}}
             <tr>
                 <td>{{Colloquial}}</td>
-                <!-- <td>801-111-1234</td> -->
-                <!-- <td>West Jordan</td> -->
-                <!-- <td><a href="#">email@company.com</a></td> -->
-                <td><a href="#">{{URL}}</a></td>
+                <td><a href="{{URL}}">{{URL}}</a></td>
                 <td>{{ServiceClass}}</td>
+                <td>{{ContactName}}</td>
+                <td>{{ContactPhone}}</td>
+                <td><a href='mailto:{{ContactEmail}}'>{{ContactEmail}}</a></td>
             </tr>
             {{/each}}
         </tbody>
@@ -32,20 +32,20 @@
         <thead>
             <tr>
                 <th>Provider</th>
-                <!-- <th>Phone</th> -->
-                <!-- <th>City</th> -->
-                <!-- <th>Email</th> -->
                 <th>Web Site</th>
+                <th>Contact Name</th>
+                <th>Contact Phone</th>
+                <th>Contact Email</th>
             </tr>
         </thead>
         <tbody>
             {{#each broadband.fixed}}
             <tr>
                 <td>{{Colloquial}}</td>
-                <!-- <td>801-111-1234</td> -->
-                <!-- <td>West Jordan</td> -->
-                <!-- <td><a href="#">email@company.com</a></td> -->
                 <td><a href="#">{{URL}}</a></td>
+                <td>{{ContactName}}</td>
+                <td>{{ContactPhone}}</td>
+                <td><a mailto:'{{ContactEmail}}'>{{ContactEmail}}</a></td>
             </tr>
             {{/each}}
         </tbody>
