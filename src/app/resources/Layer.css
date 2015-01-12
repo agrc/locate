@@ -10,10 +10,16 @@
     font-size: 9px;
 }
 
-/* needed for built version */
+/* following two rules are needed for built version */
+/* possibly a bug in xstyle? */
 .layer.checkbox input[type='checkbox'] {
     opacity: 0;
 }
+.layer.radio input:checked + label::after {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+}
+
 
 .esriPopup .content .contentPane {
     border-top-left-radius: 5px;
