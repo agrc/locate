@@ -104,7 +104,7 @@ define([
                 layerId: '12',
                 checkboxType: 'radio'
             }, {
-                name: 'Electric Provider',
+                name: 'Electric Utility Territory',
                 type: 'dynamic',
                 layerId: '14',
                 checkboxType: 'radio'
