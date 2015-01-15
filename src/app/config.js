@@ -1,11 +1,13 @@
 /* jshint maxlen:false */
 define([
     'dojo/has',
+    'dojo/text!app/templates/FiberLegend.html',
 
     'esri/config',
     'esri/symbols/PictureMarkerSymbol'
 ], function (
     has,
+    fiberLegendTxt,
 
     esriConfig,
     PictureMarkerSymbol
@@ -13,7 +15,6 @@ define([
     // force api to use CORS on mapserv thus removing the test request on app load
     // e.g. http://mapserv.utah.gov/ArcGIS/rest/info?f=json
     esriConfig.defaults.io.corsEnabledServers.push('mapserv.utah.gov');
-
 
     var markerSymbolWidth = 24;
     var markerSymbolHeight = 35;
@@ -80,17 +81,13 @@ define([
             groupClass: 'broadband',
             name: 'Broadband',
             layers: [{
-                name: 'Fiber Short Term',
+                name: 'Fiber',
                 type: 'dynamic',
-                layerId: '0',
-                onByDefault: true
+                layerId: '0, 1',
+                onByDefault: true,
+                legend: fiberLegendTxt
             }, {
-                name: 'Fiber Custom Order',
-                type: 'dynamic',
-                layerId: '1',
-                onByDefault: true
-            }, {
-                name: 'Other Fixed Broadband',
+                name: 'All Non-Mobile Broadband (Includes Fiber, DSL, Cable, and Fixed Wireless)',
                 type: 'dynamic',
                 layerId: '2, 3, 4',
                 onByDefault: false

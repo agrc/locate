@@ -113,6 +113,17 @@ define([
             if (this.hidden) {
                 domClass.add(this.domNode, 'hidden');
             }
+
+            if (this.legend) {
+                domClass.remove(this.tooltip, 'hidden');
+                $(this.tooltip).tooltip({
+                    title: this.legend,
+                    html: true,
+                    placement: 'right',
+                    container: 'body',
+                    delay: 250
+                });
+            }
         },
         activate: function () {
             // summary:
