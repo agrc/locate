@@ -4,7 +4,7 @@ FIBER_GDB = DATA_PATH + r'\FiberVerification.gdb'
 HEXAGONS = FIBER_GDB + r'\Hexagons'
 SERVICE_AREAS = FIBER_GDB + r'\ProviderServiceAreas'
 BB_GDB = DATA_PATH + r'\Broadband.gdb'
-PROVIDERS = BB_GDB + r'\Providers'
+PROVIDERS = BB_GDB + r'\BB_Providers_Table'
 WIRELESS = BB_GDB + r'\BB_Service_Wireless'
 CENSUS = BB_GDB + r'\BB_Service_CensusBlocks'
 BUFFERED_ROAD = BB_GDB + r'\BB_Service_Buffered_RoadSegment'
@@ -18,11 +18,13 @@ RURAL_TEL = SGID_GDB + r'\RuralTelcomBoundaries'
 ROADS = SGID_GDB + r'\Roads'
 ROADS_WHERE = "CARTOCODE in ( '1', '2', '3', '4', '5')"
 ROADS_BUFFER = '5 Miles'
+ENTERPRISE_ZONES = SGID_GDB + r'\EnterpriseZones'
 
 BBECON_GDB = DATA_PATH + r'\BBEcon.gdb'
 AIRPORT_INT = BBECON_GDB + r'\Airport_SLinternational_DriveTime'
 AIRPORT_REG = BBECON_GDB + r'\Airport_RegionalCommercial_DriveTime'
 AIRPORT_LOCAL = BBECON_GDB + r'\Airport_Local_DriveTime'
+COUNTIES = BBECON_GDB + r'\CountyDemographics'
 
 DRIVE_TIME_TXT = '< {} min'
 

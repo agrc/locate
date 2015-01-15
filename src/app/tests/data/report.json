@@ -305,6 +305,26 @@
         }, {
             "name": "UTAH STATE UNIVERSITY",
             "drive_time": "< 120 min"
-        }]
+        }],
+        "county_demographics": {
+            "Median_Age": 30.8,
+            "educationBachelorOrGreater": 26.13,
+            "Avg_MonthlyIncome": "3,796",
+            "Avg_HouseIncome": "60,555",
+            "topten": [
+                {"rank": 1, "desc": "Elementary and Secondary Schools"},
+                {"rank": 2, "desc": "General Medical and Surgical Hospitals"},
+                {"rank": 3, "desc": "Management of Companies and Enterprises"},
+                {"rank": 4, "desc": "Colleges, Universities, and Professional Schools"},
+                {"rank": 5, "desc": "Limited-Service Eating Places"},
+                {"rank": 6, "desc": "Full Service Restaurants"},
+                {"rank": 7, "desc": "Employment services"},
+                {"rank": 8, "desc": "Executive, Legislative, and Other General Government Support"},
+                {"rank": 9, "desc": "Nondepository credit intermediation"},
+                {"rank": 10, "desc": "Business Support Services"}
+            ],
+            "educationHighSchoolGraduate": 86.09
+        },
+        "enterprise_zone": true
     }
 }

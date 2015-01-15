@@ -35,7 +35,7 @@ class GenerateReportTests(unittest.TestCase):
     def test_get_natural_gas(self):
         result = generate_report.get_natural_gas(self.point)
 
-        self.assertEqual(result, 'Yes')
+        self.assertEqual(result, True)
 
         arcpy.Delete_management(NATURAL_GAS + '_layer')
 
@@ -43,7 +43,7 @@ class GenerateReportTests(unittest.TestCase):
         y = 4693000
         result = generate_report.get_natural_gas(make_point(x,y))
 
-        self.assertEqual(result, 'No')
+        self.assertEqual(result, False)
 
         arcpy.Delete_management(NATURAL_GAS + '_layer')
 
@@ -61,7 +61,7 @@ class GenerateReportTests(unittest.TestCase):
     def test_get_roads(self):
         results = generate_report.get_roads(self.point)
 
-        self.assertEqual(len(results), 102)
+        self.assertEqual(len(results), 12)
 
     def test_get_airports(self):
         results = generate_report.get_airports(self.point)
@@ -88,3 +88,11 @@ class GenerateReportTests(unittest.TestCase):
 
         self.assertEqual(results[0][fieldnames.ToBreak], 60)
         self.assertEqual(results[-1][fieldnames.ToBreak], 90)
+
+    def test_get_county_demographics(self):
+        results = generate_report.get_county_demographics(self.point)
+
+        self.assertEqual(len(results['topten']), 10)
+        self.assertEqual(results['topten'][0], {'rank': 1,
+                                                'desc': 'Elementary and Secondary Schools'})
+        self.assertEqual(results[fieldnames.Avg_MonthlyIncome], '3796')

@@ -102,6 +102,32 @@ def get_records(lyr, fields, sort_field):
     return records
 
 
+def get_topten(countyLyr):
+    fields = ['TI_{}'.format(f) for f in range(1, 11)]
+    results = []
+    with da.SearchCursor(countyLyr, fields) as cursor:
+        row = cursor.next()
+        for i in range(0, 10):
+            results.append({'rank': i+1,
+                            'desc': row[i]})
+
+    return results
+
+
+def get_county_demographics(point):
+    lyr = get_intersect_layer(point, COUNTIES)
+
+    fields = [fieldnames.Avg_MonthlyIncome,
+              fieldnames.Avg_HouseIncome,
+              fieldnames.Median_Age,
+              fieldnames.educationHighSchoolGraduate,
+              fieldnames.educationBachelorOrGreater]
+
+    record = get_records(lyr, fields, fieldnames.Avg_MonthlyIncome)[0]
+    record['topten'] = get_topten(lyr)
+    return record
+
+
 def get_utilities(point):
     def process(fc):
         lyr = get_intersect_layer(point, fc)
@@ -151,6 +177,11 @@ def get_airports(point):
     return res
 
 
+def get_enterprise_zone(point):
+    lyr = get_intersect_layer(point, ENTERPRISE_ZONES)
+    return len(get_records(lyr, ['OBJECTID'], 'OBJECTID')) > 0
+
+
 if __name__ == '__main__':
     # x = 422991.7632080179
     # y = 4504669.423114922
@@ -164,7 +195,9 @@ if __name__ == '__main__':
               'utilities': get_utilities(pnt),
               'transportation': {'roads': get_roads(pnt),
                                  'airports': get_airports(pnt)},
-              'workforce': {'schools': get_drive_time(SCHOOLS, pnt)},
+              'workforce': {'schools': get_drive_time(SCHOOLS, pnt),
+                            'county_demographics': get_county_demographics(pnt),
+                            'enterprise_zone': get_enterprise_zone(pnt)},
               'recreation': {'nat_parks': get_drive_time(NAT_PARKS, pnt),
                              'state_parks': get_drive_time(STATE_PARKS, pnt),
                              'ski': get_drive_time(SKI, pnt)}}

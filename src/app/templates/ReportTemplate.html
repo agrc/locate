@@ -209,6 +209,60 @@
             {{/each}}
         </tbody>
     </table>
+
+    <h4 class="demographics">Top 10 County Industries</h4>
+    <table class="table">
+        <tbody>
+            {{#each workforce.county_demographics.topten}}
+            <tr>
+                <td>{{rank}}</td>
+                <td>{{desc}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <h4 class="demographics">County Demographics</h4>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Median Age</td>
+                <td>{{workforce.county_demographics.Median_Age}}</td>
+            </tr>
+            <tr>
+                <td>High School Graduates (Age 25 or Higher)</td>
+                <td>{{workforce.county_demographics.educationHighSchoolGraduate}}%</td>
+            </tr>
+            <tr>
+                <td>Bachelor's Degree or Greater (Age 25 or Higher)</td>
+                <td>{{workforce.county_demographics.educationBachelorOrGreater}}%</td>
+            </tr>
+            <tr>
+                <td>Average Household Monthly Income</td>
+                <td>${{workforce.county_demographics.Avg_MonthlyIncome}}</td>
+            </tr>
+            <tr>
+                <td>Average Household Annual Income</td>
+                <td>${{workforce.county_demographics.Avg_HouseIncome}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Within an enterprise zone?
+                    <b>
+                        {{#if workforce.enterprise_zone}}
+                        Yes
+                        {{else}}
+                        No
+                        {{/if}}
+                    </b>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <a href='#lifestyle' data-toggle='collapse'>
