@@ -206,13 +206,13 @@ body {
 h3.broadband {
     background: #000000 url(img/icons/broadband.svg) 15px 15px no-repeat;
 }
-.utilities.group,
-h3.utilities {
-    background: #E09525 url(img/icons/utilities.svg) 15px 15px no-repeat;
-}
 .transportation.group,
 h3.transportation {
-    background: #107A89 url(img/icons/transportation.svg) 15px 15px no-repeat;
+    background: #E09525 url(img/icons/transportation.svg) 15px 15px no-repeat;
+}
+.utilities.group,
+h3.utilities {
+    background: #107A89 url(img/icons/utilities.svg) 15px 15px no-repeat;
 }
 .lifestyle.group,
 h3.lifestyle {
@@ -229,14 +229,14 @@ h3.demographics {
 h4.broadband {
     background-color: #333333;
 }
-.utilities ul,
-.utilities>button,
-h4.utilities {
+.transportation ul,
+.transportation>button,
+h4.transportation {
     background-color: #AD6F29;
 }
-.transportation ul,
-.transportation>button, 
-h4.transportation {
+.utilities ul,
+.utilities>button, 
+h4.utilities {
     background-color: #0C5D63;
 }
 .lifestyle ul,

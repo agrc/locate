@@ -61,8 +61,8 @@ define([
         zoomLocationsField: 'Name',
         currentLocationSymbol: new PictureMarkerSymbol(
             'app/resources/img/markers/currentLocation.svg',
-            markerSymbolWidth,
-            markerSymbolHeight
+            32,
+            44
         ),
         featureClassNames: {
             city: 'SGID10.BOUNDARIES.Municipalities',
@@ -128,6 +128,16 @@ define([
                 layerId: '5',
                 marker: 'airports.svg'
             }, {
+                // this is hidden and linked to the layer above
+                // see app/App:postCreate
+                name: 'slc airport (hidden)',
+                type: 'feature',
+                layerId: '21',
+                marker: 'slcairport.svg',
+                markerWidth: 32,
+                markerHeight: 44,
+                hidden: true
+            }, {
                 name: 'Light/Commuter Rail',
                 type: 'feature',
                 layerId: '17',
@@ -145,6 +155,10 @@ define([
                 type: 'dynamic',
                 layerId: '16',
                 defaultOpacity: 1
+            }, {
+                name: 'Major Roads Buffer',
+                type: 'dynamic',
+                layerId: '22'
             }]
         }, {
             groupClass: 'demographics',
@@ -191,7 +205,7 @@ define([
         }]
     };
 
-    window.AGRC.currentLocationSymbol.setOffset(0, markerSymbolHeight/2);
+    window.AGRC.currentLocationSymbol.setOffset(0, 22);
 
     if (has('agrc-api-key') === 'prod') {
         // mapserv.utah.gov

@@ -135,8 +135,8 @@ define([
                 if (!this.fLayer) {
                     var sym = new PictureMarkerSymbol(
                         'app/resources/img/markers/' + this.marker,
-                        config.markerSymbolWidth,
-                        config.markerSymbolHeight
+                        this.markerWidth || config.markerSymbolWidth,
+                        this.markerHeight || config.markerSymbolHeight
                     );
                     sym.setOffset(0, config.markerSymbolHeight/2);
                     this.fLayer = new FeatureLayer(config.urls.mapService + '/' + this.layerId, {
