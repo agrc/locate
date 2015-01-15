@@ -132,6 +132,63 @@
     <h3 class="transportation">Transportation</h3>
 </a>
 <div id="transportation" class="collapse">
+    <h4 class="transportation">Major Roads, Freeways, US Highways and State Highways within 5 Miles</h4>
+    <div class="table-responsive">
+        <table class='table table-striped'>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each transportation.roads}}
+                <tr>
+                    <td>{{.}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <h4 class="transportation">Airports - International</h4>
+    <div class="table-responsive">
+        <table class='table table-striped'>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Drive Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{transportation.airports.sl.name}}</td>
+                    <td>{{transportation.airports.sl.drive_time}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h4 class="transportation">Airports - Regional/Commercial</h4>
+    <div class="table-responsive">
+        <table class='table table-striped'>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Drive Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each transportation.airports.regional_commercial}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{drive_time}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    
+    <h4 class="transportation">Airports - Local</h4>
     <div class="table-responsive">
         <table class='table table-striped'>
             <thead>
