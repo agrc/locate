@@ -161,7 +161,7 @@ def get_drive_time(fc, point):
         # filter out duplicates with longer field names
         if m[0] not in names:
             records.append({'name': m[0],
-                            'drive_time': DRIVE_TIME_TXT.format(m[1])})
+                            'drive_time': DRIVE_TIME_TXT.format(rec[fieldnames.ToBreak])})
         names.append(m[0])
     return records
 

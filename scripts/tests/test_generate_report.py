@@ -68,12 +68,12 @@ class GenerateReportTests(unittest.TestCase):
 
         sl = results['sl']
         self.assertEqual(sl['name'], 'Salt Lake International')
-        self.assertEqual(sl['drive_time'], '< 60 min')
+        self.assertEqual(sl['drive_time'], '< 1 hour(s)')
 
         self.assertEqual(len(results['regional_commercial']), 4)
         rc = results['regional_commercial'][0]
         self.assertEqual(rc['name'], 'OGDEN-HINCKLEY')
-        self.assertEqual(rc['drive_time'], '< 60 min')
+        self.assertEqual(rc['drive_time'], '< 1 hour(s)')
 
     def test_get_fixed(self):
         results = generate_report.get_fixed(self.point)
@@ -86,8 +86,8 @@ class GenerateReportTests(unittest.TestCase):
         lyr = generate_report.get_intersect_layer(self.point, SKI)
         results = generate_report.get_records(lyr, [fieldnames.ToBreak], fieldnames.ToBreak)
 
-        self.assertEqual(results[0][fieldnames.ToBreak], 60)
-        self.assertEqual(results[-1][fieldnames.ToBreak], 90)
+        self.assertEqual(results[0][fieldnames.ToBreak], '1')
+        self.assertEqual(results[-1][fieldnames.ToBreak], '1.5')
 
     def test_get_county_demographics(self):
         results = generate_report.get_county_demographics(self.point)
@@ -95,4 +95,4 @@ class GenerateReportTests(unittest.TestCase):
         self.assertEqual(len(results['topten']), 10)
         self.assertEqual(results['topten'][0], {'rank': 1,
                                                 'desc': 'Elementary and Secondary Schools'})
-        self.assertEqual(results[fieldnames.Avg_MonthlyIncome], '3796')
+        self.assertEqual(results[fieldnames.Avg_MonthlyIncome], '3,796')

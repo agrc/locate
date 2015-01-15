@@ -22,7 +22,7 @@ CARTOCODE = 'CARTOCODE'
 FULLNAME = 'HWYNAME'
 
 #Drive Times
-ToBreak = 'ToBreak'
+ToBreak = 'ToHours'
 Name = 'Name'
 
 #BB
