@@ -1,5 +1,6 @@
 .report .main {
     margin-top: 20px;
+    padding: 0 10px;
 }
 .report .location ul {
     margin: 0;
@@ -39,55 +40,6 @@
 }
 .report h4.no-background {
     color: #333;
-}
-table {
-    background: #FFFFFF;
-    border-collapse: separate;
-    box-shadow: inset 0 1px 0 #FFF;
-    line-height: 24px;
-    margin: 0 auto 20px auto;
-    text-align: left;
-    width: 100%;
-    font-size: .9em;
-}
-th {
-    background-color: #D1D2D3;
-    box-shadow: inset 0 1px 0 #999;
-    color: #222;
-    padding: 7px 15px;
-    position: relative;
-    font-weight: normal!important;
-}
-td {
-    border-right: 1px solid #fff;
-    border-left: 1px solid #e8e8e8;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #e8e8e8;
-    padding: 10px 15px;
-    position: relative;
-    transition: all 300ms;
-}
-td:first-child {
-    box-shadow: inset 1px 0 0 #fff;
-}
-td:last-child {
-    border-right: 1px solid #e8e8e8;
-    box-shadow: inset -1px 0 0 #fff;
-}
-tr:nth-child(even) td {
-    background: #f1f1f1;
-}
-tr:nth-child(odd) td {
-    background: #ffffff;
-}
-tr:last-of-type td {
-    box-shadow: inset 0 -1px 0 #fff;
-}
-tr:last-of-type td:first-child {
-    box-shadow: inset 1px -1px 0 #fff;
-}
-tr:last-of-type td:last-child {
-    box-shadow: inset -1px -1px 0 #fff;
 }
 @media print {
     .report .btn, 

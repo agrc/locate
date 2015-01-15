@@ -118,14 +118,54 @@ body {
 #broadband-logo {
     background: transparent url(img/broadband-logo.png) no-repeat top left;
     display: block;
-    width: 452px;
+    width: 500px;
     height: 70px;
     float: left;
     background-size: contain;
     margin-top: 15px;
 }
+#suresitesLogo{
+    background:url(img/suresites.png) no-repeat top left;
+    width: 110px;
+    height: 90px;
+    float:left;
+}
+#edcLogo {
+    background:url(img/edc.png) no-repeat top left;
+    width: 236px;
+    height: 90px;
+    float:left;
+}
+#goedLogo {
+    background:url(img/goed.png) no-repeat top left;
+    width: 284px;
+    height: 90px;
+    float:left; margin-left:25px;
+}
 #header-container #mobilemenu {
     display: none;
+}
+.contact {
+    background-color: #000;
+    color: #fff;
+    height: 122px;
+    padding: 10px;
+    width: 220px;
+    position: relative;
+}
+.contact span {
+    color: #5AA7AB;
+}
+.contact img {
+    top: 50%;
+    margin-top: -20px;
+    position: absolute;
+}
+.contact p {
+    top: 50%;
+    position: absolute;
+    right: 10px;
+    margin-top: -22px;
 }
 
 /* Spinner */
@@ -335,7 +375,20 @@ h4.demographics {
     }
     .app .map .selectorMain,
     .app .map .esriSimpleSlider {
-        top: 50px;
+        top: 80px;
+    }
+    #header-container .contact {
+        display: none;
+        visibility: hidden;
+    }
+    #footer-wrapper .contact {
+        visibility: visible !important;
+        width: 100%;
+        height: auto;
+    }
+    #footer-wrapper .contact p {
+        position: inherit;
+        margin: 0 10px;
     }
 }
 @media only screen and (max-width: 600px) {
