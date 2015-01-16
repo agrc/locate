@@ -21,7 +21,7 @@
 }
 
 
-/* LEGEND */
+/* FIBER LEGEND */
 .layer div[data-toggle='tooltip'] {
     display: inline;
 }
@@ -29,12 +29,12 @@
     padding: 5px;
 }
 .legend .short {
-    background-color: #7F7F7F;
+    background-color: #7F7F84;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
 }
 .legend .custom {
-    background-color: #999999;
+    background-color: #9F9FA2;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
 }
