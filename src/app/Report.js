@@ -9,6 +9,7 @@ define([
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dojo/dom-class',
+    'dojo/has',
     'dojo/io-query',
     'dojo/on',
     'dojo/query',
@@ -34,6 +35,7 @@ define([
     declare,
     lang,
     domClass,
+    has,
     ioQuery,
     on,
     query,
@@ -87,12 +89,15 @@ define([
             // x: Number
             // y: Number
             console.log('app/Report:generateReport', arguments);
-        
+
             this.showLoader();
 
             request.get(config.urls.gpService, {
                 handleAs: 'json',
-                query: {x: x, y: y, f: 'json'}
+                query: {x: x, y: y, f: 'json'},
+                headers: (has('agrc-build') === 'prod') ? {
+                    'X-Requested-With': null
+                } : null
             }).then(lang.hitch(this, 'onReportComplete'),
                 lang.hitch(this, 'onError')
             );
@@ -105,16 +110,16 @@ define([
             // summary:
             //      shows the spinner and hides any error messages
             console.log('app/Report:showLoader', arguments);
-        
+
             this.hideErrMsg();
             this.reportContainer.innerHTML = '';
-            domClass.remove(this.loader, 'hidden');            
+            domClass.remove(this.loader, 'hidden');
         },
         onError: function () {
             // summary:
             //      description
             console.log('app/Report:onError', arguments);
-        
+
             this.showErrMsg(config.messages.reportError);
             domClass.add(this.loader, 'hidden');
         },
@@ -136,7 +141,7 @@ define([
             // summary:
             //      description
             console.log('app/Report:print', arguments);
-        
+
             window.print();
         }
     });

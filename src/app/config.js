@@ -18,6 +18,23 @@ define([
 
     var markerSymbolWidth = 24;
     var markerSymbolHeight = 35;
+
+    var apiKey;
+    var domain;
+    if (has('agrc-build') === 'prod') {
+        // mapserv.utah.gov
+        apiKey = 'AGRC-A94B063C533889';
+        domain = 'http://mapserv.utah.gov/';
+    } else if (has('agrc-build') === 'stage') {
+        // test.mapserv.utah.gov
+        apiKey = 'AGRC-AC122FA9671436';
+        domain = '/';
+    } else {
+        // localhost
+        apiKey = 'AGRC-7F8F0DA6655711';
+        domain = '/';
+    }
+
     window.AGRC = {
         // app: app.App
         //      global reference to App
@@ -29,7 +46,7 @@ define([
 
         // apiKey: String
         //      The api key used for services on api.mapserv.utah.gov
-        apiKey: '', // acquire at developer.mapserv.utah.gov
+        apiKey: apiKey, // acquire at developer.mapserv.utah.gov
 
         // initialExtent: Object
         //      Defines in what extent the map is initially loaded
@@ -55,8 +72,8 @@ define([
             reportError: 'There was an error generating the report!'
         },
         urls: {
-            mapService: '/arcgis/rest/services/BBEcon/MapService/MapServer',
-            gpService: '/arcgis/rest/services/BBEcon/GenerateReport/GPServer/Generate Report/execute'
+            mapService: domain + 'arcgis/rest/services/BBEcon/MapService/MapServer',
+            gpService: domain + 'arcgis/rest/services/BBEcon/GenerateReport/GPServer/Generate Report/execute'
         },
         zoomLocationsIndex: 11,
         zoomLocationsField: 'Name',
@@ -203,17 +220,6 @@ define([
     };
 
     window.AGRC.currentLocationSymbol.setOffset(0, 22);
-
-    if (has('agrc-api-key') === 'prod') {
-        // mapserv.utah.gov
-        window.AGRC.apiKey = 'AGRC-A94B063C533889';
-    } else if (has('agrc-api-key') === 'stage') {
-        // test.mapserv.utah.gov
-        window.AGRC.apiKey = 'AGRC-AC122FA9671436';
-    } else {
-        // localhost
-        window.AGRC.apiKey = 'AGRC-7F8F0DA6655711';
-    }
 
     return window.AGRC;
 });
