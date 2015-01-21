@@ -87,7 +87,7 @@ def get_natural_gas(point):
         return False
 
 
-def get_records(lyr, fields, sort_field):
+def get_records(lyr, fields, sort_field, titlecase_fields=[]):
     records = []
     sql = (None, 'ORDER BY ' + sort_field)
     with da.SearchCursor(lyr, fields, sql_clause=sql) as cursor:
@@ -95,7 +95,10 @@ def get_records(lyr, fields, sort_field):
             d = {}
             i = 0
             for f in fields:
-                d[f] = row[i]
+                if f in titlecase_fields:
+                    d[f] = row[i].title()
+                else:
+                    d[f] = row[i]
                 i += 1
             records.append(d)
 
@@ -132,7 +135,7 @@ def get_utilities(point):
     def process(fc):
         lyr = get_intersect_layer(point, fc)
 
-        return get_records(lyr, [fieldnames.PROVIDER, fieldnames.WEBLINK], fieldnames.PROVIDER)
+        return get_records(lyr, [fieldnames.PROVIDER, fieldnames.WEBLINK], fieldnames.PROVIDER, [fieldnames.PROVIDER])
 
     return {'electrical': process(ELECTRICAL),
             'rural': process(RURAL_TEL),
@@ -155,7 +158,7 @@ def get_drive_time(fc, point):
     records = []
     reg = re.compile(r'(^.*) : .* (.*$)')
     names = []
-    for rec in get_records(lyr, [fieldnames.Name, fieldnames.ToBreak], fieldnames.ToBreak):
+    for rec in get_records(lyr, [fieldnames.Name, fieldnames.ToBreak], fieldnames.ToBreak, [fieldnames.Name]):
         m = re.search(reg, rec[fieldnames.Name]).groups()
 
         # filter out duplicates with longer field names

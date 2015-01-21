@@ -55,7 +55,7 @@ class GenerateReportTests(unittest.TestCase):
         self.assertEqual(elec[fieldnames.WEBLINK], 'https://www.rockymountainpower.net')
 
         rur = result['rural'][0]
-        self.assertEqual(rur[fieldnames.PROVIDER], 'CENTURYLINK')
+        self.assertEqual(rur[fieldnames.PROVIDER], 'Centurylink')
         self.assertEqual(rur[fieldnames.WEBLINK], 'http://www.centurylink.com/')
 
     def test_get_roads(self):
@@ -72,7 +72,7 @@ class GenerateReportTests(unittest.TestCase):
 
         self.assertEqual(len(results['regional_commercial']), 4)
         rc = results['regional_commercial'][0]
-        self.assertEqual(rc['name'], 'OGDEN-HINCKLEY')
+        self.assertEqual(rc['name'], 'Ogden-Hinckley')
         self.assertEqual(rc['drive_time'], '< 1 hour(s)')
 
     def test_get_fixed(self):
