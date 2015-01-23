@@ -12,8 +12,10 @@ define([
     'dojo/text!app/templates/Layer.html',
     'dojo/topic',
 
+    'esri/Color',
     'esri/layers/FeatureLayer',
     'esri/renderers/SimpleRenderer',
+    'esri/symbols/CartographicLineSymbol',
     'esri/symbols/PictureMarkerSymbol',
 
     'xstyle/css!app/resources/Layer.css'
@@ -31,13 +33,15 @@ define([
     template,
     topic,
 
+    Color,
     FeatureLayer,
     SimpleRenderer,
+    CartographicLineSymbol,
     PictureMarkerSymbol
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
         // description:
-        //      
+        //
 
         templateString: template,
         baseClass: 'layer',
@@ -129,7 +133,7 @@ define([
             // summary:
             //      shows the layer if the checkbox is selected
             console.log('app/Layer:activate', arguments);
-        
+
             if (this.checkbox.checked) {
                 this.toggleLayer(true);
             }
@@ -139,21 +143,21 @@ define([
             //      toggles this layer on the map
             // show: Boolean
             console.log('app/Layer:toggleLayer', arguments);
-            
+
             var popup = mapController.map.infoWindow;
             var that = this;
             if (this.type === 'feature') {
                 if (!this.fLayer) {
-                    var sym = new PictureMarkerSymbol(
+                    var markerSymbol = new PictureMarkerSymbol(
                         'app/resources/img/markers/' + this.marker,
                         this.markerWidth || config.markerSymbolWidth,
                         this.markerHeight || config.markerSymbolHeight
                     );
-                    sym.setOffset(0, config.markerSymbolHeight/2);
+                    markerSymbol.setOffset(0, config.markerSymbolHeight/2);
                     this.fLayer = new FeatureLayer(config.urls.mapService + '/' + this.layerId, {
                         outFields: ['*']
                     });
-                    this.fLayer.setRenderer(new SimpleRenderer(sym));
+                    this.fLayer.setRenderer(new SimpleRenderer(markerSymbol));
                     this.fLayer.on('load', function () {
                         that.fLayer.on('mouse-over', function (evt) {
                             var g = evt.graphic;
@@ -165,6 +169,24 @@ define([
                         });
                     });
                     topic.publish(config.topics.addLayer, this.fLayer);
+                }
+                this.fLayer.setVisibility(show);
+            } else if (this.type === 'line') {
+                if (!this.fLayer) {
+                    var lineSymbol = new CartographicLineSymbol(
+                        CartographicLineSymbol.STYLE_SOLID,
+                        new Color(this.color),
+                        config.lineWidth,
+                        CartographicLineSymbol.CAP_ROUND,
+                        CartographicLineSymbol.JOIN_ROUND
+                        );
+                    lineSymbol.setColor(new Color(this.color));
+                    lineSymbol.setWidth(6);
+                    this.fLayer = new FeatureLayer(config.urls.mapService + '/' + this.layerId, {
+                        outFields: ['*']
+                    });
+                    this.fLayer.setRenderer(new SimpleRenderer(lineSymbol));
+                    topic.publish(config.topics.addLayer, this.fLayer, true);
                 }
                 this.fLayer.setVisibility(show);
             } else {

@@ -65,13 +65,13 @@ define([
             domStyle.set(mapDiv, 'height', 'auto');
             this.map.resize();
 
-            topic.subscribe(config.topics.layers.resize, 
+            topic.subscribe(config.topics.layers.resize,
                 lang.hitch(this.map, 'resize'));
 
             topic.subscribe(config.topics.addLayer,
                 lang.hitch(this, 'addLayer'));
 
-            topic.subscribe(config.topics.layer.toggleDynamicLayer, 
+            topic.subscribe(config.topics.layer.toggleDynamicLayer,
                 lang.hitch(this, 'toggleDynamicLayer'));
 
             topic.subscribe(config.topics.slider.change,
@@ -86,13 +86,15 @@ define([
 
             this.map.on('click', lang.hitch(this, 'onMapClick'));
         },
-        addLayer: function (lyr) {
+        addLayer: function (lyr, bottom) {
             // summary:
             //      description
             // lyr: Layer
+            // bottom: Boolean
             console.log('app/mapController:addLayer', arguments);
-        
-            this.map.addLayer(lyr);
+
+            var index = (bottom) ? 1 : undefined;
+            this.map.addLayer(lyr, index);
             this.map.addLoaderToLayer(lyr);
         },
         toggleDynamicLayer: function (layerId, show, groupName, defaultOpacity, isRadio) {
@@ -106,7 +108,7 @@ define([
             // isRadio: Boolean
             //      Determines if more than one layer can be shown at a time in a group
             console.log('app/mapController:toggleDynamicLayer', arguments);
-        
+
             var dLayer;
             var that = this;
             if (!this.dLayers[groupName]) {
@@ -148,7 +150,7 @@ define([
             // newValue: Number
             //      0 - 100
             console.log('mapController:onSliderChange', arguments);
-        
+
             this.dLayers[groupName].setOpacity(newValue/100);
         },
         onMapClick: function (evt) {
@@ -156,16 +158,16 @@ define([
             //      user clicks on the map
             // evt: MapClick Event Object
             console.log('mapController:onMapClick', arguments);
-        
+
             this.map.graphics.clear();
             this.map.graphics.add(new Graphic(evt.mapPoint, config.currentLocationSymbol));
             topic.publish(config.topics.mapClick, evt.mapPoint);
         },
         destroy: function () {
             // summary:
-            //      
+            //
             console.log('mapController:destroy', arguments);
-        
+
             this.childWidgets.forEach(function (w) {
                 w.destroy();
             });

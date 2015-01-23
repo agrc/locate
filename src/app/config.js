@@ -94,6 +94,7 @@ define([
         },
         markerSymbolWidth: markerSymbolWidth,
         markerSymbolHeight: markerSymbolHeight,
+        lineWidth: 6,
         groups: [{
             groupClass: 'broadband',
             name: 'Broadband',
@@ -137,6 +138,26 @@ define([
             groupClass: 'transportation',
             name: 'Transportation',
             layers: [{
+                name: 'Heavy Rail',
+                type: 'line',
+                layerId: '16',
+                defaultOpacity: 1,
+                color: '#E09525'
+            }, {
+                // this is hidden and linked to the layer above
+                // see app/App:postCreate
+                name: 'commuter rail (hidden)',
+                type: 'line',
+                layerId: '18',
+                defaultOpacity: 1,
+                hidden: true,
+                color: '#AD6F29'
+            }, {
+                name: 'Light/Commuter Rail',
+                type: 'feature',
+                layerId: '17',
+                marker: 'lightrail.svg'
+            }, {
                 name: 'Airports',
                 type: 'feature',
                 layerId: '5',
@@ -151,24 +172,6 @@ define([
                 markerWidth: 32,
                 markerHeight: 44,
                 hidden: true
-            }, {
-                name: 'Light/Commuter Rail',
-                type: 'feature',
-                layerId: '17',
-                marker: 'lightrail.svg'
-            }, {
-                // this is hidden and linked to the layer above
-                // see app/App:postCreate
-                name: 'commuter rail (hidden)',
-                type: 'dynamic',
-                layerId: '18',
-                defaultOpacity: 1,
-                hidden: true
-            }, {
-                name: 'Heavy Rail',
-                type: 'dynamic',
-                layerId: '16',
-                defaultOpacity: 1
             }, {
                 name: 'Major Roads Buffer',
                 type: 'dynamic',
