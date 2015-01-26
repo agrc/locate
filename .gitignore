@@ -8,6 +8,7 @@ deploy
 dist/
 node_modules/
 scripts/.idea/
+scripts/sddraftToolboxes/
 secrets.json
 src/agrc/
 src/awesome-bootstrap-checkbox
