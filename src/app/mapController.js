@@ -55,7 +55,8 @@ define([
                 new BaseMapSelector({
                     map: this.map,
                     id: 'claro',
-                    position: 'TL'
+                    position: 'TL',
+                    defaultThemeLabel: 'Lite'
                 })
             );
             this.childWidgets.push(this.map);
