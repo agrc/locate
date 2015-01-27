@@ -68,7 +68,7 @@ define([
             mapClick: 'mapContoller.mapClick'
         },
         messages: {
-            noValueFound: '[No ${0} found]',
+            noValueFound: '[no ${0} found]',
             reportError: 'There was an error generating the report!'
         },
         urls: {
