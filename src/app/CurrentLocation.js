@@ -86,7 +86,7 @@ define([
             //      FindAddress successfully found a point
             // {location: {x: ..., y: ...}}
             console.log('app/CurrentLocation:onFindAddress', arguments);
-        
+
             this.onMapClick(data[0].location);
         },
         toggleLoader: function (show) {
@@ -94,7 +94,7 @@ define([
             //      description
             // show: Boolean
             console.log('app/CurrentLocation:toggleLoader', arguments);
-        
+
             var that = this;
             var showLoader = function () {
                 domClass.remove(that.loader, 'hidden');
@@ -122,7 +122,7 @@ define([
             console.log('app/CurrentLocation:onMapClick', arguments);
 
             this.toggleLoader(true);
-        
+
             if (!this.webAPI) {
                 this.webAPI = new WebAPI({apiKey: config.apiKey});
             }
@@ -163,10 +163,15 @@ define([
             // field: String
             // results: {attributes: ...}[]
             console.log('app/CurrentLocation:onSearchReturn', arguments);
-        
-            var value = (results.length) ? results[0].attributes[field] : 
-                entities.encode(dojoString.substitute(config.messages.noValueFound, [type]));
-            this.set(type, Formatting.titlize(value));
+
+            var value;
+            if (results.length) {
+                value = Formatting.titlize(results[0].attributes[field]);
+            } else {
+                value = entities.encode(dojoString.substitute(config.messages.noValueFound, [type]));
+            }
+
+            this.set(type, value);
             this.refreshReportLink();
         },
         onSearchError: function (type) {
@@ -174,7 +179,7 @@ define([
             //      description
             // type: String
             console.log('app/CurrentLocation:onSearchError', arguments);
-        
+
             var value = entities.encode(dojoString.substitute(config.messages.noValueFound, [type]));
             this.set(type, value);
             this.refreshReportLink();
@@ -184,8 +189,8 @@ define([
             //      description
             // result: Object {address: {street: ...}}
             console.log('app/CurrentLocation:onReverseGeocodeComplete', arguments);
-        
-            var value = (result.address) ? result.address.street : 
+
+            var value = (result.address) ? result.address.street :
                 entities.encode(dojoString.substitute(config.messages.noValueFound, ['address']));
             this.set('address', value);
             this.refreshReportLink();
@@ -194,7 +199,7 @@ define([
             // summary:
             //      reverse geocode returned an error
             console.log('app/CurrentLocation:onReverseGeocodeError', arguments);
-        
+
             var value = entities.encode(dojoString.substitute(config.messages.noValueFound, ['address']));
             this.set('address', value);
             this.refreshReportLink();
@@ -203,7 +208,7 @@ define([
             // summary:
             //      description
             console.log('app/CurrentLocation:refreshReportLink', arguments);
-        
+
             var reportProps = {
                 x: this.lastPoint.x,
                 y: this.lastPoint.y,
