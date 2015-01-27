@@ -34,4 +34,4 @@ STATE_PARKS = BBECON_GDB + r'\StParksAndMonuments_DriveTime'
 SKI = BBECON_GDB + r'\SkiArea_DriveTime'
 GOLF = BBECON_GDB + r'\GolfCourses_DriveTime'
 
-FIBER_TERMS = {1: 'Short term', 9: 'Custom order'}
+FIBER_TERMS = {1: 'Short term (1-3 month avg)', 9: 'Custom order (3-9 month avg)'}

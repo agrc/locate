@@ -28,7 +28,7 @@ class GenerateReportTests(unittest.TestCase):
 
         self.assertEqual(len(result), 2)
         item = result[1]
-        self.assertEqual(item[fieldnames.ServiceClass], 'Short term')
+        self.assertEqual(item[fieldnames.ServiceClass], 'Short term (1-3 month avg)')
         self.assertEqual(item[fieldnames.Colloquial], 'Syringa Networks')
         self.assertEqual(item[fieldnames.URL], 'http://www.syringanetworks.net/')
 
