@@ -74,6 +74,8 @@ define([
             // set version number
             // this.version.innerHTML = config.version;
 
+            $('.expertLogo').tooltip();
+
             this.childWidgets.push(
                 new CurrentLocation({}, this.currentLocationDiv),
                 new Layers({}, this.layersDiv)
@@ -100,7 +102,7 @@ define([
             // summary:
             //      description
             console.log('app/App:showReport', arguments);
-        
+
             mapController.map.setVisibility(false);
             domClass.add(this.mapContainer, 'hidden');
             domClass.remove(this.reportContainer, 'hidden');
@@ -109,7 +111,7 @@ define([
             // summary:
             //      description
             console.log('app/App:hideReport', arguments);
-        
+
             domClass.add(this.reportContainer, 'hidden');
             domClass.remove(this.mapContainer, 'hidden');
             mapController.map.setVisibility(true);
@@ -133,7 +135,7 @@ define([
             // summary:
             //      description
             console.log('app/App:destroy', arguments);
-        
+
             mapController.destroy();
             this.inherited(arguments);
         }

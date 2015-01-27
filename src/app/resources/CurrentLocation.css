@@ -70,4 +70,7 @@
         float: none;
         margin: 0;
     }
+    .current-location {
+        height: 136px;
+    }
 }

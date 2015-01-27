@@ -127,8 +127,7 @@ define([
                     title: this.legend,
                     html: true,
                     placement: 'right',
-                    container: 'body',
-                    delay: 250
+                    delay: 350
                 });
             }
         },
