@@ -79,6 +79,7 @@ define([
 
         // checkboxType: String
         //      if 'radio' then converts to radio button
+        //      if 'disabled' converts to disabled checkbox
         checkboxType: null,
 
 
@@ -95,6 +96,8 @@ define([
                 this.checkbox.name = this.groupName;
                 domClass.remove(this.domNode, 'checkbox');
                 domClass.add(this.domNode, 'radio');
+            } else if (this.checkboxType === 'disabled'){
+                this.checkbox.disabled = true;
             }
 
             if (this.onByDefault) {
