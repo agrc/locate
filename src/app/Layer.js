@@ -126,7 +126,7 @@ define([
                 $(this.tooltip).tooltip({
                     title: this.legend,
                     html: true,
-                    placement: 'right',
+                    placement: 'bottom',
                     delay: 350
                 });
             }

@@ -117,22 +117,29 @@ define([
                 name: 'Natural Gas Service Areas',
                 type: 'dynamic',
                 layerId: '12',
-                checkboxType: 'radio'
+                checkboxType: 'radio',
+                legend: 'Approximate service area of the natural gas distribution network in Utah'
             }, {
                 name: 'Electric Utility Territory',
                 type: 'dynamic',
                 layerId: '14',
-                checkboxType: 'radio'
+                checkboxType: 'radio',
+                legend: 'Jurisdictional boundaries for Utah\'s electricity providers. ' +
+                    'The location report provides the district name.'
             }, {
                 name: 'Local Exchange Areas',
                 type: 'dynamic',
                 layerId: '15',
-                checkboxType: 'radio'
+                checkboxType: 'radio',
+                legend: 'Territory boundaries for Utah\'s incumbent telephone providers. ' +
+                    'The location report shows the provider name.'
             }, {
                 name: 'Culinary Water',
                 type: 'dynamic',
                 layerId: '13',
-                checkboxType: 'radio'
+                checkboxType: 'radio',
+                legend: 'Jurisdictional boundaries for Utah\'s culinary water districts. ' +
+                    'The location report provides the district name.'
             }, {
                 name: 'None',
                 type: 'dynamic',
