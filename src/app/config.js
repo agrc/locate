@@ -133,6 +133,12 @@ define([
                 type: 'dynamic',
                 layerId: '13',
                 checkboxType: 'radio'
+            }, {
+                name: 'None',
+                type: 'dynamic',
+                layerId: '999', // so that no layers are shown
+                checkboxType: 'radio',
+                onByDefault: true
             }]
         }, {
             groupClass: 'transportation',
