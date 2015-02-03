@@ -12,13 +12,13 @@
     "stubmodule": "0.6.1",
     "util": "dojo-util#~1.10",
     "jasmine-jsreporter": "~0.1.2",
-    "xstyle": "c65b384d294230544d5ffc8e1e9d8bf6d010c489",
+    "xstyle": "8a80773bed850a3230451c6a38c1386e180b6070",
     "matchers": "agrc-jasmine-matchers#~0.1.0",
     "awesome-bootstrap-checkbox": "~0.2.3",
     "seiyria-bootstrap-slider": "~4.3.0",
     "handlebars": "~2.0.0"
   },
   "resolutions": {
-    "xstyle": "c65b384d294230544d5ffc8e1e9d8bf6d010c489"
+    "xstyle": "8a80773bed850a3230451c6a38c1386e180b6070"
   }
 }

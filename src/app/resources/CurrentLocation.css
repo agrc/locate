@@ -60,7 +60,7 @@
         float: left;
         margin-left: 1em;
     }
-    .current-location ul li:first-child {
+    .current-location ul li[data-dojo-attach-point='addressNode'] {
         margin-left: 0;
     }
 }
