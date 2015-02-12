@@ -4,12 +4,12 @@ import os
 
 import arcpy
 
+from GPTask import generate_report
 from settings import fieldnames
 from settings import *
 
 
 sys.path.append(os.getcwd() + '../')
-import generate_report
 
 
 def make_point(x, y):

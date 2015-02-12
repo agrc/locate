@@ -1,0 +1,4 @@
+from prod import *
+
+SDE = '<name of sde connection in database_connections folder>'
+FGDB = r'<path to BBEcon.gdb>'

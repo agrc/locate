@@ -1,0 +1,1 @@
+SEND_EMAILS = True

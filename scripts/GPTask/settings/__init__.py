@@ -1,4 +1,4 @@
-from settings.dev import *
+from GPTask.settings.dev import *
 
 FIBER_GDB = DATA_PATH + r'\FiberVerification.gdb'
 HEXAGONS = FIBER_GDB + r'\Hexagons'

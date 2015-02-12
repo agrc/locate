@@ -3,9 +3,8 @@ import json
 
 from arcpy import PointGeometry, Point, SpatialReference, MakeFeatureLayer_management, SelectLayerByLocation_management, GetCount_management, da, Buffer_analysis, GetParameterAsText, SetParameterAsText
 
+from GPTask.settings import fieldnames
 from settings import *
-from settings import fieldnames
-
 
 
 def get_intersect_layer(point, feature_class, where='1 = 1'):
