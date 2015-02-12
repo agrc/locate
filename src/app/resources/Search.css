@@ -10,32 +10,3 @@
 .search .find-address .btn-default {
     width: 100%;
 }
-.search .magic-zoom {
-    position: relative;
-    width: auto;
-    height: auto;
-    padding: 0;
-}
-.search .magic-zoom .input-group {
-    width: 100%;
-}
-.search .magic-zoom .input-group-addon {
-    background-color: #0c5d63;
-    color: #fff;
-    border-color: #09484c;
-}
-.search .magic-zoom .matches-table {
-    top: 35px;
-    left: 0;
-    right: 38px;
-    width: auto;
-    color: #555555;
-}
-.search .magic-zoom .highlighted-row:first-child {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-}
-.search .magic-zoom .highlighted-row:nth-last-child(2) {
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-}

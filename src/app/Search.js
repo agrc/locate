@@ -1,8 +1,6 @@
 define([
-    'agrc/widgets/locate/FindAddress',
-    'agrc/widgets/locate/MagicZoom',
-
     'app/config',
+    'app/FindAddress',
     'app/mapController',
 
     'dijit/_TemplatedMixin',
@@ -10,17 +8,12 @@ define([
 
     'dojo/_base/declare',
     'dojo/aspect',
-    'dojo/dom-class',
     'dojo/text!app/templates/Search.html',
-
-    'put-selector/put',
 
     'xstyle/css!app/resources/Search.css'
 ], function(
-    FindAddress,
-    MagicZoom,
-
     config,
+    FindAddress,
     mapController,
 
     _TemplatedMixin,
@@ -28,10 +21,7 @@ define([
 
     declare,
     aspect,
-    domClass,
-    template,
-
-    put
+    template
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
         // description:
@@ -59,28 +49,6 @@ define([
                 }, that.findAddressDiv);
                 findAddress.btnGeocode.innerHTML = 'Find Address';
                 findAddress.startup();
-
-                var magicZoom = new MagicZoom({
-                    map: mapController.map,
-                    // promptMessage: '',
-                    mapServiceURL: config.urls.mapService,
-                    searchLayerIndex: config.zoomLocationsIndex,
-                    searchField: config.zoomLocationsField,
-                    placeHolder: 'search by place name...',
-                    maxResultsToDisplay: 10
-                }, that.magicZoomDiv);
-                magicZoom.startup();
-                magicZoom.spinnerDiv.innerHTML = '';
-                var spinner = put(magicZoom.spinnerDiv, 'span.glyphicon.glyphicon-refresh.hidden');
-                magicZoom.showSpinner = function () {
-                    domClass.add(this.searchIconSpan, 'hidden');
-                    domClass.remove(spinner, 'hidden');
-                };
-                magicZoom.hideSpinner = function () {
-                    clearTimeout(this._spinTimer);
-                    domClass.remove(this.searchIconSpan, 'hidden');
-                    domClass.add(spinner, 'hidden');
-                };
             });
 
             this.inherited(arguments);
