@@ -9,8 +9,6 @@ from os import getcwd
 from agrc import logging
 from agrc import messaging
 
-arcpy.env.workspace = '{}\database_connections\{}'.format(getcwd(), SDE)
-
 
 class Runner():
 
@@ -39,28 +37,47 @@ class Runner():
             
     def run(self):
         for n in [1, 9]:
-            self.dissolve(n)
+            self.dissolve_fiber(n)
+
+        railroads = '{}\Railroads'.format(FGDB)
+        arcpy.env.workspace = '{}\database_connections\{}'.format(getcwd(), SGID)
+        self.dissolve(railroads, "TYPE = 'Heavy'", 'SGID10.TRANSPORTATION.Railroads')
+
+        self.logger.logMsg('chop up railroads by county')
+        railroads_dissolved = '{}_dissolved'.format(railroads)
+        if arcpy.Exists(railroads_dissolved):
+            arcpy.Delete_management(railroads_dissolved)
+        arcpy.Identity_analysis(railroads, 'SGID10.BOUNDARIES.Counties', railroads_dissolved)
+        arcpy.Delete_management(railroads)
     
         self.logger.logMsg('done')
-            
-    def dissolve(self, num):
-        self.logger.logMsg('{} month...'.format(num))
 
-        query = 'HexID IN (SELECT HexID FROM ProviderServiceAreas WHERE ServiceClass = {})'.format(num)
-        fc = '{}\Fiber_Dissolved_{}Month'.format(FGDB, num)
-
+    def dissolve(self, fc, query, name):
         if arcpy.Exists(fc):
             self.logger.logMsg('deleting previous feature class')
             arcpy.Delete_management(fc)
 
         self.logger.logMsg('making feature layer')
-        lyr = arcpy.MakeFeatureLayer_management('Hexagons', 'HexLayer', query)
+        lyr = arcpy.MakeFeatureLayer_management(name, 'DissolveLayer', query)
 
         self.logger.logMsg('dissolving')
         arcpy.Dissolve_management(lyr, fc)
 
+        self.logger.logMsg('simplifing')
+        arcpy.Generalize_edit(fc, 100)
+
         self.logger.logMsg('deleting layer')
         arcpy.Delete_management(lyr)
+
+    def dissolve_fiber(self, num):
+        self.logger.logMsg('{} month...'.format(num))
+
+        arcpy.env.workspace = '{}\database_connections\{}'.format(getcwd(), SDE)
+
+        query = 'HexID IN (SELECT HexID FROM ProviderServiceAreas WHERE ServiceClass = {})'.format(num)
+        fc = '{}\Fiber_Dissolved_{}Month'.format(FGDB, num)
+
+        self.dissolve(fc, query, 'Hexagons')
 
 if __name__ == "__main__":
     Runner().run_with_try_catch()

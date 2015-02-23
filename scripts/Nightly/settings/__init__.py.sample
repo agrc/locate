@@ -1,4 +1,5 @@
 from prod import *
 
-SDE = '<name of sde connection in database_connections folder>'
+SDE = '<name of sde connection to fiber in database_connections folder>'
 FGDB = r'<path to BBEcon.gdb>'
+SGID = '<name of sde connection to SGID10>'
