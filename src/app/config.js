@@ -22,8 +22,8 @@ define([
     var apiKey;
     var domain;
     if (has('agrc-build') === 'prod') {
-        // locate.utah.gov
-        apiKey = 'AGRC-F5536C1F964431';
+        // *.utah.gov
+        apiKey = 'AGRC-D3CDE591211690';
         domain = 'http://mapserv.utah.gov/';
     } else if (has('agrc-build') === 'stage') {
         // test.mapserv.utah.gov
