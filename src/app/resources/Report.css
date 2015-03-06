@@ -22,16 +22,39 @@
     visibility: hidden;
     display: none;
 }
-/* Report Tables */
 
+/* Report Tables */
+.report .table {
+    border-bottom: 1px solid #dddddd;
+}
+.report .table tr td:first-child,
+.report .table tr th:first-child {
+    padding-left: 15px;
+}
+.report .table tr td:last-child,
+.report .table tr th:last-child {
+    padding-right: 15px;
+}
+.report .provider {
+    width: 250px;
+}
+.report #broadband .contact-fld {
+    width: 200px;
+}
 .report h3 {
     text-transform: uppercase;
     margin: 0;
     padding: 15px 0 15px 55px;
     color: #fff;
 }
+.report a[data-toggle='collapse']:hover,
+.report a[data-toggle='collapse']:active, 
 .report [data-dojo-attach-point='reportContainer']>a {
     color: #fff;
+}
+.report table.half th,
+.report table.half td {
+    width: 50%;
 }
 .report h4 {
     padding: 5px 15px;
