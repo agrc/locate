@@ -55,7 +55,7 @@ body {
     width: 100%;
 }
 .site {
-    max-width: 1200px;
+    /*max-width: 1200px;*/
     margin: 0 auto;
     position: relative;
     -moz-box-sizing: border-box;
@@ -123,6 +123,7 @@ body {
     float: left;
     background-size: contain;
     margin-top: 20px;
+    margin-left: 20px;
 }
 #edcLogo {
     background:url(img/edc.png) no-repeat top left;
