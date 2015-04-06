@@ -119,11 +119,11 @@ body {
     background: transparent url(img/broadband-logo.png) no-repeat top left;
     display: block;
     width: 500px;
-    height: 70px;
+    height: 105px;
     float: left;
     background-size: contain;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 8px;
+    margin-left: 8px;
 }
 #edcLogo {
     background:url(img/edc.png) no-repeat top left;
