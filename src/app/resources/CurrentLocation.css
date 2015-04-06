@@ -40,6 +40,7 @@
         width: 100%;
         height: 96px;
         clear: both;
+        margin-top: 9px;
     }
     .current-location h4 {
         padding-bottom: 0;
@@ -65,12 +66,13 @@
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 767px) {
     .current-location ul li {
         float: none;
         margin: 0;
     }
     .current-location {
         height: 136px;
+        margin-top: 0;
     }
 }

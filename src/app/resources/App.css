@@ -365,6 +365,9 @@ h4.demographics {
 /* == iPad/iPhone [portrait + landscape] == */
 
 @media only screen and (max-width: 1180px) {
+    .app .site-full.clearfix.center {
+        top: 217px;
+    }
     .col20 {
         width: 100%;
         display: block;
@@ -390,29 +393,29 @@ h4.demographics {
     #content {
         background-color: #FFF;
     }
-    .app .map .selectorMain,
-    .app .map .esriSimpleSlider {
-        top: 80px;
-    }
     #header-container .contact {
-        display: none;
-        visibility: hidden;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-right: 0;
     }
-    #footer-wrapper .contact {
-        visibility: visible !important;
-        display: block !important;
-        width: 100%;
-        height: 72px;
+    .app .site-full.clearfix.center {
+        bottom: 129px;
     }
 }
-@media only screen and (max-width: 600px) {
-    /* Style adjustments for mobile screens (600px or lower) */
-    /* Add other sizes to meet your needs */
+@media only screen and (max-width: 767px) {
+    .app .site-full.clearfix.center {
+        top: 176px;
+        bottom: 201px;
+    }
     .map .spinner {
         visibility: hidden;
         display: none;
     }
-
+    .app .map {
+        display: none;
+        visibility: hidden;
+    }
     #header-container {
         margin-top: 0;
     }
@@ -436,6 +439,16 @@ h4.demographics {
     .col {
         width: 100%;
         display: block;
+    }
+    #header-container .contact {
+        visibility: hidden !important;
+        display: none !important;
+    }
+    #footer-wrapper .contact {
+        visibility: visible !important;
+        display: block !important;
+        width: 100%;
+        height: 72px;
     }
     #footer br {
         display: none;
@@ -473,8 +486,16 @@ h4.demographics {
         text-decoration: none;
         font-size: .9em;
     }
-    .app .map {
+}
+@media only screen and (max-width: 575px) {
+    #edcLogo, #goedLogo {
         display: none;
         visibility: hidden;
+    }
+    #footer-wrapper #footer {
+        font-size: .7em;
+    }
+    .app .site-full.clearfix.center {
+        bottom: 110px;
     }
 }
