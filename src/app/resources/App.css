@@ -168,6 +168,10 @@ body {
     position: relative;
     margin-right: 3px;
 }
+.contact .tooltip-inner {
+    width: 310px;
+    max-width: none;
+}
 
 /* Spinner */
 .glyphicon-refresh {
