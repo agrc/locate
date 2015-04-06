@@ -107,7 +107,7 @@ define([
             if (this.marker) {
                 domConstruct.create('img', {
                     src: 'app/resources/img/icons/' + this.marker
-                }, this.label);
+                }, this.label, 'after');
             }
 
             var that = this;

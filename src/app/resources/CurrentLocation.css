@@ -2,8 +2,8 @@
     width: 320px;
     height: 122px;
     padding: 10px;
+    float: right;
 }
-
 .current-location h4 {
     color: #fff;
     padding: 0 0 15px 0;
