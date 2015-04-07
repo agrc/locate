@@ -1,5 +1,4 @@
 define([
-    'app/config',
     'app/Layer',
     'app/Slider',
 
@@ -9,11 +8,9 @@ define([
     'dojo/_base/declare',
     'dojo/dom-construct',
     'dojo/text!app/templates/Group.html',
-    'dojo/topic',
 
     'xstyle/css!app/resources/Group.css'
 ], function(
-    config,
     Layer,
     Slider,
 
@@ -22,8 +19,7 @@ define([
 
     declare,
     domConstruct,
-    template,
-    topic
+    template
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
         // description:
@@ -61,19 +57,6 @@ define([
             console.log('app.Group::postCreate', arguments);
 
             var that = this;
-            $(this.layersContainer).on('hidden.bs.collapse', function () {
-                topic.publish(config.topics.layers.resize);
-                that.layerWidgets.forEach(function (l) {
-                    l.toggleLayer(false);
-                });
-            }); 
-            $(this.layersContainer).on('shown.bs.collapse', function () {
-                topic.publish(config.topics.layers.resize);
-                that.layerWidgets.forEach(function (l) {
-                    l.activate();
-                });
-            });
-
             this.layerWidgets = [];
             this.layers.forEach(function (l) {
                 l.groupName = that.name;
@@ -81,6 +64,7 @@ define([
                     new Layer(l, domConstruct.create('div', null, that.layersContainer))
                 );
             });
+            this.own(this.layerWidgets);
 
             var slider = new Slider({groupName: this.name});
             slider.startup();
@@ -111,6 +95,15 @@ define([
             });
 
             this.inherited(arguments);
+        },
+        startup: function () {
+            // summary:
+            //      description
+            console.log('app/Group:startup', arguments);
+        
+            this.layerWidgets.forEach(function (w) {
+                w.startup();
+            });
         }
     });
 });

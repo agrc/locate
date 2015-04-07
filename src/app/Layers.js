@@ -32,10 +32,13 @@ define([
         //      
 
         templateString: template,
-        baseClass: 'layers',
+        baseClass: 'layers hide-on-small-screen',
 
         // featureLayers: Object
         featureLayers: null,
+
+        // childWidgets: _WidgetBase[]
+        childWidgets: null,
 
         // Properties to be sent into constructor
 
@@ -45,6 +48,7 @@ define([
             console.log('app/Layers:constructor', arguments);
         
             this.featureLayers = {};
+            this.childWidgets = [];
         },
         postCreate: function() {
             // summary:
@@ -59,11 +63,22 @@ define([
 
             var that = this;
             config.groups.forEach(function (g) {
-                that.own(new Group(g, domConstruct.create('div', null, that.groupsContainer)));
+                that.childWidgets.push(new Group(g, domConstruct.create('div', null, that.groupsContainer)));
             });
+            this.own(this.childWidgets);
 
             this.groupsContainer.children[0].children[0].click();
 
+            this.inherited(arguments);
+        },
+        startup: function () {
+            // summary:
+            //      description
+            console.log('app/Layers:startup', arguments);
+        
+            this.childWidgets.forEach(function (w) {
+                w.startup();
+            });
             this.inherited(arguments);
         }
     });

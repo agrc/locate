@@ -1,13 +1,4 @@
 {
-	"build_systems":
-	[
-		{
-			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
-			"name": "Anaconda Python Builder",
-			"selector": "source.python",
-			"shell_cmd": "python -u \"$file\""
-		}
-	],
 	"folders":
 	[
 		{
@@ -25,12 +16,7 @@
 				"src/dojox",
 				"src/util"
 			],
-			"follow_symlinks": true,
-			"path": "/"
-		},
-		{
-			"follow_symlinks": true,
-			"path": "/Users/stdavis/Documents/Projects/working/GOED Broadband"
+			"path": "./"
 		}
 	],
 	"settings":

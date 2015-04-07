@@ -100,14 +100,10 @@ define([
                 this.checkbox.disabled = true;
             }
 
-            if (this.onByDefault) {
-                this.checkbox.checked = true;
-            }
-
             if (this.marker) {
                 domConstruct.create('img', {
                     src: 'app/resources/img/icons/' + this.marker
-                }, this.label);
+                }, this.label, 'after');
             }
 
             var that = this;
@@ -131,14 +127,17 @@ define([
                 });
             }
         },
-        activate: function () {
+        startup: function () {
             // summary:
-            //      shows the layer if the checkbox is selected
-            console.log('app/Layer:activate', arguments);
-
-            if (this.checkbox.checked) {
+            //      description
+            console.log('app/Layer:startup', arguments);
+        
+            if (this.onByDefault) {
+                this.checkbox.checked = true;
                 this.toggleLayer(true);
             }
+
+            this.inherited(arguments);
         },
         toggleLayer: function (show) {
             // summary:

@@ -45,23 +45,6 @@ require([
                 expect(widget).toEqual(jasmine.any(WidgetUnderTest));
             });
         });
-        describe('activate', function () {
-            it('calls toggle with appropriate arguments', function () {
-                spyOn(widget, 'toggleLayer');
-
-                widget.checkbox.checked = true;
-
-                widget.activate();
-
-                expect(widget.toggleLayer).toHaveBeenCalledWith(true);
-
-                widget.checkbox.checked = false;
-
-                widget.activate();
-
-                expect(widget.toggleLayer.calls.count()).toBe(1);
-            });
-        });
         describe('toggleLayer', function () {
             it('creates a new feature layer', function (done) {
                 var spy = jasmine.createSpy('FeatureLayer').and.returnValue({

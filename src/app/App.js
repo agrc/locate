@@ -78,7 +78,7 @@ define([
 
             this.childWidgets.push(
                 new CurrentLocation({}, this.currentLocationDiv),
-                new Layers({}, this.layersDiv)
+                this.layers = new Layers({}, this.layersDiv)
             );
 
             // hack to wire together the commuter rail layers since
@@ -122,12 +122,11 @@ define([
             console.log('app.App::startup', arguments);
 
             var that = this;
+            mapController.initMap(this.mapDiv);
             array.forEach(this.childWidgets, function (widget) {
                 that.own(widget);
                 widget.startup();
             });
-
-            mapController.initMap(this.mapDiv);
 
             this.inherited(arguments);
         },
@@ -138,6 +137,13 @@ define([
 
             mapController.destroy();
             this.inherited(arguments);
+        },
+        onHamburgerClick: function () {
+            // summary:
+            //      description
+            console.log('app/App:onHamburgerClick', arguments);
+        
+            domClass.toggle(this.layers.domNode, 'hide-on-small-screen');
         }
     });
 });
