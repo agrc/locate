@@ -65,9 +65,6 @@ define([
             domStyle.set(mapDiv, 'height', 'auto');
             this.map.resize();
 
-            topic.subscribe(config.topics.layers.resize,
-                lang.hitch(this.map, 'resize'));
-
             topic.subscribe(config.topics.addLayer,
                 lang.hitch(this, 'addLayer'));
 

@@ -122,12 +122,11 @@ define([
             console.log('app.App::startup', arguments);
 
             var that = this;
+            mapController.initMap(this.mapDiv);
             array.forEach(this.childWidgets, function (widget) {
                 that.own(widget);
                 widget.startup();
             });
-
-            mapController.initMap(this.mapDiv);
 
             this.inherited(arguments);
         },

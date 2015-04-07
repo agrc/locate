@@ -55,9 +55,6 @@ define([
             center: [425132, 4512466]
         },
         topics: {
-            layers: {
-                resize: 'layers.resize'
-            },
             addLayer: 'addLayer',
             layer: {
                 toggleDynamicLayer: 'layer.toggleDynamicLayer'
