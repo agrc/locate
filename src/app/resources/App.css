@@ -60,6 +60,9 @@ a, a:visited {
     padding: 10px;
     color: #fff;
 }
+.layers {
+    z-index: 31;
+}
 .site-full.clearfix {
     position: relative;
 }
@@ -408,14 +411,6 @@ h4.demographics {
         top: 176px;
         bottom: 201px;
     }
-    .map .spinner {
-        visibility: hidden;
-        display: none;
-    }
-    .app .map {
-        display: none;
-        visibility: hidden;
-    }
     #header-container {
         margin-top: 0;
     }
@@ -466,7 +461,7 @@ h4.demographics {
         position: relative;
     }
     #mobile-mainmenu-button {
-        background: transparent url(img/icons/mobilemenu.svg) top left no-repeat;
+        background: transparent url(img/icon-mobilemenu.png) top left no-repeat;
         float: left;
         height: 40px;
         width: 24px;
@@ -486,9 +481,15 @@ h4.demographics {
         text-decoration: none;
         font-size: .9em;
     }
+    .layers.hide-on-small-screen {
+        visibility: hidden;
+        display: none;
+    }
 }
 @media only screen and (max-width: 575px) {
-    #edcLogo, #goedLogo {
+    #edcLogo,
+    #goedLogo,
+    .app .selectorMain {
         display: none;
         visibility: hidden;
     }
@@ -496,6 +497,9 @@ h4.demographics {
         font-size: .7em;
     }
     .app .site-full.clearfix.center {
-        bottom: 110px;
+        bottom: 109px;
+    }
+    .app .scroller {
+        margin: 0;
     }
 }

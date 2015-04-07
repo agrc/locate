@@ -32,7 +32,7 @@ define([
         //      
 
         templateString: template,
-        baseClass: 'layers',
+        baseClass: 'layers hide-on-small-screen',
 
         // featureLayers: Object
         featureLayers: null,

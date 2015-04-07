@@ -25,12 +25,7 @@
 				"src/dojox",
 				"src/util"
 			],
-			"follow_symlinks": true,
-			"path": "/"
-		},
-		{
-			"follow_symlinks": true,
-			"path": "/Users/stdavis/Documents/Projects/working/GOED Broadband"
+			"path": ""
 		}
 	],
 	"settings":
