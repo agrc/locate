@@ -47,8 +47,7 @@ define([
                 center: new Point(config.initialExtent.center, {
                     wkid: 26912
                 }),
-                scale: config.initialExtent.scale,
-                smartNavigation: false
+                scale: config.initialExtent.scale
             });
 
             this.childWidgets.push(
@@ -82,7 +81,6 @@ define([
             this.map.on('load', function () {
                 topic.subscribe('agrc.widgets.locate.FindAddress.OnFindStart',
                     lang.hitch(that.map.graphics, 'clear'));
-                that.map.disableScrollWheelZoom();
             });
 
             this.map.on('click', lang.hitch(this, 'onMapClick'));
