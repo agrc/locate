@@ -105,7 +105,7 @@ define([
                 name: 'All Non-Mobile Broadband (Includes Fiber, DSL, Cable, and Fixed Wireless)',
                 type: 'dynamic',
                 layerId: '2, 3, 4',
-                onByDefault: false
+                onByDefault: true
             }]
         }, {
             groupClass: 'utilities',
