@@ -47,7 +47,8 @@ define([
                 center: new Point(config.initialExtent.center, {
                     wkid: 26912
                 }),
-                scale: config.initialExtent.scale
+                scale: config.initialExtent.scale,
+                router: true
             });
 
             this.childWidgets.push(
