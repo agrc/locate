@@ -1,6 +1,5 @@
 """
-Dissolved fiber data into one month and nine month features for
-better drawing performance
+Dissolved data for better drawing performance
 """
 
 import arcpy

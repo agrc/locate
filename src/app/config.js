@@ -154,18 +154,34 @@ define([
                 defaultOpacity: 1,
                 color: '#E09525'
             }, {
-                // this is hidden and linked to the layer above
+                name: 'Commuter Rail',
+                type: 'feature',
+                layerId: '17',
+                marker: 'lightrail.svg'
+            }, {
+                // this is hidden and linked to Commuter rail above
                 // see app/App:postCreate
-                name: 'commuter rail (hidden)',
+                name: 'lightrail rail (hidden)',
                 type: 'line',
                 layerId: '18',
                 defaultOpacity: 1,
                 hidden: true,
                 color: '#AD6F29'
             }, {
-                name: 'Light/Commuter Rail',
+                // this is hidden and linked to Commuter rail above
+                // see app/App:postCreate
+                name: 'commuter rail (hidden)',
+                type: 'line',
+                layerId: '24',
+                defaultOpacity: 1,
+                hidden: true,
+                color: '#AD6F29'
+            }, {
+                // this is hidden and linked to Commuter rail above
+                // see app/App:postCreate
+                name: 'commuter rail stations (hidden)',
                 type: 'feature',
-                layerId: '17',
+                layerId: '23',
                 marker: 'lightrail.svg'
             }, {
                 name: 'Airports',

@@ -83,16 +83,27 @@ define([
 
             // hack to wire together the commuter rail layers since
             // they don't support feature and dynamic in the same layer
+            // lightrail rail (hidden)
             var syncCheckbox = function (hChbx, evt) {
                 hChbx.checked = evt.srcElement.checked;
                 on.emit(hChbx, 'change', {bubbles: true});
             };
             var hiddenCheckbox = query('.layer input[value="18"]')[0];
+            // Commuter Rail
             var lrCheckbox = query('.layer input[value="17"]')[0];
+            on(lrCheckbox, 'change', lang.partial(syncCheckbox, hiddenCheckbox));
+
+            // commuter rail (hidden)
+            hiddenCheckbox = query('.layer input[value="24"]')[0];
+            on(lrCheckbox, 'change', lang.partial(syncCheckbox, hiddenCheckbox));
+
+            // commuter rail stations (hidden)
+            hiddenCheckbox = query('.layer input[value="23"]')[0];
             on(lrCheckbox, 'change', lang.partial(syncCheckbox, hiddenCheckbox));
 
             // same thing for airports layers
             hiddenCheckbox = query('.layer input[value="21"]')[0];
+            // Airports
             lrCheckbox = query('.layer input[value="5"]')[0];
             on(lrCheckbox, 'change', lang.partial(syncCheckbox, hiddenCheckbox));
 
