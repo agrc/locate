@@ -63,9 +63,10 @@ define([
 
             var that = this;
             config.groups.forEach(function (g) {
-                that.childWidgets.push(new Group(g, domConstruct.create('div', null, that.groupsContainer)));
+                var grp = new Group(g, domConstruct.create('div', null, that.groupsContainer));
+                that.childWidgets.push(grp);
+                that.own(grp);
             });
-            this.own(this.childWidgets);
 
             this.groupsContainer.children[0].children[0].click();
 

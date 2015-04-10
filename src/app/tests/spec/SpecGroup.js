@@ -16,7 +16,11 @@ require([
 
         beforeEach(function() {
             widget = new WidgetUnderTest({
-                layers: []
+                layers: [{
+                    name: 'blah',
+                    type: 'dynamic',
+                    layerIds: [2,4]
+                }]
             }, domConstruct.create('div', null, document.body));
             widget.startup();
         });
