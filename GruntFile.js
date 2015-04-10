@@ -32,6 +32,7 @@ var browsers = [{
 }];
 
 module.exports = function(grunt) {
+    var path = require('path');
     var jsFiles = 'src/app/**/*.js',
         otherFiles = [
             'src/app/**/*.html',
@@ -102,6 +103,44 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        arcgis_press: {
+            options: {
+                server: {
+                    username: secrets.ags_username,
+                    password: secrets.ags_password
+                },
+                mapServerBasePath: path.join(process.cwd(), 'maps'),
+                services: {
+                    mapService: {
+                        type: 'MapServer',
+                        serviceName: 'MapService',
+                        resource: 'MapService.mxd',
+                        folder: 'BBEcon'
+                    }
+                }
+            },
+            dev: {
+                options: {
+                    server: {
+                        host: 'localhost'
+                    }
+                }
+            },
+            stage: {
+                options: {
+                    server: {
+                        host: secrets.stageHost
+                    }
+                }
+            },
+            prod: {
+                options: {
+                    server: {
+                        host: secrets.prodHost
+                    }
+                }
+            }
+        },
         bump: {
             options: {
                 files: bumpFiles,
