@@ -36,6 +36,11 @@
 
             'dojo/domReady!'
         ], function(templateTxt, reportTxt, handlebars) {
+            var re = /^https?:\/\/(.*?)(?:\/|$)/;
+            handlebars.registerHelper('link', function (url) {
+                var matches = re.exec(url);
+                return (matches && matches.length > 1) ? matches[1] : url;
+            });
             var temp = handlebars.compile(templateTxt);
             document.body.innerHTML = temp(JSON.parse(reportTxt));
         });

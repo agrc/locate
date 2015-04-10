@@ -81,6 +81,11 @@ define([
             query('a[data-toggle]').on('click', function (evt) {
                 evt.preventDefault();
             });
+            var re = /^https?:\/\/(.*?)(?:\/|$)/;
+            handlebars.registerHelper('link', function (url) {
+                var matches = re.exec(url);
+                return (matches && matches.length > 1) ? matches[1] : url;
+            });
             this.inherited(arguments);
         },
         generateReport: function (x, y) {
