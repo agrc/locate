@@ -41,6 +41,9 @@
 .report #broadband .contact-fld {
     width: 200px;
 }
+.report #broadband .service-class {
+    width: 175px;
+}
 .report h3 {
     text-transform: uppercase;
     margin: 0;
