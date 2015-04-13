@@ -3,6 +3,7 @@ define([
     'agrc/widgets/map/BaseMapSelector',
 
     'app/config',
+    'app/Router',
 
     'dojo/_base/lang',
     'dojo/dom-style',
@@ -16,6 +17,7 @@ define([
     BaseMapSelector,
 
     config,
+    Router,
 
     lang,
     domStyle,
@@ -79,6 +81,7 @@ define([
             this.map.on('load', function () {
                 topic.subscribe('agrc.widgets.locate.FindAddress.OnFindStart',
                     lang.hitch(that.map.graphics, 'clear'));
+                new Router();
             });
 
             this.map.on('click', lang.hitch(this, 'onMapClick'));
@@ -120,6 +123,11 @@ define([
                 return;
             } else {
                 dLayer = this.dLayers[groupName];
+                if (!dLayer.loaded) {
+                    dLayer.on('load', function () {
+                        that.toggleDynamicLayer(layerId, show, groupName);
+                    });
+                }
             }
 
             var toggleIds = layerId.split(',').map(function (idTxt) {
@@ -128,15 +136,23 @@ define([
             var layerIds;
 
             if (show) {
-                if (isRadio) {
+                if (isRadio || !dLayer.visibleLayers) {
                     layerIds = toggleIds;
                 } else {
-                    layerIds = toggleIds.concat(dLayer.visibleLayers);
+                    if (dLayer.visibleLayers.every(function (id) {
+                        return toggleIds.indexOf(id) === -1;
+                    })) {
+                        layerIds = toggleIds.concat(dLayer.visibleLayers);
+                    }
                 }
             } else {
-                layerIds = dLayer.visibleLayers.filter(function (id) {
-                    return toggleIds.indexOf(id) === -1;
-                });
+                if (dLayer.visibleLayers) {
+                    layerIds = dLayer.visibleLayers.filter(function (id) {
+                        return toggleIds.indexOf(id) === -1;
+                    });
+                } else {
+                    return;
+                }
             }
 
             dLayer.setVisibleLayers(layerIds);

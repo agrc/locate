@@ -107,9 +107,16 @@ define([
             }
 
             var that = this;
-            on(this.checkbox, 'change', function () {
-                that.toggleLayer(that.checkbox.checked);
-            });
+            this.own(
+                on(this.checkbox, 'change', function () {
+                    that.toggleLayer(that.checkbox.checked);
+                }),
+                topic.subscribe(config.topics.router.toggleLayers, function (lyrs) {
+                    var vis = lyrs.indexOf(that.layerId) !== -1;
+                    that.checkbox.checked = vis;
+                    that.toggleLayer(vis);
+                })
+            );
 
             this.inherited(arguments);
 
@@ -198,6 +205,8 @@ define([
                     this.defaultOpacity,
                     this.checkboxType === 'radio');
             }
+
+            topic.publish(config.topics.router.updateLayer, this.layerId, show);
         }
     });
 });

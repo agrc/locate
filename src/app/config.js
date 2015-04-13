@@ -62,7 +62,11 @@ define([
             slider: {
                 change: 'slider.change'
             },
-            mapClick: 'mapContoller.mapClick'
+            mapClick: 'mapContoller.mapClick',
+            router: {
+                toggleLayers: 'toggleLayers',
+                updateLayer: 'updateLayer'
+            }
         },
         messages: {
             noValueFound: '[no ${0} found]',
@@ -98,13 +102,13 @@ define([
             layers: [{
                 name: 'Fiber',
                 type: 'dynamic',
-                layerId: '0, 1',
+                layerId: '0,1',
                 onByDefault: true,
                 legend: fiberLegendTxt
             }, {
                 name: 'All Non-Mobile Broadband (Includes Fiber, DSL, Cable, and Fixed Wireless)',
                 type: 'dynamic',
-                layerId: '2, 3, 4',
+                layerId: '2,3,4',
                 onByDefault: true
             }]
         }, {
@@ -182,7 +186,8 @@ define([
                 name: 'commuter rail stations (hidden)',
                 type: 'feature',
                 layerId: '23',
-                marker: 'lightrail.svg'
+                marker: 'lightrail.svg',
+                hidden: true
             }, {
                 name: 'Airports',
                 type: 'feature',

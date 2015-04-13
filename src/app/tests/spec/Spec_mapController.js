@@ -27,7 +27,8 @@ require([
             beforeEach(function () {
                 lyr = {
                     visibleLayers: [],
-                    setVisibleLayers: jasmine.createSpy('setVisibleLayers')
+                    setVisibleLayers: jasmine.createSpy('setVisibleLayers'),
+                    on: function () {}
                 };
                 objectUnderTest.dLayers[groupName] = lyr;
             });
