@@ -85,7 +85,7 @@ define([
             // they don't support feature and dynamic in the same layer
             // lightrail rail (hidden)
             var syncCheckbox = function (hChbx, evt) {
-                hChbx.checked = evt.srcElement.checked;
+                hChbx.checked = evt.target.checked;
                 on.emit(hChbx, 'change', {bubbles: true});
             };
             var hiddenCheckbox = query('.layer input[value="18"]')[0];

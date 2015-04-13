@@ -62,7 +62,7 @@ define([
                 return node.value;
             });
 
-            hash(ioQuery.objectToQuery(urlObj));
+            hash(ioQuery.objectToQuery(urlObj), true);
         }
     });
 });
