@@ -13,6 +13,12 @@
     width: 100%;
     margin-bottom: 15px;
 }
+.report .hide {
+    opacity: 0;
+}
+.report td.header {
+    padding: 0 !important;
+}
 
 /* modify address css for report */
 .report .pull-left {
