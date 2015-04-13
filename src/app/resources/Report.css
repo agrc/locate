@@ -19,6 +19,9 @@
 .report td.header {
     padding: 0 !important;
 }
+.report #footer-wrapper {
+    position: static;
+}
 
 /* modify address css for report */
 .report .pull-left {
@@ -57,7 +60,7 @@
     color: #fff;
 }
 .report a[data-toggle='collapse']:hover,
-.report a[data-toggle='collapse']:active, 
+.report a[data-toggle='collapse']:active,
 .report [data-dojo-attach-point='reportContainer']>a {
     color: #fff;
 }
@@ -74,7 +77,7 @@
     color: #333;
 }
 @media print {
-    .report .btn, 
+    .report .btn,
     .current-location {
         visibility: hidden;
         display: none;
