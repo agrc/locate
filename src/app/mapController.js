@@ -5,6 +5,9 @@ define([
     'app/config',
     'app/Router',
 
+    'dijit/Destroyable',
+
+    'dojo/_base/declare',
     'dojo/_base/lang',
     'dojo/dom-style',
     'dojo/topic',
@@ -19,6 +22,9 @@ define([
     config,
     Router,
 
+    Destroyable,
+
+    declare,
     lang,
     domStyle,
     topic,
@@ -27,7 +33,7 @@ define([
     Graphic,
     ArcGISDynamicMapServiceLayer
 ) {
-    return {
+    var MC = declare([Destroyable], {
         // map: BaseMap
         map: null,
 
@@ -68,23 +74,21 @@ define([
             domStyle.set(mapDiv, 'height', 'auto');
             this.map.resize();
 
-            topic.subscribe(config.topics.addLayer,
-                lang.hitch(this, 'addLayer'));
-
-            topic.subscribe(config.topics.layer.toggleDynamicLayer,
-                lang.hitch(this, 'toggleDynamicLayer'));
-
-            topic.subscribe(config.topics.slider.change,
-                lang.hitch(this, 'onSliderChange'));
-
             var that = this;
-            this.map.on('load', function () {
-                topic.subscribe('agrc.widgets.locate.FindAddress.OnFindStart',
-                    lang.hitch(that.map.graphics, 'clear'));
-                new Router();
-            });
-
-            this.map.on('click', lang.hitch(this, 'onMapClick'));
+            this.own(
+                topic.subscribe(config.topics.addLayer,
+                    lang.hitch(this, 'addLayer')),
+                topic.subscribe(config.topics.layer.toggleDynamicLayer,
+                    lang.hitch(this, 'toggleDynamicLayer')),
+                topic.subscribe(config.topics.slider.change,
+                    lang.hitch(this, 'onSliderChange')),
+                this.map.on('load', function () {
+                    topic.subscribe('agrc.widgets.locate.FindAddress.OnFindStart',
+                        lang.hitch(that.map.graphics, 'clear'));
+                    new Router();
+                }),
+                this.map.on('click', lang.hitch(this, 'onMapClick'))
+            );
         },
         addLayer: function (lyr, bottom) {
             // summary:
@@ -185,5 +189,6 @@ define([
                 w.destroy();
             });
         }
-    };
+    });
+    return new MC();
 });
