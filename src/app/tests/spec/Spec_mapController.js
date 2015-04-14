@@ -28,7 +28,8 @@ require([
                 lyr = {
                     visibleLayers: [],
                     setVisibleLayers: jasmine.createSpy('setVisibleLayers'),
-                    on: function () {}
+                    on: function () {},
+                    loaded: true
                 };
                 objectUnderTest.dLayers[groupName] = lyr;
             });
