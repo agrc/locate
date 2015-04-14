@@ -85,7 +85,9 @@ define([
                 this.map.on('load', function () {
                     topic.subscribe('agrc.widgets.locate.FindAddress.OnFindStart',
                         lang.hitch(that.map.graphics, 'clear'));
-                    new Router();
+                    setTimeout(function () {
+                        new Router();
+                    }, 0);
                 }),
                 this.map.on('click', lang.hitch(this, 'onMapClick'))
             );
@@ -131,6 +133,7 @@ define([
                     dLayer.on('load', function () {
                         that.toggleDynamicLayer(layerId, show, groupName);
                     });
+                    return;
                 }
             }
 
@@ -147,6 +150,8 @@ define([
                         return toggleIds.indexOf(id) === -1;
                     })) {
                         layerIds = toggleIds.concat(dLayer.visibleLayers);
+                    } else {
+                        return;
                     }
                 }
             } else {
