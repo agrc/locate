@@ -503,3 +503,12 @@ h4.demographics {
         margin: 0;
     }
 }
+@media only screen and (max-height: 550px) {
+    .app #footer-wrapper {
+        display: none;
+        visibility: hidden;
+    }
+    .app .site-full.clearfix.center {
+        bottom: 0;
+    }
+}
