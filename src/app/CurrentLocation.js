@@ -225,7 +225,7 @@ define([
             //      description
             console.log('app/CurrentLocation:onGetSummaryClick', arguments);
         
-            ga('send', 'event', 'report', 'getSummaryClick', 'x:' + this.x + ',y:' + this.y);
+            ga('send', 'event', 'report', 'x:' + this.x + ',y:' + this.y);
         }
     });
 });
