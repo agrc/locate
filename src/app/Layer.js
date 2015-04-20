@@ -152,6 +152,10 @@ define([
             // show: Boolean
             console.log('app/Layer:toggleLayer', arguments);
 
+            if (show) {
+                ga('send', 'event', 'layer', 'on', this.name);
+            }
+
             var popup = mapController.map.infoWindow;
             var that = this;
             if (this.type === 'feature') {

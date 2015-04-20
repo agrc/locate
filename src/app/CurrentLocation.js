@@ -219,6 +219,13 @@ define([
             };
 
             this.getSummaryLink.href = 'report.html?' + ioQuery.objectToQuery(reportProps);
+        },
+        onGetSummaryClick: function () {
+            // summary:
+            //      description
+            console.log('app/CurrentLocation:onGetSummaryClick', arguments);
+        
+            ga('send', 'event', 'report', 'getSummaryClick', 'x:' + this.x + ',y:' + this.y);
         }
     });
 });

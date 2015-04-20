@@ -16,6 +16,9 @@ var dojoConfig = {
     }
 };
 
+// stub google analytics
+window.ga = function () {};
+
 // for jasmine-favicon-reporter
 jasmine.getEnv().addReporter(new JasmineFaviconReporter());
 jasmine.getEnv().addReporter(new jasmineRequire.JSReporter2());
