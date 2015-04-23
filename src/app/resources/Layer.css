@@ -19,6 +19,10 @@
     -webkit-transform: scale(1, 1);
             transform: scale(1, 1);
 }
+/* for sure a workaround for a bug in xstyle */
+.checkbox input[disabled] + label {
+    opacity: 0.65;
+}
 
 
 /* FIBER LEGEND */
