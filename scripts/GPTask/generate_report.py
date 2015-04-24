@@ -19,13 +19,16 @@ def get_fiber(point):
         hex_id = cursor.next()[0]
 
     records = []
+    provs = [] # for preventing duplicates
     with da.SearchCursor(SERVICE_AREAS,
                          [fieldnames.ServiceClass, fieldnames.ProvName],
                          '{} = {} AND {} <> 0'.format(fieldnames.HexID, hex_id, fieldnames.ServiceClass),
                          sql_clause=(None, 'ORDER BY ' + fieldnames.ProvName)) as sa_cursor:
         for sa in sa_cursor:
-            records.append({fieldnames.ServiceClass: FIBER_TERMS[sa[0]],
-                            fieldnames.ProvName: sa[1]})
+            if sa[1] not in provs:
+                records.append({fieldnames.ServiceClass: FIBER_TERMS[sa[0]],
+                                fieldnames.ProvName: sa[1]})
+                provs.append(sa[1])
     add_provider_info(records, fieldnames.ProvName)
 
     return records
