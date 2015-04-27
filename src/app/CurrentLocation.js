@@ -225,7 +225,10 @@ define([
             //      description
             console.log('app/CurrentLocation:onGetSummaryClick', arguments);
         
-            ga('send', 'event', 'report', 'x:' + this.lastPoint.x + ',y:' + this.lastPoint.y);
+            ga('send', 'event', 'report',
+                ['x:' + this.lastPoint.x,
+                'y:' + this.lastPoint.y,
+                'address:' + this.address].join(';'));
         }
     });
 });
