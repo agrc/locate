@@ -224,11 +224,12 @@ define([
             // summary:
             //      description
             console.log('app/CurrentLocation:onGetSummaryClick', arguments);
-        
+
             ga('send', 'event', 'report',
                 ['x:' + this.lastPoint.x,
                 'y:' + this.lastPoint.y,
-                'address:' + this.address].join(';'));
+                'address:' + this.address,
+                'city:' + this.city].join(';'));
         }
     });
 });
