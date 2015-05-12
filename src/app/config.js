@@ -34,6 +34,7 @@ define([
         apiKey = 'AGRC-7F8F0DA6655711';
         domain = '/';
     }
+    var baseUrl = domain + 'arcgis/rest/services/BBEcon/';
 
     window.AGRC = {
         // app: app.App
@@ -73,8 +74,8 @@ define([
             reportError: 'There was an error generating the report!'
         },
         urls: {
-            mapService: domain + 'arcgis/rest/services/BBEcon/MapService/MapServer',
-            gpService: domain + 'arcgis/rest/services/BBEcon/GenerateReport/GPServer/Generate Report/execute'
+            mapService: baseUrl + 'MapService/MapServer',
+            gpService: baseUrl + 'GenerateReport/GPServer/Generate Report/execute'
         },
         zoomLocationsIndex: 11,
         zoomLocationsField: 'Name',
@@ -101,15 +102,17 @@ define([
             name: 'Broadband',
             layers: [{
                 name: 'Fiber',
-                type: 'dynamic',
+                type: 'cached',
                 layerId: '0,1',
                 onByDefault: true,
+                cachedServiceUrl: baseUrl + 'FiberCache/MapServer',
                 legend: fiberLegendTxt
             }, {
                 name: 'All Non-Mobile Broadband (Includes Fiber, DSL, Cable, and Fixed Wireless)',
-                type: 'dynamic',
+                type: 'cached',
                 layerId: '2,3,4',
-                onByDefault: true
+                onByDefault: true,
+                cachedServiceUrl: baseUrl + 'NonMobileCache/MapServer'
             }]
         }, {
             groupClass: 'utilities',

@@ -73,7 +73,7 @@ require([
             });
             it('calls setVisibility on feature layers', function () {
                 var spy = jasmine.createSpy('setVisibility');
-                widget.fLayer = {setVisibility: spy};
+                widget.layer = {setVisibility: spy};
                 widget.type = 'feature';
 
                 widget.toggleLayer(true);

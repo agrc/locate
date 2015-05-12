@@ -1,3 +1,4 @@
+/* jshint maxcomplexity:false */
 define([
     'app/config',
     'app/mapController',
@@ -13,6 +14,7 @@ define([
     'dojo/topic',
 
     'esri/Color',
+    'esri/layers/ArcGISTiledMapServiceLayer',
     'esri/layers/FeatureLayer',
     'esri/renderers/SimpleRenderer',
     'esri/symbols/CartographicLineSymbol',
@@ -34,6 +36,7 @@ define([
     topic,
 
     Color,
+    ArcGISTiledMapServiceLayer,
     FeatureLayer,
     SimpleRenderer,
     CartographicLineSymbol,
@@ -46,16 +49,16 @@ define([
         templateString: template,
         baseClass: 'layer',
 
-        // fLayer: FeatureLayer
+        // layer: FeatureLayer || ArcGISTiledMapServiceLayer
         //      The feature layer associated with this widget.
         //      Only applicable with type: feature
-        fLayer: null,
+        layer: null,
 
         // Properties to be sent into constructor
         // name: String
         name: null,
 
-        // type: String (dynamic || feature)
+        // type: String (dynamic || feature || line || cache)
         type: null,
 
         // layerId: String
@@ -81,6 +84,10 @@ define([
         //      if 'radio' then converts to radio button
         //      if 'disabled' converts to disabled checkbox
         checkboxType: null,
+
+        // cachedServiceUrl: String
+        //      cachedServiceUrl to the cached map service
+        cachedServiceUrl: null,
 
 
         postCreate: function() {
@@ -138,7 +145,7 @@ define([
             // summary:
             //      description
             console.log('app/Layer:startup', arguments);
-        
+
             if (this.onByDefault) {
                 this.checkbox.checked = true;
                 this.toggleLayer(true);
@@ -158,58 +165,70 @@ define([
 
             var popup = mapController.map.infoWindow;
             var that = this;
-            if (this.type === 'feature') {
-                if (!this.fLayer) {
-                    var markerSymbol = new PictureMarkerSymbol(
-                        'app/resources/img/markers/' + this.marker,
-                        this.markerWidth || config.markerSymbolWidth,
-                        this.markerHeight || config.markerSymbolHeight
-                    );
-                    markerSymbol.setOffset(0, config.markerSymbolHeight/2);
-                    this.fLayer = new FeatureLayer(config.urls.mapService + '/' + this.layerId, {
-                        outFields: ['*']
-                    });
-                    this.fLayer.setRenderer(new SimpleRenderer(markerSymbol));
-                    this.fLayer.on('load', function () {
-                        that.fLayer.on('mouse-over', function (evt) {
-                            var g = evt.graphic;
-                            popup.setContent(g.attributes[that.fLayer.displayField]);
-                            popup.show(g.geometry);
-                        });
-                        that.fLayer.on('mouse-out', function () {
-                            popup.hide();
-                        });
-                    });
-                    topic.publish(config.topics.addLayer, this.fLayer);
-                }
-                this.fLayer.setVisibility(show);
-            } else if (this.type === 'line') {
-                if (!this.fLayer) {
-                    var lineSymbol = new CartographicLineSymbol(
-                        CartographicLineSymbol.STYLE_SOLID,
-                        new Color(this.color),
-                        config.lineWidth,
-                        CartographicLineSymbol.CAP_ROUND,
-                        CartographicLineSymbol.JOIN_ROUND
+            switch(this.type) {
+                case 'feature':
+                    if (!this.layer) {
+                        var markerSymbol = new PictureMarkerSymbol(
+                            'app/resources/img/markers/' + this.marker,
+                            this.markerWidth || config.markerSymbolWidth,
+                            this.markerHeight || config.markerSymbolHeight
                         );
-                    lineSymbol.setColor(new Color(this.color));
-                    lineSymbol.setWidth(6);
-                    this.fLayer = new FeatureLayer(config.urls.mapService + '/' + this.layerId, {
-                        outFields: ['*']
-                    });
-                    this.fLayer.setRenderer(new SimpleRenderer(lineSymbol));
-                    topic.publish(config.topics.addLayer, this.fLayer, true);
-                }
-                this.fLayer.setVisibility(show);
-            } else {
-                topic.publish(config.topics.layer.toggleDynamicLayer,
-                    this.layerId,
-                    show,
-                    this.groupName,
-                    this.defaultOpacity,
-                    this.checkboxType === 'radio');
+                        markerSymbol.setOffset(0, config.markerSymbolHeight/2);
+                        this.layer = new FeatureLayer(config.urls.mapService + '/' + this.layerId, {
+                            outFields: ['*']
+                        });
+                        this.layer.setRenderer(new SimpleRenderer(markerSymbol));
+                        this.layer.on('load', function () {
+                            that.layer.on('mouse-over', function (evt) {
+                                var g = evt.graphic;
+                                popup.setContent(g.attributes[that.layer.displayField]);
+                                popup.show(g.geometry);
+                            });
+                            that.layer.on('mouse-out', function () {
+                                popup.hide();
+                            });
+                        });
+                        topic.publish(config.topics.addLayer, this.layer);
+                    }
+                    this.layer.setVisibility(show);
+                    break;
+                case 'line':
+                    if (!this.layer) {
+                        var lineSymbol = new CartographicLineSymbol(
+                            CartographicLineSymbol.STYLE_SOLID,
+                            new Color(this.color),
+                            config.lineWidth,
+                            CartographicLineSymbol.CAP_ROUND,
+                            CartographicLineSymbol.JOIN_ROUND
+                            );
+                        lineSymbol.setColor(new Color(this.color));
+                        lineSymbol.setWidth(6);
+                        this.layer = new FeatureLayer(config.urls.mapService + '/' + this.layerId, {
+                            outFields: ['*']
+                        });
+                        this.layer.setRenderer(new SimpleRenderer(lineSymbol));
+                        topic.publish(config.topics.addLayer, this.layer, true);
+                    }
+                    this.layer.setVisibility(show);
+                    break;
+                case 'dynamic':
+                    topic.publish(config.topics.layer.toggleDynamicLayer,
+                        this.layerId,
+                        show,
+                        this.groupName,
+                        this.defaultOpacity,
+                        this.checkboxType === 'radio');
+                    break;
+                case 'cached':
+                    if (!this.layer) {
+                        this.layer = new ArcGISTiledMapServiceLayer(this.cachedServiceUrl, {
+                            opacity: this.defaultOpacity || 0.5
+                        });
+                        topic.publish(config.topics.addLayer, this.layer, true);
+                    }
+                    this.layer.setVisibility(show);
+                    break;
             }
-
             topic.publish(config.topics.router.updateLayer, this.layerId, show);
         }
     });
