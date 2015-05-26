@@ -50,7 +50,7 @@ define([
             console.info('app/mapController:initMap', arguments);
 
             this.map = new BaseMap(mapDiv, {
-                // useDefaultBaseMap: false,
+                useDefaultBaseMap: false,
                 defaultBaseMap: 'Lite',
                 showAttribution: false,
                 center: new Point(config.initialExtent.center, {
@@ -60,14 +60,14 @@ define([
                 router: true
             });
 
-            // this.childWidgets.push(
-            //     new BaseMapSelector({
-            //         map: this.map,
-            //         id: 'claro',
-            //         position: 'TL',
-            //         defaultThemeLabel: 'Lite'
-            //     })
-            // );
+            this.childWidgets.push(
+                new BaseMapSelector({
+                    map: this.map,
+                    id: 'claro',
+                    position: 'TL',
+                    defaultThemeLabel: 'Lite'
+                })
+            );
             this.childWidgets.push(this.map);
 
             // force map to auto height
