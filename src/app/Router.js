@@ -45,6 +45,9 @@ define([
 
             var lyrs = urlObj[this.queryParameter];
             if (lyrs) {
+                if (typeof lyrs === 'string') {
+                    lyrs = [lyrs];
+                }
                 topic.publish(config.topics.router.toggleLayers, lyrs);
             }
 

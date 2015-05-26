@@ -124,21 +124,21 @@ define([
                 legend: 'Approximate service area of the natural gas distribution network in Utah'
             }, {
                 name: 'Electric Utility Territory',
-                type: 'dynamic',
+                type: 'polygon',
                 layerId: '14',
                 checkboxType: 'radio',
                 legend: 'Jurisdictional boundaries for Utah\'s electricity providers. ' +
                     'The location report provides the district name.'
             }, {
                 name: 'Local Exchange Areas',
-                type: 'dynamic',
+                type: 'polygon',
                 layerId: '15',
                 checkboxType: 'radio',
                 legend: 'Territory boundaries for Utah\'s incumbent telephone providers. ' +
                     'The location report shows the provider name.'
             }, {
                 name: 'Culinary Water',
-                type: 'dynamic',
+                type: 'polygon',
                 layerId: '13',
                 checkboxType: 'radio',
                 legend: 'Jurisdictional boundaries for Utah\'s culinary water districts. ' +
@@ -220,7 +220,7 @@ define([
                 marker: 'universities.svg'
             }, {
                 name: 'Enterprise Zones (coming summer 2015)',
-                type: 'dynamic',
+                type: 'polygon',
                 layerId: '19',
                 checkboxType: 'disabled'
             }]

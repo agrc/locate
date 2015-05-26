@@ -57,7 +57,8 @@ define([
                     wkid: 26912
                 }),
                 scale: config.initialExtent.scale,
-                router: true
+                router: true,
+                showLabels: true
             });
 
             this.childWidgets.push(
@@ -104,7 +105,7 @@ define([
             this.map.addLayer(lyr, index);
             this.map.addLoaderToLayer(lyr);
         },
-        toggleDynamicLayer: function (layerId, show, groupName, defaultOpacity, isRadio) {
+        toggleDynamicLayer: function (layerId, show, groupName, defaultOpacity, isRadio, layerType) {
             // summary:
             //      sets the appropriate visible layers on the dynamic service
             // layerId: String
@@ -114,8 +115,14 @@ define([
             // defaultOpacity: Number
             // isRadio: Boolean
             //      Determines if more than one layer can be shown at a time in a group
+            // layerType: String
             console.log('app/mapController:toggleDynamicLayer', arguments);
 
+            if (layerType !== 'dynamic' && groupName && this.dLayers[groupName]) {
+                this.dLayers[groupName].setVisibleLayers([-1]);
+                return;
+            }
+            
             var dLayer;
             var that = this;
             if (!this.dLayers[groupName]) {

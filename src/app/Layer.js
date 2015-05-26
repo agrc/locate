@@ -192,6 +192,33 @@ define([
                     }
                     this.layer.setVisibility(show);
                     break;
+                case 'polygon':
+                    if (!this.layer) {
+                        this.layer = new FeatureLayer(config.urls.mapService + '/' + this.layerId, {
+                            outFields: ['*'],
+                            opacity: this.defaultOpacity || 0.5
+                        });
+                        topic.publish(config.topics.addLayer, this.layer);
+                        topic.subscribe(config.topics.slider.change, function (newValue) {
+                            that.layer.setOpacity(newValue/100);
+                        });
+                        topic.subscribe(config.topics.layer.toggleDynamicLayer, function (id, showLayer, groupName) {
+                            if (showLayer && groupName === that.groupName && id !== that.layerId) {
+                                that.layer.hide();
+                            }
+                        });
+                    }
+                    this.layer.setVisibility(show);
+                    if (this.groupName) {
+                        topic.publish(config.topics.layer.toggleDynamicLayer,
+                            this.layerId,
+                            show,
+                            this.groupName,
+                            this.defaultOpacity,
+                            this.checkboxType === 'radio',
+                            this.type);
+                    }
+                    break;
                 case 'line':
                     if (!this.layer) {
                         var lineSymbol = new CartographicLineSymbol(
@@ -217,7 +244,8 @@ define([
                         show,
                         this.groupName,
                         this.defaultOpacity,
-                        this.checkboxType === 'radio');
+                        this.checkboxType === 'radio',
+                        this.type);
                     break;
                 case 'cached':
                     if (!this.layer) {
