@@ -3736,3 +3736,6 @@ address {
 .layers .search input {
   border-color: #09484c;
 }
+.tooltip {
+  position: fixed;
+}
