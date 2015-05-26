@@ -110,24 +110,12 @@ module.exports = function(grunt) {
                     password: secrets.ags_password
                 },
                 mapServerBasePath: path.join(process.cwd(), 'maps'),
-                commonServiceProperties: {
-                    type: 'MapServer',
-                    folder: 'BBEcon'
-                },
                 services: {
                     mapService: {
                         serviceName: 'MapService',
+                        type: 'MapServer',
+                        folder: 'BBEcon',
                         resource: 'MapService.mxd'
-                    },
-                    fiberCache: {
-                        serviceName: 'FiberCache',
-                        resource: 'FiberCache.mxd',
-                        isCached: true
-                    },
-                    nonMobileCache: {
-                        serviceName: 'NonMobileCache',
-                        resource: 'NonMobileCache.mxd',
-                        isCached: true
                     }
                 }
             },
@@ -135,14 +123,6 @@ module.exports = function(grunt) {
                 options: {
                     server: {
                         host: 'localhost'
-                    }
-                },
-                services: {
-                    fiberCache: {
-                        cacheOnDemand: true
-                    },
-                    nonMobileCache: {
-                        cacheOnDemand: true
                     }
                 }
             },

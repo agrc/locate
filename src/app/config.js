@@ -103,17 +103,15 @@ define([
             name: 'Broadband',
             layers: [{
                 name: 'Fiber',
-                type: 'cached',
+                type: 'dynamic',
                 layerId: '0,1',
                 onByDefault: true,
-                cachedServiceUrl: baseUrl + 'FiberCache/MapServer',
                 legend: fiberLegendTxt
             }, {
                 name: 'All Non-Mobile Broadband (Includes Fiber, DSL, Cable, and Fixed Wireless)',
-                type: 'cached',
+                type: 'dynamic',
                 layerId: '2,3,4',
-                onByDefault: true,
-                cachedServiceUrl: baseUrl + 'NonMobileCache/MapServer'
+                onByDefault: true
             }]
         }, {
             groupClass: 'utilities',
