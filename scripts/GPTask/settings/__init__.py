@@ -26,8 +26,6 @@ AIRPORT_REG = BBECON_GDB + r'\Airport_RegionalCommercial_DriveTime'
 AIRPORT_LOCAL = BBECON_GDB + r'\Airport_Local_DriveTime'
 COUNTIES = BBECON_GDB + r'\CountyDemographics'
 
-DRIVE_TIME_TXT = '< {} hour(s)'
-
 SCHOOLS = BBECON_GDB + r'\HigherEd_DriveTime'
 NAT_PARKS = BBECON_GDB + r'\NatlParks_DriveTime'
 STATE_PARKS = BBECON_GDB + r'\StParksAndMonuments_DriveTime'

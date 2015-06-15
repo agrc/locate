@@ -3,8 +3,12 @@ import json
 
 from arcpy import PointGeometry, Point, SpatialReference, MakeFeatureLayer_management, SelectLayerByLocation_management, GetCount_management, da, Buffer_analysis, GetParameterAsText, SetParameterAsText
 
-from GPTask.settings import fieldnames
-from settings import *
+try:
+    from .settings import fieldnames
+    from .settings import *
+except:
+    from settings import fieldnames
+    from settings import *
 
 
 def get_intersect_layer(point, feature_class, where='1 = 1'):
@@ -166,15 +170,24 @@ def get_drive_time(fc, point):
         # filter out duplicates with longer field names
         if m[0] not in names:
             records.append({'name': m[0],
-                            'drive_time': DRIVE_TIME_TXT.format(rec[fieldnames.ToBreak])})
+                            'drive_time': format_drive_time(rec[fieldnames.ToBreak])})
         names.append(m[0])
     return records
 
 
+def format_drive_time(mins):
+    if mins < 60:
+        return '< {} mins'.format(str(mins).replace('.0', ''))
+    elif mins == 60:
+        return '< 1 hour'
+    else:
+        hours = str(mins/60.00).replace('.0', '')
+        return '< {} hours'.format(hours)
+
+
 def get_airports(point):
     lyr = get_intersect_layer(point, AIRPORT_INT)
-    drive_time = get_records(lyr, [fieldnames.ToBreak], fieldnames.ToBreak)[0][fieldnames.ToBreak]
-    drive_time = DRIVE_TIME_TXT.format(drive_time).replace('.0', '')
+    drive_time = format_drive_time(get_records(lyr, [fieldnames.ToBreak], fieldnames.ToBreak)[0][fieldnames.ToBreak])
     res = {'sl': {'drive_time': drive_time, 'name': 'Salt Lake International'},
            'regional_commercial': get_drive_time(AIRPORT_REG, point),
            'local': get_drive_time(AIRPORT_LOCAL, point)}

@@ -5,8 +5,8 @@ import os
 import arcpy
 
 from GPTask import generate_report
-from settings import fieldnames
-from settings import *
+from GPTask.settings import fieldnames
+from GPTask.settings import *
 
 
 sys.path.append(os.getcwd() + '../')
@@ -26,11 +26,11 @@ class GenerateReportTests(unittest.TestCase):
     def test_get_fiber_data(self):
         result = generate_report.get_fiber(self.point)
 
-        self.assertEqual(len(result), 2)
+        self.assertEqual(len(result), 3)
         item = result[1]
         self.assertEqual(item[fieldnames.ServiceClass], 'Short term (1-3 month avg)')
-        self.assertEqual(item[fieldnames.Colloquial], 'Syringa Networks')
-        self.assertEqual(item[fieldnames.URL], 'http://www.syringanetworks.net/')
+        self.assertEqual(item[fieldnames.Colloquial], 'Comcast')
+        self.assertEqual(item[fieldnames.URL], 'http://www.comcast.com/')
 
     def test_get_natural_gas(self):
         result = generate_report.get_natural_gas(self.point)
@@ -61,19 +61,19 @@ class GenerateReportTests(unittest.TestCase):
     def test_get_roads(self):
         results = generate_report.get_roads(self.point)
 
-        self.assertEqual(len(results), 12)
+        self.assertEqual(len(results), 2)
 
     def test_get_airports(self):
         results = generate_report.get_airports(self.point)
 
         sl = results['sl']
         self.assertEqual(sl['name'], 'Salt Lake International')
-        self.assertEqual(sl['drive_time'], '< 1 hour(s)')
+        self.assertEqual(sl['drive_time'], '< 30 mins')
 
         self.assertEqual(len(results['regional_commercial']), 4)
         rc = results['regional_commercial'][0]
         self.assertEqual(rc['name'], 'Ogden-Hinckley')
-        self.assertEqual(rc['drive_time'], '< 1 hour(s)')
+        self.assertEqual(rc['drive_time'], '< 1 hour')
 
     def test_get_fixed(self):
         results = generate_report.get_fixed(self.point)
@@ -86,8 +86,8 @@ class GenerateReportTests(unittest.TestCase):
         lyr = generate_report.get_intersect_layer(self.point, SKI)
         results = generate_report.get_records(lyr, [fieldnames.ToBreak], fieldnames.ToBreak)
 
-        self.assertEqual(results[0][fieldnames.ToBreak], '1')
-        self.assertEqual(results[-1][fieldnames.ToBreak], '1.5')
+        self.assertEqual(results[0][fieldnames.ToBreak], 45)
+        self.assertEqual(results[-1][fieldnames.ToBreak], 240)
 
     def test_get_county_demographics(self):
         results = generate_report.get_county_demographics(self.point)
@@ -96,3 +96,9 @@ class GenerateReportTests(unittest.TestCase):
         self.assertEqual(results['topten'][0], {'rank': 1,
                                                 'desc': 'Elementary and Secondary Schools'})
         self.assertEqual(results[fieldnames.Avg_MonthlyIncome], '3,796')
+
+    def test_format_drive_time(self):
+        self.assertEqual(generate_report.format_drive_time(30), '< 30 mins')
+        self.assertEqual(generate_report.format_drive_time(60), '< 1 hour')
+        self.assertEqual(generate_report.format_drive_time(90), '< 1.5 hours')
+        self.assertEqual(generate_report.format_drive_time(120), '< 2 hours')
