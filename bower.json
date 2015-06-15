@@ -1,6 +1,6 @@
 {
   "name": "bb-econ",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "dependencies": {
     "agrc": "agrc-widgets#2.11.2",
     "bootstrap": "~3.2",
