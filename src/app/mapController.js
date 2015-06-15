@@ -132,14 +132,14 @@ define([
                 this.map.addLayer(dLayer, 1);
                 this.map.addLoaderToLayer(dLayer);
                 dLayer.on('load', function () {
-                    that.toggleDynamicLayer(layerId, show, groupName);
+                    that.toggleDynamicLayer(layerId, show, groupName, defaultOpacity, isRadio, layerType);
                 });
                 return;
             } else {
                 dLayer = this.dLayers[groupName];
                 if (!dLayer.loaded) {
                     dLayer.on('load', function () {
-                        that.toggleDynamicLayer(layerId, show, groupName);
+                        that.toggleDynamicLayer(layerId, show, groupName, defaultOpacity, isRadio, layerType);
                     });
                     return;
                 }
