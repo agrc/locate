@@ -102,3 +102,8 @@ class GenerateReportTests(unittest.TestCase):
         self.assertEqual(generate_report.format_drive_time(60), '< 1 hour')
         self.assertEqual(generate_report.format_drive_time(90), '< 1.5 hours')
         self.assertEqual(generate_report.format_drive_time(120), '< 2 hours')
+
+    def test_get_enterprise_zones(self):
+        results = generate_report.get_enterprise_zone(self.point)
+
+        self.assertEqual(0, len(results))

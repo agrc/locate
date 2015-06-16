@@ -197,7 +197,7 @@ def get_airports(point):
 
 def get_enterprise_zone(point):
     lyr = get_intersect_layer(point, ENTERPRISE_ZONES)
-    return len(get_records(lyr, ['OBJECTID'], 'OBJECTID')) > 0
+    return get_records(lyr, fieldnames.ENTERPRISE_FIELDS, 'OBJECTID')
 
 
 if __name__ == '__main__':

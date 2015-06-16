@@ -325,6 +325,13 @@
             ],
             "educationHighSchoolGraduate": 86.09
         },
-        "enterprise_zone": true
+        "enterprise_zone": [{
+            "EXPYR": "2018",
+            "POC_EMAIL": "tlucero@co.uintah.ut.us",
+            "POC_NAME": "Tamy Lucero",
+            "OBJECTID": 23,
+            "POC_PHONE": "435-781-6767",
+            "ZONENAME": "Uintah County"
+        }]
     }
 }
