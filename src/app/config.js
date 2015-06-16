@@ -219,10 +219,10 @@ define([
                 layerId: '6',
                 marker: 'universities.svg'
             }, {
-                name: 'Enterprise Zones (coming summer 2015)',
+                name: 'Enterprise Zones',
                 type: 'polygon',
-                layerId: '19',
-                checkboxType: 'disabled'
+                layerId: '19'
+                // checkboxType: 'disabled'
             }]
         }, {
             groupClass: 'lifestyle',
