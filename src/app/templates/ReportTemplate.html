@@ -209,20 +209,26 @@
     <h3 class="demographics">Workforce</h3>
 </a>
 <div id="demographics" class="collapse">
-    <h4 class="demographics">Higher Education Schools</h4>
+    <h4 class="demographics">Enterprise Zones</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover half'>
+        <table class="table table-striped table-condensed table-hover">
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Drive Time</th>
+                    <th>Expire Year</th>
+                    <th>POC Name</th>
+                    <th>POC Phone</th>
+                    <th>POC Email</th>
                 </tr>
             </thead>
             <tbody>
-                {{#each workforce.schools}}
+                {{#each workforce.enterprise_zone}}
                 <tr>
-                    <td>{{name}}</td>
-                    <td>{{drive_time}}</td>
+                    <td>{{ZONENAME}}</td>
+                    <td>{{EXPYR}}</td>
+                    <td>{{POC_NAME}}</td>
+                    <td>{{POC_PHONE}}</td>
+                    <td>{{POC_EMAIL}}</td>
                 </tr>
                 {{/each}}
             </tbody>
@@ -242,7 +248,7 @@
             </tbody>
         </table>
     </div>
-
+    
     <h4 class="demographics">County Demographics</h4>
     <div class="table-responsive">
         <table class="table table-striped table-condensed table-hover half">
@@ -270,27 +276,21 @@
             </tbody>
         </table>
     </div>
-
-    <h4 class="demographics">Enterprise Zones</h4>
+ 
+    <h4 class="demographics">Higher Education Schools</h4>
     <div class="table-responsive">
-        <table class="table table-striped table-condensed table-hover">
+        <table class='table table-striped table-condensed table-hover half'>
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Expire Year</th>
-                    <th>POC Name</th>
-                    <th>POC Phone</th>
-                    <th>POC Email</th>
+                    <th>Drive Time</th>
                 </tr>
             </thead>
             <tbody>
-                {{#each workforce.enterprise_zone}}
+                {{#each workforce.schools}}
                 <tr>
-                    <td>{{ZONENAME}}</td>
-                    <td>{{EXPYR}}</td>
-                    <td>{{POC_NAME}}</td>
-                    <td>{{POC_PHONE}}</td>
-                    <td>{{POC_EMAIL}}</td>
+                    <td>{{name}}</td>
+                    <td>{{drive_time}}</td>
                 </tr>
                 {{/each}}
             </tbody>

@@ -214,15 +214,15 @@ define([
             groupClass: 'demographics',
             name: 'Workforce',
             layers: [{
-                name: 'Higher Education Schools',
-                type: 'feature',
-                layerId: '6',
-                marker: 'universities.svg'
-            }, {
                 name: 'Enterprise Zones',
                 type: 'polygon',
                 layerId: '19'
                 // checkboxType: 'disabled'
+            }, {
+                name: 'Higher Education Schools',
+                type: 'feature',
+                layerId: '6',
+                marker: 'universities.svg'
             }]
         }, {
             groupClass: 'lifestyle',
