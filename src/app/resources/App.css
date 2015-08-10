@@ -3,6 +3,7 @@
 @import '../../agrc/resources/map/BaseMap.css';
 @import '../../agrc/resources/map/BaseMapSelector.css';
 @import '../../dijit/themes/claro/claro.css';
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 
 html, body, .app, .center>.site-full {
     width: 100%;
@@ -20,6 +21,12 @@ body {
     bottom: 110px;
     right: 0;
     position: absolute;
+}
+.app #header #title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 32px;
+    margin: 40px 0 0 75px;
+    text-shadow: 1px 1px 6px rgba(150, 150, 150, 1);
 }
 #footer-wrapper {
     position: absolute;
@@ -133,7 +140,7 @@ a, a:visited {
 #broadband-logo {
     background: transparent url(img/broadband-logo.png) no-repeat top left;
     display: block;
-    width: 500px;
+    width: 187px;
     height: 105px;
     float: left;
     background-size: contain;
@@ -360,6 +367,19 @@ h4.demographics {
 .clearfix:after {
     clear: both;
 }
+
+@media only screen and (max-width: 1350px) {
+    .app #header #title {
+        font-size: 25px;
+        margin-left: 20px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .app #header #title {
+        font-size: 18px;
+        margin: 50px 0 0 15px;
+    }
+}
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
@@ -424,7 +444,7 @@ h4.demographics {
         display: none;
         position: relative;
     }
-    #broadband-logo {
+    #broadband-logo, #title {
         display: none;
     }
     #content {
