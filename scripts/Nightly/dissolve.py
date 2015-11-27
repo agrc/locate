@@ -14,7 +14,7 @@ class Runner():
     def __init__(self):
         self.logger = logging.Logger()
         self.emailer = messaging.Emailer(['stdavis@utah.gov'], not SEND_EMAILS)
-        
+
     def run_with_try_catch(self):
         try:
             self.run()
@@ -33,7 +33,7 @@ class Runner():
                 self.logger.log)
         finally:
             self.logger.writeLogToFile()
-            
+
     def run(self):
         for n in [1, 9]:
             self.dissolve_fiber(n)
@@ -48,7 +48,7 @@ class Runner():
             arcpy.Delete_management(railroads_dissolved)
         arcpy.Identity_analysis(railroads, 'SGID10.BOUNDARIES.Counties', railroads_dissolved)
         arcpy.Delete_management(railroads)
-    
+
         self.logger.logMsg('done')
 
     def dissolve(self, fc, query, name):
@@ -73,7 +73,7 @@ class Runner():
 
         arcpy.env.workspace = '{}\database_connections\{}'.format(getcwd(), SDE)
 
-        query = 'HexID IN (SELECT HexID FROM ProviderServiceAreas WHERE ServiceClass = {})'.format(num)
+        query = 'HexID IN (SELECT HexID FROM PROVIDERSERVICEAREAS_EVW WHERE ServiceClass = {})'.format(num)
         fc = '{}\Fiber_Dissolved_{}Month'.format(FGDB, num)
 
         self.dissolve(fc, query, 'Hexagons')
