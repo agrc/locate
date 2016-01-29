@@ -68,9 +68,7 @@ def get_fixed(point):
 
         return records
 
-    providers = (get_data(WIRELESS, WIRELESS_QUERY) +
-                 get_data(CENSUS, BB_QUERY) +
-                 get_data(BUFFERED_ROAD, BB_QUERY))
+    providers = get_data(FIXED, FIXED_QUERY)
 
     # remove duplicate providers
     names = []
