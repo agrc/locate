@@ -1,4 +1,7 @@
-from dev import *
+try:
+    from .prod import *
+except:
+    from prod import *
 
 FIBER_GDB = DATA_PATH + r'\FiberVerification.gdb'
 HEXAGONS = FIBER_GDB + r'\Hexagons'

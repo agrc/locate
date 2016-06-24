@@ -48,15 +48,23 @@ def add_provider_info(items, code_field):
     ]
     for it in items:
         where = '{} = \'{}\''.format(fieldnames.Code, it[code_field])
+        print(where)
         with da.SearchCursor(PROVIDERS,
                              fields,
                              where) as prov_cursor:
-            prov = prov_cursor.next()
-            it.update({fieldnames.Colloquial: prov[0],
-                       fieldnames.URL: prov[1],
-                       fieldnames.ContactName: prov[2],
-                       fieldnames.ContactPhone: prov[3],
-                       fieldnames.ContactEmail: prov[4]})
+            try:
+                prov = prov_cursor.next()
+                it.update({fieldnames.Colloquial: prov[0],
+                           fieldnames.URL: prov[1],
+                           fieldnames.ContactName: prov[2],
+                           fieldnames.ContactPhone: prov[3],
+                           fieldnames.ContactEmail: prov[4]})
+            except:
+                it.update({fieldnames.Colloquial: 'n/a',
+                           fieldnames.URL: 'n/a',
+                           fieldnames.ContactName: 'n/a',
+                           fieldnames.ContactPhone: 'n/a',
+                           fieldnames.ContactEmail: 'n/a'})
 
 
 def get_fixed(point):

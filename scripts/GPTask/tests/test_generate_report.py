@@ -78,7 +78,7 @@ class GenerateReportTests(unittest.TestCase):
     def test_get_fixed(self):
         results = generate_report.get_fixed(self.point)
 
-        self.assertEqual(len(results), 9)
+        self.assertEqual(len(results), 7)
         self.assertEqual(results[0][fieldnames.Colloquial], 'The Blue Zone')
         self.assertEqual(results[0][fieldnames.URL], 'http://www.thebluezone.com/')
 
