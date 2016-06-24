@@ -1,3 +1,0 @@
-[submodule "scripts/Nightly/agrc"]
-	path = scripts/Nightly/agrc
-	url = https://github.com/agrc/agrc.python
