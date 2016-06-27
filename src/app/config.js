@@ -238,6 +238,21 @@ define([
                 layerId: '20',
                 marker: 'nationalparks.svg'
             }, {
+                // this is hidden and linked to the layer above
+                // see app/App:postCreate
+                name: 'National Parks/Monuments Boundaries (hidden)',
+                type: 'dynamic',
+                layerId: '26',
+                hidden: true
+            }, {
+                name: 'USFS Boundaries',
+                type: 'dynamic',
+                layerId: '25'
+            }, {
+                name: 'Wilderness/Primitive Boundaries',
+                type: 'dynamic',
+                layerId: '27'
+            }, {
                 name: 'Ski Areas',
                 type: 'feature',
                 layerId: '8',

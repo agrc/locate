@@ -107,6 +107,11 @@ define([
             lrCheckbox = query('.layer input[value="5"]')[0];
             on(lrCheckbox, 'change', lang.partial(syncCheckbox, hiddenCheckbox));
 
+            // national parks
+            hiddenCheckbox = query('.layer input[value="26"]')[0];
+            lrCheckbox = query('.layer input[value="20"]')[0];
+            on(lrCheckbox, 'change', lang.partial(syncCheckbox, hiddenCheckbox));
+
             this.inherited(arguments);
         },
         showReport: function () {
@@ -153,7 +158,7 @@ define([
             // summary:
             //      description
             console.log('app/App:onHamburgerClick', arguments);
-        
+
             domClass.toggle(this.layers.domNode, 'hide-on-small-screen');
         }
     });
