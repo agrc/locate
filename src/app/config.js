@@ -154,7 +154,7 @@ define([
             groupClass: 'transportation',
             name: 'Transportation',
             layers: [{
-                name: 'Heavy Rail',
+                name: 'Freight Rail',
                 type: 'line',
                 layerId: '16',
                 defaultOpacity: 1,
