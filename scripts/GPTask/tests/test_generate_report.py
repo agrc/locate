@@ -32,21 +32,6 @@ class GenerateReportTests(unittest.TestCase):
         self.assertEqual(item[fieldnames.Colloquial], 'Comcast')
         self.assertEqual(item[fieldnames.URL], 'http://www.comcast.com/')
 
-    def test_get_natural_gas(self):
-        result = generate_report.get_natural_gas(self.point)
-
-        self.assertEqual(result, True)
-
-        arcpy.Delete_management(NATURAL_GAS + '_layer')
-
-        x = 421080.8375008911
-        y = 4693000
-        result = generate_report.get_natural_gas(make_point(x,y))
-
-        self.assertEqual(result, False)
-
-        arcpy.Delete_management(NATURAL_GAS + '_layer')
-
     def test_get_utilities(self):
         result = generate_report.get_utilities(self.point)
 
@@ -57,6 +42,11 @@ class GenerateReportTests(unittest.TestCase):
         rur = result['rural'][0]
         self.assertEqual(rur[fieldnames.PROVIDER], 'Centurylink')
         self.assertEqual(rur[fieldnames.WEBLINK], 'http://www.centurylink.com/')
+
+        ng = result['natural_gas'][0]
+
+        self.assertEqual(ng[fieldnames.PROVIDER], 'Questar Gas')
+        self.assertEqual(ng[fieldnames.WEBLINK], 'http://www.questargas.com')
 
     def test_get_roads(self):
         results = generate_report.get_roads(self.point)
@@ -78,7 +68,7 @@ class GenerateReportTests(unittest.TestCase):
     def test_get_fixed(self):
         results = generate_report.get_fixed(self.point)
 
-        self.assertEqual(len(results), 7)
+        self.assertEqual(len(results), 6)
         self.assertEqual(results[0][fieldnames.Colloquial], 'The Blue Zone')
         self.assertEqual(results[0][fieldnames.URL], 'http://www.thebluezone.com/')
 

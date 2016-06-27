@@ -118,7 +118,7 @@ define([
             name: 'Utilities',
             layers: [{
                 name: 'Natural Gas Service Areas',
-                type: 'dynamic',
+                type: 'polygon',
                 layerId: '12',
                 checkboxType: 'radio',
                 legend: 'Approximate service area of the natural gas distribution network in Utah'

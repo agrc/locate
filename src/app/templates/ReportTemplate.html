@@ -105,20 +105,12 @@
                 </tr>
             </thead>
             <tbody>
-                {{#if utilities.natural_gas}}
+                {{#each utilities.natural_gas}}
                 <tr>
-                    <td>
-                        Questar Gas
-                    </td>
-                    <td>
-                        <a href='https://www.questargas.com/'>www.questargas.com</a>
-                    </td>
+                    <td class='provider'>{{PROVIDER}}</td>
+                    <td><a href="{{WEBLINK}}">{{link WEBLINK}}</a></td>
                 </tr>
-                {{else}}
-                <tr>
-                    <td>Unknown</td>
-                </tr>
-                {{/if}}
+                {{/each}}
             </tbody>
         </table>
     </div>
@@ -248,7 +240,7 @@
             </tbody>
         </table>
     </div>
-    
+
     <h4 class="demographics">County Demographics</h4>
     <div class="table-responsive">
         <table class="table table-striped table-condensed table-hover half">
@@ -276,7 +268,7 @@
             </tbody>
         </table>
     </div>
- 
+
     <h4 class="demographics">Higher Education Schools</h4>
     <div class="table-responsive">
         <table class='table table-striped table-condensed table-hover half'>

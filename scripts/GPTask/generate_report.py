@@ -23,7 +23,7 @@ def get_fiber(point):
         hex_id = cursor.next()[0]
 
     records = []
-    provs = [] # for preventing duplicates
+    provs = []  # for preventing duplicates
     with da.SearchCursor(SERVICE_AREAS,
                          [fieldnames.ServiceClass, fieldnames.ProvName],
                          '{} = {} AND {} <> 0'.format(fieldnames.HexID, hex_id, fieldnames.ServiceClass),
@@ -89,16 +89,6 @@ def get_fixed(point):
     return new
 
 
-def get_natural_gas(point):
-    lyr = get_intersect_layer(point, NATURAL_GAS)
-
-    count_result = GetCount_management(lyr)
-    if int(count_result.getOutput(0)) > 0:
-        return True
-    else:
-        return False
-
-
 def get_records(lyr, fields, sort_field, titlecase_fields=[]):
     records = []
     sql = (None, 'ORDER BY ' + sort_field)
@@ -151,7 +141,7 @@ def get_utilities(point):
 
     return {'electrical': process(ELECTRICAL),
             'rural': process(RURAL_TEL),
-            'natural_gas': get_natural_gas(point)}
+            'natural_gas': process(NATURAL_GAS)}
 
 
 def get_roads(point):
