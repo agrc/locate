@@ -1,37 +1,39 @@
 define([
     'agrc/widgets/map/BaseMap',
-    'agrc/widgets/map/BaseMapSelector',
 
     'app/config',
     'app/Router',
 
     'dijit/Destroyable',
 
-    'dojo/_base/declare',
-    'dojo/_base/lang',
     'dojo/dom-style',
     'dojo/topic',
+    'dojo/_base/declare',
+    'dojo/_base/lang',
 
     'esri/geometry/Point',
     'esri/graphic',
-    'esri/layers/ArcGISDynamicMapServiceLayer'
+    'esri/layers/ArcGISDynamicMapServiceLayer',
+
+    'layer-selector/LayerSelector'
 ], function(
     BaseMap,
-    BaseMapSelector,
 
     config,
     Router,
 
     Destroyable,
 
-    declare,
-    lang,
     domStyle,
     topic,
+    declare,
+    lang,
 
     Point,
     Graphic,
-    ArcGISDynamicMapServiceLayer
+    ArcGISDynamicMapServiceLayer,
+
+    LayerSelector
 ) {
     var MC = declare([Destroyable], {
         // map: BaseMap
@@ -62,11 +64,10 @@ define([
             });
 
             this.childWidgets.push(
-                new BaseMapSelector({
+                new LayerSelector({
                     map: this.map,
-                    id: 'claro',
-                    position: 'TL',
-                    defaultThemeLabel: 'Lite'
+                    quadWord: config.quadWord,
+                    baseLayers: ['Hybrid', 'Lite', 'Terrain', 'Topo']
                 })
             );
             this.childWidgets.push(this.map);
@@ -122,7 +123,7 @@ define([
                 this.dLayers[groupName].setVisibleLayers([-1]);
                 return;
             }
-            
+
             var dLayer;
             var that = this;
             if (!this.dLayers[groupName]) {

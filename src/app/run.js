@@ -19,6 +19,7 @@
             'dojox',
             'esri',
             'ijit',
+            'layer-selector',
             'matchers',
             'put-selector',
             'xstyle',

@@ -1,8 +1,8 @@
 @import 'custom-bootstrap.css';
 @import '../../esri/css/esri.css';
 @import '../../agrc/resources/map/BaseMap.css';
-@import '../../agrc/resources/map/BaseMapSelector.css';
 @import '../../dijit/themes/claro/claro.css';
+@import '../../layer-selector/resources/LayerSelector.css';
 @import url(http://fonts.googleapis.com/css?family=Lato:700);
 
 html, body, .app, .center>.site-full {

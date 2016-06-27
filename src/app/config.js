@@ -1,12 +1,14 @@
 /* jshint maxlen:false */
 define([
     'dojo/has',
+    'dojo/request/xhr',
     'dojo/text!app/templates/FiberLegend.html',
 
     'esri/config',
     'esri/symbols/PictureMarkerSymbol'
 ], function (
     has,
+    xhr,
     fiberLegendTxt,
 
     esriConfig,
@@ -22,17 +24,19 @@ define([
 
     var apiKey;
     var domain;
+    var quadWord;
     if (has('agrc-build') === 'prod') {
         // *.utah.gov
         apiKey = 'AGRC-D3CDE591211690';
         domain = 'http://mapserv.utah.gov/';
+        quadWord = '';
     } else if (has('agrc-build') === 'stage') {
         // test.mapserv.utah.gov
         apiKey = 'AGRC-AC122FA9671436';
         domain = '/';
+        quadWord = 'opera-event-little-pinball';
     } else {
         // localhost
-        apiKey = 'AGRC-7F8F0DA6655711';
         domain = '/';
     }
     var baseUrl = domain + 'arcgis/rest/services/BBEcon/';
@@ -49,6 +53,7 @@ define([
         // apiKey: String
         //      The api key used for services on api.mapserv.utah.gov
         apiKey: apiKey, // acquire at developer.mapserv.utah.gov
+        quadWord: quadWord,
 
         // initialExtent: Object
         //      Defines in what extent the map is initially loaded
@@ -270,6 +275,16 @@ define([
             }]
         }]
     };
+
+    xhr(require.baseUrl + 'secrets.json', {
+        handleAs: 'json',
+        sync: true
+    }).then(function (secrets) {
+        window.AGRC.quadWord = secrets.quadWord;
+        window.AGRC.apiKey = secrets.apiKey;
+    }, function () {
+        throw 'Error getting secrets!';
+    });
 
     window.AGRC.currentLocationSymbol.setOffset(0, 22);
 

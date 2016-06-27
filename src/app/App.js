@@ -1,6 +1,4 @@
 define([
-    'agrc/widgets/map/BaseMap',
-
     'app/config',
     'app/CurrentLocation',
     'app/Layers',
@@ -10,20 +8,18 @@ define([
     'dijit/_WidgetBase',
     'dijit/_WidgetsInTemplateMixin',
 
-    'dojo/_base/array',
-    'dojo/_base/declare',
-    'dojo/_base/lang',
     'dojo/dom-class',
     'dojo/on',
     'dojo/query',
     'dojo/text!app/templates/App.html',
+    'dojo/_base/array',
+    'dojo/_base/declare',
+    'dojo/_base/lang',
 
     'bootstrap',
     'dijit/layout/ContentPane',
     'xstyle/css!app/resources/App.css'
 ], function(
-    BaseMap,
-
     config,
     CurrentLocation,
     Layers,
@@ -33,13 +29,13 @@ define([
     _WidgetBase,
     _WidgetsInTemplateMixin,
 
-    array,
-    declare,
-    lang,
     domClass,
     on,
     query,
-    template
+    template,
+    array,
+    declare,
+    lang
 ) {
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         // summary:
