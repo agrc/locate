@@ -6,7 +6,6 @@ pallet.py
 A module that contains the pallet for bb-econ
 '''
 import arcpy
-import settings
 from os import path
 from forklift.models import Pallet
 from forklift import config
@@ -75,7 +74,7 @@ class BBEconPallet(Pallet):
         self.log.info('copying BBEcon.gdb to staging...')
         if arcpy.Exists(self.bbecon):
             arcpy.Delete_management(self.bbecon)
-        arcpy.Copy_management(config.get_config_prop('copyDestinations')[0], self.bbecon)
+        arcpy.Copy_management(path.join(config.get_config_prop('copyDestinations')[0], 'BBEcon.gdb'), self.bbecon)
 
         previous_workspace = arcpy.env.workspace
         arcpy.env.workspace = self.sgid
