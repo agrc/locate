@@ -29,7 +29,7 @@ define([
         // *.utah.gov
         apiKey = 'AGRC-D3CDE591211690';
         domain = 'http://mapserv.utah.gov/';
-        quadWord = '';
+        quadWord = 'parker-magic-special-algebra';
     } else if (has('agrc-build') === 'stage') {
         // test.mapserv.utah.gov
         apiKey = 'AGRC-AC122FA9671436';
