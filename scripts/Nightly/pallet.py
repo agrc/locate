@@ -11,6 +11,8 @@ from forklift.models import Pallet
 
 
 class BBEconPallet(Pallet):
+    #: Note. This pallet assumes that bbecon.gdb exists in staging. It has data in it that
+    #: does not come from any parent database.
     def __init__(self):
         super(BBEconPallet, self).__init__()
 
@@ -70,11 +72,6 @@ class BBEconPallet(Pallet):
                          'destination_workspace': self.broadband})
 
     def process(self):
-        self.log.info('copying BBEcon.gdb to staging...')
-        if arcpy.Exists(self.bbecon):
-            arcpy.Delete_management(self.bbecon)
-        arcpy.Copy_management(path.join(config.get_config_prop('copyDestinations')[0], 'BBEcon.gdb'), self.bbecon)
-
         previous_workspace = arcpy.env.workspace
         arcpy.env.workspace = self.sgid
 
