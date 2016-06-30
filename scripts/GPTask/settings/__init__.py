@@ -1,26 +1,23 @@
-try:
-    from .dev import *
-except:
-    from dev import *
+DATA_PATH = r'C:\MapData'
 
-FIBER_GDB = DATA_PATH + r'\FiberVerification.gdb'
+FIBER_GDB = DATA_PATH + r'\fiberverification.gdb'
 HEXAGONS = FIBER_GDB + r'\Hexagons'
 SERVICE_AREAS = FIBER_GDB + r'\ProviderServiceAreas'
-BB_GDB = DATA_PATH + r'\Broadband.gdb'
+BB_GDB = DATA_PATH + r'\broadband.gdb'
 PROVIDERS = BB_GDB + r'\BB_Providers_Table'
 FIXED = BB_GDB + r'\BB_Service'
 FIXED_QUERY = 'TRANSTECH NOT IN (60, 80)'
 
-SGID_GDB = DATA_PATH + r'\SGID10.gdb'
-NATURAL_GAS = SGID_GDB + r'\NaturalGasService_Approx'
-ELECTRICAL = SGID_GDB + r'\ElectricalService'
-RURAL_TEL = SGID_GDB + r'\RuralTelcomBoundaries'
-ROADS = SGID_GDB + r'\Roads'
+UTILITIES_GDB = DATA_PATH + r'\utilities.gdb'
+NATURAL_GAS = UTILITIES_GDB + r'\NaturalGasService_Approx'
+ELECTRICAL = UTILITIES_GDB + r'\ElectricalService'
+RURAL_TEL = UTILITIES_GDB + r'\RuralTelcomBoundaries'
+ROADS = DATA_PATH + r'\transportation.gdb\Roads'
 ROADS_WHERE = "CARTOCODE in ( '1', '2', '3', '4', '5')"
 ROADS_BUFFER = '1 Miles'
-ENTERPRISE_ZONES = SGID_GDB + r'\EnterpriseZones'
+ENTERPRISE_ZONES = DATA_PATH + r'\economy.gdb\EnterpriseZones'
 
-BBECON_GDB = DATA_PATH + r'\BBEcon.gdb'
+BBECON_GDB = DATA_PATH + r'\bbecon.gdb'
 AIRPORT_INT = BBECON_GDB + r'\Airport_SLinternational_DriveTime'
 AIRPORT_REG = BBECON_GDB + r'\Airport_RegionalCommercial_DriveTime'
 AIRPORT_LOCAL = BBECON_GDB + r'\Airport_Local_DriveTime'

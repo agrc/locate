@@ -32,6 +32,7 @@ define([
         templateString: template,
         baseClass: 'find-address',
         widgetsInTemplate: true,
+        zoomLevel: 17,
 
         // Properties to be sent into constructor
 

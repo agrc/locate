@@ -11,6 +11,7 @@ define([
     'dojo/_base/declare',
     'dojo/_base/lang',
 
+    'esri/geometry/Extent',
     'esri/geometry/Point',
     'esri/graphic',
     'esri/layers/ArcGISDynamicMapServiceLayer',
@@ -29,6 +30,7 @@ define([
     declare,
     lang,
 
+    Extent,
     Point,
     Graphic,
     ArcGISDynamicMapServiceLayer,
@@ -53,12 +55,16 @@ define([
 
             this.map = new BaseMap(mapDiv, {
                 useDefaultBaseMap: false,
-                defaultBaseMap: 'Lite',
                 showAttribution: false,
-                center: new Point(config.initialExtent.center, {
-                    wkid: 26912
+                extent: new Extent({
+                    xmax: -11762120.612131765,
+                    xmin: -13074391.513731329,
+                    ymax: 5225035.106177688,
+                    ymin: 4373832.359194187,
+                    spatialReference: {
+                        wkid: 3857
+                    }
                 }),
-                scale: config.initialExtent.scale,
                 router: true,
                 showLabels: true
             });
@@ -67,7 +73,7 @@ define([
                 new LayerSelector({
                     map: this.map,
                     quadWord: config.quadWord,
-                    baseLayers: ['Hybrid', 'Lite', 'Terrain', 'Topo']
+                    baseLayers: ['Lite', 'Hybrid', 'Terrain', 'Topo']
                 })
             );
             this.childWidgets.push(this.map);

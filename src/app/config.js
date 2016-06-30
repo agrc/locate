@@ -59,7 +59,7 @@ define([
         //      Defines in what extent the map is initially loaded
         initialExtent: {
             scale: 144447.638572,
-            center: [425132, 4512466]
+            center: [-12458405, 4977593]
         },
         topics: {
             addLayer: 'addLayer',

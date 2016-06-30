@@ -20,7 +20,8 @@ require([
                     loaded: true,
                     addLayer: function () {},
                     on: function () {},
-                    removeLayer: function () {}
+                    removeLayer: function () {},
+                    spatialReference: {wkid: 3857}
                 }
             }, domConstruct.create('div', null, document.body));
             widget.startup();

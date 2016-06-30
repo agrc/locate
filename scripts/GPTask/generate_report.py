@@ -202,7 +202,7 @@ if __name__ == '__main__':
     x = float(GetParameterAsText(0))
     y = float(GetParameterAsText(1))
 
-    pnt = PointGeometry(Point(x, y), SpatialReference(26912))
+    pnt = PointGeometry(Point(x, y), SpatialReference(3857))
 
     result = {'broadband': {'fiber': get_fiber(pnt),
                             'fixed': get_fixed(pnt)},

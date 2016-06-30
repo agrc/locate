@@ -5,7 +5,7 @@ HexID = 'HexID'
 ServiceClass = 'ServiceClass'
 ProvName = 'ProvName'
 
-#Providers
+# Providers
 Colloquial = 'Colloquial'
 Code = 'Code'
 URL = 'URL'
@@ -13,22 +13,22 @@ ContactName = 'ContactName'
 ContactPhone = 'ContactPhone'
 ContactEmail = 'ContactEmail'
 
-#Utilities
+# Utilities
 PROVIDER = 'PROVIDER'
 WEBLINK = 'WEBLINK'
 
-#Roads
+# Roads
 CARTOCODE = 'CARTOCODE'
 FULLNAME = 'HWYNAME'
 
-#Drive Times
+# Drive Times
 ToBreak = 'ToBreak'
 Name = 'Name'
 
-#BB
+# BB
 UTProvCode = 'UTProvCode'
 
-#COUNTIES
+# COUNTIES
 Avg_MonthlyIncome = 'Avg_MonthlyIncome'
 Avg_HouseIncome = 'Avg_HouseIncome'
 Median_Age = 'Median_Age'

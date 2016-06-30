@@ -2,7 +2,7 @@
   "name": "bb-econ",
   "version": "1.5.2",
   "dependencies": {
-    "agrc": "agrc-widgets#2.11.2",
+    "agrc": "agrc-widgets#~5.0",
     "bootstrap": "~3.2",
     "ijit": "agrc-ijit#3.1.0",
     "jasmine-favicon-reporter": "*",

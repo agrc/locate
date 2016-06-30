@@ -127,28 +127,36 @@ define([
                 this.webAPI = new WebAPI({apiKey: config.apiKey});
             }
 
+            var defaultOptions = {spatialReference: 3857};
+
             var defs = [
-                this.webAPI.reverseGeocode(point.x, point.y, {distance: 50}).then(
+                this.webAPI.reverseGeocode(point.x, point.y, lang.mixin({distance: 50}, defaultOptions)).then(
                     lang.hitch(this, 'onReverseGeocodeComplete'),
                     lang.hitch(this, 'onReverseGeocodeError')
                 ),
-                this.webAPI.search(config.featureClassNames.city,
+                this.webAPI.search(
+                    config.featureClassNames.city,
                     [config.fieldNames.city.NAME],
-                    {geometry: 'point:[' + point.x + ',' + point.y + ']'})
-                    .then(lang.partial(lang.hitch(this, 'onSearchReturn'), 'city', config.fieldNames.city.NAME),
-                        lang.partial(lang.hitch(this, 'onSearchError'), 'city')
+                    lang.mixin({geometry: 'point:[' + point.x + ',' + point.y + ']'}, defaultOptions)
+                ).then(
+                    lang.partial(lang.hitch(this, 'onSearchReturn'), 'city', config.fieldNames.city.NAME),
+                    lang.partial(lang.hitch(this, 'onSearchError'), 'city')
                 ),
-                this.webAPI.search(config.featureClassNames.zip,
+                this.webAPI.search(
+                    config.featureClassNames.zip,
                     [config.fieldNames.zip.ZIP5],
-                    {geometry: 'point:[' + point.x + ',' + point.y + ']'})
-                    .then(lang.partial(lang.hitch(this, 'onSearchReturn'), 'zip', config.fieldNames.zip.ZIP5),
-                        lang.partial(lang.hitch(this, 'onSearchError'), 'zip')
+                    lang.mixin({geometry: 'point:[' + point.x + ',' + point.y + ']'}, defaultOptions)
+                ).then(
+                    lang.partial(lang.hitch(this, 'onSearchReturn'), 'zip', config.fieldNames.zip.ZIP5),
+                    lang.partial(lang.hitch(this, 'onSearchError'), 'zip')
                 ),
-                this.webAPI.search(config.featureClassNames.county,
+                this.webAPI.search(
+                    config.featureClassNames.county,
                     [config.fieldNames.county.NAME],
-                    {geometry: 'point:[' + point.x + ',' + point.y + ']'})
-                    .then(lang.partial(lang.hitch(this, 'onSearchReturn'), 'county', config.fieldNames.county.NAME),
-                        lang.partial(lang.hitch(this, 'onSearchError'), 'county')
+                    lang.mixin({geometry: 'point:[' + point.x + ',' + point.y + ']'}, defaultOptions)
+                ).then(
+                    lang.partial(lang.hitch(this, 'onSearchReturn'), 'county', config.fieldNames.county.NAME),
+                    lang.partial(lang.hitch(this, 'onSearchError'), 'county')
                 )
             ];
             new DeferredList(defs).then(lang.partial(lang.hitch(this, 'toggleLoader'), false));
