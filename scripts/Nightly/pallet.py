@@ -23,15 +23,15 @@ class BBEconPallet(Pallet):
 
         self.sgid = path.join(self.garage, 'SGID10.sde')
 
-        self.economy = path.join(self.staging, 'Economy.gdb')
-        self.health = path.join(self.staging, 'Health.gdb')
-        self.location = path.join(self.staging, 'Location.gdb')
-        self.society = path.join(self.staging, 'Society.gdb')
-        self.transportation = path.join(self.staging, 'Transportation.gdb')
-        self.utilities = path.join(self.staging, 'Utilities.gdb')
-        self.cadastre = path.join(self.staging, 'Cadastre.gdb')
-        self.broadband = path.join(self.staging, 'Broadband.gdb')
-        self.bbecon = path.join(self.staging, 'BBEcon.gdb')
+        self.economy = path.join(self.staging, 'economy.gdb')
+        self.health = path.join(self.staging, 'health.gdb')
+        self.location = path.join(self.staging, 'location.gdb')
+        self.society = path.join(self.staging, 'society.gdb')
+        self.transportation = path.join(self.staging, 'transportation.gdb')
+        self.utilities = path.join(self.staging, 'utilities.gdb')
+        self.cadastre = path.join(self.staging, 'cadastre.gdb')
+        self.broadband = path.join(self.staging, 'broadband.gdb')
+        self.bbecon = path.join(self.staging, 'bbecon.gdb')
 
         self.copy_data = [self.economy,
                           self.health,
