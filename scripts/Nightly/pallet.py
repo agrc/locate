@@ -8,7 +8,6 @@ A module that contains the pallet for bb-econ
 import arcpy
 from os import path
 from forklift.models import Pallet
-from forklift import config
 
 
 class BBEconPallet(Pallet):
