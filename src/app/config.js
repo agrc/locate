@@ -228,6 +228,16 @@ define([
                 type: 'feature',
                 layerId: '6',
                 marker: 'universities.svg'
+            }, {
+                name: 'Workforce Services Centers',
+                type: 'feature',
+                layerId: '29',
+                marker: 'employmentcenters.svg'
+            }, {
+                name: 'Business Resource Centers',
+                type: 'feature',
+                layerId: '28',
+                marker: 'brc.svg'
             }]
         }, {
             groupClass: 'lifestyle',
