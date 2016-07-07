@@ -49,6 +49,22 @@ body {
     left: 50px;
     top: 17px;
 }
+
+/* layer-selector overrides */
+.layer-selector {
+    top: 70px;
+}
+.layer-selector label.layer-selector-items {
+    padding-left: 23px;
+}
+.layer-selector .layer-selector-item.checkbox {
+    padding-left: 0;
+}
+.layer-selector .layer-selector-item input[type='radio'],
+.layer-selector .layer-selector-item input[type='checkbox'] {
+    opacity: 1;
+}
+
 a, a:visited {
     text-decoration: none;
 }

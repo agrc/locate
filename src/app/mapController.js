@@ -73,7 +73,8 @@ define([
                 new LayerSelector({
                     map: this.map,
                     quadWord: config.quadWord,
-                    baseLayers: ['Lite', 'Hybrid', 'Terrain', 'Topo']
+                    baseLayers: ['Lite', 'Hybrid', 'Terrain', 'Topo'],
+                    right: false
                 })
             );
             this.childWidgets.push(this.map);
