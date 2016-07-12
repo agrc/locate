@@ -57,10 +57,10 @@ define([
                 useDefaultBaseMap: false,
                 showAttribution: false,
                 extent: new Extent({
-                    xmax: -11762120.612131765,
-                    xmin: -13074391.513731329,
-                    ymax: 5225035.106177688,
-                    ymin: 4373832.359194187,
+                    xmin: -12509063.252534315,
+                    ymin: 4948638.811898562,
+                    xmax: -12398993.931803688,
+                    ymax: 4992207.918021101,
                     spatialReference: {
                         wkid: 3857
                     }
