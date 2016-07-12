@@ -13,11 +13,12 @@ Staging URL: [test.mapserv.utah.gov/bb-econ](http://test.mapserv.utah.gov/bb-eco
 Nightly Script
 ==============
 
-There is a nightly script in `scripts/Nightly` that dissolves the fiber data and puts it in the file geodatabase associated with this project.
+`scripts/Nightly/ironing_board_pallet.py` updates and processes data for this app via [forklift](https://github.com/agrc/forklift).
 
-It's checked out to .56 using [git sparse checkout](http://briancoyner.github.io/blog/2013/06/05/git-sparse-checkout/).
+Deployment
+==========
 
-Build Notes
-===========
-
-The `settings` folder does not get copied to the server when publishing the GenerateReport gp tool. This has to be done manually.
+1. Publish `maps/MapService.mxd` as `BBEcon/MapService`
+1. Publish `scripts/GPTask/Toolbox.tbx/Generate Report` as `BBEcon/GenerateReport`
+    - Test point: `x: -12452500, y: 4979214`
+    - The `settings` folder does not get copied to the server when publishing the GenerateReport gp tool. This has to be done manually.
