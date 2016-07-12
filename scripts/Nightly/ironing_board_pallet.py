@@ -6,7 +6,7 @@ pallet.py
 A module that contains the pallet for bb-econ
 '''
 import arcpy
-from os import path
+import os
 from forklift.models import Pallet
 
 
@@ -21,19 +21,19 @@ class BBEconPallet(Pallet):
 
         self.staging = 'C:\\Scheduled\\staging'
 
-        self.sgid = path.join(self.garage, 'SGID10.sde')
-        self.fiberverification_sde = path.join(self.garage, 'FiberVerification.sde')
+        self.sgid = os.path.join(self.garage, 'SGID10.sde')
+        self.fiberverification_sde = os.path.join(self.garage, 'FiberVerification.sde')
 
-        self.bbecon = path.join(self.staging, 'bbecon.gdb')
-        self.broadband = path.join(self.staging, 'broadband.gdb')
-        self.cadastre = path.join(self.staging, 'cadastre.gdb')
-        self.economy = path.join(self.staging, 'economy.gdb')
-        self.fiberverification = path.join(self.staging, 'fiberverification.gdb')
-        self.health = path.join(self.staging, 'health.gdb')
-        self.location = path.join(self.staging, 'location.gdb')
-        self.society = path.join(self.staging, 'society.gdb')
-        self.transportation = path.join(self.staging, 'transportation.gdb')
-        self.utilities = path.join(self.staging, 'utilities.gdb')
+        self.bbecon = os.path.join(self.staging, 'bbecon.gdb')
+        self.broadband = os.path.join(self.staging, 'broadband.gdb')
+        self.cadastre = os.path.join(self.staging, 'cadastre.gdb')
+        self.economy = os.path.join(self.staging, 'economy.gdb')
+        self.fiberverification = os.path.join(self.staging, 'fiberverification.gdb')
+        self.health = os.path.join(self.staging, 'health.gdb')
+        self.location = os.path.join(self.staging, 'location.gdb')
+        self.society = os.path.join(self.staging, 'society.gdb')
+        self.transportation = os.path.join(self.staging, 'transportation.gdb')
+        self.utilities = os.path.join(self.staging, 'utilities.gdb')
 
         self.copy_data = [self.bbecon,
                           self.broadband,
@@ -72,7 +72,7 @@ class BBEconPallet(Pallet):
                          'destination_workspace': self.utilities})
 
         self.add_crates(['BB_Service', 'BB_Providers_Table'],
-                        {'source_workspace': path.join(self.garage, 'UBBMAP.sde'),
+                        {'source_workspace': os.path.join(self.garage, 'UBBMAP.sde'),
                          'destination_workspace': self.broadband})
 
         self.add_crates(['Hexagons', 'ProviderServiceAreas'],
@@ -86,8 +86,8 @@ class BBEconPallet(Pallet):
         for n in [1, 9]:
             self.dissolve_fiber(n)
 
-        railroads = path.join(self.bbecon, 'Railroads')
-        self.dissolve(railroads, "TYPE = 'Heavy'", path.join(self.sgid, 'SGID10.TRANSPORTATION.Railroads'))
+        railroads = os.path.join(self.bbecon, 'Railroads')
+        self.dissolve(railroads, "TYPE = 'Heavy'", os.path.join(self.sgid, 'SGID10.TRANSPORTATION.Railroads'))
 
         self.log.info('chop up railroads by county')
         railroads_dissolved = '{}_dissolved'.format(railroads)
@@ -121,4 +121,4 @@ class BBEconPallet(Pallet):
         query = 'HexID IN (SELECT HexID FROM PROVIDERSERVICEAREAS WHERE ServiceClass = {})'.format(num)
         fc = '{}\Fiber_Dissolved_{}Month'.format(self.bbecon, num)
 
-        self.dissolve(fc, query, path.join(self.fiberverification_sde, 'FiberVerification.FIBERADMIN.Hexagons'))
+        self.dissolve(fc, query, os.path.join(self.fiberverification_sde, 'FiberVerification.FIBERADMIN.Hexagons'))
