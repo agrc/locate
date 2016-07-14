@@ -6,8 +6,9 @@ pallet.py
 A module that contains the pallet for bb-econ
 '''
 import arcpy
-import os
 from forklift.models import Pallet
+from os.path import join
+from os.path import basename
 
 
 class BBEconPallet(Pallet):
@@ -21,19 +22,19 @@ class BBEconPallet(Pallet):
 
         self.staging = 'C:\\Scheduled\\staging'
 
-        self.sgid = os.path.join(self.garage, 'SGID10.sde')
-        self.fiberverification_sde = os.path.join(self.garage, 'FiberVerification.sde')
+        self.sgid = join(self.garage, 'SGID10.sde')
+        self.fiberverification_sde = join(self.garage, 'FiberVerification.sde')
 
-        self.bbecon = os.path.join(self.staging, 'bbecon.gdb')
-        self.broadband = os.path.join(self.staging, 'broadband.gdb')
-        self.cadastre = os.path.join(self.staging, 'cadastre.gdb')
-        self.economy = os.path.join(self.staging, 'economy.gdb')
-        self.fiberverification = os.path.join(self.staging, 'fiberverification.gdb')
-        self.health = os.path.join(self.staging, 'health.gdb')
-        self.location = os.path.join(self.staging, 'location.gdb')
-        self.society = os.path.join(self.staging, 'society.gdb')
-        self.transportation = os.path.join(self.staging, 'transportation.gdb')
-        self.utilities = os.path.join(self.staging, 'utilities.gdb')
+        self.bbecon = join(self.staging, 'bbecon.gdb')
+        self.broadband = join(self.staging, 'broadband.gdb')
+        self.cadastre = join(self.staging, 'cadastre.gdb')
+        self.economy = join(self.staging, 'economy.gdb')
+        self.fiberverification = join(self.staging, 'fiberverification.gdb')
+        self.health = join(self.staging, 'health.gdb')
+        self.location = join(self.staging, 'location.gdb')
+        self.society = join(self.staging, 'society.gdb')
+        self.transportation = join(self.staging, 'transportation.gdb')
+        self.utilities = join(self.staging, 'utilities.gdb')
 
         self.copy_data = [self.bbecon,
                           self.broadband,
@@ -72,7 +73,7 @@ class BBEconPallet(Pallet):
                          'destination_workspace': self.utilities})
 
         self.add_crates(['BB_Service', 'BB_Providers_Table'],
-                        {'source_workspace': os.path.join(self.garage, 'UBBMAP.sde'),
+                        {'source_workspace': join(self.garage, 'UBBMAP.sde'),
                          'destination_workspace': self.broadband})
 
         self.add_crates(['Hexagons', 'ProviderServiceAreas'],
@@ -86,8 +87,8 @@ class BBEconPallet(Pallet):
         for n in [1, 9]:
             self.dissolve_fiber(n)
 
-        railroads = os.path.join(self.bbecon, 'Railroads')
-        self.dissolve(railroads, "TYPE = 'Heavy'", os.path.join(self.sgid, 'SGID10.TRANSPORTATION.Railroads'))
+        railroads = join(self.bbecon, 'Railroads')
+        self.dissolve(railroads, "TYPE = 'Heavy'", join(self.sgid, 'SGID10.TRANSPORTATION.Railroads'))
 
         self.log.info('chop up railroads by county')
         railroads_dissolved = '{}_dissolved'.format(railroads)
@@ -97,6 +98,8 @@ class BBEconPallet(Pallet):
         arcpy.Delete_management(railroads)
 
         arcpy.env.workspace = previous_workspace
+
+        self.build_polygon_data()
 
     def dissolve(self, fc, query, name):
         if arcpy.Exists(fc):
@@ -121,4 +124,41 @@ class BBEconPallet(Pallet):
         query = 'HexID IN (SELECT HexID FROM PROVIDERSERVICEAREAS WHERE ServiceClass = {})'.format(num)
         fc = '{}\Fiber_Dissolved_{}Month'.format(self.bbecon, num)
 
-        self.dissolve(fc, query, os.path.join(self.fiberverification_sde, 'FiberVerification.FIBERADMIN.Hexagons'))
+        self.dissolve(fc, query, join(self.fiberverification_sde, 'FiberVerification.FIBERADMIN.Hexagons'))
+
+    def build_polygon_data(self):
+        county_fields = ['Avg_MonthlyIncome',
+                         'Avg_HouseIncome',
+                         'Median_Age',
+                         'educationHighSchoolGraduate',
+                         'educationBachelorOrGreater'] + ['TI_{}'.format(f) for f in range(1, 11)]
+        datasets = [(join(self.fiberverification, 'Hexagons'), ['HexID'], None),
+                    (join(self.broadband, 'BB_Service'), ['UTProvCode'], 'TRANSTECH NOT IN (60, 80)'),
+                    (join(self.utilities, 'ElectricalService'), ['PROVIDER', 'WEBLINK'], None),
+                    (join(self.utilities, 'RuralTelcomBoundaries'), ['PROVIDER', 'WEBLINK'], None),
+                    (join(self.utilities, 'NaturalGasService_Approx'), ['PROVIDER', 'WEBLINK'], None),
+                    (join(self.bbecon, 'Airport_SLinternational_DriveTime'), ['Name', 'ToBreak'], None),
+                    (join(self.bbecon, 'Airport_RegionalCommercial_DriveTime'), ['Name', 'ToBreak'], None),
+                    (join(self.bbecon, 'Airport_Local_DriveTime'), ['Name', 'ToBreak'], None),
+                    (join(self.bbecon, 'HigherEd_DriveTime'), ['Name', 'ToBreak'], None),
+                    (join(self.bbecon, 'CountyDemographics'), county_fields, None),
+                    (join(self.economy, 'EnterpriseZones'), ['OBJECTID', 'ZONENAME', 'EXPYR', 'POC_NAME', 'POC_PHONE', 'POC_EMAIL'], None),
+                    (join(self.bbecon, 'NatlParks_DriveTime'), ['Name', 'ToBreak'], None),
+                    (join(self.bbecon, 'StParksAndMonuments_DriveTime'), ['Name', 'ToBreak'], None),
+                    (join(self.bbecon, 'SkiArea_DriveTime'), ['Name', 'ToBreak'], None),
+                    (join(self.bbecon, 'RoadsBuffer'), ['FULLNAME'], None)]
+
+        roads = join(self.transportation, 'Roads')
+        roadsBuffer = join(self.bbecon, 'RoadsBuffer')
+        arcpy.Delete_management(roadsBuffer)
+        arcpy.MakeFeatureLayer_management(roads, 'roads_lyr', "CARTOCODE in ( '1', '2', '3', '4', '5')")
+        arcpy.Buffer_analysis('roads_lyr', roadsBuffer, '1 Miles', dissolve_option='LIST', dissolve_field='FULLNAME')
+
+        polygonData = join(self.bbecon, 'PolygonData')
+        arcpy.TruncateTable_management(polygonData)
+        with arcpy.da.InsertCursor(polygonData, ['SOURCE', 'DATA', 'SHAPE@']) as ucur:
+            for source, fields, where in datasets:
+                print(source)
+                with arcpy.da.SearchCursor(source, fields + ['SHAPE@'], where_clause=where) as cur:
+                    for row in cur:
+                        ucur.insertRow((basename(source), ';'.join([str(x) for x in row[:-1]]), row[-1]))
