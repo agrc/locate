@@ -1,33 +1,39 @@
+import arcpy
 import re
 import json
 
-from arcpy import PointGeometry, Point, SpatialReference, MakeFeatureLayer_management, SelectLayerByLocation_management, GetCount_management, da, Buffer_analysis, GetParameterAsText, SetParameterAsText
-
-try:
-    from .settings import fieldnames
-    from .settings import *
-except:
-    from settings import fieldnames
-    from settings import *
+from settings import fieldnames
+from settings import *
+from os.path import basename
+from time import time
 
 
-def get_intersect_layer(point, feature_class, where='1 = 1'):
-    lyr = MakeFeatureLayer_management(feature_class, feature_class + '_layer', where)
-    SelectLayerByLocation_management(lyr, 'INTERSECT', point)
+start_time = time()
+
+
+def timer():
+    return time() - start_time
+
+
+def get_intersect_layer(point, feature_class):
+    print('get_intersect_layer: {}'.format(timer()))
+    lyr = arcpy.MakeFeatureLayer_management(feature_class, feature_class + '_layer')
+    print('selecting by location: {}'.format(timer()))
+    arcpy.SelectLayerByLocation_management(lyr, 'INTERSECT', point)
     return lyr
 
 
-def get_fiber(point):
-    lyr = get_intersect_layer(point, HEXAGONS)
-    with da.SearchCursor(lyr, [fieldnames.HexID]) as cursor:
-        hex_id = cursor.next()[0]
+def get_fiber(data):
+    print('get_fiber: {}'.format(timer()))
+
+    hex_id = data[basename(HEXAGONS)][0]
 
     records = []
     provs = []  # for preventing duplicates
-    with da.SearchCursor(SERVICE_AREAS,
-                         [fieldnames.ServiceClass, fieldnames.ProvName],
-                         '{} = {} AND {} <> 0'.format(fieldnames.HexID, hex_id, fieldnames.ServiceClass),
-                         sql_clause=(None, 'ORDER BY ' + fieldnames.ProvName)) as sa_cursor:
+    with arcpy.da.SearchCursor(SERVICE_AREAS,
+                               [fieldnames.ServiceClass, fieldnames.ProvName],
+                               '{} = {} AND {} <> 0'.format(fieldnames.HexID, hex_id, fieldnames.ServiceClass),
+                               sql_clause=(None, 'ORDER BY ' + fieldnames.ProvName)) as sa_cursor:
         for sa in sa_cursor:
             if sa[1] not in provs:
                 records.append({fieldnames.ServiceClass: FIBER_TERMS[sa[0]],
@@ -39,6 +45,7 @@ def get_fiber(point):
 
 
 def add_provider_info(items, code_field):
+    print('add_provider_info: {}'.format(timer()))
     fields = [
         fieldnames.Colloquial,
         fieldnames.URL,
@@ -48,10 +55,9 @@ def add_provider_info(items, code_field):
     ]
     for it in items:
         where = '{} = \'{}\''.format(fieldnames.Code, it[code_field])
-        print(where)
-        with da.SearchCursor(PROVIDERS,
-                             fields,
-                             where) as prov_cursor:
+        with arcpy.da.SearchCursor(PROVIDERS,
+                                   fields,
+                                   where) as prov_cursor:
             try:
                 prov = prov_cursor.next()
                 it.update({fieldnames.Colloquial: prov[0],
@@ -67,16 +73,11 @@ def add_provider_info(items, code_field):
                            fieldnames.ContactEmail: 'n/a'})
 
 
-def get_fixed(point):
-    def get_data(fc, query):
-        records = get_records(get_intersect_layer(point, fc, query),
-                              [fieldnames.UTProvCode],
-                              fieldnames.UTProvCode)
-        add_provider_info(records, fieldnames.UTProvCode)
+def get_fixed(data):
+    print('get_fixed: {}'.format(timer()))
 
-        return records
-
-    providers = get_data(FIXED, FIXED_QUERY)
+    providers = get_records(data[basename(FIXED)], [fieldnames.UTProvCode], fieldnames.UTProvCode)
+    add_provider_info(providers, fieldnames.UTProvCode)
 
     # remove duplicate providers
     names = []
@@ -89,78 +90,81 @@ def get_fixed(point):
     return new
 
 
-def get_records(lyr, fields, sort_field, titlecase_fields=[]):
+def get_records(data, fields, sort_field, titlecase_fields=[]):
+    print('get_records: {}'.format(timer()))
     records = []
-    sql = (None, 'ORDER BY ' + sort_field)
-    with da.SearchCursor(lyr, fields, sql_clause=sql) as cursor:
-        for row in cursor:
-            d = {}
-            i = 0
-            for f in fields:
-                if f in titlecase_fields:
-                    d[f] = row[i].title()
-                else:
-                    d[f] = row[i]
-                i += 1
-            records.append(d)
+    for data_element in data:
+        data_elements = data_element.split(';')
+        d = {}
+        i = 0
+        for f in fields:
+            if f in titlecase_fields:
+                d[f] = data_elements[i].title()
+            else:
+                d[f] = data_elements[i]
+            i += 1
+        records.append(d)
 
-    return records
+    return sorted(records, key=lambda r: r[sort_field])
 
 
-def get_topten(countyLyr):
-    fields = ['TI_{}'.format(f) for f in range(1, 11)]
+def get_topten(record, fields):
+    print('get_topten: {}'.format(timer()))
     results = []
-    with da.SearchCursor(countyLyr, fields) as cursor:
-        row = cursor.next()
-        for i in range(0, 10):
-            results.append({'rank': i+1,
-                            'desc': row[i]})
+    i = 1
+    for fld in fields:
+        results.append({'rank': i,
+                        'desc': record[fld]})
+        i += 1
 
     return results
 
 
-def get_county_demographics(point):
-    lyr = get_intersect_layer(point, COUNTIES)
+def get_county_demographics(data):
+    print('get_county_demographics: {}'.format(timer()))
 
+    tt_fields = ['TI_{}'.format(f) for f in range(1, 11)]
     fields = [fieldnames.Avg_MonthlyIncome,
               fieldnames.Avg_HouseIncome,
               fieldnames.Median_Age,
               fieldnames.educationHighSchoolGraduate,
               fieldnames.educationBachelorOrGreater]
 
-    record = get_records(lyr, fields, fieldnames.Avg_MonthlyIncome)[0]
-    record['topten'] = get_topten(lyr)
+    record = get_records(data[basename(COUNTIES)], fields + tt_fields, fieldnames.Avg_MonthlyIncome)[0]
+    record['topten'] = get_topten(record, tt_fields)
     return record
 
 
-def get_utilities(point):
-    def process(fc):
+def get_utilities(data):
+    print('get_utilities: {}'.format(timer()))
+
+    def process():
+        print('process: {}'.format(timer()))
         lyr = get_intersect_layer(point, fc)
 
         return get_records(lyr, [fieldnames.PROVIDER, fieldnames.WEBLINK], fieldnames.PROVIDER, [fieldnames.PROVIDER])
 
-    return {'electrical': process(ELECTRICAL),
-            'rural': process(RURAL_TEL),
-            'natural_gas': process(NATURAL_GAS)}
+    fields = [fieldnames.PROVIDER, fieldnames.WEBLINK]
+    return {'electrical': get_records(data[basename(ELECTRICAL)], fields, fieldnames.PROVIDER, [fieldnames.PROVIDER]),
+            'rural': get_records(data[basename(RURAL_TEL)], fields, fieldnames.PROVIDER, [fieldnames.PROVIDER]),
+            'natural_gas': get_records(data[basename(NATURAL_GAS)], fields, fieldnames.PROVIDER, [fieldnames.PROVIDER])}
 
 
-def get_roads(point):
-    buf = 'in_memory/roads_buffer'
-    Buffer_analysis(point, buf, ROADS_BUFFER)
-    lyr = get_intersect_layer(buf, ROADS, ROADS_WHERE)
-    records = get_records(lyr, [fieldnames.FULLNAME], fieldnames.FULLNAME)
+def get_roads(data):
+    print('get_roads: {}'.format(timer()))
+    records = get_records(data[basename(ROADS)], [fieldnames.FULLNAME], fieldnames.FULLNAME)
     # remove duplicates
     records = list(set([r[fieldnames.FULLNAME] for r in records]))
     records.sort()
     return records
 
 
-def get_drive_time(fc, point):
-    lyr = get_intersect_layer(point, fc)
+def get_drive_time(data):
+    print('get_drive_time: {}'.format(timer()))
     records = []
     reg = re.compile(r'(^.*) : .* (.*$)')
     names = []
-    for rec in get_records(lyr, [fieldnames.Name, fieldnames.ToBreak], fieldnames.ToBreak, [fieldnames.Name]):
+    for rec in get_records(data, [fieldnames.Name, fieldnames.ToBreak], fieldnames.ToBreak, [fieldnames.Name]):
         m = re.search(reg, rec[fieldnames.Name]).groups()
 
         # filter out duplicates with longer field names
@@ -172,6 +176,7 @@ def get_drive_time(fc, point):
 
 
 def format_drive_time(mins):
+    mins = int(mins.split('.')[0])
     if mins < 60:
         return '< {} mins'.format(str(mins).replace('.0', ''))
     elif mins == 60:
@@ -181,39 +186,56 @@ def format_drive_time(mins):
         return '< {} hours'.format(hours)
 
 
-def get_airports(point):
-    lyr = get_intersect_layer(point, AIRPORT_INT)
-    drive_time = format_drive_time(get_records(lyr, [fieldnames.ToBreak], fieldnames.ToBreak)[0][fieldnames.ToBreak])
+def get_airports(data):
+    print('get_airports: {}'.format(timer()))
+    drive_time = format_drive_time(data[basename(AIRPORT_INT)][0].split(';')[1])
     res = {'sl': {'drive_time': drive_time, 'name': 'Salt Lake International'},
-           'regional_commercial': get_drive_time(AIRPORT_REG, point),
-           'local': get_drive_time(AIRPORT_LOCAL, point)}
+           'regional_commercial': get_drive_time(data[basename(AIRPORT_REG)]),
+           'local': get_drive_time(data[basename(AIRPORT_LOCAL)])}
 
     return res
 
 
-def get_enterprise_zone(point):
-    lyr = get_intersect_layer(point, ENTERPRISE_ZONES)
-    return get_records(lyr, fieldnames.ENTERPRISE_FIELDS, 'OBJECTID')
+def get_enterprise_zone(data):
+    print('get_enterprise_zone: {}'.format(timer()))
+    return get_records(data[basename(ENTERPRISE_ZONES)], fieldnames.ENTERPRISE_FIELDS, 'OBJECTID')
 
+
+def get_data_from_layer(lyr):
+    print('get_data_from_layer: {}'.format(timer()))
+    data = {}
+    for DS in DATASETS:
+        #: make sure that we have an empty array if there's not data for a specific source
+        data[DS] = []
+    with arcpy.da.SearchCursor(lyr, [fieldnames.SOURCE, fieldnames.DATA]) as cur:
+        for row in cur:
+            source, data_value = row
+            data[source].append(data_value)
+
+    return data
 
 if __name__ == '__main__':
-    # x = 422991.7632080179
-    # y = 4504669.423114922
-    x = float(GetParameterAsText(0))
-    y = float(GetParameterAsText(1))
+    x = int(arcpy.GetParameterAsText(0))
+    y = int(arcpy.GetParameterAsText(1))
+    print(x, y)
 
-    pnt = PointGeometry(Point(x, y), SpatialReference(3857))
+    pnt = arcpy.PointGeometry(arcpy.Point(x, y), arcpy.SpatialReference(3857))
 
-    result = {'broadband': {'fiber': get_fiber(pnt),
-                            'fixed': get_fixed(pnt)},
-              'utilities': get_utilities(pnt),
-              'transportation': {'roads': get_roads(pnt),
-                                 'airports': get_airports(pnt)},
-              'workforce': {'schools': get_drive_time(SCHOOLS, pnt),
-                            'county_demographics': get_county_demographics(pnt),
-                            'enterprise_zone': get_enterprise_zone(pnt)},
-              'recreation': {'nat_parks': get_drive_time(NAT_PARKS, pnt),
-                             'state_parks': get_drive_time(STATE_PARKS, pnt),
-                             'ski': get_drive_time(SKI, pnt)}}
+    lyr = get_intersect_layer(pnt, POLYGON_DATA)
 
-    SetParameterAsText(2, json.dumps(result))
+    data = get_data_from_layer(lyr)
+
+    result = {'broadband': {'fiber': get_fiber(data),
+                            'fixed': get_fixed(data)},
+              'utilities': get_utilities(data),
+              'transportation': {'roads': get_roads(data),
+                                 'airports': get_airports(data)},
+              'workforce': {'schools': get_drive_time(data[basename(SCHOOLS)]),
+                            'county_demographics': get_county_demographics(data),
+                            'enterprise_zone': get_enterprise_zone(data)},
+              'recreation': {'nat_parks': get_drive_time(data[basename(NAT_PARKS)]),
+                             'state_parks': get_drive_time(data[basename(STATE_PARKS)]),
+                             'ski': get_drive_time(data[basename(SKI)])}}
+
+    print(json.dumps(result))
+    arcpy.SetParameterAsText(2, json.dumps(result))
