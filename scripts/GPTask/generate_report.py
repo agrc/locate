@@ -215,9 +215,12 @@ def get_data_from_layer(lyr):
     return data
 
 if __name__ == '__main__':
-    x = int(arcpy.GetParameterAsText(0))
-    y = int(arcpy.GetParameterAsText(1))
-    print(x, y)
+    x = arcpy.GetParameterAsText(0)
+    y = arcpy.GetParameterAsText(1)
+
+    if type(x) == str:
+        x = int(x)
+        y = int(y)
 
     pnt = arcpy.PointGeometry(arcpy.Point(x, y), arcpy.SpatialReference(3857))
 
@@ -237,5 +240,4 @@ if __name__ == '__main__':
                              'state_parks': get_drive_time(data[basename(STATE_PARKS)]),
                              'ski': get_drive_time(data[basename(SKI)])}}
 
-    print(json.dumps(result))
     arcpy.SetParameterAsText(2, json.dumps(result))
