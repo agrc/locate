@@ -127,6 +127,7 @@ class BBEconPallet(Pallet):
         self.dissolve(fc, query, join(self.fiberverification_sde, 'FiberVerification.FIBERADMIN.Hexagons'))
 
     def build_polygon_data(self):
+        self.log.info('building PolygonData feature class...')
         county_fields = ['Avg_MonthlyIncome',
                          'Avg_HouseIncome',
                          'Median_Age',
@@ -148,6 +149,7 @@ class BBEconPallet(Pallet):
                     (join(self.bbecon, 'SkiArea_DriveTime'), ['Name', 'ToBreak'], None),
                     (join(self.bbecon, 'RoadsBuffer'), ['FULLNAME'], None)]
 
+        self.log.info('buffering roads')
         roads = join(self.transportation, 'Roads')
         roadsBuffer = join(self.bbecon, 'RoadsBuffer')
         arcpy.Delete_management(roadsBuffer)
@@ -159,7 +161,7 @@ class BBEconPallet(Pallet):
         arcpy.TruncateTable_management(polygonData)
         with arcpy.da.InsertCursor(polygonData, ['SOURCE', 'DATA', 'SHAPE@']) as ucur:
             for source, fields, where in datasets:
-                print(source)
+                self.log.info('loading: ' + source)
                 with arcpy.da.SearchCursor(source, fields + ['SHAPE@'], where_clause=where) as cur:
                     for row in cur:
-                        ucur.insertRow((basename(source), ';'.join([str(x) for x in row[:-1]]), row[-1]))
+                        ucur.insertRow((basename(source), ';'.join([str(x) for x in row[:-1]]), row[-1].generalize(100)))
