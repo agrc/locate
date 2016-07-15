@@ -153,6 +153,7 @@ class BBEconPallet(Pallet):
         arcpy.Delete_management(roadsBuffer)
         arcpy.MakeFeatureLayer_management(roads, 'roads_lyr', "CARTOCODE in ( '1', '2', '3', '4', '5')")
         arcpy.Buffer_analysis('roads_lyr', roadsBuffer, '1 Miles', dissolve_option='LIST', dissolve_field='FULLNAME')
+        arcpy.Delete_management('roads_lyr')
 
         polygonData = join(self.bbecon, 'PolygonData')
         arcpy.TruncateTable_management(polygonData)
