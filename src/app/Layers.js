@@ -2,34 +2,36 @@ define([
     'app/config',
     'app/Group',
     'app/Search',
+    'app/SureSites',
 
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
 
-    'dojo/_base/declare',
-    'dojo/_base/lang',
     'dojo/dom-construct',
     'dojo/query',
     'dojo/text!app/templates/Layers.html',
+    'dojo/_base/declare',
+    'dojo/_base/lang',
 
     'xstyle/css!app/resources/Layers.css'
 ], function(
     config,
     Group,
     Search,
+    SureSites,
 
     _TemplatedMixin,
     _WidgetBase,
 
-    declare,
-    lang,
     domConstruct,
     query,
-    template
+    template,
+    declare,
+    lang
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
         // description:
-        //      
+        //
 
         templateString: template,
         baseClass: 'layers hide-on-small-screen',
@@ -46,7 +48,7 @@ define([
             // summary:
             //      description
             console.log('app/Layers:constructor', arguments);
-        
+
             this.featureLayers = {};
             this.childWidgets = [];
         },
@@ -70,13 +72,17 @@ define([
 
             this.groupsContainer.children[0].children[0].click();
 
+            var sureSites = new SureSites({}, this.sureSitesDiv);
+            this.own(sureSites);
+            this.childWidgets.push(sureSites);
+
             this.inherited(arguments);
         },
         startup: function () {
             // summary:
             //      description
             console.log('app/Layers:startup', arguments);
-        
+
             this.childWidgets.forEach(function (w) {
                 w.startup();
             });
