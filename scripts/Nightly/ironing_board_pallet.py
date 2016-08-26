@@ -113,7 +113,7 @@ class BBEconPallet(Pallet):
         arcpy.Dissolve_management(lyr, fc)
 
         self.log.info('simplifing')
-        arcpy.Generalize_edit(fc, 100)
+        arcpy.Generalize_edit(fc, 50)
 
         self.log.info('deleting layer')
         arcpy.Delete_management(lyr)
