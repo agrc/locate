@@ -48,7 +48,6 @@ class BBEconPallet(Pallet):
                           self.utilities]
 
     def build(self, target):
-        self.configuration = target
         self.add_crate(('EnterpriseZones', self.sgid, self.economy))
         self.add_crate(('HealthCareFacilities', self.sgid, self.health))
         self.add_crate(('LandOwnership', self.sgid, self.cadastre))
@@ -81,9 +80,6 @@ class BBEconPallet(Pallet):
                          'destination_workspace': self.fiberverification})
 
     def process(self):
-        previous_workspace = arcpy.env.workspace
-        arcpy.env.workspace = self.sgid
-
         for n in [1, 9]:
             self.dissolve_fiber(n)
 
@@ -94,10 +90,8 @@ class BBEconPallet(Pallet):
         railroads_dissolved = '{}_dissolved'.format(railroads)
         if arcpy.Exists(railroads_dissolved):
             arcpy.Delete_management(railroads_dissolved)
-        arcpy.Identity_analysis(railroads, 'SGID10.BOUNDARIES.Counties', railroads_dissolved)
+        arcpy.Identity_analysis(railroads, join(self.sgid, 'SGID10.BOUNDARIES.Counties'), railroads_dissolved)
         arcpy.Delete_management(railroads)
-
-        arcpy.env.workspace = previous_workspace
 
         self.build_polygon_data()
 
