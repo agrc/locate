@@ -13,7 +13,7 @@
     "awesome-bootstrap-checkbox": "~0.2.3",
     "seiyria-bootstrap-slider": "~4.3.0",
     "handlebars": "~2.0.0",
-    "layer-selector": "agrc-layer-selector#~0.4.0"
+    "layer-selector": "agrc-layer-selector#eefe964269efade41e28c915fd5004fc20ddddfe"
   },
   "resolutions": {
     "xstyle": "~0.3",

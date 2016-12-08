@@ -53,6 +53,7 @@ body {
 /* layer-selector overrides */
 .layer-selector {
     top: 70px;
+    max-width: 160px;
 }
 .layer-selector label.layer-selector-items {
     padding-left: 23px;
@@ -63,6 +64,9 @@ body {
 .layer-selector .layer-selector-item input[type='radio'],
 .layer-selector .layer-selector-item input[type='checkbox'] {
     opacity: 1;
+}
+.layer-selector .layer-selector-item label {
+    max-width: 140px;
 }
 
 a, a:visited {

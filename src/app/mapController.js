@@ -74,6 +74,7 @@ define([
                     map: this.map,
                     quadWord: config.quadWord,
                     baseLayers: ['Lite', 'Hybrid', 'Terrain', 'Topo'],
+                    overlays: ['Address Points'],
                     right: false
                 })
             );
