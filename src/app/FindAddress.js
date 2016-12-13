@@ -4,24 +4,22 @@ define([
 
     'app/config',
 
-    'dojo/_base/declare',
     'dojo/dom-class',
     'dojo/on',
     'dojo/text!app/templates/FindAddress.html',
+    'dojo/_base/declare',
 
-    'put-selector/put',
-
-    'xstyle/css!app/resources/FindAddress.css'
+    'put-selector/put'
 ], function(
     FindAddress,
     MagicZoom,
 
     config,
 
-    declare,
     domClass,
     on,
     template,
+    declare,
 
     put
 ) {

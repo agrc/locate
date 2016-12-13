@@ -10,9 +10,7 @@ define([
     'dojo/dom-construct',
     'dojo/query',
     'dojo/text!app/templates/Layers.html',
-    'dojo/_base/declare',
-
-    'xstyle/css!app/resources/Layers.css'
+    'dojo/_base/declare'
 ], function(
     config,
     Group,

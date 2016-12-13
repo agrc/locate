@@ -6,21 +6,19 @@ define([
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
 
-    'dojo/_base/declare',
     'dojo/dom-class',
     'dojo/dom-construct',
     'dojo/on',
     'dojo/text!app/templates/Layer.html',
     'dojo/topic',
+    'dojo/_base/declare',
 
     'esri/Color',
     'esri/layers/ArcGISTiledMapServiceLayer',
     'esri/layers/FeatureLayer',
     'esri/renderers/SimpleRenderer',
     'esri/symbols/CartographicLineSymbol',
-    'esri/symbols/PictureMarkerSymbol',
-
-    'xstyle/css!app/resources/Layer.css'
+    'esri/symbols/PictureMarkerSymbol'
 ], function(
     config,
     mapController,
@@ -28,12 +26,12 @@ define([
     _TemplatedMixin,
     _WidgetBase,
 
-    declare,
     domClass,
     domConstruct,
     on,
     template,
     topic,
+    declare,
 
     Color,
     ArcGISTiledMapServiceLayer,

@@ -4,23 +4,22 @@ define([
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
 
-    'dojo/_base/declare',
-    'dojo/_base/lang',
     'dojo/text!app/templates/Slider.html',
     'dojo/topic',
+    'dojo/_base/declare',
+    'dojo/_base/lang',
 
-    'slider',
-    'xstyle/css!app/resources/Slider.css'
+    'slider'
 ], function(
     config,
 
     _TemplatedMixin,
     _WidgetBase,
 
-    declare,
-    lang,
     template,
-    topic
+    topic,
+    declare,
+    lang
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
         // description:
@@ -53,7 +52,7 @@ define([
             // summary:
             //      Called by Group
             console.log('app/Slider:wireEvents', arguments);
-        
+
             $(this.slider).on('change', lang.hitch(this, 'onChange'));
         },
         onChange: function (evt) {
@@ -61,7 +60,7 @@ define([
             //      slider has be changed
             // evt: Event Object
             // console.log('app/Slider:onChange', arguments);
-        
+
             topic.publish(config.topics.slider.change, evt.value, this.groupName);
         }
     });
