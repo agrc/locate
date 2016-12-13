@@ -5,11 +5,9 @@ define([
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
 
-    'dojo/_base/declare',
     'dojo/dom-construct',
     'dojo/text!app/templates/Group.html',
-
-    'xstyle/css!app/resources/Group.css'
+    'dojo/_base/declare'
 ], function(
     Layer,
     Slider,
@@ -17,9 +15,9 @@ define([
     _TemplatedMixin,
     _WidgetBase,
 
-    declare,
     domConstruct,
-    template
+    template,
+    declare
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
         // description:
@@ -100,7 +98,7 @@ define([
             // summary:
             //      description
             console.log('app/Group:startup', arguments);
-        
+
             this.layerWidgets.forEach(function (w) {
                 w.startup();
             });

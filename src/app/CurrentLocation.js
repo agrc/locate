@@ -7,18 +7,16 @@ define([
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
 
-    'dojo/_base/declare',
-    'dojo/_base/lang',
     'dojo/DeferredList',
     'dojo/dom-class',
     'dojo/io-query',
     'dojo/string',
     'dojo/text!app/templates/CurrentLocation.html',
     'dojo/topic',
+    'dojo/_base/declare',
+    'dojo/_base/lang',
 
-    'dojox/html/entities',
-
-    'xstyle/css!app/resources/CurrentLocation.css'
+    'dojox/html/entities'
 ], function(
     Formatting,
     WebAPI,
@@ -28,14 +26,14 @@ define([
     _TemplatedMixin,
     _WidgetBase,
 
-    declare,
-    lang,
     DeferredList,
     domClass,
     ioQuery,
     dojoString,
     template,
     topic,
+    declare,
+    lang,
 
     entities
 ) {

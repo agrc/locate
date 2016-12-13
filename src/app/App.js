@@ -17,8 +17,7 @@ define([
     'dojo/_base/lang',
 
     'bootstrap',
-    'dijit/layout/ContentPane',
-    'xstyle/css!app/resources/App.css'
+    'dijit/layout/ContentPane'
 ], function(
     config,
     CurrentLocation,

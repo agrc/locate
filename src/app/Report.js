@@ -6,8 +6,6 @@ define([
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
 
-    'dojo/_base/declare',
-    'dojo/_base/lang',
     'dojo/dom-class',
     'dojo/has',
     'dojo/io-query',
@@ -17,13 +15,12 @@ define([
     'dojo/text!app/templates/Report.html',
     'dojo/text!app/templates/ReportTemplate.html',
     'dojo/topic',
+    'dojo/_base/declare',
+    'dojo/_base/lang',
 
     'handlebars',
 
-    'ijit/modules/_ErrorMessageMixin',
-
-    'xstyle/css!app/resources/App.css',
-    'xstyle/css!app/resources/Report.css'
+    'ijit/modules/_ErrorMessageMixin'
 ], function(
     config,
 
@@ -32,8 +29,6 @@ define([
     _TemplatedMixin,
     _WidgetBase,
 
-    declare,
-    lang,
     domClass,
     has,
     ioQuery,
@@ -43,6 +38,8 @@ define([
     template,
     reportTemplateTxt,
     topic,
+    declare,
+    lang,
 
     handlebars,
 

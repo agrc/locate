@@ -6,11 +6,9 @@ define([
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
 
-    'dojo/_base/declare',
     'dojo/aspect',
     'dojo/text!app/templates/Search.html',
-
-    'xstyle/css!app/resources/Search.css'
+    'dojo/_base/declare'
 ], function(
     config,
     FindAddress,
@@ -19,13 +17,13 @@ define([
     _TemplatedMixin,
     _WidgetBase,
 
-    declare,
     aspect,
-    template
+    template,
+    declare
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
         // description:
-        //      
+        //
 
         templateString: template,
         baseClass: 'search',

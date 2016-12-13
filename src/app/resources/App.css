@@ -4,6 +4,13 @@
 @import '../../dijit/themes/claro/claro.css';
 @import '../../layer-selector/resources/LayerSelector.css';
 @import url(http://fonts.googleapis.com/css?family=Lato:700);
+@import 'CurrentLocation.css';
+@import 'FindAddress.css';
+@import 'Group.css';
+@import 'Layer.css';
+@import 'Layers.css';
+@import 'Search.css';
+@import 'Slider.css';
 
 html, body, .app, .center>.site-full {
     width: 100%;
