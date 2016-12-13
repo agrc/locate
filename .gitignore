@@ -20,6 +20,7 @@ src/bootstrap/
 src/components-jasmine/
 src/dgrid/
 src/dijit/
+src/dojo-themes/
 src/dojo/
 src/dojox/
 src/dstore/
@@ -35,6 +36,7 @@ src/ladda-bootstrap/
 src/layer-selector/
 src/matchers/
 src/modernizr/
+src/moment/
 src/mustache/
 src/proj4/
 src/put-selector/

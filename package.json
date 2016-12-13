@@ -1,10 +1,10 @@
 {
-  "name": "bb-econ",
+  "name": "ironing-board",
   "version": "1.6.0",
-  "homepage": "https://github.com/agrc/bb-econ",
+  "homepage": "https://github.com/agrc/ironing-board",
   "repository": {
     "type": "git",
-    "url": "https://github.com/agrc/bb-econ.git"
+    "url": "https://github.com/agrc/ironing-board.git"
   },
   "devDependencies": {
     "dojo": "^1.10.2",
@@ -21,11 +21,10 @@
     "grunt-contrib-less": "^1.3.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-dojo": "^1.1.1",
-    "grunt-esri-slurp": "^2.0.2",
     "grunt-if-missing": "^1.0.1",
     "grunt-newer": "^1.2.0",
     "grunt-processhtml": "^0.4.0",
-    "grunt-saucelabs": "^8.6.2",
+    "grunt-saucelabs": "^9.0.0",
     "grunt-ssh": "^0.12.9",
     "uglify-js": "^2.6.4"
   },

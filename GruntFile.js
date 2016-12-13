@@ -2,16 +2,9 @@
 var osx = 'OS X 10.10';
 var windows = 'Windows 8.1';
 var browsers = [{
-
-    // OSX
-
     browserName: 'safari',
     platform: osx
 }, {
-
-
-    // Windows
-
     browserName: 'firefox',
     platform: windows
 }, {
@@ -191,22 +184,8 @@ module.exports = function(grunt) {
                 dojo: 'src/dojo/dojo.js', // Path to dojo.js file in dojo source
                 load: 'build', // Optional: Utility to bootstrap (Default: 'build')
                 releaseDir: '../dist',
-                require: 'src/app/run.js', // Optional: Module to require for the build (Default: nothing)
+                requires: ['src/app/packages.js', 'src/app/run.js'],
                 basePath: './src'
-            }
-        },
-        esri_slurp: {
-            options: {
-                version: '3.11'
-            },
-            dev: {
-                options: {
-                    beautify: true
-                },
-                dest: 'src/esri'
-            },
-            travis: {
-                dest: 'src/esri'
             }
         },
         imagemin: {
@@ -243,7 +222,6 @@ module.exports = function(grunt) {
         },
         jshint: {
             main: {
-                // must use src for newer to work
                 src: jshintFiles
             },
             options: {
@@ -326,7 +304,7 @@ module.exports = function(grunt) {
             },
             jshint: {
                 files: jshintFiles,
-                tasks: ['newer:jshint:main', 'jasmine:main:build']
+                tasks: ['jshint:main', 'jasmine:main:build']
             },
             src: {
                 files: jshintFiles.concat(otherFiles),
@@ -347,14 +325,12 @@ module.exports = function(grunt) {
     // Default task.
     grunt.registerTask('default', [
         'jasmine:main:build',
-        'newer:jshint:main',
-        'if-missing:esri_slurp:dev',
+        'jshint:main',
         'connect',
         'watch'
     ]);
     grunt.registerTask('build-prod', [
         'clean:build',
-        'if-missing:esri_slurp:dev',
         'newer:imagemin:main',
         'dojo:prod',
         'copy:main',
@@ -362,7 +338,6 @@ module.exports = function(grunt) {
     ]);
     grunt.registerTask('build-stage', [
         'clean:build',
-        'if-missing:esri_slurp:dev',
         'newer:imagemin:main',
         'dojo:stage',
         'copy:main',
@@ -386,7 +361,6 @@ module.exports = function(grunt) {
         'saucelabs-jasmine'
     ]);
     grunt.registerTask('travis', [
-        'if-missing:esri_slurp:travis',
         'jshint',
         'sauce',
         'build-prod'
