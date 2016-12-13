@@ -11,7 +11,6 @@ define([
     'dojo/query',
     'dojo/text!app/templates/Layers.html',
     'dojo/_base/declare',
-    'dojo/_base/lang',
 
     'xstyle/css!app/resources/Layers.css'
 ], function(
@@ -26,8 +25,7 @@ define([
     domConstruct,
     query,
     template,
-    declare,
-    lang
+    declare
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
         // description:
