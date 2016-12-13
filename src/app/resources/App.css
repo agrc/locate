@@ -268,7 +268,7 @@ h3.demographics {
 }
 .sure-sites.group,
 h3.sure-sites {
-    background: #C221B2 url(img/icons/demographics.svg) 15px 15px no-repeat;
+    background: #102e88 url(img/icons/demographics.svg) 15px 15px no-repeat;
 }
 
 /* Colors for second level layer nav */
@@ -296,6 +296,11 @@ h4.lifestyle {
 .demographics>button,
 h4.demographics {
     background-color: #9c1d21;
+}
+.sure-sites ul,
+.sure-sites>button,
+h4.sure-sites {
+    background-color: #0c1a63;
 }
 
 /* ********************** Alignments ********************** */
