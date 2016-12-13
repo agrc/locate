@@ -15,27 +15,15 @@
     </style>
 
     <!-- JAVASCRIPT -->
+    <script type='text/javascript' src="../../jquery/dist/jquery.js"></script>
     <script type='text/javascript' src="../../dojo/dojo.js"></script>
+    <script type='text/javascript' src="../../app/packages.js"></script>
     <script type="text/javascript">
         var baseUrl = window.location.pathname.replace(/\/[^\/]+$/, '') + '/' + '../../';
         var widgetUnderTest;
 
         require({
-            baseUrl: baseUrl,
-            packages: ['app', 'esri', 'dojo', 'dijit', 'dojox', 'xstyle', 'ijit',
-            {
-                name: 'jquery',
-                location: 'jquery/dist',
-                main: 'jquery'
-            },{
-                name: 'handlebars',
-                location: './handlebars',
-                main: 'handlebars'
-            },{
-                name: 'bootstrap',
-                location: 'bootstrap',
-                main: 'dist/js/bootstrap'
-            }]
+            baseUrl: baseUrl
         }, [
             'app/Report',
 
