@@ -15,6 +15,8 @@
     </style>
 
     <!-- JAVASCRIPT -->
+    <script type='text/javascript' src="../../jquery/dist/jquery.js"></script>
+    <script type='text/javascript' src="../../bootstrap/dist/js/bootstrap.js"></script>
     <script type='text/javascript' src="../../dojo/dojo.js"></script>
     <script type='text/javascript' src="../../app/packages.js"></script>
     <script type="text/javascript">
@@ -26,16 +28,28 @@
         }, [
             'app/SureSites',
 
+            'dojo/dom-class',
+
             'dojo/domReady!'
-        ], function(Module) {
+        ], function(Module, domClass) {
             widgetUnderTest = new Module({
             }, 'node');
 
             widgetUnderTest.startup();
+
+            domClass.add(widgetUnderTest.filtersContainer, 'in');
         });
 </script>
 </head>
-<body>
-    <div id="node"></div>
+<body class='claro'>
+            <div class="site-full">
+                <div class="layers">
+                    <div class="search">
+                        <div class="scroller">
+                            <div id="node"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 </body>
 </html>
