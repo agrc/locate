@@ -37,7 +37,7 @@ require({
         }, {
             name: 'slider',
             location: './seiyria-bootstrap-slider',
-            main: 'js/bootstrap-slider'
+            main: 'dist/bootstrap-slider'
         }, {
             name: 'spin',
             location: './spinjs',

@@ -61,7 +61,7 @@ define([
             // evt: Event Object
             // console.log('app/Slider:onChange', arguments);
 
-            topic.publish(config.topics.slider.change, evt.value, this.groupName);
+            topic.publish(config.topics.slider.change, evt.value.newValue, this.groupName);
         }
     });
 });
