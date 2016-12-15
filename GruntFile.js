@@ -62,7 +62,7 @@ module.exports = function(grunt) {
             '!stubmodule/**',
             '!util/**'
         ],
-        deployDir = 'wwwroot/bb-econ',
+        deployDir = 'wwwroot/bbecon',
         secrets,
         sauceConfig = {
             urls: ['http://127.0.0.1:8000/_SpecRunner.html'],

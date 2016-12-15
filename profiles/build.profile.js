@@ -2,7 +2,7 @@
 var profile = {
     basePath: '../src',
     action: 'release',
-    // cssOptimize: 'comments',
+    cssOptimize: 'comments',
     mini: true,
     optimize: 'uglify',
     layerOptimize: 'uglify',
@@ -13,14 +13,16 @@ var profile = {
             include: [
                 'dojo/i18n',
                 'dojo/domReady',
+                'app/packages',
                 'app/run',
                 'app/App',
                 'app/Report',
+                'dojox/gfx/filters',
                 'dojox/gfx/path',
                 'dojox/gfx/svg',
+                'dojox/gfx/svgext',
                 'dojox/gfx/shape'
             ],
-            targetStylesheet: 'app/resources/App.css',
             includeLocales: ['en-us'],
             customBase: true,
             boot: true
@@ -55,18 +57,22 @@ var profile = {
         location: 'moment',
         main: 'moment',
         trees: [
-          // don't bother with .hidden, tests, min, src, and templates
-          ['.', '.', /(\/\.)|(~$)|(test|txt|src|min|templates)/]
+            // don't bother with .hidden, tests, min, src, and templates
+            ['.', '.', /(\/\.)|(~$)|(test|txt|src|min|templates)/]
         ],
         resourceTags: {
             amd: function amd(filename, mid) {
                 return /\.js$/.test(filename);
             }
         }
+    }, {
+        name: 'slider',
+        location: './seiyria-bootstrap-slider',
+        main: 'dist/bootstrap-slider',
+        trees: [
+            ['.', '.', /(\/\.)|(~$)|(test|txt|src|min|templates)/]
+        ]
     }],
-    plugins: {
-        'xstyle/css': 'xstyle/build/amd-css'
-    },
     userConfig: {
         packages: ['app', 'dijit', 'dojox', 'agrc', 'ijit', 'esri', 'layer-selector']
     }
