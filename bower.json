@@ -11,7 +11,7 @@
     "xstyle": "~0.3",
     "matchers": "agrc-jasmine-matchers#~0.1.0",
     "awesome-bootstrap-checkbox": "~0.2.3",
-    "seiyria-bootstrap-slider": "~4.3.0",
+    "seiyria-bootstrap-slider": "~9.5.3",
     "handlebars": "~2.0.0",
     "layer-selector": "agrc-layer-selector#~1.0.0",
     "esri": "arcgis-js-api#~3.18.0"
