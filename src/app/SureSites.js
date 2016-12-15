@@ -32,6 +32,9 @@ define([
             //      Overrides method of same name in dijit._Widget.
             console.log('app/SureSites:postCreate', arguments);
 
+            $(this.acreageSlider).slider();
+            $(this.sqftSlider).slider();
+
             this.setupConnections();
 
             this.inherited(arguments);
