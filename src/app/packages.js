@@ -13,6 +13,8 @@ require({
         'layer-selector',
         'moment',
         'put-selector',
+        'sherlock',
+        'spinjs',
         'xstyle',
         {
             name: 'bootstrap',

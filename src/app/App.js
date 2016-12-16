@@ -16,6 +16,9 @@ define([
     'dojo/_base/declare',
     'dojo/_base/lang',
 
+    'sherlock/providers/WebAPI',
+    'sherlock/Sherlock',
+
     'bootstrap',
     'dijit/layout/ContentPane'
 ], function(
@@ -34,7 +37,10 @@ define([
     template,
     array,
     declare,
-    lang
+    lang,
+
+    WebAPI,
+    Sherlock
 ) {
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         // summary:
@@ -138,6 +144,21 @@ define([
                 that.own(widget);
                 widget.startup();
             });
+
+            var citiesProvider = new WebAPI(
+                config.apiKey,
+                'SGID10.Boundaries.Municipalities',
+                'NAME',
+                {wkid: 3857}
+            );
+            var sherlock = new Sherlock({
+                provider: citiesProvider,
+                map: mapController.map,
+                maxResultsToDisplay: 10,
+                placeHolder: 'city name'
+            }, this.sherlockDiv);
+            sherlock.startup();
+            this.own(sherlock);
 
             this.inherited(arguments);
         },

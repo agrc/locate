@@ -204,7 +204,6 @@ module.exports = function(grunt) {
         },
         jasmine: {
             main: {
-                src: ['src/app/run.js'],
                 options: {
                     specs: ['src/app/**/Spec*.js'],
                     vendor: [
@@ -213,6 +212,7 @@ module.exports = function(grunt) {
                         'src/jasmine-jsreporter/jasmine-jsreporter.js',
                         'src/app/tests/jasmineTestBootstrap.js',
                         'src/dojo/dojo.js',
+                        'src/app/packages.js',
                         'src/app/tests/jsReporterSanitizer.js',
                         'src/app/tests/jasmineAMDErrorChecking.js'
                     ],
