@@ -14,7 +14,6 @@ require({
         'moment',
         'put-selector',
         'sherlock',
-        'spinjs',
         'xstyle',
         {
             name: 'bootstrap',
@@ -45,5 +44,10 @@ require({
             location: './spinjs',
             main: 'spin'
         }
-    ]
+    ],
+    map: {
+        'sherlock': {
+            'spinjs': 'spin'
+        }
+    }
 });
