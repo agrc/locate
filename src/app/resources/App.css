@@ -260,7 +260,9 @@ a, a:visited {
 /* COLORS */
 /* Colors for first level layer nav */
 .broadband.group,
-h3.broadband {
+h3.broadband,
+.sure-sites.group,
+h3.sure-sites {
     background: #000000 url(img/icons/broadband.svg) 15px 15px no-repeat;
 }
 .transportation.group,
@@ -279,15 +281,14 @@ h3.lifestyle {
 h3.demographics {
     background: #C22127 url(img/icons/demographics.svg) 15px 15px no-repeat;
 }
-.sure-sites.group,
-h3.sure-sites {
-    background: #102e88 url(img/icons/demographics.svg) 15px 15px no-repeat;
-}
 
 /* Colors for second level layer nav */
 .broadband ul,
 .broadband>button,
-h4.broadband {
+h4.broadband,
+.sure-sites ul,
+.sure-sites>button,
+h4.sure-sites {
     background-color: #333333;
 }
 .transportation ul,
@@ -309,11 +310,6 @@ h4.lifestyle {
 .demographics>button,
 h4.demographics {
     background-color: #9c1d21;
-}
-.sure-sites ul,
-.sure-sites>button,
-h4.sure-sites {
-    background-color: #0c1a63;
 }
 
 /* ********************** Alignments ********************** */
