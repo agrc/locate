@@ -1,6 +1,3 @@
-.sure-sites .group>ul {
-    padding-bottom: 15px;
-}
 .sure-sites .group>ul>label {
     margin-left: 15px;
     margin-bottom: 0;
@@ -13,4 +10,5 @@
 }
 .sure-sites .slider-container {
     margin-left: 15px;
+    padding-bottom: 15px;
 }
