@@ -34,12 +34,21 @@ define([
 
         // Properties to be sent into constructor
 
+        postMixInProperties: function () {
+            // summary:
+            //      overriden mostly for unit tests
+            console.log('app/FindAddress:postMixInProperties', arguments);
+
+            if (!this.map.spatialReference) {
+                this.wkid = 3857;
+            }
+        },
         postCreate: function() {
             // summary:
             //      Overrides method of same name in FindAddress
             // tags:
             //      private
-            console.log('app.FindAddress::postCreate', arguments);
+            console.log('app/FindAddress:postCreate', arguments);
 
             this.inherited(arguments);
 
