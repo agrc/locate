@@ -259,10 +259,12 @@ a, a:visited {
 
 /* COLORS */
 /* Colors for first level layer nav */
-.broadband.group,
-h3.broadband,
 .sure-sites.group,
 h3.sure-sites {
+    background: #000000 url(img/icons/office.svg) 15px 12px no-repeat;
+}
+.broadband.group,
+h3.broadband {
     background: #000000 url(img/icons/broadband.svg) 15px 15px no-repeat;
 }
 .transportation.group,
