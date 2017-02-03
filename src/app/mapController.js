@@ -7,6 +7,8 @@ define([
     'dijit/Destroyable',
 
     'dojo/dom-style',
+    'dojo/hash',
+    'dojo/io-query',
     'dojo/topic',
     'dojo/_base/declare',
     'dojo/_base/lang',
@@ -16,7 +18,9 @@ define([
     'esri/graphic',
     'esri/layers/ArcGISDynamicMapServiceLayer',
 
-    'layer-selector/LayerSelector'
+    'layer-selector/LayerSelector',
+
+    'proj4'
 ], function(
     BaseMap,
 
@@ -26,6 +30,8 @@ define([
     Destroyable,
 
     domStyle,
+    hash,
+    ioQuery,
     topic,
     declare,
     lang,
@@ -35,7 +41,9 @@ define([
     Graphic,
     ArcGISDynamicMapServiceLayer,
 
-    LayerSelector
+    LayerSelector,
+
+    proj4
 ) {
     var MC = declare([Destroyable], {
         // map: BaseMap
@@ -52,6 +60,9 @@ define([
             // summary:
             //      Sets up the map
             console.info('app/mapController:initMap', arguments);
+
+            // switch out UTM for web mercator coords, if exists
+            hash(this.checkForUTMCoords(hash()));
 
             this.map = new BaseMap(mapDiv, {
                 useDefaultBaseMap: false,
@@ -102,6 +113,30 @@ define([
                 }),
                 this.map.on('click', lang.hitch(this, 'onMapClick'))
             );
+        },
+        checkForUTMCoords: function (urlHash) {
+            // summary:
+            //      projects utm coords to web mercator if needed
+            // urlHash: String
+            //      The current URL hash
+            // returns: String
+            //      The updated (if needed) URL hash
+            console.log('app/mapController:checkForUTMCoords', arguments);
+
+            // return hash untouched if missing x, y or scale coords or if they are already
+            // in web mercator
+            var params = ioQuery.queryToObject(urlHash);
+            if (!(params.x && params.y && params.scale) || parseInt(params.x, 10) < 0) {
+                return urlHash;
+            }
+
+            // project to web mercator and return updated hash
+            var utm = '+proj=utm +zone=12 +ellps=GRS80 +datum=NAD83 +units=m +no_defs';
+            var coords = proj4(utm, proj4('EPSG:3857'), [params.x, params.y]);
+            params.x = coords[0];
+            params.y = coords[1];
+
+            return ioQuery.objectToQuery(params);
         },
         addLayer: function (lyr, bottom) {
             // summary:

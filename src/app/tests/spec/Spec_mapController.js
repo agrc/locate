@@ -21,6 +21,34 @@ require([
                 domConstruct.destroy(div);
             });
         });
+        describe('checkForUTMCoords', function () {
+            it('returns unchanged hash if no x, y & scale params are present', function () {
+                var input = '';
+                expect(objectUnderTest.checkForUTMCoords(input)).toEqual(input);
+
+                // no scale
+                input = 'x=123&y123';
+                expect(objectUnderTest.checkForUTMCoords(input)).toEqual(input);
+
+                // no x
+                input = 'y&1234&scale=123';
+                expect(objectUnderTest.checkForUTMCoords(input)).toEqual(input);
+            });
+            it('returns web mercator coords unchanged', function () {
+                var input = 'x=-12454029&y=4970423&scale=144448';
+                expect(objectUnderTest.checkForUTMCoords(input)).toEqual(input);
+            });
+            it('projects utm coords', function () {
+                var input = 'x=459620&y=4627278&scale=1155581';
+                var output = 'x=-12410568.089658665&y=5130519.954974215&scale=1155581';
+                expect(objectUnderTest.checkForUTMCoords(input)).toEqual(output);
+            });
+            it('doesn\'t overwrite other existing parameters', function () {
+                var input = 'x=459620&y=4627278&scale=1155581&hello=1';
+                var output = 'x=-12410568.089658665&y=5130519.954974215&scale=1155581&hello=1';
+                expect(objectUnderTest.checkForUTMCoords(input)).toEqual(output);
+            });
+        });
         describe('toggleDynamicLayer', function () {
             var lyr;
             var groupName = 'blah';
