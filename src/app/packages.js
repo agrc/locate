@@ -35,6 +35,10 @@ require({
             location: './mustache',
             main: 'mustache'
         }, {
+            name: 'proj4',
+            location: './proj4/dist',
+            main: 'proj4'
+        }, {
             name: 'slider',
             location: './seiyria-bootstrap-slider',
             main: 'js/bootstrap-slider'

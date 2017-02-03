@@ -14,7 +14,10 @@
     "seiyria-bootstrap-slider": "~4.3.0",
     "handlebars": "~2.0.0",
     "layer-selector": "agrc-layer-selector#~1.0.0",
-    "esri": "arcgis-js-api#~3.18.0"
+    "esri": "arcgis-js-api#~3.18.0",
+    "jquery": "jquery#~2.2.0",
+    "sherlock": "agrc-sherlock#~1.0.0",
+    "proj4": "^2.3.17"
   },
   "resolutions": {
     "esri": "~3.18.0",
