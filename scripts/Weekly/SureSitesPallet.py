@@ -16,6 +16,7 @@ from os.path import dirname
 from os.path import exists
 from os.path import join
 from time import clock
+from time import strftime
 
 data_file = join(abspath(dirname(__file__)), 'data')
 
@@ -23,6 +24,13 @@ data_file = join(abspath(dirname(__file__)), 'data')
 class SureSitePallet(Pallet):
     def __init__(self):
         super(SureSitePallet, self).__init__()
+
+    def is_ready_to_ship(self):
+        ready = strftime('%A') == 'Monday'
+        if not ready:
+            self.success = (True, 'This pallet only runs on Monday.')
+
+        return ready
 
     def ship(self):
         start_seconds = clock()
