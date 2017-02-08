@@ -11,6 +11,7 @@ import requests
 from collections import OrderedDict
 from forklift import seat
 from forklift.models import Pallet
+from json import loads
 from os.path import basename
 from os.path import exists
 from time import clock
@@ -24,7 +25,8 @@ class SureSitePallet(Pallet):
         self.arcgis_services = [('BBEcon', 'MapServer')]
         self.bbecon = 'C:\\Scheduled\\staging\\bbecon.gdb'
         self.destination_fc_name = 'SureSites'
-
+        self.latlon = arcpy.SpatialReference(4326)
+        self.webmerc = arcpy.SpatialReference(3857)
         self._fields = OrderedDict([
             ('Site_ID', ['Nid', 'LONG', 'NULLABLE']),
             ('Zoning', ['Zoning', 'TEXT', 'NULLABLE', 255]),
@@ -65,7 +67,7 @@ class SureSitePallet(Pallet):
             ('Broker2_Email', ['Broker 2 Email', 'TEXT', 'NULLABLE', 1000000]),
             ('Broker2_Phone', ['Broker 2 Phone', 'TEXT', 'NULLABLE', 255]),
             ('Classification', ['Office Space Classification', 'TEXT', 'NULLABLE', 255]),
-            ('Images', ['Property Images', 'TEXT', 'NULLABLE', 255]),
+            ('Images', ['Property Images', 'TEXT', 'NULLABLE', 1000000]),
             ('Electric_Service', ['Electric Service', 'TEXT', 'NULLABLE', 255]),
             ('Geo_Assessment', ['Geo-Technical Assessment Available', 'TEXT', 'NULLABLE', 255]),
             ('Environmental_Report', ['Phase I Environmental Report Available', 'TEXT', 'NULLABLE', 255])
@@ -90,13 +92,19 @@ class SureSitePallet(Pallet):
         self._create_destination_table(self.bbecon, self.destination_fc_name)
 
         json_properties = [value[0] for value in self._fields.values()]
-        with arcpy.da.InsertCursor(in_table=self.destination_fc_name, field_names=self._fields.keys()) as cursor:
+        json_properties.append('Position')
+        fields = self._fields.keys()
+        fields.append('shape@')
+        with arcpy.da.InsertCursor(in_table=self.destination_fc_name, field_names=fields) as cursor:
             for site in sites:
                 row = self._map_site_to_row(site, json_properties)
                 try:
                     cursor.insertRow(row)
                 except Exception as e:
-                    self.log.warn('could not insert row %s. %s', row, e.message)
+                    self.log.warn('could not insert row %s. %s', row[0], e.message)
+                    for data, fields in zip(row, self._fields.values()):
+                        if data is not None:
+                            self.log.warn('%s: %d of %d, %s',  fields[0], len(data), fields[3], data)
 
     def _create_workspace(self, workspace):
         if exists(workspace):
@@ -146,6 +154,12 @@ class SureSitePallet(Pallet):
             if data is not None:
                 data = unidecode(data)
                 data.encode('ascii')
+
+            if field == 'Position':
+                #: latitude/longitude geojson string
+                geojson = loads(data)['coordinates']
+                data = arcpy.PointGeometry(arcpy.Point(geojson[0], geojson[1]), self.latlon)
+                data = data.projectAs(self.webmerc)
 
             row.append(data)
 
