@@ -7,8 +7,9 @@ before_install:
   - npm install -g bower
   - bower install
 notifications:
-  email:
-    on_success: never
+    email:
+        on_success: change
+        on_failure: change
 env:
   global:
     - secure: GknL+WfOUgHCSu4HNpj6BXfr9bA3X1lO3kG1v6dJyS6HPm8OIDbg5/kedKytC2F5yOy7dn+ISHEXPPrWts1EunT2tFRkCVog7azcOcRKS9h921q1yUOSZ6obZBPni7ILEdQXQ7Re9C8vYy3y7Udvw4w/gzCV6Wnu4AV2+Gg06Ig=
