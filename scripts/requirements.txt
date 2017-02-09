@@ -1,3 +1,4 @@
 nightly
 forklift>=4.0.0
 requests>=2.10.0
+unidecode>=0.04.20
