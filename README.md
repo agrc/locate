@@ -1,5 +1,5 @@
-Broadband Economic Development
-==============================
+## Broadband Economic Development
+
 [![Build Status](https://travis-ci.org/agrc/bb-econ.svg?branch=master)](https://travis-ci.org/agrc/bb-econ)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/agrc-bb-econ.svg)](https://saucelabs.com/u/agrc-bb-econ)
 
@@ -10,13 +10,16 @@ Staging URL: [test.mapserv.utah.gov/bb-econ](http://test.mapserv.utah.gov/bbecon
 
 [Layers Spreadsheet](https://docs.google.com/a/utah.gov/spreadsheets/d/1CqW3iXKG36D5Hd9m2gOqUtbJC44PWFsySogWJ49sjSE/edit#gid=0)
 
-Nightly Script
-==============
+## Python Script
 
-`scripts/Nightly/ironing_board_pallet.py` updates and processes data for this app via [forklift](https://github.com/agrc/forklift).
+#### [🚜 Pallets](https://github.com/agrc/forklift)
 
-Deployment
-==========
+[Dependency Installation](/scripts/Readme.md)
+
+`scripts/Nightly/ironing_board_pallet.py` updates and processes data for this app via 
+`scripts/Weekly/SureSitesPallet.py` - updates the sure sites data
+
+#### GP Scripts Deployment
 
 1. Publish `maps/MapService.mxd` as `BBEcon/MapService`
 1. Publish `scripts/GPTask/Toolbox.tbx/Generate Report` as `BBEcon/GenerateReport`
