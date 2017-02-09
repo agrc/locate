@@ -20,8 +20,7 @@ from unidecode import unidecode
 
 
 class SureSitePallet(Pallet):
-    def __init__(self):
-        super(SureSitePallet, self).__init__()
+    def build(self):
         self.arcgis_services = [('BBEcon', 'MapServer')]
         self.bbecon = 'C:\\Scheduled\\staging\\bbecon.gdb'
         self.destination_fc_name = 'SureSites'
@@ -73,10 +72,19 @@ class SureSitePallet(Pallet):
             ('Environmental_Report', ['Phase I Environmental Report Available', 'TEXT', 'NULLABLE', 255])
         ])
 
+    #: execute this pallet weekly
     def is_ready_to_ship(self):
         ready = strftime('%A') == 'Monday'
         if not ready:
             self.success = (True, 'This pallet only runs on Monday.')
+
+        return ready
+
+    #: copy this gdb on the same schedule as ship
+    def requires_processing(self):
+        ready = strftime('%A') == 'Monday'
+        if not ready:
+            self.success = (True, 'This pallet only copies to Prod on Monday.')
 
         return ready
 
