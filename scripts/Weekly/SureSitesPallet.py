@@ -20,7 +20,7 @@ from unidecode import unidecode
 
 
 class SureSitePallet(Pallet):
-    def build(self):
+    def build(self, config):
         self.arcgis_services = [('BBEcon', 'MapServer')]
         self.bbecon = 'C:\\Scheduled\\staging\\bbecon.gdb'
         self.destination_fc_name = 'SureSites'
