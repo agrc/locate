@@ -66,8 +66,6 @@ define([
                 that.own(grp);
             });
 
-            this.groupsContainer.children[0].children[0].click();
-
             var sureSites = new SureSites({}, this.sureSitesDiv);
             this.own(sureSites);
             this.childWidgets.push(sureSites);
