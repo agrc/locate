@@ -111,13 +111,13 @@ define([
                 name: 'Fiber',
                 type: 'dynamic',
                 layerId: '0,1',
-                onByDefault: true,
+                // onByDefault: true,
                 legend: fiberLegendTxt
             }, {
                 name: 'All Non-Mobile Broadband (Includes Fiber, DSL, Cable, and Fixed Wireless)',
                 type: 'dynamic',
-                layerId: '2,3,4',
-                onByDefault: true
+                layerId: '2,3,4'
+                // onByDefault: true
             }]
         }, {
             groupClass: 'utilities',
