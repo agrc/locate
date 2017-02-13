@@ -91,6 +91,19 @@ define([
             32,
             44
         ),
+        ranges: {
+            acreage: {
+                min: 0,
+                max: 3100,
+                step: 1
+            },
+            sqft: {
+                min: 20000,
+                max: 1000000,
+                step: 5000
+            }
+        },
+        urbanCounties: ['Salt Lake', 'Utah', 'Davis', 'Weber'],
         featureClassNames: {
             city: 'SGID10.BOUNDARIES.Municipalities',
             zip: 'SGID10.BOUNDARIES.ZipCodes',
@@ -99,7 +112,13 @@ define([
         fieldNames: {
             city: {NAME: 'NAME'},
             zip: {ZIP5: 'ZIP5'},
-            county: {NAME: 'NAME'}
+            county: {NAME: 'NAME'},
+            suresites: {
+                County: 'County',
+                Type: 'Type',
+                Acreage: 'Acreage',
+                SquareFootage: 'Square_Footage'
+            }
         },
         markerSymbolWidth: markerSymbolWidth,
         markerSymbolHeight: markerSymbolHeight,

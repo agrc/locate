@@ -6,6 +6,8 @@ define([
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
 
+    'dojo/debounce',
+    'dojo/query',
     'dojo/text!app/templates/SureSites.html',
     'dojo/topic',
     'dojo/_base/declare',
@@ -24,6 +26,8 @@ define([
     _TemplatedMixin,
     _WidgetBase,
 
+    debounce,
+    query,
     template,
     topic,
     declare,
@@ -46,8 +50,22 @@ define([
             //      Overrides method of same name in dijit._Widget.
             console.log('app/SureSites:postCreate', arguments);
 
-            $(this.acreageSlider).slider();
-            $(this.sqftSlider).slider();
+            var range = config.ranges.acreage;
+            $(this.acreageSlider).slider({
+                min: range.min,
+                max: range.max,
+                value: [range.min, range.max],
+                step: range.step
+            });
+            range = config.ranges.sqft;
+            $(this.sqftSlider).slider({
+                min: range.min,
+                max: range.max,
+                value: [range.min, range.max],
+                step: range.step
+            });
+
+            this.updateSliderLabels();
 
             this.setupConnections();
 
@@ -58,15 +76,58 @@ define([
             //      wire events, and such
             console.log('app/SureSites:setupConnections', arguments);
 
-            $(this.acreageSlider).on('slide', lang.hitch(this, this.onSliderChange));
-            $(this.sqftSlider).on('slide', lang.hitch(this, this.onSliderChange));
+            $(this.acreageSlider).on('slide', debounce(lang.hitch(this, this.updateDefQuery), 250));
+            $(this.sqftSlider).on('slide', debounce(lang.hitch(this, this.updateDefQuery), 250));
             $(this.filtersContainer).on('show.bs.collapse', lang.partial(lang.hitch(this, this.toggleLayer), true));
             $(this.filtersContainer).on('hide.bs.collapse', lang.partial(lang.hitch(this, this.toggleLayer), false));
+            query('.checkbox>input', this.domNode).onchange(lang.hitch(this, this.updateDefQuery));
         },
-        onSliderChange: function () {
+        updateDefQuery: function () {
+            // summary:
+            //      description
+            console.log('app/SureSites:updateDefQuery', arguments);
+
+            var defParts = [];
+
+            // county
+            if (this.urbanChbx.checked && !this.ruralChbx.checked) {
+                defParts.push(config.fieldNames.suresites.County + ' IN (\'' + config.urbanCounties.join('\', \'') + '\')');
+            } else if (this.ruralChbx.checked && !this.urbanChbx.checked) {
+                defParts.push(config.fieldNames.suresites.County + ' NOT IN (\'' + config.urbanCounties.join('\', \'') + '\')');
+            }
+
+            // type
+            var types = query('.property-type input:checked', this.domNode).map(function (chbx) {
+                return chbx.value;
+            });
+            if (types.length > 0) {
+                defParts.push(config.fieldNames.suresites.Type + ' IN (\'' + types.join('\', \'') + '\')');
+            }
+
+            var getSliderValues = function (slider, range, fieldName) {
+                var values = slider.value.split(',');
+                if (parseInt(values[0], 10) !== range.min || parseInt(values[1], 10) !== range.max) {
+                    defParts.push(fieldName + ' >= ' + values[0] + ' AND ' + fieldName + ' <= ' + values[1]);
+                }
+            };
+            getSliderValues(this.acreageSlider, config.ranges.acreage, config.fieldNames.suresites.Acreage);
+            getSliderValues(this.sqftSlider, config.ranges.sqft, config.fieldNames.suresites.SquareFootage);
+
+            var def;
+            if (defParts.length === 0) {
+                def = '1 = 1';
+            } else {
+                def = defParts.join(' AND ');
+            }
+
+            this.layer.setDefinitionExpression(def);
+
+            this.updateSliderLabels();
+        },
+        updateSliderLabels: function () {
             // summary:
             //      update labels from slider values
-            console.log('app/SureSites:onSliderChange', arguments);
+            console.log('app/SureSites:updateSliderLabels', arguments);
 
             var acreage = this.acreageSlider.value.split(',');
             this.acreageMin.innerHTML = formatting.addCommas(acreage[0]);
