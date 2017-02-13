@@ -83,6 +83,7 @@ define([
             mapService: baseUrl + 'MapService/MapServer',
             gpService: baseUrl + 'GenerateReport/GPServer/Generate Report/execute'
         },
+        sureSitesLayerIndex: 30,
         zoomLocationsIndex: 11,
         zoomLocationsField: 'Name',
         currentLocationSymbol: new PictureMarkerSymbol(
@@ -230,7 +231,6 @@ define([
                     minScale: 600000,
                     maxScale: 100000
                 }]
-                // checkboxType: 'disabled'
             }, {
                 name: 'Higher Education Schools',
                 type: 'feature',
