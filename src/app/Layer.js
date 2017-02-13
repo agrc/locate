@@ -16,9 +16,12 @@ define([
     'esri/Color',
     'esri/layers/ArcGISTiledMapServiceLayer',
     'esri/layers/FeatureLayer',
+    'esri/layers/LabelClass',
     'esri/renderers/SimpleRenderer',
     'esri/symbols/CartographicLineSymbol',
-    'esri/symbols/PictureMarkerSymbol'
+    'esri/symbols/Font',
+    'esri/symbols/PictureMarkerSymbol',
+    'esri/symbols/TextSymbol'
 ], function(
     config,
     mapController,
@@ -36,9 +39,12 @@ define([
     Color,
     ArcGISTiledMapServiceLayer,
     FeatureLayer,
+    LabelClass,
     SimpleRenderer,
     CartographicLineSymbol,
-    PictureMarkerSymbol
+    Font,
+    PictureMarkerSymbol,
+    TextSymbol
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
         // description:
@@ -196,6 +202,15 @@ define([
                             outFields: ['*'],
                             opacity: this.defaultOpacity || 0.5
                         });
+                        if (this.labelingInfos) {
+                            var textSymbol = new TextSymbol().setFont(new Font('10pt').setWeight(Font.WEIGHT_BOLD));
+                            var infos = this.labelingInfos.map(function (info) {
+                                var labelClass = new LabelClass(info);
+                                labelClass.symbol = textSymbol;
+                                return labelClass;
+                            });
+                            this.layer.setLabelingInfo(infos);
+                        }
                         topic.publish(config.topics.addLayer, this.layer);
                         topic.subscribe(config.topics.slider.change, function (newValue) {
                             that.layer.setOpacity(newValue/100);
