@@ -1,11 +1,13 @@
 <li class="${groupClass}">
-    <a href='#${id}_sub' class='toggle-layer' 
-        data-toggle='collapse' data-layers='0,1'>${name}</a>
+    <a href='#${id}_sub' class='toggle-layer'
+        data-toggle='collapse' data-layers='0,1'>${name}
+        <span class="glyphicon glyphicon-chevron-down"></span>
+    </a>
     <ul id='${id}_sub' class='collapse'
         data-dojo-attach-point='layersContainer'></ul>
     <button type='button' data-toggle="popover"
         data-dojo-attach-point='popoverBtn'
-        class='btn pull-right'>
+        class='btn'>
         <span class="glyphicon glyphicon-adjust"></span>
     </button>
 </li>

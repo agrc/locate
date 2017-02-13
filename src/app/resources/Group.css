@@ -12,21 +12,33 @@
 }
 .group>button {
     position: absolute;
-    right: 0;
     top: 0;
     padding: 3px 7px;
     margin: 12px;
 }
+.group>button[data-toggle='popover'] {
+    right: 33px;
+}
+.group>a>span.glyphicon {
+    right: 0;
+    position: absolute;
+    top: 0;
+    padding: 7px 7px;
+    margin: 12px;
+}
 .group>button:focus,
+.group>button:active,
 .group>button:hover {
     color: #fff;
+    outline: none;
+    box-shadow: none;
 }
 .group>button .glyphicon {
     top: 2px;
 }
 
 /* hide transparency buttons for layers that it doesn't apply to */
-.lifestyle>button {
+.group.lifestyle>button[data-toggle='popover'] {
     display: none;
     visibility: hidden;
 }
