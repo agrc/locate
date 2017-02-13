@@ -8,59 +8,41 @@
             </a>
             <ul id='${id}_sub' class='collapse' data-dojo-attach-point='filtersContainer'>
                 <label>Property Type</label>
-                <li class='checkbox layer'>
-                    <input type="checkbox" id='${id}_land' value=''>
-                    <label for='${id}_land' data-dojo-attach-point='label'>
-                        Land
-                    </label>
+                <li class='checkbox layer property-type'>
+                    <input type="checkbox" id='${id}_land' value='Land'
+                        data-dojo-attach-point='landChbx'>
+                    <label for='${id}_land'> Land </label>
                 </li>
-                <li class='checkbox layer'>
-                    <input type="checkbox" id='${id}_office' value=''>
-                    <label for='${id}_office' data-dojo-attach-point='label'>
-                        Existing Office Building
-                    </label>
+                <li class='checkbox layer property-type'>
+                    <input type="checkbox" id='${id}_office' value='Existing Office Building'>
+                    <label for='${id}_office'> Existing Office Building </label>
                 </li>
-                <li class='checkbox layer'>
-                    <input type="checkbox" id='${id}_industrial' value=''>
-                    <label for='${id}_industrial' data-dojo-attach-point='label'>
-                        Existing Industrial Building
-                    </label>
+                <li class='checkbox layer property-type'>
+                    <input type="checkbox" id='${id}_industrial' value='Existing Industrial Building'>
+                    <label for='${id}_industrial'> Existing Industrial Building </label>
                 </li>
                 <label>County Type</label>
                 <li class='checkbox layer'>
-                    <input type="checkbox" id='${id}_urban' value=''>
-                    <label for='${id}_urban' data-dojo-attach-point='label'>
-                        Urban
-                    </label>
+                    <input type="checkbox" id='${id}_urban' data-dojo-attach-point='urbanChbx'>
+                    <label for='${id}_urban'> Urban </label>
                 </li>
                 <li class='checkbox layer'>
-                    <input type="checkbox" id='${id}_rural' value=''>
-                    <label for='${id}_rural' data-dojo-attach-point='label'>
-                        Rural
-                    </label>
+                    <input type="checkbox" id='${id}_rural' data-dojo-attach-point='ruralChbx'>
+                    <label for='${id}_rural'> Rural </label>
                 </li>
                 <label>Acreage</label>
                 <li class='slider-container'>
                     <div>
-                        <span data-dojo-attach-point='acreageMin'>1</span> - <span data-dojo-attach-point='acreageMax'>3,100</span> ac.
+                        <span data-dojo-attach-point='acreageMin'></span> - <span data-dojo-attach-point='acreageMax'></span> ac.
                     </div>
-                    <input type="text" value='' data-dojo-attach-point='acreageSlider'
-                        data-slider-min='1'
-                        data-slider-max='3100'
-                        data-slider-value='[1,3100]'
-                        data-slider-tooltip='hide'>
+                    <input type="text" value='' data-dojo-attach-point='acreageSlider' data-slider-tooltip='hide'>
                 </li>
                 <label>Total Building Sq. Ft.</label>
                 <li class='slider-container'>
                     <div>
                         <span data-dojo-attach-point='sqftMin'>20,000</span> - <span data-dojo-attach-point='sqftMax'>1,000,000</span> sqft.
                     </div>
-                    <input type="text" value='' data-dojo-attach-point='sqftSlider'
-                        data-slider-min='20000'
-                        data-slider-max='1000000'
-                        data-slider-value='[20000,1000000]'
-                        data-slider-step='5000'
-                        data-slider-tooltip='hide'>
+                    <input type="text" value='' data-dojo-attach-point='sqftSlider' data-slider-tooltip='hide'>
                 </li>
             </ul>
         </li>
