@@ -221,7 +221,15 @@ define([
             layers: [{
                 name: 'Enterprise Zones',
                 type: 'polygon',
-                layerId: '19'
+                layerId: '19',
+                labelingInfos: [{
+                    labelExpressionInfo: { value: '{ZONENAME} (Expires: {EXPYR})' },
+                    minScale: 100000
+                }, {
+                    labelExpressionInfo: { value: '{ZONENAME}' },
+                    minScale: 600000,
+                    maxScale: 100000
+                }]
                 // checkboxType: 'disabled'
             }, {
                 name: 'Higher Education Schools',
