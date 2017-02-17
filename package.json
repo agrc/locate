@@ -7,10 +7,13 @@
     "url": "https://github.com/agrc/ironing-board.git"
   },
   "devDependencies": {
+    "babel-plugin-transform-remove-strict-mode": "0.0.2",
+    "babel-preset-latest": "^6.22.0",
     "dojo": "^1.10.2",
     "eslint-plugin-html": "^2.0.1",
     "grunt": "^1.0.1",
     "grunt-arcgis-press": "^0.2.0",
+    "grunt-babel": "^6.0.0",
     "grunt-bump": "^0.8.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-compress": "^1.3.0",
