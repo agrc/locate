@@ -11,7 +11,7 @@ define([
     'dojo/query',
     'dojo/text!app/templates/Layers.html',
     'dojo/_base/declare'
-], function(
+], function (
     config,
     Group,
     Search,
@@ -48,7 +48,7 @@ define([
             this.featureLayers = {};
             this.childWidgets = [];
         },
-        postCreate: function() {
+        postCreate: function () {
             // summary:
             //      Overrides method of same name in dijit._Widget.
             // tags:

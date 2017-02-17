@@ -6,7 +6,7 @@ require([
     'dojo/topic',
 
     'matchers/src/topics'
-], function(
+], function (
     config,
     ClassUnderTest,
 
@@ -15,16 +15,16 @@ require([
 
     topics
 ) {
-    describe('app/Router', function() {
+    describe('app/Router', function () {
         var testObject;
         var qp;
 
-        beforeEach(function() {
+        beforeEach(function () {
             testObject = new ClassUnderTest(null);
             topics.listen(config.topics.router.toggleLayers);
             qp = testObject.queryParameter;
         });
-        afterEach(function() {
+        afterEach(function () {
             if (testObject) {
                 if (testObject.destroy) {
                     testObject.destroy();
@@ -35,8 +35,8 @@ require([
             hash('');
         });
 
-        describe('Sanity', function() {
-            it('should create a Router', function() {
+        describe('Sanity', function () {
+            it('should create a Router', function () {
                 expect(testObject).toEqual(jasmine.any(ClassUnderTest));
             });
         });

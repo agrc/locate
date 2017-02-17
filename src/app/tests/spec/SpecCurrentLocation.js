@@ -3,32 +3,32 @@ require([
 
     'dojo/dom-class',
     'dojo/dom-construct'
-], function(
+], function (
     WidgetUnderTest,
 
     domClass,
     domConstruct
 ) {
-    describe('app/CurrentLocation', function() {
+    describe('app/CurrentLocation', function () {
         var widget;
         var destroy = function (widget) {
             widget.destroyRecursive();
             widget = null;
         };
 
-        beforeEach(function() {
+        beforeEach(function () {
             widget = new WidgetUnderTest(null, domConstruct.create('div', null, document.body));
             widget.startup();
         });
 
-        afterEach(function() {
+        afterEach(function () {
             if (widget) {
                 destroy(widget);
             }
         });
 
-        describe('Sanity', function() {
-            it('should create a CurrentLocation', function() {
+        describe('Sanity', function () {
+            it('should create a CurrentLocation', function () {
                 expect(widget).toEqual(jasmine.any(WidgetUnderTest));
             });
         });
@@ -62,7 +62,7 @@ require([
         });
         describe('refreshReportLink', function () {
             it('builds the correct URL', function () {
-                widget.lastPoint = {x:1, y:2};
+                widget.lastPoint = {x: 1, y: 2};
                 widget.address = 'add';
                 widget.city = 'city';
                 widget.zip = 'zip';

@@ -22,7 +22,7 @@ define([
     'esri/symbols/Font',
     'esri/symbols/PictureMarkerSymbol',
     'esri/symbols/TextSymbol'
-], function(
+], function (
     config,
     mapController,
 
@@ -94,7 +94,7 @@ define([
         cachedServiceUrl: null,
 
 
-        postCreate: function() {
+        postCreate: function () {
             // summary:
             //      Overrides method of same name in dijit._Widget.
             // tags:
@@ -107,7 +107,7 @@ define([
                 this.checkbox.name = this.groupName;
                 domClass.remove(this.domNode, 'checkbox');
                 domClass.add(this.domNode, 'radio');
-            } else if (this.checkboxType === 'disabled'){
+            } else if (this.checkboxType === 'disabled') {
                 this.checkbox.disabled = true;
             }
 
@@ -169,7 +169,7 @@ define([
 
             var popup = mapController.map.infoWindow;
             var that = this;
-            switch(this.type) {
+            switch (this.type) {
                 case 'feature':
                     if (!this.layer) {
                         var markerSymbol = new PictureMarkerSymbol(
@@ -177,7 +177,7 @@ define([
                             this.markerWidth || config.markerSymbolWidth,
                             this.markerHeight || config.markerSymbolHeight
                         );
-                        markerSymbol.setOffset(0, config.markerSymbolHeight/2);
+                        markerSymbol.setOffset(0, config.markerSymbolHeight / 2);
                         this.layer = new FeatureLayer(config.urls.mapService + '/' + this.layerId, {
                             outFields: ['*']
                         });
@@ -213,7 +213,7 @@ define([
                         }
                         topic.publish(config.topics.addLayer, this.layer);
                         topic.subscribe(config.topics.slider.change, function (newValue) {
-                            that.layer.setOpacity(newValue/100);
+                            that.layer.setOpacity(newValue / 100);
                         });
                         topic.subscribe(config.topics.layer.toggleDynamicLayer, function (id, showLayer, groupName) {
                             if (showLayer && groupName === that.groupName && id !== that.layerId) {

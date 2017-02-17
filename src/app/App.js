@@ -21,7 +21,7 @@ define([
 
     'bootstrap',
     'dijit/layout/ContentPane'
-], function(
+], function (
     config,
     CurrentLocation,
     Layers,
@@ -57,7 +57,7 @@ define([
         // map: BaseMap
         map: null,
 
-        constructor: function() {
+        constructor: function () {
             // summary:
             //      first function to fire after page loads
             console.info('app.App::constructor', arguments);
@@ -67,7 +67,7 @@ define([
 
             this.inherited(arguments);
         },
-        postCreate: function() {
+        postCreate: function () {
             // summary:
             //      Fires when
             console.log('app.App::postCreate', arguments);
@@ -133,7 +133,7 @@ define([
             domClass.remove(this.mapContainer, 'hidden');
             mapController.map.setVisibility(true);
         },
-        startup: function() {
+        startup: function () {
             // summary:
             //      Fires after postCreate when all of the child widgets are finished laying out.
             console.log('app.App::startup', arguments);

@@ -149,7 +149,7 @@ define([
                     config.markerSymbolWidth,
                     config.markerSymbolHeight
                 );
-                markerSymbol.setOffset(0, config.markerSymbolHeight/2);
+                markerSymbol.setOffset(0, config.markerSymbolHeight / 2);
                 this.layer = new FeatureLayer(config.urls.mapService + '/' + config.sureSitesLayerIndex, {
                     outFields: ['*']
                 });

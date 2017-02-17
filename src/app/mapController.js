@@ -21,7 +21,7 @@ define([
     'layer-selector/LayerSelector',
 
     'proj4'
-], function(
+], function (
     BaseMap,
 
     config,
@@ -56,7 +56,7 @@ define([
         // childWidgets: Object[]
         childWidgets: [],
 
-        initMap: function(mapDiv) {
+        initMap: function (mapDiv) {
             // summary:
             //      Sets up the map
             console.info('app/mapController:initMap', arguments);
@@ -225,7 +225,7 @@ define([
             //      0 - 100
             console.log('mapController:onSliderChange', arguments);
 
-            this.dLayers[groupName].setOpacity(newValue/100);
+            this.dLayers[groupName].setOpacity(newValue / 100);
         },
         onMapClick: function (evt) {
             // summary:

@@ -21,7 +21,7 @@ define([
     'handlebars',
 
     'ijit/modules/_ErrorMessageMixin'
-], function(
+], function (
     config,
 
     bootstrap,
@@ -58,7 +58,7 @@ define([
 
         // Properties to be sent into constructor
 
-        postCreate: function() {
+        postCreate: function () {
             // summary:
             //      Overrides method of same name in dijit._Widget.
             // tags:
