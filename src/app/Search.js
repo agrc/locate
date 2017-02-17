@@ -9,7 +9,7 @@ define([
     'dojo/aspect',
     'dojo/text!app/templates/Search.html',
     'dojo/_base/declare'
-], function(
+], function (
     config,
     FindAddress,
     mapController,
@@ -30,7 +30,7 @@ define([
 
         // Properties to be sent into constructor
 
-        postCreate: function() {
+        postCreate: function () {
             // summary:
             //      Overrides method of same name in dijit._Widget.
             // tags:

@@ -2,19 +2,19 @@ require([
     'app/FindAddress',
 
     'dojo/dom-construct'
-], function(
+], function (
     WidgetUnderTest,
 
     domConstruct
 ) {
-    describe('app/FindAddress', function() {
+    describe('app/FindAddress', function () {
         var widget;
         var destroy = function (widget) {
             widget.destroyRecursive();
             widget = null;
         };
 
-        beforeEach(function() {
+        beforeEach(function () {
             widget = new WidgetUnderTest({
                 map: {
                     loaded: true,
@@ -27,14 +27,14 @@ require([
             widget.startup();
         });
 
-        afterEach(function() {
+        afterEach(function () {
             if (widget) {
                 destroy(widget);
             }
         });
 
-        describe('Sanity', function() {
-            it('should create a FindAddress', function() {
+        describe('Sanity', function () {
+            it('should create a FindAddress', function () {
                 expect(widget).toEqual(jasmine.any(WidgetUnderTest));
             });
         });

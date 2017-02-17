@@ -4,16 +4,16 @@ require([
     'app/mapController',
 
     'dojo/dom-construct'
-], function(
+], function (
     BaseMap,
 
     objectUnderTest,
 
     domConstruct
 ) {
-    describe('app/mapController', function() {
-        describe('initMap', function() {
-            it('create a map', function() {
+    describe('app/mapController', function () {
+        describe('initMap', function () {
+            it('create a map', function () {
                 var div = domConstruct.create('div', null, document.body);
                 objectUnderTest.initMap(div);
                 expect(objectUnderTest.map).toEqual(jasmine.any(BaseMap));

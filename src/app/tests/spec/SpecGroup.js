@@ -2,19 +2,19 @@ require([
     'app/Group',
 
     'dojo/dom-construct'
-], function(
+], function (
     WidgetUnderTest,
 
     domConstruct
 ) {
-    describe('app/Group', function() {
+    describe('app/Group', function () {
         var widget;
         var destroy = function (widget) {
             widget.destroyRecursive();
             widget = null;
         };
 
-        beforeEach(function() {
+        beforeEach(function () {
             widget = new WidgetUnderTest({
                 layers: [{
                     name: 'blah',
@@ -25,14 +25,14 @@ require([
             widget.startup();
         });
 
-        afterEach(function() {
+        afterEach(function () {
             if (widget) {
                 destroy(widget);
             }
         });
 
-        describe('Sanity', function() {
-            it('should create a Group', function() {
+        describe('Sanity', function () {
+            it('should create a Group', function () {
                 expect(widget).toEqual(jasmine.any(WidgetUnderTest));
             });
         });

@@ -10,7 +10,7 @@ define([
     'dojo/_base/lang',
 
     'slider'
-], function(
+], function (
     config,
 
     _TemplatedMixin,
@@ -32,7 +32,7 @@ define([
         // groupName: String
         groupName: null,
 
-        postCreate: function() {
+        postCreate: function () {
             // summary:
             //      Overrides method of same name in dijit._Widget.
             // tags:

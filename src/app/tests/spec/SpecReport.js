@@ -4,21 +4,21 @@ require([
     'dojo/dom-construct',
 
     'stubmodule'
-], function(
+], function (
     WidgetUnderTest,
 
     domConstruct,
 
     stubmodule
 ) {
-    describe('app/Report', function() {
+    describe('app/Report', function () {
         var widget;
         var destroy = function (widget) {
             widget.destroyRecursive();
             widget = null;
         };
 
-        beforeEach(function(done) {
+        beforeEach(function (done) {
             stubmodule('app/Report', {
                 'dojo/io-query': {queryToObject: function () {
                     return {};
@@ -31,14 +31,14 @@ require([
             });
         });
 
-        afterEach(function() {
+        afterEach(function () {
             if (widget) {
                 destroy(widget);
             }
         });
 
-        describe('Sanity', function() {
-            it('should create a Report', function() {
+        describe('Sanity', function () {
+            it('should create a Report', function () {
                 expect(widget).toEqual(jasmine.any(WidgetUnderTest));
             });
         });

@@ -17,7 +17,7 @@ define([
     'dojo/_base/lang',
 
     'dojox/html/entities'
-], function(
+], function (
     Formatting,
     WebAPI,
 
@@ -66,7 +66,7 @@ define([
 
         // Properties to be sent into constructor
 
-        postCreate: function() {
+        postCreate: function () {
             // summary:
             //      Overrides method of same name in dijit._Widget.
             // tags:
@@ -233,9 +233,9 @@ define([
 
             ga('send', 'event', 'report',
                 ['x:' + this.lastPoint.x,
-                'y:' + this.lastPoint.y,
-                'address:' + this.address,
-                'city:' + this.city].join(';'));
+                    'y:' + this.lastPoint.y,
+                    'address:' + this.address,
+                    'city:' + this.city].join(';'));
         }
     });
 });

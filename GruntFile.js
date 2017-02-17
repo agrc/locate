@@ -1,4 +1,3 @@
-/* jshint camelcase:false */
 var osx = 'OS X 10.10';
 var windows = 'Windows 8.1';
 var browsers = [{
@@ -24,61 +23,61 @@ var browsers = [{
     version: '9'
 }];
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     var path = require('path');
-    var jsFiles = 'src/app/**/*.js',
-        otherFiles = [
-            'src/app/**/*.html',
-            'src/app/**/*.css',
-            'src/index.html',
-            'src/report.html',
-            'src/ChangeLog.html'
-        ],
-        gruntFile = 'GruntFile.js',
-        internFile = 'tests/intern.js',
-        jshintFiles = [
-            jsFiles,
-            gruntFile,
-            internFile
-        ],
-        bumpFiles = [
-            'package.json',
-            'bower.json',
-            'src/app/package.json',
-            'src/app/config.js'
-        ],
-        deployFiles = [
-            '**',
-            '!**/*.uncompressed.js',
-            '!**/*consoleStripped.js',
-            '!**/bootstrap/less/**',
-            '!**/bootstrap/test-infra/**',
-            '!**/tests/**',
-            '!build-report.txt',
-            '!components-jasmine/**',
-            '!favico.js/**',
-            '!jasmine-favicon-reporter/**',
-            '!jasmine-jsreporter/**',
-            '!stubmodule/**',
-            '!util/**'
-        ],
-        deployDir = 'wwwroot/bbecon',
-        secrets,
-        sauceConfig = {
-            urls: ['http://127.0.0.1:8000/_SpecRunner.html'],
-            tunnelTimeout: 120,
-            build: process.env.TRAVIS_JOB_ID,
-            browsers: browsers,
-            testname: 'bb-econ',
-            maxRetries: 10,
-            maxPollRetries: 10,
-            'public': 'public',
-            throttled: 3,
-            sauceConfig: {
-                'max-duration': 10800
-            },
-            statusCheckAttempts: 500
-        };
+    var jsFiles = 'src/app/**/*.js';
+    var otherFiles = [
+        'src/app/**/*.html',
+        'src/app/**/*.css',
+        'src/index.html',
+        'src/report.html',
+        'src/ChangeLog.html'
+    ];
+    var gruntFile = 'GruntFile.js';
+    var internFile = 'tests/intern.js';
+    var eslintFiles = [
+        jsFiles,
+        gruntFile,
+        internFile
+    ];
+    var bumpFiles = [
+        'package.json',
+        'bower.json',
+        'src/app/package.json',
+        'src/app/config.js'
+    ];
+    var deployFiles = [
+        '**',
+        '!**/*.uncompressed.js',
+        '!**/*consoleStripped.js',
+        '!**/bootstrap/less/**',
+        '!**/bootstrap/test-infra/**',
+        '!**/tests/**',
+        '!build-report.txt',
+        '!components-jasmine/**',
+        '!favico.js/**',
+        '!jasmine-favicon-reporter/**',
+        '!jasmine-jsreporter/**',
+        '!stubmodule/**',
+        '!util/**'
+    ];
+    var deployDir = 'wwwroot/bbecon';
+    var secrets;
+    var sauceConfig = {
+        urls: ['http://127.0.0.1:8000/_SpecRunner.html'],
+        tunnelTimeout: 120,
+        build: process.env.TRAVIS_JOB_ID,
+        browsers: browsers,
+        testname: 'bb-econ',
+        maxRetries: 10,
+        maxPollRetries: 10,
+        'public': 'public',
+        throttled: 3,
+        sauceConfig: {
+            'max-duration': 10800
+        },
+        statusCheckAttempts: 500
+    };
     try {
         secrets = grunt.file.readJSON('secrets.json');
         sauceConfig.username = secrets.sauce_name;
@@ -188,6 +187,14 @@ module.exports = function(grunt) {
                 basePath: './src'
             }
         },
+        eslint: {
+            options: {
+                configFile: '.eslintrc'
+            },
+            main: {
+                src: jsFiles
+            }
+        },
         imagemin: {
             main: {
                 options: {
@@ -218,14 +225,6 @@ module.exports = function(grunt) {
                     ],
                     host: 'http://localhost:8000'
                 }
-            }
-        },
-        jshint: {
-            main: {
-                src: jshintFiles
-            },
-            options: {
-                jshintrc: '.jshintrc'
             }
         },
         less: {
@@ -302,12 +301,12 @@ module.exports = function(grunt) {
                 files: 'src/app/**/*.less',
                 tasks: ['less:dev']
             },
-            jshint: {
-                files: jshintFiles,
-                tasks: ['jshint:main', 'jasmine:main:build']
+            eslint: {
+                files: eslintFiles,
+                tasks: ['eslint:main', 'jasmine:main:build']
             },
             src: {
-                files: jshintFiles.concat(otherFiles),
+                files: eslintFiles.concat(otherFiles),
                 options: {
                     livereload: true
                 }
@@ -325,7 +324,7 @@ module.exports = function(grunt) {
     // Default task.
     grunt.registerTask('default', [
         'jasmine:main:build',
-        'jshint:main',
+        'eslint:main',
         'connect',
         'watch'
     ]);
@@ -361,7 +360,7 @@ module.exports = function(grunt) {
         'saucelabs-jasmine'
     ]);
     grunt.registerTask('travis', [
-        'jshint',
+        'eslint',
         'sauce',
         'build-prod'
     ]);

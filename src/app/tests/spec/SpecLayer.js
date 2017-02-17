@@ -8,7 +8,7 @@ require([
     'matchers/src/topics',
 
     'stubmodule'
-], function(
+], function (
     config,
     WidgetUnderTest,
     mapController,
@@ -19,7 +19,7 @@ require([
 
     stubmodule
 ) {
-    describe('app/Layer', function() {
+    describe('app/Layer', function () {
         var widget;
         var destroy = function (widget) {
             widget.destroyRecursive();
@@ -27,21 +27,21 @@ require([
         };
         mapController.map = {infoWindow: {}};
 
-        beforeEach(function() {
+        beforeEach(function () {
             widget = new WidgetUnderTest({
                 name: 'hello'
             }, domConstruct.create('div', null, document.body));
             widget.startup();
         });
 
-        afterEach(function() {
+        afterEach(function () {
             if (widget) {
                 destroy(widget);
             }
         });
 
-        describe('Sanity', function() {
-            it('should create a Layer', function() {
+        describe('Sanity', function () {
+            it('should create a Layer', function () {
                 expect(widget).toEqual(jasmine.any(WidgetUnderTest));
             });
         });

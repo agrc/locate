@@ -10,7 +10,7 @@ define([
     'dojo/_base/declare',
 
     'put-selector/put'
-], function(
+], function (
     FindAddress,
     MagicZoom,
 
@@ -43,7 +43,7 @@ define([
                 this.wkid = 3857;
             }
         },
-        postCreate: function() {
+        postCreate: function () {
             // summary:
             //      Overrides method of same name in FindAddress
             // tags:

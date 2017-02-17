@@ -8,7 +8,7 @@ define([
     'dojo/dom-construct',
     'dojo/text!app/templates/Group.html',
     'dojo/_base/declare'
-], function(
+], function (
     Layer,
     Slider,
 
@@ -47,7 +47,7 @@ define([
         // }
         layers: null,
 
-        postCreate: function() {
+        postCreate: function () {
             // summary:
             //      Overrides method of same name in dijit._Widget.
             // tags:
