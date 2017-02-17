@@ -25,13 +25,13 @@ var browsers = [{
 
 module.exports = function (grunt) {
     var path = require('path');
-    var jsFiles = 'src/app/**/*.js';
+    var jsFiles = 'lib/app/**/*.js';
     var otherFiles = [
-        'src/app/**/*.html',
-        'src/app/**/*.css',
-        'src/index.html',
-        'src/report.html',
-        'src/ChangeLog.html'
+        'lib/app/**/*.html',
+        'lib/app/**/*.css',
+        'lib/index.html',
+        'lib/report.html',
+        'lib/ChangeLog.html'
     ];
     var gruntFile = 'GruntFile.js';
     var internFile = 'tests/intern.js';
@@ -43,8 +43,8 @@ module.exports = function (grunt) {
     var bumpFiles = [
         'package.json',
         'bower.json',
-        'src/app/package.json',
-        'src/app/config.js'
+        'lib/app/package.json',
+        'lib/app/config.js'
     ];
     var deployFiles = [
         '**',
@@ -133,6 +133,21 @@ module.exports = function (grunt) {
                 }
             }
         },
+        babel: {
+            options: {
+                sourceMap: true,
+                presets: ['latest'],
+                plugins: ['transform-remove-strict-mode']
+            },
+            src: {
+                files: [{
+                    expand: true,
+                    cwd: 'lib/app/',
+                    src: ['**/*.js'],
+                    dest: 'src/app/'
+                }]
+            }
+        },
         bump: {
             options: {
                 files: bumpFiles,
@@ -142,7 +157,8 @@ module.exports = function (grunt) {
         },
         clean: {
             build: ['dist'],
-            deploy: ['deploy']
+            deploy: ['deploy'],
+            src: ['src/app']
         },
         compress: {
             main: {
@@ -161,8 +177,14 @@ module.exports = function (grunt) {
             uses_defaults: {}
         },
         copy: {
-            main: {
+            dist: {
                 files: [{expand: true, cwd: 'src/', src: ['*.html'], dest: 'dist/'}]
+            },
+            src: {
+                expand: true,
+                cwd: 'lib',
+                src: ['**/*.*', '!**/*.js', 'ChangeLog.html', 'index.html', 'report.html', 'secrets.json'],
+                dest: 'src'
             }
         },
         dojo: {
@@ -303,7 +325,7 @@ module.exports = function (grunt) {
             },
             eslint: {
                 files: eslintFiles,
-                tasks: ['eslint:main', 'jasmine:main:build']
+                tasks: ['eslint:main', 'jasmine:main:build', 'newer:babel', 'newer:copy:src']
             },
             src: {
                 files: eslintFiles.concat(otherFiles),
@@ -323,23 +345,30 @@ module.exports = function (grunt) {
 
     // Default task.
     grunt.registerTask('default', [
-        'jasmine:main:build',
-        'eslint:main',
+        'eslint',
+        'clean:src',
+        'babel',
+        'copy:src',
         'connect',
+        'jasmine:main:build',
         'watch'
     ]);
     grunt.registerTask('build-prod', [
-        'clean:build',
+        'clean:src',
+        'babel',
+        'copy:src',
         'newer:imagemin:main',
         'dojo:prod',
-        'copy:main',
+        'copy:dist',
         'processhtml:main'
     ]);
     grunt.registerTask('build-stage', [
-        'clean:build',
+        'clean:src',
+        'babel',
+        'copy:src',
         'newer:imagemin:main',
         'dojo:stage',
-        'copy:main',
+        'copy:dist',
         'processhtml:main'
     ]);
     grunt.registerTask('deploy-prod', [
