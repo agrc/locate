@@ -15,6 +15,9 @@ var profile = { // eslint-disable-line no-unused-vars
                 'app/run',
                 'app/App',
                 'app/Report',
+                'esri/layers/VectorTileLayerImpl',
+                'esri/layers/LabelLayer',
+                'esri/PopupInfo',
                 'dojox/gfx/filters',
                 'dojox/gfx/path',
                 'dojox/gfx/svg',
@@ -85,6 +88,6 @@ var profile = { // eslint-disable-line no-unused-vars
         ]
     }],
     userConfig: {
-        packages: ['app', 'dijit', 'dojox', 'agrc', 'ijit', 'esri', 'layer-selector']
+        packages: ['app', 'dijit', 'dojox', 'agrc', 'ijit', 'esri', 'layer-selector', 'sherlock']
     }
 };
