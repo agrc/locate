@@ -3,9 +3,8 @@ var profile = { // eslint-disable-line no-unused-vars
     action: 'release',
     cssOptimize: 'comments',
     mini: true,
-    optimize: 'uglify',
-    layerOptimize: 'uglify',
-    stripConsole: 'all',
+    optimize: false,
+    layerOptimize: false,
     selectorEngine: 'acme',
     layers: {
         'dojo/dojo': {
@@ -62,6 +61,19 @@ var profile = { // eslint-disable-line no-unused-vars
         resourceTags: {
             amd: function amd(filename) {
                 return /\.js$/.test(filename);
+            }
+        }
+    }, {
+        name: 'proj4',
+        trees: [
+            ['.', '.', /(\/\.)|(~$)|(test|txt|src|min|html)/]
+        ],
+        resourceTags: {
+            amd: function () {
+                return true;
+            },
+            copyOnly: function () {
+                return false
             }
         }
     }, {
