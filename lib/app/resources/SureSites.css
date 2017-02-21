@@ -21,3 +21,14 @@
     margin-left: 15px;
     padding-bottom: 15px;
 }
+.map .esriPopup .actionsPane .actionList,
+.map .esriPopup .titlePane .maximize {
+    display: none;
+    visibility: hidden;
+}
+
+/* reset back to bootstrap default */
+.map .esriPopup a.btn {
+    color: #333333;
+    text-decoration: none;
+}
