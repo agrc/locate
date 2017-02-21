@@ -359,7 +359,8 @@ module.exports = function (grunt) {
                 files: eslintFiles.concat(otherFiles),
                 options: {
                     livereload: true
-                }
+                },
+                tasks: ['newer:copy:src']
             }
         }
     });
