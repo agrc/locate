@@ -6,10 +6,9 @@
 deploy/
 dist/
 node_modules/
-scripts/.idea/
-scripts/Nightly/Logs/
-scripts/Nightly/settings.py
-scripts/Nightly/settings/__init__.py
+scripts/Logs/
+scripts/settings.py
+scripts/settings/__init__.py
 scripts/sddraftToolboxes/
 secrets.json
 src/

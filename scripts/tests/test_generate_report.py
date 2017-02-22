@@ -4,9 +4,9 @@ import os
 
 import arcpy
 
-from GPTask import generate_report
-from GPTask.settings import fieldnames
-from GPTask.settings import *
+from scripts import generate_report
+from scripts.settings import fieldnames
+from scripts.settings import *
 
 
 sys.path.append(os.getcwd() + '../')
