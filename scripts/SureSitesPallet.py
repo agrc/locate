@@ -17,6 +17,7 @@ from os.path import exists
 from time import clock
 from time import strftime
 from unidecode import unidecode
+import generate_report
 
 
 class SureSitePallet(Pallet):
@@ -103,9 +104,12 @@ class SureSitePallet(Pallet):
         json_properties.append('Position')
         fields = self._fields.keys()
         fields.append('shape@')
+        fields.append('Report_JSON')
         with arcpy.da.InsertCursor(in_table=self.destination_fc_name, field_names=fields) as cursor:
             for site in sites:
                 row = self._map_site_to_row(site, json_properties)
+                point = row[-1].firstPoint
+                row.append(generate_report.get_report(point.X, point.Y))
                 try:
                     cursor.insertRow(row)
                 except Exception as e:
@@ -136,16 +140,21 @@ class SureSitePallet(Pallet):
 
         arcpy.CreateFeatureclass_management(out_path=workspace, out_name=name, geometry_type='POINT', spatial_reference=self.destination_coordinate_system)
 
+        def add_field(field, props):
+            arcpy.AddField_management(in_table=name,
+                                      field_name=field,
+                                      field_alias=props[0],
+                                      field_type=props[1],
+                                      field_is_nullable=props[2],
+                                      field_length=props[3])
         for field, props in self._fields.iteritems():
             if len(props) == 4:
-                arcpy.AddField_management(in_table=name,
-                                          field_name=field,
-                                          field_alias=props[0],
-                                          field_type=props[1],
-                                          field_is_nullable=props[2],
-                                          field_length=props[3])
+                add_field(field, props)
             else:
                 arcpy.AddField_management(in_table=name, field_name=field, field_alias=props[0], field_type=props[1], field_is_nullable=props[2])
+
+        #: add this field separately because it's not included in the json that we get from utahsuresites.com
+        add_field('Report_JSON', ['Cached Report JSON', 'TEXT', 'NULLABLE', 15000])
 
         arcpy.env = env
 

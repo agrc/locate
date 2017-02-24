@@ -214,10 +214,8 @@ def get_data_from_layer(lyr):
 
     return data
 
-if __name__ == '__main__':
-    x = arcpy.GetParameterAsText(0)
-    y = arcpy.GetParameterAsText(1)
 
+def get_report(x, y):
     if type(x) == str:
         x = int(x)
         y = int(y)
@@ -240,4 +238,13 @@ if __name__ == '__main__':
                              'state_parks': get_drive_time(data[basename(STATE_PARKS)]),
                              'ski': get_drive_time(data[basename(SKI)])}}
 
-    arcpy.SetParameterAsText(2, json.dumps(result))
+    arcpy.Delete_management(lyr)
+
+    return json.dumps(result)
+
+
+if __name__ == '__main__':
+    x = arcpy.GetParameterAsText(0)
+    y = arcpy.GetParameterAsText(1)
+
+    arcpy.SetParameterAsText(2, get_report(x, y))
