@@ -29,6 +29,7 @@ module.exports = function (grunt) {
     var otherFiles = [
         'lib/app/**/*.html',
         'lib/app/**/*.css',
+        'lib/app/**/*.svg',
         'lib/index.html',
         'lib/report.html',
         'lib/ChangeLog.html'
