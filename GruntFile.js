@@ -1,30 +1,4 @@
-var osx = 'OS X 10.10';
-var windows = 'Windows 8.1';
-var browsers = [{
-    browserName: 'safari',
-    platform: osx
-}, {
-    browserName: 'firefox',
-    platform: windows
-}, {
-    browserName: 'chrome',
-    platform: windows
-}, {
-    browserName: 'internet explorer',
-    platform: windows,
-    version: '11'
-}, {
-    browserName: 'internet explorer',
-    platform: 'Windows 8',
-    version: '10'
-}, {
-    browserName: 'internet explorer',
-    platform: 'Windows 7',
-    version: '9'
-}];
-
 module.exports = function (grunt) {
-    var path = require('path');
     var jsFiles = 'lib/app/**/*.js';
     var otherFiles = [
         'lib/app/**/*.html',
@@ -35,11 +9,9 @@ module.exports = function (grunt) {
         'lib/ChangeLog.html'
     ];
     var gruntFile = 'GruntFile.js';
-    var internFile = 'tests/intern.js';
     var eslintFiles = [
         jsFiles,
-        gruntFile,
-        internFile
+        gruntFile
     ];
     var bumpFiles = [
         'package.json',
@@ -64,25 +36,8 @@ module.exports = function (grunt) {
     ];
     var deployDir = 'wwwroot/bbecon';
     var secrets;
-    var sauceConfig = {
-        urls: ['http://127.0.0.1:8000/_SpecRunner.html'],
-        tunnelTimeout: 120,
-        build: process.env.TRAVIS_JOB_ID,
-        browsers: browsers,
-        testname: 'bb-econ',
-        maxRetries: 10,
-        maxPollRetries: 10,
-        'public': 'public',
-        throttled: 3,
-        sauceConfig: {
-            'max-duration': 10800
-        },
-        statusCheckAttempts: 500
-    };
     try {
         secrets = grunt.file.readJSON('secrets.json');
-        sauceConfig.username = secrets.sauce_name;
-        sauceConfig.key = secrets.sauce_key;
     } catch (e) {
         // swallow for build server
         secrets = {
@@ -96,44 +51,6 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        arcgis_press: {
-            options: {
-                server: {
-                    username: secrets.ags_username,
-                    password: secrets.ags_password
-                },
-                mapServerBasePath: path.join(process.cwd(), 'maps'),
-                services: {
-                    mapService: {
-                        serviceName: 'MapService',
-                        type: 'MapServer',
-                        folder: 'BBEcon',
-                        resource: 'MapService.mxd'
-                    }
-                }
-            },
-            dev: {
-                options: {
-                    server: {
-                        host: 'localhost'
-                    }
-                }
-            },
-            stage: {
-                options: {
-                    server: {
-                        host: secrets.stageHost
-                    }
-                }
-            },
-            prod: {
-                options: {
-                    server: {
-                        host: secrets.agsProdHost
-                    }
-                }
-            }
-        },
         babel: {
             options: {
                 sourceMap: true,
@@ -246,7 +163,8 @@ module.exports = function (grunt) {
                         'src/app/tests/jsReporterSanitizer.js',
                         'src/app/tests/jasmineAMDErrorChecking.js'
                     ],
-                    host: 'http://localhost:8000'
+                    host: 'http://localhost:8000',
+                    keepRunner: true
                 }
             }
         },
@@ -268,11 +186,6 @@ module.exports = function (grunt) {
                     'dist/index.html': ['src/index.html'],
                     'dist/report.html': ['src/report.html']
                 }
-            }
-        },
-        'saucelabs-jasmine': {
-            all: {
-                options: sauceConfig
             }
         },
         secrets: secrets,
@@ -415,14 +328,13 @@ module.exports = function (grunt) {
         'sftp:stage',
         'sshexec:stage'
     ]);
-    grunt.registerTask('sauce', [
-        'jasmine:main:build',
+    grunt.registerTask('test', [
         'connect',
-        'saucelabs-jasmine'
+        'jasmine'
     ]);
     grunt.registerTask('travis', [
         'eslint',
-        'sauce',
+        'test',
         'build-prod'
     ]);
 };

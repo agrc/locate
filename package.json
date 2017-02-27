@@ -12,7 +12,6 @@
     "dojo": "^1.10.2",
     "eslint-plugin-html": "^2.0.1",
     "grunt": "^1.0.1",
-    "grunt-arcgis-press": "^0.2.0",
     "grunt-babel": "^6.0.0",
     "grunt-bump": "^0.8.0",
     "grunt-contrib-clean": "^1.0.0",
@@ -29,8 +28,8 @@
     "grunt-if-missing": "^1.0.1",
     "grunt-newer": "^1.2.0",
     "grunt-processhtml": "^0.4.0",
-    "grunt-saucelabs": "^9.0.0",
     "grunt-ssh": "^0.12.9",
+    "phantomjs": "^2.1.7",
     "uglify-js": "^2.6.4"
   },
   "scripts": {
