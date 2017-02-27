@@ -329,6 +329,8 @@ module.exports = function (grunt) {
         'sshexec:stage'
     ]);
     grunt.registerTask('test', [
+        'babel',
+        'copy:src',
         'connect',
         'jasmine'
     ]);
