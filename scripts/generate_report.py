@@ -16,15 +16,12 @@ def timer():
 
 
 def get_intersect_layer(point, feature_class):
-    print('get_intersect_layer: {}'.format(timer()))
     lyr = arcpy.MakeFeatureLayer_management(feature_class, feature_class + '_layer')
-    print('selecting by location: {}'.format(timer()))
     arcpy.SelectLayerByLocation_management(lyr, 'INTERSECT', point)
     return lyr
 
 
 def get_fiber(data):
-    print('get_fiber: {}'.format(timer()))
 
     hex_id = data[basename(HEXAGONS)][0]
 
@@ -45,7 +42,6 @@ def get_fiber(data):
 
 
 def add_provider_info(items, code_field):
-    print('add_provider_info: {}'.format(timer()))
     fields = [
         fieldnames.Colloquial,
         fieldnames.URL,
@@ -74,7 +70,6 @@ def add_provider_info(items, code_field):
 
 
 def get_fixed(data):
-    print('get_fixed: {}'.format(timer()))
 
     providers = get_records(data[basename(FIXED)], [fieldnames.UTProvCode], fieldnames.UTProvCode)
     add_provider_info(providers, fieldnames.UTProvCode)
@@ -91,7 +86,6 @@ def get_fixed(data):
 
 
 def get_records(data, fields, sort_field, titlecase_fields=[]):
-    print('get_records: {}'.format(timer()))
     records = []
     for data_element in data:
         data_elements = data_element.split(';')
@@ -109,7 +103,6 @@ def get_records(data, fields, sort_field, titlecase_fields=[]):
 
 
 def get_topten(record, fields):
-    print('get_topten: {}'.format(timer()))
     results = []
     i = 1
     for fld in fields:
@@ -121,7 +114,6 @@ def get_topten(record, fields):
 
 
 def get_county_demographics(data):
-    print('get_county_demographics: {}'.format(timer()))
 
     tt_fields = ['TI_{}'.format(f) for f in range(1, 11)]
     fields = [fieldnames.Avg_MonthlyIncome,
@@ -136,10 +128,8 @@ def get_county_demographics(data):
 
 
 def get_utilities(data):
-    print('get_utilities: {}'.format(timer()))
 
     def process():
-        print('process: {}'.format(timer()))
         lyr = get_intersect_layer(point, fc)
 
         return get_records(lyr, [fieldnames.PROVIDER, fieldnames.WEBLINK], fieldnames.PROVIDER, [fieldnames.PROVIDER])
@@ -151,7 +141,6 @@ def get_utilities(data):
 
 
 def get_roads(data):
-    print('get_roads: {}'.format(timer()))
     records = get_records(data[basename(ROADS)], [fieldnames.FULLNAME], fieldnames.FULLNAME)
     # remove duplicates
     records = list(set([r[fieldnames.FULLNAME] for r in records]))
@@ -160,7 +149,6 @@ def get_roads(data):
 
 
 def get_drive_time(data):
-    print('get_drive_time: {}'.format(timer()))
     records = []
     reg = re.compile(r'(^.*) : .* (.*$)')
     names = []
@@ -187,7 +175,6 @@ def format_drive_time(mins):
 
 
 def get_airports(data):
-    print('get_airports: {}'.format(timer()))
     drive_time = format_drive_time(data[basename(AIRPORT_INT)][0].split(';')[1])
     res = {'sl': {'drive_time': drive_time, 'name': 'Salt Lake International'},
            'regional_commercial': get_drive_time(data[basename(AIRPORT_REG)]),
@@ -197,12 +184,10 @@ def get_airports(data):
 
 
 def get_enterprise_zone(data):
-    print('get_enterprise_zone: {}'.format(timer()))
     return get_records(data[basename(ENTERPRISE_ZONES)], fieldnames.ENTERPRISE_FIELDS, 'OBJECTID')
 
 
 def get_data_from_layer(lyr):
-    print('get_data_from_layer: {}'.format(timer()))
     data = {}
     for DS in DATASETS:
         #: make sure that we have an empty array if there's not data for a specific source
@@ -216,6 +201,7 @@ def get_data_from_layer(lyr):
 
 
 def get_report(x, y):
+    print('getting report for {}, {}'.format(x, y))
     if type(x) == str:
         x = int(x)
         y = int(y)
