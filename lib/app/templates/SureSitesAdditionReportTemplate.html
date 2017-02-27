@@ -1,0 +1,113 @@
+<div class='sure-sites'>
+    <div class="data">
+        <p>
+            <strong>Name: </strong>{{Name}}
+        </p>
+        <p>
+            <strong>Property Type:</strong> {{Type}}
+        </p>
+        <p>
+            <strong>Zoning:</strong> {{Zoning}}
+        </p>
+        <p>
+            <strong>Total Acreage:</strong> {{Acreage}}
+        </p>
+        <strong>Property Description:</strong>
+        <p>{{Description}}</p>
+
+        {{#if Environmental_Report}}
+        <p>
+            <strong>Phase I Environmental Report Available:</strong> {{Environmental_Report}}
+        </p>
+        {{/if}}
+
+        {{#if Geo_Assessment}}
+        <p>
+            <strong>Geo-Technical Assessment Available:</strong> {{Geo_Assessment}}
+        </p>
+        {{/if}}
+
+        {{#if Rail}}
+        <p>
+            <strong>Rail Available:</strong> {{Rail}}
+        </p>
+        {{/if}}
+
+        {{#if Sale_Price}}
+        <p>
+            <strong>Sale Price per SF:</strong> {{Sale_Price}}
+        </p>
+        {{/if}}
+
+        {{#if Minimum_Footage}}
+        <p>
+            <strong>Minimum Available Square Footage:</strong> {{Minimum_Footage}}
+        </p>
+        {{/if}}
+
+        {{#if Maximum_Footage}}
+        <p>
+            <strong>Maximum Available Square Footage:</strong> {{Maximum_Footage}}
+        </p>
+        {{/if}}
+
+        {{#if Square_Footage}}
+        <p>
+            <strong>Total Building Square Footage:</strong> {{Square_Footage}}
+        </p>
+        {{/if}}
+
+        {{#if Year}}
+        <p>
+            <strong>Year Build: </strong> {{Year}}
+        </p>
+        {{/if}}
+
+        {{#if Classification}}
+        <p>
+            <strong>Office Space Classification: </strong> {{Classification}}
+        </p>
+        {{/if}}
+
+        <p>
+            <strong>Local Economic Development Contact:</strong>
+            <br>
+            {{#if Contact_Name}}
+            {{Contact_Name}} <br>
+            {{/if}}
+
+            {{#if Contact_Email}}
+            {{{Contact_Email}}} <br>
+            {{/if}}
+
+            {{#if Contact_Phone}}
+            {{Contact_Phone}} <br>
+            {{/if}}
+        </p>
+
+        <p>
+            <strong>Broker Name:</strong>
+            <br>
+            {{#if Broker_Name}}
+            {{Broker_Name}} <br>
+            {{/if}}
+
+            {{#if Broker}}
+            {{Broker}} <br>
+            {{/if}}
+
+            {{#if Broker_Email}}
+            {{{Broker_Email}}} <br>
+            {{/if}}
+
+            {{#if Broker_Phone}}
+            {{Broker_Phone}}
+            {{/if}}
+        </p>
+    </div>
+    <div class="photos">
+        {{#each Images}}
+            <img src='{{this}}' alt='property image'>
+        {{/each}}
+    </div>
+</div>
