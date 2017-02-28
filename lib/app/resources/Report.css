@@ -27,6 +27,10 @@
 .report td.header {
     padding: 0 !important;
 }
+.report h3>span {
+    float: right;
+    margin-right: 20px;
+}
 
 /* modify address css for report */
 .report .pull-left {
@@ -115,6 +119,10 @@
     h2,
     .address {
         padding-left: 15px;
+    }
+    .report h3>span {
+        display: none;
+        visibility: hidden;
     }
     .report a[data-toggle='collapse'] h3 {
         background: none;
