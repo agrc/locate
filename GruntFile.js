@@ -4,6 +4,7 @@ module.exports = function (grunt) {
         'lib/app/**/*.html',
         'lib/app/**/*.css',
         'lib/app/**/*.svg',
+        'lib/app/**/*.png',
         'lib/index.html',
         'lib/report.html',
         'lib/ChangeLog.html'
