@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Oswald:400,600');
 @import '../../bootstrap/dist/css/bootstrap.css';
 @import '../../esri/css/esri.css';
 @import '../../agrc/resources/map/BaseMap.css';
+@import '../../awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css';
+@import '../../seiyria-bootstrap-slider/dist/css/bootstrap-slider.css';
 @import '../../../src/layer-selector/resources/LayerSelector';
 @import 'CurrentLocation';
 @import 'FindAddress';
@@ -11,3 +14,59 @@
 @import 'Slider';
 @import 'SureSites';
 @import '../../../src/sherlock/resources/Sherlock';
+@import 'variables';
+
+html, body, .app
+    width 100%
+    height 100%
+    font-family 'Lato', sans-serif
+
+.app
+    .side-bar
+        position absolute
+        width $side-bar-width
+        height 100%
+        overflow-y scroll
+        background-color $background-grey
+        padding 10px
+        color #FFFFFF
+        .title, .links
+            font-family 'Oswald', sans-serif
+        .title
+            line-height 38px
+            font-size 2.3em
+            font-weight 600
+        .links
+            list-style-type none
+            padding-left 0
+        hr
+            margin 5px 0
+        a:not(.btn)
+            color #FFFFFF
+    .map
+        position absolute
+        top 0
+        bottom 0
+        left $side-bar-width
+        right 0
+        .sherlock
+            right 15px
+            top 15px
+            .input-group
+                input, span
+                    border-color $map-control-border
+        .layer-selector
+            top 70px
+            max-width 160px
+            box-shadow none
+            border solid 1px $map-control-border
+            label.layer-selector-items
+                padding-left 23px
+            .layer-selector-item
+                &.checkbox
+                    padding-left 0
+                input[type='radio'],
+                input[type='checkbox']
+                    opacity 1
+                label
+                    max-width 140px

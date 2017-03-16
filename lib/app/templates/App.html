@@ -1,34 +1,18 @@
 <div>
-    <div id="header-container" class="site-full">
-        <div id="mobilemenu">
-            <a href="#" id="mobile-mainmenu-button" class="ir"
-                data-dojo-attach-event='click: onHamburgerClick'>Main Menu</a>
-            <span>Utah Economic Development Map</span>
-        </div>
-
-        <div id="header-wrapper" class="site-full">
-            <div id="header" class="site">
-                <a href='http://broadband.utah.gov' target='_blank' id="broadband-logo" class="ir"></a>
-                <span id="title">Utah Economic Development Map</span>
-                <div data-dojo-attach-point="currentLocationDiv"></div>
-                <div class='contact pull-right'>
-                    <a href='http://utahsuresites.com' class='suresitesLogo ir' target="_blank">Sure Sites</a>
-                    <a href='tel:801-538-8831' class='expertLogo ir'
-                        title='Technical Questions: (801) 538-8831 <br> Economic Development Assistance: (801) 328-8839'
-                        data-placement='bottom'
-                        data-html='true'>Ask An Expert!</a>
-                </div>
-            </div>
-        </div>
+    <div class='side-bar'>
+        <span class='title'>UTAH ECONOMIC DEVELOPMENT MAP</span>
+        <ul class="links">
+            <li><a href="??" target='_blank'>ABOUT</a></li>
+            <li><a href='http://utahsuresites.com' target='_blank'>UTAH SURE SITES</a></li>
+            <li><a href='??' target='_blank'>CONTACT US</a></li>
+        </ul>
+        <hr>
+        <div data-dojo-attach-point="currentLocationDiv"></div>
+        <div data-dojo-attach-point='layersDiv' class='layers'></div>
     </div>
 
-    <div class="site-full clearfix center">
-        <div class="site-full" data-dojo-attach-point='mapContainer'>
-            <div data-dojo-attach-point="mapDiv" class='map'>
-                <div data-dojo-attach-point="sherlockDiv"></div>
-            </div>
-            <div data-dojo-attach-point='layersDiv' class='layers'></div>
-        </div>
+    <div data-dojo-attach-point="mapDiv" class='map'>
+        <div data-dojo-attach-point="sherlockDiv"></div>
     </div>
 
     <div id="footer-wrapper" class="site-full">

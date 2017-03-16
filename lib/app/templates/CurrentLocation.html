@@ -1,28 +1,25 @@
 <div>
-    <h4>Current Location<img src="app/resources/img/markers/currentLocation.svg" alt="pin"></h4>
-    <div class="clearfix"></div>
-
+    <h4>
+        <img src="app/resources/img/markers/currentLocation.svg" alt="pin">
+        Current Location
+    </h4>
     <span class="glyphicon glyphicon-refresh hidden"
         data-dojo-attach-point='loader'></span>
     <p data-dojo-attach-point='helpTxt'>
         Click on the map to get info about the current location.
     </p>
-
     <div data-dojo-attach-point="addressContainer" class='hidden'>
-        <div class="address pull-left">
-            <ul>
-                <li data-dojo-attach-point='addressNode'></li>
-                <li>
-                    <span data-dojo-attach-point='cityNode'></span>, UT <span data-dojo-attach-point="zipNode"></span>
-                </li>
-                <li><span data-dojo-attach-point='countyNode'></span> County</li>
-            </ul>
-        </div>
-
-        <div class="address2 pull-right">
-            <a href="#" class="btn btn-default" target="_blank"
-                data-dojo-attach-point='getSummaryLink'
-                data-dojo-attach-event='click: onGetSummaryClick'>Get Summary</a>
-        </div>
+        <ul>
+            <li data-dojo-attach-point='addressNode'></li>
+            <li>
+                <span data-dojo-attach-point='cityNode'></span>
+                , UT
+                <span data-dojo-attach-point="zipNode"></span>
+            </li>
+            <li><span data-dojo-attach-point='countyNode'></span> County</li>
+        </ul>
+        <a href="#" class="btn btn-default" target="_blank"
+            data-dojo-attach-point='getSummaryLink'
+            data-dojo-attach-event='click: onGetSummaryClick'>Get Summary</a>
     </div>
 </div>

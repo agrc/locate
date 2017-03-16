@@ -8,16 +8,15 @@
             <span class="help-block">Required!</span>
         </div>
         <div class="form-group">
-            <div data-dojo-attach-point="magicZoomDiv"></div>
             <input type="text" class="form-control"
                 data-dojo-attach-point="txtZone"
                 id="${id}_input_zone"
-                placeholder='zip or city'> 
+                placeholder='zip or city'>
             <span class="help-block">Required!</span>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-default" data-dojo-attach-point='btnGeocode'>Find</button> 
-            <span data-dojo-attach-point='errorMsg' class='help-block'>No match found!</span>
+            <button type="submit" class="btn btn-default" data-dojo-attach-point='btnGeocode'>Find</button>
+            <span data-dojo-attach-point='errorMsg' class='help-block no-match-found'>No matching address found!</span>
         </div>
     </form>
 </div>
