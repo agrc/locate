@@ -2,7 +2,6 @@ module.exports = function (grunt) {
     var jsFiles = 'lib/app/**/*.js';
     var otherFiles = [
         'lib/app/**/*.html',
-        'lib/app/**/*.css',
         'lib/app/**/*.svg',
         'lib/app/**/*.png',
         'lib/index.html',
@@ -102,7 +101,7 @@ module.exports = function (grunt) {
             src: {
                 expand: true,
                 cwd: 'lib',
-                src: ['**/*.*', '!**/*.js', 'ChangeLog.html', 'index.html', 'report.html', 'secrets.json'],
+                src: ['**/*.*', '!**/*.js', '!**/*.styl', 'ChangeLog.html', 'index.html', 'report.html', 'secrets.json'],
                 dest: 'src'
             }
         },
@@ -169,17 +168,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        less: {
-            dev: {
-                options: {
-
-                },
-                files: {
-                    'src/app/resources/custom-bootstrap.css':
-                        'src/app/resources/custom-bootstrap.less'
-                }
-            }
-        },
         processhtml: {
             options: {},
             main: {
@@ -233,6 +221,21 @@ module.exports = function (grunt) {
                 }
             }
         },
+        stylus: {
+            src: {
+                options: {
+                    compress: false,
+                    'resolve url': true
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'lib/app/',
+                    src: ['**/*.styl'],
+                    dest: 'src/app/',
+                    ext: '.css'
+                }]
+            }
+        },
         uglify: {
             options: {
                 preserveComments: false,
@@ -262,10 +265,6 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            less: {
-                files: 'src/app/**/*.less',
-                tasks: ['less:dev']
-            },
             eslint: {
                 files: eslintFiles,
                 tasks: ['eslint:main', 'jasmine:main:build', 'newer:babel', 'newer:copy:src']
@@ -276,6 +275,13 @@ module.exports = function (grunt) {
                     livereload: true
                 },
                 tasks: ['newer:copy:src']
+            },
+            stylus: {
+                files: 'lib/app/**/*.styl',
+                options: {
+                    livereload: true
+                },
+                tasks: ['stylus:src']
             }
         }
     });
@@ -292,6 +298,7 @@ module.exports = function (grunt) {
         'eslint',
         'clean:src',
         'babel',
+        'stylus:src',
         'copy:src',
         'connect',
         'jasmine:main:build',
