@@ -46,7 +46,7 @@ var profile = { // eslint-disable-line no-unused-vars
         // We aren’t loading tests in production
         'dojo-test-sniff': 0
     },
-    packages: [{
+    packages: ['xstyle', {
         name: 'handlebars',
         resourceTags: {
             copyOnly: function (filename, mid) {
