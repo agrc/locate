@@ -307,6 +307,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build-prod', [
         'clean:src',
         'babel',
+        'stylus:src',
         'copy:src',
         'newer:imagemin:main',
         'dojo:prod',
@@ -317,6 +318,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build-stage', [
         'clean:src',
         'babel',
+        'stylus:src',
         'copy:src',
         'newer:imagemin:main',
         'dojo:stage',
