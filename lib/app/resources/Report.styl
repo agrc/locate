@@ -1,156 +1,140 @@
-.report .logo-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 5px 10px;
-}
-.report .main {
-    margin-top: 20px;
-    padding: 0 10px;
-}
-.report .location ul {
-    margin: 0;
-    padding: 0;
-}
-.report .location ul li {
-    list-style: none;
-}
-.report .location {
-    width: 100%;
-    margin-bottom: 15px;
-}
-.report .hide {
-    opacity: 0;
-}
-.report td.header {
-    padding: 0 !important;
-}
-.report h3>span {
-    float: right;
-    margin-right: 20px;
-}
+@import 'variables'
 
-/* modify address css for report */
-.report .pull-left {
-    float: none !important;
-}
-.report .address2 {
-    visibility: hidden;
-    display: none;
-}
+.report
+    .logo-container
+        display flex
+        flex-direction row
+        justify-content space-between
+        flex-wrap wrap
+        align-items center
+        margin 5px 10px
+        @media $mobile-media-query
+            flex-direction column
+    .main
+        margin-top 20px
+        padding 0 10px
+    .location
+        width 100%
+        margin-bottom 15px
+        ul
+            margin 0
+            padding 0
+            li
+                list-style none
+    .hide
+        opacity 0
+    td.header
+        padding 0 !important
+    h3>span
+        float right
+        margin-right 20px
 
-/* Report Tables */
-.report .table {
-    border-bottom: 1px solid #dddddd;
-}
-.report .table tr td:first-child,
-.report .table tr th:first-child {
-    padding-left: 15px;
-}
-.report .table tr td:last-child,
-.report .table tr th:last-child {
-    padding-right: 15px;
-}
-.report .provider {
-    width: 250px;
-}
-.report #broadband .contact-fld {
-    width: 200px;
-}
-.report #broadband .service-class {
-    width: 175px;
-}
-.report h3 {
-    text-transform: uppercase;
-    margin: 0;
-    padding: 15px 0 15px 55px;
-    color: #fff;
-}
-.report a[data-toggle='collapse']:hover,
-.report a[data-toggle='collapse']:active,
-.report [data-dojo-attach-point='reportContainer']>a {
-    color: #fff;
-}
-.report table.half th,
-.report table.half td {
-    width: 50%;
-}
-.report h4 {
-    padding: 5px 15px;
-    margin: 0;
-    color: #fff;
-}
-.report h4.no-background {
-    color: #333;
-}
-.report .sure-sites {
-    display: flex;
-}
-.report .sure-sites strong {
-    font-size: 16px;
-}
-.report .sure-sites .data {
-    width: 65%;
-    flex-grow: 2;
-}
-.report .sure-sites .photos {
-    width: 35%;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.report .sure-sites .photos img {
-    max-width: 100%;
-    border: solid 1px #333;
-    margin: 5px;
-}
-@media print {
-    .report .btn,
-    .current-location {
-        visibility: hidden;
-        display: none;
-    }
-    body {
-        font-size: 12px;
-    }
-    h2,
-    .address {
-        padding-left: 15px;
-    }
-    .report h3>span {
-        display: none;
-        visibility: hidden;
-    }
-    .report a[data-toggle='collapse'] h3 {
-        background: none;
-        padding-left: 15px;
-    }
-    .report h3 {
-        padding-bottom: 0;
-    }
-    h3.sure-sites {
-        color: #000000;
-    }
-    h3.broadband {
-        color: #000000;
-    }
-    h3.transportation {
-        color: #E09525;
-    }
-    h3.utilities {
-        color: #107A89;
-    }
-    h3.lifestyle {
-        color: #0D8C44;
-    }
-    h3.demographics {
-        color: #C22127;
-    }
-    .report h4 {
-        background-color: transparent;
-        color: #333
-    }
-}
+    // modify address css for report
+    .pull-left
+        float none !important
+    .address2
+        visibility hidden
+        display none
+
+    h3
+        &.broadband, &.sure-sites
+            background $broadband-sure-sites url(img/icons/broadband.svg) 15px 15px no-repeat
+        &.transportation
+            background $transportation url(img/icons/transportation.svg) 15px 15px no-repeat
+        &.utilities
+            background $utilities url(img/icons/utilities.svg) 15px 15px no-repeat
+        &.lifestyle
+            background $lifestyle url(img/icons/lifestyle.svg) 15px 15px no-repeat
+        &.demographics
+            background $demographics url(img/icons/demographics.svg) 15px 15px no-repeat
+    h4
+        &.broadband, &.sure-sites
+            background-color $broadband-sure-sites_secondary
+        &.transportation
+            background-color $transportation_secondary
+        &.utilities
+            background-color $utilities_secondary
+        &.lifestyle
+            background-color $lifestyle_secondary
+        &.demographics
+            background-color $demographics_secondary
+
+    // Report Tables
+    .table
+        border-bottom: 1px solid #dddddd;
+        tr td:first-child,
+        tr th:first-child
+            padding-left: 15px;
+        tr td:last-child,
+        tr th:last-child
+            padding-right: 15px;
+    .provider
+        width: 250px;
+    #broadband
+        .contact-fld
+            width: 200px;
+        .service-class
+            width: 175px;
+    h3
+        text-transform: uppercase;
+        margin: 0;
+        padding: 15px 0 15px 55px;
+        color: #fff;
+    a[data-toggle='collapse']:hover,
+    a[data-toggle='collapse']:active,
+    [data-dojo-attach-point='reportContainer']>a
+        color: #fff;
+    table.half th,
+    table.half td
+        width: 50%;
+    h4
+        padding: 5px 15px;
+        margin: 0;
+        color: #fff;
+        &.no-background
+            color: #333;
+    .sure-sites
+        display: flex;
+        strong
+            font-size: 16px;
+        .data
+            width: 65%;
+            flex-grow: 2;
+        .photos
+            width: 35%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            img
+                max-width: 100%;
+                border: solid 1px #333;
+                margin: 5px;
+
+@media print
+    body
+        font-size 12px
+    .report
+        .btn, .current-location
+            display none
+            visibility hidden
+        h2, .address
+            padding-left 15px
+        h3
+            padding-bottom 0
+            &>span
+                display none
+                visibility hidden
+            &.sure-sites, &.broadband
+                color $broadband-sure-sites !important
+            &.transportation
+                color $transportation !important
+            &.utilities
+                color $utilities !important
+            &.lifestyle
+                color $lifestyle !important
+            &.demographics
+                color $demographics !important
+        a[data-toggle='collapse'] h3
+            background none
+            padding-left 15px
