@@ -36,13 +36,30 @@ html, body, .app
             line-height 38px
             font-size 2.3em
             font-weight 600
+            @media $mobile-media-query
+                font-size 1.4em
+                text-align center
+        .links
+            @media $mobile-media-query
+                text-align center
+                font-size 1em
+                li
+                    display inline-block
+                    margin-left 15px
         ul
             list-style-type none
             padding-left 0
         hr
             margin 5px 0
         a:not(.btn)
-            color #FFFFFF
+            color @color
+        @media $mobile-media-query
+            width 100%
+            height $mobile-header-height
+            overflow hidden
+            &.expanded
+                height 100%
+                overflow-y scroll
     .map
         position absolute
         top 0
@@ -70,3 +87,9 @@ html, body, .app
                     opacity 1
                 label
                     max-width 140px
+        @media $mobile-media-query
+            top $mobile-header-height
+            left 0
+            .sherlock, .layer-selector
+                display none
+                visibility hidden
