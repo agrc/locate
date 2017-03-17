@@ -225,7 +225,7 @@ module.exports = function (grunt) {
             src: {
                 options: {
                     compress: false,
-                    'resolve url': true
+                    urlfunc: 'data-uri'
                 },
                 files: [{
                     expand: true,
