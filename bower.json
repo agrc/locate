@@ -2,7 +2,7 @@
   "name": "bb-econ",
   "version": "1.7.0-11",
   "dependencies": {
-    "agrc": "agrc-widgets#~5.0",
+    "agrc": "agrc-widgets#~6.0",
     "bootstrap": "3.3.6",
     "ijit": "agrc-ijit#3.1.0",
     "jasmine-favicon-reporter": "*",
@@ -13,7 +13,7 @@
     "awesome-bootstrap-checkbox": "~0.2.3",
     "seiyria-bootstrap-slider": "~9.5.3",
     "handlebars": "~2.0.0",
-    "layer-selector": "agrc-layer-selector#~1.0.0",
+    "layer-selector": "agrc-layer-selector#~1.1.0",
     "esri": "arcgis-js-api#~3.18.0",
     "jquery": "jquery#~2.2.0",
     "sherlock": "agrc-sherlock#~1.0.0",
@@ -21,7 +21,7 @@
   },
   "resolutions": {
     "xstyle": "v0.3.2",
-    "agrc": "~5.0",
+    "agrc": "~6.0",
     "esri": "~3.18.0",
     "dgrid": "0.3.17/esri-3.14.0",
     "spinjs": "~2.3.2",
