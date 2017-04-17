@@ -5,7 +5,6 @@
 @import '../../awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css';
 @import '../../seiyria-bootstrap-slider/dist/css/bootstrap-slider.css';
 @import '../../../src/layer-selector/resources/LayerSelector.css';
-@import '../../../src/sherlock/resources/Sherlock';
 @import 'CurrentLocation';
 @import 'FindAddress';
 @import 'Group';
@@ -78,12 +77,6 @@ html, body, .app
         bottom 0
         left $side-bar-width
         right 0
-        .sherlock
-            right 15px
-            top 15px
-            .input-group
-                input, span
-                    border-color $map-control-border
         .layer-selector
             top 70px
             max-width 160px
@@ -104,6 +97,3 @@ html, body, .app
         @media $mobile-media-query
             top $mobile-header-height
             left 0
-            .sherlock, .layer-selector
-                display none
-                visibility hidden
