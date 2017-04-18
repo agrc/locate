@@ -1,0 +1,63 @@
+@import 'variables'
+
+.group
+    // header colors
+    &.sure-sites
+        background $broadband-sure-sites url(img/icons/office.svg) 15px 12px no-repeat
+    &.broadband
+        background $broadband-sure-sites url(img/icons/broadband.svg) 15px 15px no-repeat
+    &.utilities
+        background $utilities url(img/icons/utilities.svg) 15px 15px no-repeat
+    &.transportation
+        background $transportation url(img/icons/transportation.svg) 15px 15px no-repeat
+    &.demographics
+        background $demographics url(img/icons/demographics.svg) 15px 17px no-repeat
+    &.lifestyle
+        background $lifestyle url(img/icons/lifestyle.svg) 15px 15px no-repeat
+
+    // secondary colors
+    &.sure-sites ul
+        background-color $broadband-sure-sites_secondary
+    &.broadband
+        ul, &>button
+            background-color $broadband-sure-sites_secondary
+    &.utilities
+        ul, &>button
+            background-color $utilities_secondary
+    &.transportation
+        ul, &>button
+            background-color $transportation_secondary
+    &.demographics
+        ul, &>button
+            background-color $demographics_secondary
+    &.lifestyle
+        ul, &>button
+            background-color $lifestyle_secondary
+
+    position relative
+    a
+        padding 15px 15px 15px 50px
+        display block
+        font-weight 500
+        font-size 18px
+        &:hover, &:focus
+            color #fff
+    &>button
+        position absolute
+        top 0
+        padding 3px 7px
+        margin 12px
+        &[data-toggle='popover']
+            right 33px
+        &:focus, &:active, &:hover
+            color #fff
+            outline none
+            box-shadow none
+        .glyphicon
+            top 2px
+    &>a>span.glyphicon
+        right 0
+        position absolute
+        top 0
+        padding 7px 7px
+        margin 12px

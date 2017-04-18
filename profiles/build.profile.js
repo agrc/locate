@@ -1,26 +1,29 @@
-/*jshint unused:false */
-var profile = {
+var profile = { // eslint-disable-line no-unused-vars
     basePath: '../src',
     action: 'release',
-    // cssOptimize: 'comments',
+    cssOptimize: 'comments',
     mini: true,
-    optimize: 'uglify',
-    layerOptimize: 'uglify',
-    stripConsole: 'all',
+    optimize: false,
+    layerOptimize: false,
     selectorEngine: 'acme',
     layers: {
         'dojo/dojo': {
             include: [
                 'dojo/i18n',
                 'dojo/domReady',
+                'app/packages',
                 'app/run',
                 'app/App',
                 'app/Report',
+                'esri/layers/VectorTileLayerImpl',
+                'esri/layers/LabelLayer',
+                'esri/PopupInfo',
+                'dojox/gfx/filters',
                 'dojox/gfx/path',
                 'dojox/gfx/svg',
+                'dojox/gfx/svgext',
                 'dojox/gfx/shape'
             ],
-            targetStylesheet: 'app/resources/App.css',
             includeLocales: ['en-us'],
             customBase: true,
             boot: true
@@ -28,25 +31,25 @@ var profile = {
     },
     staticHasFeatures: {
         // The trace & log APIs are used for debugging the loader, so we don’t need them in the build
-        'dojo-trace-api':0,
-        'dojo-log-api':0,
+        'dojo-trace-api': 0,
+        'dojo-log-api': 0,
 
         // This causes normally private loader data to be exposed for debugging, so we don’t need that either
-        'dojo-publish-privates':0,
+        'dojo-publish-privates': 0,
 
         // We’re fully async, so get rid of the legacy loader
-        'dojo-sync-loader':0,
+        'dojo-sync-loader': 0,
 
         // dojo-xhr-factory relies on dojo-sync-loader
-        'dojo-xhr-factory':0,
+        'dojo-xhr-factory': 0,
 
         // We aren’t loading tests in production
-        'dojo-test-sniff':0
+        'dojo-test-sniff': 0
     },
-    packages: [{
+    packages: ['xstyle', {
         name: 'handlebars',
         resourceTags: {
-            copyOnly: function(filename, mid) {
+            copyOnly: function (filename, mid) {
                 return (/.*\.amd.?/).test(mid);
             }
         }
@@ -55,19 +58,36 @@ var profile = {
         location: 'moment',
         main: 'moment',
         trees: [
-          // don't bother with .hidden, tests, min, src, and templates
-          ['.', '.', /(\/\.)|(~$)|(test|txt|src|min|templates)/]
+            // don't bother with .hidden, tests, min, src, and templates
+            ['.', '.', /(\/\.)|(~$)|(test|txt|src|min|templates)/]
         ],
         resourceTags: {
-            amd: function amd(filename, mid) {
+            amd: function amd(filename) {
                 return /\.js$/.test(filename);
             }
         }
+    }, {
+        name: 'proj4',
+        trees: [
+            ['.', '.', /(\/\.)|(~$)|(test|txt|src|min|html)/]
+        ],
+        resourceTags: {
+            amd: function () {
+                return true;
+            },
+            copyOnly: function () {
+                return false
+            }
+        }
+    }, {
+        name: 'slider',
+        location: './seiyria-bootstrap-slider',
+        main: 'dist/bootstrap-slider',
+        trees: [
+            ['.', '.', /(\/\.)|(~$)|(test|txt|src|min|templates)/]
+        ]
     }],
-    plugins: {
-        'xstyle/css': 'xstyle/build/amd-css'
-    },
     userConfig: {
-        packages: ['app', 'dijit', 'dojox', 'agrc', 'ijit', 'esri', 'layer-selector']
+        packages: ['app', 'dijit', 'dojox', 'agrc', 'ijit', 'esri', 'layer-selector', 'sherlock']
     }
 };

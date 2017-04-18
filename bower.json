@@ -1,9 +1,9 @@
 {
   "name": "bb-econ",
-  "version": "1.6.0",
+  "version": "1.7.0-15",
   "dependencies": {
-    "agrc": "agrc-widgets#~5.0",
-    "bootstrap": "~3.2",
+    "agrc": "agrc-widgets#~6.0",
+    "bootstrap": "3.3.6",
     "ijit": "agrc-ijit#3.1.0",
     "jasmine-favicon-reporter": "*",
     "stubmodule": "0.6.1",
@@ -11,20 +11,26 @@
     "xstyle": "~0.3",
     "matchers": "agrc-jasmine-matchers#~0.1.0",
     "awesome-bootstrap-checkbox": "~0.2.3",
-    "seiyria-bootstrap-slider": "~4.3.0",
+    "seiyria-bootstrap-slider": "~9.5.3",
     "handlebars": "~2.0.0",
-    "layer-selector": "agrc-layer-selector#~1.0.0",
-    "esri": "arcgis-js-api#~3.18.0"
+    "layer-selector": "agrc-layer-selector#~1.1.0",
+    "esri": "arcgis-js-api#~3.18.0",
+    "jquery": "jquery#~2.2.0",
+    "sherlock": "agrc-sherlock#~1.1.0",
+    "proj4": "^2.3.17"
   },
   "resolutions": {
+    "xstyle": "v0.3.2",
+    "agrc": "~6.0",
     "esri": "~3.18.0",
-    "bootstrap": "~3.2",
-    "xstyle": "~0.3",
     "dgrid": "0.3.17/esri-3.14.0",
-    "dstore": "v1.1.1",
-    "util": "v1.11.2/esri-3.18.0",
+    "spinjs": "~2.3.2",
+    "dojox": "v1.11.2/esri-3.18.0",
     "dojo": "v1.11.2/esri-3.18.0",
     "dijit": "v1.11.2/esri-3.18.0",
-    "dojox": "v1.11.2/esri-3.18.0"
+    "util": "v1.11.2/esri-3.18.0",
+    "dstore": "v1.1.1",
+    "moment": "2.14.1",
+    "dojo-themes": "1.11.2"
   }
 }

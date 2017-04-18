@@ -1,0 +1,50 @@
+// use glyphicons instead of font-awesome for awesome-bootstrap-checkbox
+.layer
+    &.checkbox
+        input[type=checkbox]:checked + label:after
+            font-family 'Glyphicons Halflings'
+            content "\e013"
+        label:after
+            padding-left 4px
+            padding-top 2px
+            font-size 9px
+
+    // FIBER LEGEND
+    div[data-toggle='tooltip']
+        display inline
+    margin 0 !important
+    padding 5px 7px 0px 10px
+    &:last-child
+        padding-bottom 5px
+    img
+        position absolute
+        margin-left 8px
+        margin-top 2px
+    &.checkbox label,
+    &.radio label
+        padding-left 5px
+        max-width 225px
+    &.checkbox input[type='checkbox'],
+    &.radio input[type='radio']
+        position inherit
+        margin-left 9px
+    &.checkbox label.hide-checkbox::before
+        display none
+    &.checkbox label.hide-checkbox::after
+        display none
+
+.tooltip
+    .legend
+        margin 0 -5px
+        td
+            padding 3px
+        .short
+            background-color #7F7F84
+            border-top-left-radius 2px
+            border-top-right-radius 2px
+        .custom
+            background-color #9F9FA2
+            border-bottom-left-radius 2px
+            border-bottom-right-radius 2px
+    &.in
+        opacity 1 !important

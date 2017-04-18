@@ -1,0 +1,45 @@
+@import 'variables'
+
+.current-location
+    margin-bottom 15px
+    >p
+        text-align center
+    h4
+        img
+            vertical-align top
+            height 20px
+    .mobile-menu-btn
+        display none
+        visibility hidden
+        @media $mobile-media-query
+            display inline-block
+            visibility visible
+            float right
+            background transparent
+            border none
+            color #FFFFFF
+    .glyphicon-refresh
+        font-size 34px
+        margin-left -18px
+        margin-top 12px
+        left 50%
+        animation spin 4s linear infinite
+    ul
+        padding 0
+        li
+            list-style none
+    .address li
+        text-overflow ellipsis
+        white-space nowrap
+        overflow hidden
+    @media $mobile-media-query
+        height 90px
+        [data-dojo-attach-point='header']
+            visibility visible !important
+            display block !important
+        [data-dojo-attach-point='addressContainer']
+            height 59px
+            display flex
+            justify-content space-between
+            align-items center
+            width 100%

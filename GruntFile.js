@@ -1,88 +1,43 @@
-/* jshint camelcase:false */
-var osx = 'OS X 10.10';
-var windows = 'Windows 8.1';
-var browsers = [{
-    browserName: 'safari',
-    platform: osx
-}, {
-    browserName: 'firefox',
-    platform: windows
-}, {
-    browserName: 'chrome',
-    platform: windows
-}, {
-    browserName: 'internet explorer',
-    platform: windows,
-    version: '11'
-}, {
-    browserName: 'internet explorer',
-    platform: 'Windows 8',
-    version: '10'
-}, {
-    browserName: 'internet explorer',
-    platform: 'Windows 7',
-    version: '9'
-}];
-
-module.exports = function(grunt) {
-    var path = require('path');
-    var jsFiles = 'src/app/**/*.js',
-        otherFiles = [
-            'src/app/**/*.html',
-            'src/app/**/*.css',
-            'src/index.html',
-            'src/report.html',
-            'src/ChangeLog.html'
-        ],
-        gruntFile = 'GruntFile.js',
-        internFile = 'tests/intern.js',
-        jshintFiles = [
-            jsFiles,
-            gruntFile,
-            internFile
-        ],
-        bumpFiles = [
-            'package.json',
-            'bower.json',
-            'src/app/package.json',
-            'src/app/config.js'
-        ],
-        deployFiles = [
-            '**',
-            '!**/*.uncompressed.js',
-            '!**/*consoleStripped.js',
-            '!**/bootstrap/less/**',
-            '!**/bootstrap/test-infra/**',
-            '!**/tests/**',
-            '!build-report.txt',
-            '!components-jasmine/**',
-            '!favico.js/**',
-            '!jasmine-favicon-reporter/**',
-            '!jasmine-jsreporter/**',
-            '!stubmodule/**',
-            '!util/**'
-        ],
-        deployDir = 'wwwroot/bb-econ',
-        secrets,
-        sauceConfig = {
-            urls: ['http://127.0.0.1:8000/_SpecRunner.html'],
-            tunnelTimeout: 120,
-            build: process.env.TRAVIS_JOB_ID,
-            browsers: browsers,
-            testname: 'bb-econ',
-            maxRetries: 10,
-            maxPollRetries: 10,
-            'public': 'public',
-            throttled: 3,
-            sauceConfig: {
-                'max-duration': 10800
-            },
-            statusCheckAttempts: 500
-        };
+module.exports = function (grunt) {
+    var jsFiles = 'lib/app/**/*.js';
+    var otherFiles = [
+        'lib/app/**/*.html',
+        'lib/app/**/*.svg',
+        'lib/app/**/*.png',
+        'lib/index.html',
+        'lib/report.html',
+        'lib/ChangeLog.html'
+    ];
+    var gruntFile = 'GruntFile.js';
+    var eslintFiles = [
+        jsFiles,
+        gruntFile
+    ];
+    var bumpFiles = [
+        'package.json',
+        'bower.json',
+        'lib/app/package.json',
+        'lib/app/config.js'
+    ];
+    var deployFiles = [
+        '**',
+        '!**/*.uncompressed.js',
+        '!**/*consoleStripped.js',
+        '!**/bootstrap/less/**',
+        '!**/bootstrap/test-infra/**',
+        '!**/tests/**',
+        '!build-report.txt',
+        '!components-jasmine/**',
+        '!favico.js/**',
+        '!jasmine-favicon-reporter/**',
+        '!jasmine-jsreporter/**',
+        '!stubmodule/**',
+        '!util/**'
+    ];
+    var deployDir = 'wwwroot/bbecon';
+    var secrets;
     try {
         secrets = grunt.file.readJSON('secrets.json');
-        sauceConfig.username = secrets.sauce_name;
-        sauceConfig.key = secrets.sauce_key;
     } catch (e) {
         // swallow for build server
         secrets = {
@@ -96,54 +51,32 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        arcgis_press: {
+        babel: {
             options: {
-                server: {
-                    username: secrets.ags_username,
-                    password: secrets.ags_password
-                },
-                mapServerBasePath: path.join(process.cwd(), 'maps'),
-                services: {
-                    mapService: {
-                        serviceName: 'MapService',
-                        type: 'MapServer',
-                        folder: 'BBEcon',
-                        resource: 'MapService.mxd'
-                    }
-                }
+                sourceMap: true,
+                presets: ['latest'],
+                plugins: ['transform-remove-strict-mode']
             },
-            dev: {
-                options: {
-                    server: {
-                        host: 'localhost'
-                    }
-                }
-            },
-            stage: {
-                options: {
-                    server: {
-                        host: secrets.stageHost
-                    }
-                }
-            },
-            prod: {
-                options: {
-                    server: {
-                        host: secrets.agsProdHost
-                    }
-                }
+            src: {
+                files: [{
+                    expand: true,
+                    cwd: 'lib/app/',
+                    src: ['**/*.js'],
+                    dest: 'src/app/'
+                }]
             }
         },
         bump: {
             options: {
                 files: bumpFiles,
-                commitFiles: bumpFiles.concat(['src/ChangeLog.html']),
+                commitFiles: bumpFiles.concat(['lib/ChangeLog.html']),
                 push: false
             }
         },
         clean: {
             build: ['dist'],
-            deploy: ['deploy']
+            deploy: ['deploy'],
+            src: ['src/app']
         },
         compress: {
             main: {
@@ -162,8 +95,14 @@ module.exports = function(grunt) {
             uses_defaults: {}
         },
         copy: {
-            main: {
+            dist: {
                 files: [{expand: true, cwd: 'src/', src: ['*.html'], dest: 'dist/'}]
+            },
+            src: {
+                expand: true,
+                cwd: 'lib',
+                src: ['**/*.*', '!**/*.js', '!**/*.styl', 'ChangeLog.html', 'index.html', 'report.html', 'secrets.json'],
+                dest: 'src'
             }
         },
         dojo: {
@@ -188,6 +127,14 @@ module.exports = function(grunt) {
                 basePath: './src'
             }
         },
+        eslint: {
+            options: {
+                configFile: '.eslintrc'
+            },
+            main: {
+                src: jsFiles
+            }
+        },
         imagemin: {
             main: {
                 options: {
@@ -204,7 +151,6 @@ module.exports = function(grunt) {
         },
         jasmine: {
             main: {
-                src: ['src/app/run.js'],
                 options: {
                     specs: ['src/app/**/Spec*.js'],
                     vendor: [
@@ -213,29 +159,12 @@ module.exports = function(grunt) {
                         'src/jasmine-jsreporter/jasmine-jsreporter.js',
                         'src/app/tests/jasmineTestBootstrap.js',
                         'src/dojo/dojo.js',
+                        'src/app/packages.js',
                         'src/app/tests/jsReporterSanitizer.js',
                         'src/app/tests/jasmineAMDErrorChecking.js'
                     ],
-                    host: 'http://localhost:8000'
-                }
-            }
-        },
-        jshint: {
-            main: {
-                src: jshintFiles
-            },
-            options: {
-                jshintrc: '.jshintrc'
-            }
-        },
-        less: {
-            dev: {
-                options: {
-
-                },
-                files: {
-                    'src/app/resources/custom-bootstrap.css':
-                        'src/app/resources/custom-bootstrap.less'
+                    host: 'http://localhost:8000',
+                    keepRunner: true
                 }
             }
         },
@@ -246,11 +175,6 @@ module.exports = function(grunt) {
                     'dist/index.html': ['src/index.html'],
                     'dist/report.html': ['src/report.html']
                 }
-            }
-        },
-        'saucelabs-jasmine': {
-            all: {
-                options: sauceConfig
             }
         },
         secrets: secrets,
@@ -297,20 +221,67 @@ module.exports = function(grunt) {
                 }
             }
         },
-        watch: {
-            less: {
-                files: 'src/app/**/*.less',
-                tasks: ['less:dev']
+        stylus: {
+            src: {
+                options: {
+                    compress: false,
+                    urlfunc: 'data-uri'
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'lib/app/',
+                    src: ['**/*.styl'],
+                    dest: 'src/app/',
+                    ext: '.css'
+                }]
+            }
+        },
+        uglify: {
+            options: {
+                preserveComments: false,
+                sourceMap: true,
+                compress: {
+                    drop_console: true,
+                    passes: 2,
+                    dead_code: true
+                }
             },
-            jshint: {
-                files: jshintFiles,
-                tasks: ['jshint:main', 'jasmine:main:build']
+            stage: {
+                options: {
+                    compress: {
+                        drop_console: false
+                    }
+                },
+                src: ['dist/dojo/dojo.js'],
+                dest: 'dist/dojo/dojo.js'
+            },
+            prod: {
+                files: [{
+                    expand: true,
+                    cwd: 'dist',
+                    src: '**/*.js',
+                    dest: 'dist'
+                }]
+            }
+        },
+        watch: {
+            eslint: {
+                files: eslintFiles,
+                tasks: ['eslint:main', 'jasmine:main:build', 'newer:babel', 'newer:copy:src']
             },
             src: {
-                files: jshintFiles.concat(otherFiles),
+                files: eslintFiles.concat(otherFiles),
                 options: {
                     livereload: true
-                }
+                },
+                tasks: ['newer:copy:src']
+            },
+            stylus: {
+                files: 'lib/app/**/*.styl',
+                options: {
+                    livereload: true
+                },
+                tasks: ['stylus:src']
             }
         }
     });
@@ -324,23 +295,35 @@ module.exports = function(grunt) {
 
     // Default task.
     grunt.registerTask('default', [
-        'jasmine:main:build',
-        'jshint:main',
+        'eslint',
+        'clean:src',
+        'babel',
+        'stylus:src',
+        'copy:src',
         'connect',
+        'jasmine:main:build',
         'watch'
     ]);
     grunt.registerTask('build-prod', [
-        'clean:build',
+        'clean:src',
+        'babel',
+        'stylus:src',
+        'copy:src',
         'newer:imagemin:main',
         'dojo:prod',
-        'copy:main',
+        'uglify:prod',
+        'copy:dist',
         'processhtml:main'
     ]);
     grunt.registerTask('build-stage', [
-        'clean:build',
+        'clean:src',
+        'babel',
+        'stylus:src',
+        'copy:src',
         'newer:imagemin:main',
         'dojo:stage',
-        'copy:main',
+        'uglify:stage',
+        'copy:dist',
         'processhtml:main'
     ]);
     grunt.registerTask('deploy-prod', [
@@ -355,14 +338,15 @@ module.exports = function(grunt) {
         'sftp:stage',
         'sshexec:stage'
     ]);
-    grunt.registerTask('sauce', [
-        'jasmine:main:build',
+    grunt.registerTask('test', [
+        'babel',
+        'copy:src',
         'connect',
-        'saucelabs-jasmine'
+        'jasmine'
     ]);
     grunt.registerTask('travis', [
-        'jshint',
-        'sauce',
+        'eslint',
+        'test',
         'build-prod'
     ]);
 };

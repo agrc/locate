@@ -1,0 +1,31 @@
+@import '../../../src/sherlock/resources/Sherlock';
+
+$sherlock-width = 280px
+
+.find-address
+    .form-group
+        position relative
+        .help-block:not(.no-match-found)
+            right 50px
+            position absolute
+            top 2px
+            z-index 100
+        &:not(.has-error) .help-block
+            display none
+            visibility hidden
+    [data-dojo-attach-point='textBoxContainer']
+        overflow-y hidden
+        max-height 100px
+        transition-property max-height
+        transition-duration .5s
+        transition-timing-function cubic-bezier(0, 1, 0.5, 1)
+        &.closed
+            max-height 0
+    .sherlock
+        padding 0
+        position inherit
+        width 100%
+        .input-group
+            width $sherlock-width
+.matches-table
+    width $sherlock-width

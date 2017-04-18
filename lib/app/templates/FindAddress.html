@@ -1,0 +1,27 @@
+<div>
+    <div data-dojo-attach-point='formGeocode'>
+        <div data-dojo-attach-point="textBoxContainer" class="closed">
+            <div class="form-group">
+                <input type="text" class="form-control"
+                    data-dojo-attach-point="txtAddress"
+                    id="${id}_inputAddress"
+                    placeholder='street address'>
+                <span class="help-block">Required!</span>
+            </div>
+            <div class="form-group">
+                <div data-dojo-attach-point='sherlockDiv'></div>
+                <input type="text" class="form-control hidden"
+                    data-dojo-attach-point="txtZone"
+                    id="${id}_input_zone"
+                    placeholder='zip or city'>
+                <span class="help-block">Required!</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default"
+                data-dojo-attach-point='btnGeocode'>Find Address</button>
+            <span data-dojo-attach-point='errorMsg'
+                class='help-block no-match-found'>No matching address found!</span>
+        </div>
+    </div>
+</div>

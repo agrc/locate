@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Economic Development</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css"/>
+
+    <style type="text/css">
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Economic Development Change Log</h1>
+    <a href="./" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the app</a>
+    <h2>1.7.1-15 <small>Apr 18, 2017</small></h2>
+    <ul>
+        <li>Sort report drive times from shortest to longest.</li>
+        <li>Reorder report sections so that "Workforce" is first.</li>
+        <li>"UTAH SURE SITES" link changed to "SUBMIT A SURE SITE".</li>
+        <li>Decreased the size of the nav links.</li>
+        <li>Make the "Current Location" address match the geocoded address.</li>
+        <li>Fix bug causing "Required!" to show up in the street address text box when hitting enter in search box.</li>
+    </ul>
+    <h2>1.7.1-14 <small>Apr 17, 2017</small></h2>
+    <ul>
+        <li>Switch Land Ownership land to point to web mercator SITLA service.</li>
+        <li>Added URLs for "ABOUT" & "CONTACT" links.</li>
+        <li>Moved city search from standalone widget on map to be integrated into the find address widget.</li>
+    </ul>
+    <h2>1.7.0-13 <small>Mar 29, 2017</small></h2>
+    <ul>
+        <li>Better Sure Sites, EDC, GOED and Broadband logos.</li>
+    </ul>
+    <h2>1.7.0-12 <small>Mar 23, 2017</small></h2>
+    <ul>
+        <li>Add map attribution.</li>
+        <li>Hide mobile menu drop down on successful find address.</li>
+    </ul>
+    <h2>1.7.0-10 <small>Mar 20, 2017</small></h2>
+    <ul>
+        <li>Make footer links smaller and group into two lines.</li>
+        <li>Point search at ZoomLocations in SGID. This includes city, county, zip, place names, legislative districts, etc.</li>
+        <li>Hide find address text boxes on load and show them after the user clicks on the "Find Address" button.</li>
+        <li>Fix bug preventing the current location from showing/updating when clicking on a utility service polygon.</li>
+        <li>Increased the text size of the fonts in the side bar.</li>
+        <li>Hide current location header and icon on page load and show after the user has clicked on the map.</li>
+    </ul>
+    <h2>1.7.0-9 <small>Mar 17, 2017</small></h2>
+    <ul>
+        <li>Add SURE Sites header to report.</li>
+        <li>Responsive layout for mobile devices for both map and report.</li>
+        <li>Fixed path to the group icons.</li>
+    </ul>
+    <h2>1.7.0-8 <small>Mar 16, 2017</small></h2>
+    <ul>
+        <li>Convert main layout to new left side bar layout.</li>
+    </ul>
+    <h2>1.7.0-6 <small>Feb 28, 2017</small></h2>
+    <ul>
+        <li>Add Land Ownership overlay.</li>
+        <li>Add better loading text to dynamic reports.</li>
+        <li>Fix layer toggle URL parameters and incorporated SURE Sites layer.</li>
+        <li>Make sure that point layers are always on top of polygon layers.</li>
+        <li>Add expand icons to report group headers.</li>
+        <li>Fix layout issue with find address validate messages.</li>
+        <li>Add label for valid dates to Enterprise Zones layer at lower scales.</li>
+    </ul>
+    <h2>1.7.0-5 <small>Feb 27, 2017</small></h2>
+    <ul>
+        <li>Add SURE Sites-specific data to summary report page.</li>
+    </ul>
+    <h2>1.7.0-4 <small>Feb 21, 2017</small></h2>
+    <ul>
+        <li>Pregenerated reports for SURE Sites (without the SURE Site-specific data yet).</li>
+        <li>Simplify and make the report closer to design mockups when printed.</li>
+    </ul>
+    <h2>1.7.0-2 <small>Feb 21, 2017</small></h2>
+    <ul>
+        <li>Added Sure Sites popup on click.</li>
+    </ul>
+    <h2>1.7.0-1 <small>Feb 17, 2017</small></h2>
+    <ul>
+        <li>Build script to harvest SURE Sites data on a weekly basis.</li>
+        <li>Replace "Sure Sites" text with logo in group header.</li>
+        <li>Make all groups closed by default.</li>
+        <li>Improve layout between SURE Sites and Broadband groups.</li>
+        <li>Wire up SURE Sites filters to points on the map.</li>
+    </ul>
+    <h2>1.7.0-0 <small>Dec 23, 2016</small></h2>
+    <ul>
+        <li>Add address points as base map overlay option.</li>
+        <li>Add orange marker to "Current Location" box.</li>
+        <li>Initial fleshing out of Sure Sites group and controls.</li>
+        <li>Add city search box on map.</li>
+    </ul>
+    <h2>1.6.0 <small>Jul 7, 2016</small></h2>
+    <ul>
+        <li>Changed "Heavy Rail" to "Freight Rail".</li>
+        <li>Added natural gas providers other than Questar.</li>
+        <li>Center title in header.</li>
+        <li>Added federal land layers.</li>
+        <li>Ported nightly script to forklift pallet.</li>
+        <li>Switch to web mercator.</li>
+        <li>Added workforce service centers.</li>
+        <li>Added business resource centers.</li>
+    </ul>
+    <h2>1.5.1 <small>Sep 11, 2015</small></h2>
+    <ul>
+        <li>Added "Utah" to the title of the app.</li>
+    </ul>
+    <h2>1.5.0 <small>Jun 16, 2015</small></h2>
+    <ul>
+        <li>Added enterprise zone data.</li>
+    </ul>
+    <h2>1.4.0 <small>Jun 15, 2015</small></h2>
+    <ul>
+        <li>Added labels for polygons.</li>
+        <li>Updated drive times.</li>
+    </ul>
+    <h2>1.3.1 <small>May 12, 2015</small></h2>
+    <ul>
+        <li>Changed "Fiber" and "All Non-Mobile Broadband..." layers to cached layers to help with performance.</li>
+        <li>Temporarily remove the base map selector.</li>
+    </ul>
+    <h2>1.3.0 <small>Apr 24, 2015</small></h2>
+    <ul>
+        <li>Improved layout for landscape phones.</li>
+        <li>Removed duplicate fiber providers in report.</li>
+        <li>Fixed bug preventing the "Enterprise Zones" checkbox from showing as disabled in built version.</li>
+        <li>Added code to track reports, and layer toggling in Google Analytics.</li>
+        <li>Fixed the footer layout in report.</li>
+        <li>Removed name & email from other broadband providers in report.</li>
+    </ul>
+    <h2>1.2.1 <small>Apr 14, 2015</small></h2>
+    <ul>
+        <li>Fixed bug in Firefox preventing linked checkboxes from working.</li>
+    </ul>
+    <h2>1.2.0 <small>Apr 13, 2015</small></h2>
+    <ul>
+        <li>Added Front Runner lines and stations to Commuter Rail layer.</li>
+        <li>Reordered columns for broadband provider tables in report to help with column alignment.</li>
+        <li>Added "Natural Gas" as it's own section in the report.</li>
+        <li>Set all broadband layers to be on by default.</li>
+        <li>Layer visibility and map extent are now preserved via URL parameters.</li>
+    </ul>
+    <h2>1.1.0 <small>Apr 7, 2015</small></h2>
+    <ul>
+        <li>Converted to full screen layout.</li>
+        <li>Updated the text in the tooltip for the "Ask an expert!" icon.</li>
+        <li>Updated the logo.</li>
+        <li>Added "hamburger" icon for smaller devices.</li>
+    </ul>
+    <h2>1.0.2 <small>Mar 6, 2015</small></h2>
+    <ul>
+        <li>Better formatting and column alignment in report.</li>
+        <li>Moved search bar all of the way to the right of the page.</li>
+    </ul>
+    <h2>1.0.1 <small>Feb 23, 2015</small></h2>
+    <ul>
+        <li>Fixed bug that was causing a limited number of features to display for the "Heavy Rail" layer at courser scales.</li>
+    </ul>
+</body>
+</html>
