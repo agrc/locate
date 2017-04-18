@@ -151,9 +151,10 @@ def get_drive_time(data):
         # filter out duplicates with longer field names
         if m[0] not in names:
             records.append({'name': m[0],
-                            'drive_time': format_drive_time(rec[fieldnames.ToBreak])})
+                            'drive_time': format_drive_time(rec[fieldnames.ToBreak]),
+                            'mins': float(rec[fieldnames.ToBreak])})
         names.append(m[0])
-    return records
+    return sorted(records, key=lambda rec: rec['mins'])
 
 
 def format_drive_time(mins):
@@ -218,6 +219,11 @@ def get_report(x, y):
                              'ski': get_drive_time(data[basename(settings.SKI)])}}
 
     arcpy.Delete_management(lyr)
+
+    #: development only
+    # import pprint
+    # pp = pprint.PrettyPrinter(indent=4)
+    # pp.pprint(result)
 
     return json.dumps(result)
 
