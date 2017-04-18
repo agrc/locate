@@ -1,13 +1,10 @@
 language: node_js
 node_js:
-  - "6"
+  - "node"
 before_install:
-  - npm install -g grunt-cli
-  - npm install -g bower
-  - npm install -g npm
+  - yarn global add grunt-cli
+  - yarn global add bower
   - bower install
-  - npm update
-  - bower update
 notifications:
   email:
     on_success: change
@@ -18,5 +15,4 @@ env:
     - secure: o46TK5j0I7Y/dl7MtftQ1Xj1p1549CSUPfoEGwUZZM9mu/XuXz3cs5a6IfxvlJwt7Qa97r+RosjPTUXqKht1YL4+VyIGdWgN2TNTKGsQSDgi2+LxO7HuR5PuXohD0QX5TYsTfOoVov7dOPS1kFlIuyq0xCYE3O8tbChv1kM0uL8=
 sudo: false
 cache:
-  directories:
-    - node_modules
+  yarn: true
