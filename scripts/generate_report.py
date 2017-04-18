@@ -1,9 +1,9 @@
 import arcpy
 import re
 import json
+import settings
 
 from settings import fieldnames
-from settings import *
 from os.path import basename
 from time import time
 
@@ -22,18 +22,17 @@ def get_intersect_layer(point, feature_class):
 
 
 def get_fiber(data):
-
-    hex_id = data[basename(HEXAGONS)][0]
+    hex_id = data[basename(settings.HEXAGONS)][0]
 
     records = []
     provs = []  # for preventing duplicates
-    with arcpy.da.SearchCursor(SERVICE_AREAS,
+    with arcpy.da.SearchCursor(settings.SERVICE_AREAS,
                                [fieldnames.ServiceClass, fieldnames.ProvName],
                                '{} = {} AND {} <> 0'.format(fieldnames.HexID, hex_id, fieldnames.ServiceClass),
                                sql_clause=(None, 'ORDER BY ' + fieldnames.ProvName)) as sa_cursor:
         for sa in sa_cursor:
             if sa[1] not in provs:
-                records.append({fieldnames.ServiceClass: FIBER_TERMS[sa[0]],
+                records.append({fieldnames.ServiceClass: settings.FIBER_TERMS[sa[0]],
                                 fieldnames.ProvName: sa[1]})
                 provs.append(sa[1])
     add_provider_info(records, fieldnames.ProvName)
@@ -51,7 +50,7 @@ def add_provider_info(items, code_field):
     ]
     for it in items:
         where = '{} = \'{}\''.format(fieldnames.Code, it[code_field])
-        with arcpy.da.SearchCursor(PROVIDERS,
+        with arcpy.da.SearchCursor(settings.PROVIDERS,
                                    fields,
                                    where) as prov_cursor:
             try:
@@ -71,7 +70,7 @@ def add_provider_info(items, code_field):
 
 def get_fixed(data):
 
-    providers = get_records(data[basename(FIXED)], [fieldnames.UTProvCode], fieldnames.UTProvCode)
+    providers = get_records(data[basename(settings.FIXED)], [fieldnames.UTProvCode], fieldnames.UTProvCode)
     add_provider_info(providers, fieldnames.UTProvCode)
 
     # remove duplicate providers
@@ -122,26 +121,20 @@ def get_county_demographics(data):
               fieldnames.educationHighSchoolGraduate,
               fieldnames.educationBachelorOrGreater]
 
-    record = get_records(data[basename(COUNTIES)], fields + tt_fields, fieldnames.Avg_MonthlyIncome)[0]
+    record = get_records(data[basename(settings.COUNTIES)], fields + tt_fields, fieldnames.Avg_MonthlyIncome)[0]
     record['topten'] = get_topten(record, tt_fields)
     return record
 
 
 def get_utilities(data):
-
-    def process():
-        lyr = get_intersect_layer(point, fc)
-
-        return get_records(lyr, [fieldnames.PROVIDER, fieldnames.WEBLINK], fieldnames.PROVIDER, [fieldnames.PROVIDER])
-
     fields = [fieldnames.PROVIDER, fieldnames.WEBLINK]
-    return {'electrical': get_records(data[basename(ELECTRICAL)], fields, fieldnames.PROVIDER, [fieldnames.PROVIDER]),
-            'rural': get_records(data[basename(RURAL_TEL)], fields, fieldnames.PROVIDER, [fieldnames.PROVIDER]),
-            'natural_gas': get_records(data[basename(NATURAL_GAS)], fields, fieldnames.PROVIDER, [fieldnames.PROVIDER])}
+    return {'electrical': get_records(data[basename(settings.ELECTRICAL)], fields, fieldnames.PROVIDER, [fieldnames.PROVIDER]),
+            'rural': get_records(data[basename(settings.RURAL_TEL)], fields, fieldnames.PROVIDER, [fieldnames.PROVIDER]),
+            'natural_gas': get_records(data[basename(settings.NATURAL_GAS)], fields, fieldnames.PROVIDER, [fieldnames.PROVIDER])}
 
 
 def get_roads(data):
-    records = get_records(data[basename(ROADS)], [fieldnames.FULLNAME], fieldnames.FULLNAME)
+    records = get_records(data[basename(settings.ROADS)], [fieldnames.FULLNAME], fieldnames.FULLNAME)
     # remove duplicates
     records = list(set([r[fieldnames.FULLNAME] for r in records]))
     records.sort()
@@ -175,21 +168,21 @@ def format_drive_time(mins):
 
 
 def get_airports(data):
-    drive_time = format_drive_time(data[basename(AIRPORT_INT)][0].split(';')[1])
+    drive_time = format_drive_time(data[basename(settings.AIRPORT_INT)][0].split(';')[1])
     res = {'sl': {'drive_time': drive_time, 'name': 'Salt Lake International'},
-           'regional_commercial': get_drive_time(data[basename(AIRPORT_REG)]),
-           'local': get_drive_time(data[basename(AIRPORT_LOCAL)])}
+           'regional_commercial': get_drive_time(data[basename(settings.AIRPORT_REG)]),
+           'local': get_drive_time(data[basename(settings.AIRPORT_LOCAL)])}
 
     return res
 
 
 def get_enterprise_zone(data):
-    return get_records(data[basename(ENTERPRISE_ZONES)], fieldnames.ENTERPRISE_FIELDS, 'OBJECTID')
+    return get_records(data[basename(settings.ENTERPRISE_ZONES)], fieldnames.ENTERPRISE_FIELDS, 'OBJECTID')
 
 
 def get_data_from_layer(lyr):
     data = {}
-    for DS in DATASETS:
+    for DS in settings.DATASETS:
         #: make sure that we have an empty array if there's not data for a specific source
         data[DS] = []
     with arcpy.da.SearchCursor(lyr, [fieldnames.SOURCE, fieldnames.DATA]) as cur:
@@ -208,7 +201,7 @@ def get_report(x, y):
 
     pnt = arcpy.PointGeometry(arcpy.Point(x, y), arcpy.SpatialReference(3857))
 
-    lyr = get_intersect_layer(pnt, POLYGON_DATA)
+    lyr = get_intersect_layer(pnt, settings.POLYGON_DATA)
 
     data = get_data_from_layer(lyr)
 
@@ -217,12 +210,12 @@ def get_report(x, y):
               'utilities': get_utilities(data),
               'transportation': {'roads': get_roads(data),
                                  'airports': get_airports(data)},
-              'workforce': {'schools': get_drive_time(data[basename(SCHOOLS)]),
+              'workforce': {'schools': get_drive_time(data[basename(settings.SCHOOLS)]),
                             'county_demographics': get_county_demographics(data),
                             'enterprise_zone': get_enterprise_zone(data)},
-              'recreation': {'nat_parks': get_drive_time(data[basename(NAT_PARKS)]),
-                             'state_parks': get_drive_time(data[basename(STATE_PARKS)]),
-                             'ski': get_drive_time(data[basename(SKI)])}}
+              'recreation': {'nat_parks': get_drive_time(data[basename(settings.NAT_PARKS)]),
+                             'state_parks': get_drive_time(data[basename(settings.STATE_PARKS)]),
+                             'ski': get_drive_time(data[basename(settings.SKI)])}}
 
     arcpy.Delete_management(lyr)
 
