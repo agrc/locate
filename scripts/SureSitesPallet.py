@@ -14,6 +14,7 @@ from forklift.models import Pallet
 from json import loads
 from os.path import basename
 from os.path import exists
+from os.path import join
 from time import clock
 from time import strftime
 from unidecode import unidecode
@@ -23,7 +24,7 @@ import generate_report
 class SureSitePallet(Pallet):
     def build(self, config):
         self.arcgis_services = [('BBEcon', 'MapServer')]
-        self.bbecon = 'C:\\Scheduled\\staging\\bbecon.gdb'
+        self.bbecon = join(self.staging_rack, 'bbecon.gdb')
         self.destination_fc_name = 'SureSites'
         self.latlon = arcpy.SpatialReference(4326)
         self.webmerc = arcpy.SpatialReference(3857)
