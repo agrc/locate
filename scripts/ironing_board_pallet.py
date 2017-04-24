@@ -23,16 +23,17 @@ class BBEconPallet(Pallet):
         self.sgid = join(self.garage, 'SGID10.sde')
         self.fiberverification_sde = join(self.garage, 'FiberVerification.sde')
 
-        self.bbecon = join(self.staging_rack, 'bbecon.gdb')
-        self.broadband = join(self.staging_rack, 'broadband.gdb')
-        self.cadastre = join(self.staging_rack, 'cadastre.gdb')
-        self.economy = join(self.staging_rack, 'economy.gdb')
-        self.fiberverification = join(self.staging_rack, 'fiberverification.gdb')
-        self.health = join(self.staging_rack, 'health.gdb')
-        self.location = join(self.staging_rack, 'location.gdb')
-        self.society = join(self.staging_rack, 'society.gdb')
-        self.transportation = join(self.staging_rack, 'transportation.gdb')
-        self.utilities = join(self.staging_rack, 'utilities.gdb')
+        self.bbecon = join(self.staging, 'bbecon.gdb')
+        self.bbecon_static = join(self.staging, 'bbecon_static.gdb')
+        self.broadband = join(self.staging, 'broadband.gdb')
+        self.cadastre = join(self.staging, 'cadastre.gdb')
+        self.economy = join(self.staging, 'economy.gdb')
+        self.fiberverification = join(self.staging, 'fiberverification.gdb')
+        self.health = join(self.staging, 'health.gdb')
+        self.location = join(self.staging, 'location.gdb')
+        self.society = join(self.staging, 'society.gdb')
+        self.transportation = join(self.staging, 'transportation.gdb')
+        self.utilities = join(self.staging, 'utilities.gdb')
 
         self.copy_data = [self.bbecon,
                           self.broadband,
