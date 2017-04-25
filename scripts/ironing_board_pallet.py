@@ -12,28 +12,24 @@ from os.path import basename
 
 
 class BBEconPallet(Pallet):
-    #: Note. This pallet assumes that bbecon.gdb exists in staging. It has data in it that
-    #: does not come from any parent database.
-    def __init__(self):
-        super(BBEconPallet, self).__init__()
-
+    def build(self, target):
         self.arcgis_services = [('BBEcon/GenerateReport', 'GPServer'),
                                 ('BBEcon/MapService', 'MapServer')]
 
         self.sgid = join(self.garage, 'SGID10.sde')
         self.fiberverification_sde = join(self.garage, 'FiberVerification.sde')
 
-        self.bbecon = join(self.staging, 'bbecon.gdb')
-        self.bbecon_static = join(self.staging, 'bbecon_static.gdb')
-        self.broadband = join(self.staging, 'broadband.gdb')
-        self.cadastre = join(self.staging, 'cadastre.gdb')
-        self.economy = join(self.staging, 'economy.gdb')
-        self.fiberverification = join(self.staging, 'fiberverification.gdb')
-        self.health = join(self.staging, 'health.gdb')
-        self.location = join(self.staging, 'location.gdb')
-        self.society = join(self.staging, 'society.gdb')
-        self.transportation = join(self.staging, 'transportation.gdb')
-        self.utilities = join(self.staging, 'utilities.gdb')
+        self.bbecon = join(self.staging_rack, 'bbecon.gdb')
+        self.bbecon_static = join(self.staging_rack, 'bbecon-static.gdb')
+        self.broadband = join(self.staging_rack, 'broadband.gdb')
+        self.cadastre = join(self.staging_rack, 'cadastre.gdb')
+        self.economy = join(self.staging_rack, 'economy.gdb')
+        self.fiberverification = join(self.staging_rack, 'fiberverification.gdb')
+        self.health = join(self.staging_rack, 'health.gdb')
+        self.location = join(self.staging_rack, 'location.gdb')
+        self.society = join(self.staging_rack, 'society.gdb')
+        self.transportation = join(self.staging_rack, 'transportation.gdb')
+        self.utilities = join(self.staging_rack, 'utilities.gdb')
 
         self.copy_data = [self.bbecon,
                           self.broadband,
@@ -45,38 +41,38 @@ class BBEconPallet(Pallet):
                           self.society,
                           self.transportation,
                           self.utilities]
+        self.static_data = [self.bbecon_static]
 
-    def build(self, target):
-        self.add_crate(('EnterpriseZones', self.sgid, self.economy))
-        self.add_crate(('HealthCareFacilities', self.sgid, self.health))
-        self.add_crate(('LandOwnership', self.sgid, self.cadastre))
-        self.add_crate(('Schools', self.sgid, self.society))
-        self.add_crate(('ZoomLocations', self.sgid, self.location))
-
-        self.add_crates(['AirportLocations',
-                         'CommuterRailRoutes_UTA',
-                         'CommuterRailStations_UTA',
-                         'LightRailStations_UTA',
-                         'LightRail_UTA',
-                         'Railroads',
-                         'Roads'],
-                        {'source_workspace': self.sgid,
-                         'destination_workspace': self.transportation})
-
-        self.add_crates(['ElectricalService',
-                         'NaturalGasService_Approx',
-                         'RetailCulinaryWaterServiceAreas',
-                         'RuralTelcomBoundaries'],
-                        {'source_workspace': self.sgid,
-                         'destination_workspace': self.utilities})
-
-        self.add_crates(['BB_Service', 'BB_Providers_Table'],
-                        {'source_workspace': join(self.garage, 'UBBMAP.sde'),
-                         'destination_workspace': self.broadband})
-
-        self.add_crates(['Hexagons', 'ProviderServiceAreas'],
-                        {'source_workspace': self.fiberverification_sde,
-                         'destination_workspace': self.fiberverification})
+        # self.add_crate(('EnterpriseZones', self.sgid, self.economy))
+        # self.add_crate(('HealthCareFacilities', self.sgid, self.health))
+        # self.add_crate(('LandOwnership', self.sgid, self.cadastre))
+        # self.add_crate(('Schools', self.sgid, self.society))
+        # self.add_crate(('ZoomLocations', self.sgid, self.location))
+        #
+        # self.add_crates(['AirportLocations',
+        #                  'CommuterRailRoutes_UTA',
+        #                  'CommuterRailStations_UTA',
+        #                  'LightRailStations_UTA',
+        #                  'LightRail_UTA',
+        #                  'Railroads',
+        #                  'Roads'],
+        #                 {'source_workspace': self.sgid,
+        #                  'destination_workspace': self.transportation})
+        #
+        # self.add_crates(['ElectricalService',
+        #                  'NaturalGasService_Approx',
+        #                  'RetailCulinaryWaterServiceAreas',
+        #                  'RuralTelcomBoundaries'],
+        #                 {'source_workspace': self.sgid,
+        #                  'destination_workspace': self.utilities})
+        #
+        # self.add_crates(['BB_Service', 'BB_Providers_Table'],
+        #                 {'source_workspace': join(self.garage, 'UBBMAP.sde'),
+        #                  'destination_workspace': self.broadband})
+        #
+        # self.add_crates(['Hexagons', 'ProviderServiceAreas'],
+        #                 {'source_workspace': self.fiberverification_sde,
+        #                  'destination_workspace': self.fiberverification})
 
     def process(self):
         for n in [1, 9]:
