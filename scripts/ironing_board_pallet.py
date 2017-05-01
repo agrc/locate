@@ -7,8 +7,7 @@ A module that contains the pallet for bb-econ
 '''
 import arcpy
 from forklift.models import Pallet
-from os.path import join
-from os.path import basename
+from os import path
 
 
 class BBEconPallet(Pallet):
@@ -16,20 +15,21 @@ class BBEconPallet(Pallet):
         self.arcgis_services = [('BBEcon/GenerateReport', 'GPServer'),
                                 ('BBEcon/MapService', 'MapServer')]
 
-        self.sgid = join(self.garage, 'SGID10.sde')
-        self.fiberverification_sde = join(self.garage, 'FiberVerification.sde')
+        self.sgid = path.join(self.garage, 'SGID10.sde')
+        self.fiberverification_sde = path.join(self.garage, 'FiberVerification.sde')
 
-        self.bbecon = join(self.staging_rack, 'bbecon.gdb')
-        self.bbecon_static = join(self.staging_rack, 'bbecon-static.gdb')
-        self.broadband = join(self.staging_rack, 'broadband.gdb')
-        self.cadastre = join(self.staging_rack, 'cadastre.gdb')
-        self.economy = join(self.staging_rack, 'economy.gdb')
-        self.fiberverification = join(self.staging_rack, 'fiberverification.gdb')
-        self.health = join(self.staging_rack, 'health.gdb')
-        self.location = join(self.staging_rack, 'location.gdb')
-        self.society = join(self.staging_rack, 'society.gdb')
-        self.transportation = join(self.staging_rack, 'transportation.gdb')
-        self.utilities = join(self.staging_rack, 'utilities.gdb')
+        bbecon_name = 'bbecon.gdb'
+        self.bbecon = path.join(self.staging_rack, bbecon_name)
+        self.bbecon_static = path.join(path.dirname(path.realpath(__file__)), '..', 'data', 'bbecon-static.gdb')
+        self.broadband = path.join(self.staging_rack, 'broadband.gdb')
+        self.cadastre = path.join(self.staging_rack, 'cadastre.gdb')
+        self.economy = path.join(self.staging_rack, 'economy.gdb')
+        self.fiberverification = path.join(self.staging_rack, 'fiberverification.gdb')
+        self.health = path.join(self.staging_rack, 'health.gdb')
+        self.location = path.join(self.staging_rack, 'location.gdb')
+        self.society = path.join(self.staging_rack, 'society.gdb')
+        self.transportation = path.join(self.staging_rack, 'transportation.gdb')
+        self.utilities = path.join(self.staging_rack, 'utilities.gdb')
 
         self.copy_data = [self.bbecon,
                           self.broadband,
@@ -43,49 +43,54 @@ class BBEconPallet(Pallet):
                           self.utilities]
         self.static_data = [self.bbecon_static]
 
-        # self.add_crate(('EnterpriseZones', self.sgid, self.economy))
-        # self.add_crate(('HealthCareFacilities', self.sgid, self.health))
-        # self.add_crate(('LandOwnership', self.sgid, self.cadastre))
-        # self.add_crate(('Schools', self.sgid, self.society))
-        # self.add_crate(('ZoomLocations', self.sgid, self.location))
-        #
-        # self.add_crates(['AirportLocations',
-        #                  'CommuterRailRoutes_UTA',
-        #                  'CommuterRailStations_UTA',
-        #                  'LightRailStations_UTA',
-        #                  'LightRail_UTA',
-        #                  'Railroads',
-        #                  'Roads'],
-        #                 {'source_workspace': self.sgid,
-        #                  'destination_workspace': self.transportation})
-        #
-        # self.add_crates(['ElectricalService',
-        #                  'NaturalGasService_Approx',
-        #                  'RetailCulinaryWaterServiceAreas',
-        #                  'RuralTelcomBoundaries'],
-        #                 {'source_workspace': self.sgid,
-        #                  'destination_workspace': self.utilities})
-        #
-        # self.add_crates(['BB_Service', 'BB_Providers_Table'],
-        #                 {'source_workspace': join(self.garage, 'UBBMAP.sde'),
-        #                  'destination_workspace': self.broadband})
-        #
-        # self.add_crates(['Hexagons', 'ProviderServiceAreas'],
-        #                 {'source_workspace': self.fiberverification_sde,
-        #                  'destination_workspace': self.fiberverification})
+        self.add_crate(('EnterpriseZones', self.sgid, self.economy))
+        self.add_crate(('HealthCareFacilities', self.sgid, self.health))
+        self.add_crate(('LandOwnership', self.sgid, self.cadastre))
+        self.add_crate(('Schools', self.sgid, self.society))
+        self.add_crate(('ZoomLocations', self.sgid, self.location))
+
+        self.add_crates(['AirportLocations',
+                         'CommuterRailRoutes_UTA',
+                         'CommuterRailStations_UTA',
+                         'LightRailStations_UTA',
+                         'LightRail_UTA',
+                         'Railroads',
+                         'Roads'],
+                        {'source_workspace': self.sgid,
+                         'destination_workspace': self.transportation})
+
+        self.add_crates(['ElectricalService',
+                         'NaturalGasService_Approx',
+                         'RetailCulinaryWaterServiceAreas',
+                         'RuralTelcomBoundaries'],
+                        {'source_workspace': self.sgid,
+                         'destination_workspace': self.utilities})
+
+        self.add_crates(['BB_Service', 'BB_Providers_Table'],
+                        {'source_workspace': path.join(self.garage, 'UBBMAP.sde'),
+                         'destination_workspace': self.broadband})
+
+        self.add_crates(['Hexagons', 'ProviderServiceAreas'],
+                        {'source_workspace': self.fiberverification_sde,
+                         'destination_workspace': self.fiberverification})
+
+        #: since bbecon.gdb does not directly participate in any crates
+        #: we need to manually create it if necessary
+        if not arcpy.Exists(self.bbecon):
+            arcpy.CreateFileGDB_management(self.staging_rack, bbecon_name)
 
     def process(self):
         for n in [1, 9]:
             self.dissolve_fiber(n)
 
-        railroads = join(self.bbecon, 'Railroads')
-        self.dissolve(railroads, "TYPE = 'Heavy'", join(self.sgid, 'SGID10.TRANSPORTATION.Railroads'))
+        railroads = path.join(self.bbecon, 'Railroads')
+        self.dissolve(railroads, "TYPE = 'Heavy'", path.join(self.sgid, 'SGID10.TRANSPORTATION.Railroads'))
 
         self.log.info('chop up railroads by county')
         railroads_dissolved = '{}_dissolved'.format(railroads)
         if arcpy.Exists(railroads_dissolved):
             arcpy.Delete_management(railroads_dissolved)
-        arcpy.Identity_analysis(railroads, join(self.sgid, 'SGID10.BOUNDARIES.Counties'), railroads_dissolved)
+        arcpy.Identity_analysis(railroads, path.join(self.sgid, 'SGID10.BOUNDARIES.Counties'), railroads_dissolved)
         arcpy.Delete_management(railroads)
 
         self.build_polygon_data()
@@ -113,7 +118,7 @@ class BBEconPallet(Pallet):
         query = 'HexID IN (SELECT HexID FROM PROVIDERSERVICEAREAS WHERE ServiceClass = {})'.format(num)
         fc = '{}\Fiber_Dissolved_{}Month'.format(self.bbecon, num)
 
-        self.dissolve(fc, query, join(self.fiberverification_sde, 'FiberVerification.FIBERADMIN.Hexagons'))
+        self.dissolve(fc, query, path.join(self.fiberverification_sde, 'FiberVerification.FIBERADMIN.Hexagons'))
 
     def build_polygon_data(self):
         self.log.info('building PolygonData feature class...')
@@ -122,35 +127,35 @@ class BBEconPallet(Pallet):
                          'Median_Age',
                          'educationHighSchoolGraduate',
                          'educationBachelorOrGreater'] + ['TI_{}'.format(f) for f in range(1, 11)]
-        datasets = [(join(self.fiberverification, 'Hexagons'), ['HexID'], None),
-                    (join(self.broadband, 'BB_Service'), ['UTProvCode'], 'TRANSTECH NOT IN (60, 80)'),
-                    (join(self.utilities, 'ElectricalService'), ['PROVIDER', 'WEBLINK'], None),
-                    (join(self.utilities, 'RuralTelcomBoundaries'), ['PROVIDER', 'WEBLINK'], None),
-                    (join(self.utilities, 'NaturalGasService_Approx'), ['PROVIDER', 'WEBLINK'], None),
-                    (join(self.bbecon, 'Airport_SLinternational_DriveTime'), ['Name', 'ToBreak'], None),
-                    (join(self.bbecon, 'Airport_RegionalCommercial_DriveTime'), ['Name', 'ToBreak'], None),
-                    (join(self.bbecon, 'Airport_Local_DriveTime'), ['Name', 'ToBreak'], None),
-                    (join(self.bbecon, 'HigherEd_DriveTime'), ['Name', 'ToBreak'], None),
-                    (join(self.bbecon, 'CountyDemographics'), county_fields, None),
-                    (join(self.economy, 'EnterpriseZones'), ['OBJECTID', 'ZONENAME', 'EXPYR', 'POC_NAME', 'POC_PHONE', 'POC_EMAIL'], None),
-                    (join(self.bbecon, 'NatlParks_DriveTime'), ['Name', 'ToBreak'], None),
-                    (join(self.bbecon, 'StParksAndMonuments_DriveTime'), ['Name', 'ToBreak'], None),
-                    (join(self.bbecon, 'SkiArea_DriveTime'), ['Name', 'ToBreak'], None),
-                    (join(self.bbecon, 'RoadsBuffer'), ['FULLNAME'], None)]
+        datasets = [(path.join(self.fiberverification, 'Hexagons'), ['HexID'], None),
+                    (path.join(self.broadband, 'BB_Service'), ['UTProvCode'], 'TRANSTECH NOT IN (60, 80)'),
+                    (path.join(self.utilities, 'ElectricalService'), ['PROVIDER', 'WEBLINK'], None),
+                    (path.join(self.utilities, 'RuralTelcomBoundaries'), ['PROVIDER', 'WEBLINK'], None),
+                    (path.join(self.utilities, 'NaturalGasService_Approx'), ['PROVIDER', 'WEBLINK'], None),
+                    (path.join(self.bbecon_static, 'Airport_SLinternational_DriveTime'), ['Name', 'ToBreak'], None),
+                    (path.join(self.bbecon_static, 'Airport_RegionalCommercial_DriveTime'), ['Name', 'ToBreak'], None),
+                    (path.join(self.bbecon_static, 'Airport_Local_DriveTime'), ['Name', 'ToBreak'], None),
+                    (path.join(self.bbecon_static, 'HigherEd_DriveTime'), ['Name', 'ToBreak'], None),
+                    (path.join(self.bbecon_static, 'CountyDemographics'), county_fields, None),
+                    (path.join(self.economy, 'EnterpriseZones'), ['OBJECTID', 'ZONENAME', 'EXPYR', 'POC_NAME', 'POC_PHONE', 'POC_EMAIL'], None),
+                    (path.join(self.bbecon_static, 'NatlParks_DriveTime'), ['Name', 'ToBreak'], None),
+                    (path.join(self.bbecon_static, 'StParksAndMonuments_DriveTime'), ['Name', 'ToBreak'], None),
+                    (path.join(self.bbecon_static, 'SkiArea_DriveTime'), ['Name', 'ToBreak'], None),
+                    (path.join(self.bbecon, 'RoadsBuffer'), ['FULLNAME'], None)]
 
         self.log.info('buffering roads')
-        roads = join(self.transportation, 'Roads')
-        roadsBuffer = join(self.bbecon, 'RoadsBuffer')
+        roads = path.join(self.transportation, 'Roads')
+        roadsBuffer = path.join(self.bbecon, 'RoadsBuffer')
         arcpy.Delete_management(roadsBuffer)
         arcpy.MakeFeatureLayer_management(roads, 'roads_lyr', "CARTOCODE in ( '1', '2', '3', '4', '5')")
         arcpy.Buffer_analysis('roads_lyr', roadsBuffer, '1 Miles', dissolve_option='LIST', dissolve_field='FULLNAME')
         arcpy.Delete_management('roads_lyr')
 
-        polygonData = join(self.bbecon, 'PolygonData')
+        polygonData = path.join(self.bbecon, 'PolygonData')
         arcpy.TruncateTable_management(polygonData)
         with arcpy.da.InsertCursor(polygonData, ['SOURCE', 'DATA', 'SHAPE@']) as ucur:
             for source, fields, where in datasets:
                 self.log.info('loading: ' + source)
                 with arcpy.da.SearchCursor(source, fields + ['SHAPE@'], where_clause=where) as cur:
                     for row in cur:
-                        ucur.insertRow((basename(source), ';'.join([str(x) for x in row[:-1]]), row[-1].generalize(100)))
+                        ucur.insertRow((path.basename(source), ';'.join([str(x) for x in row[:-1]]), row[-1].generalize(100)))
