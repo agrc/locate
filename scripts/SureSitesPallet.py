@@ -23,7 +23,7 @@ import generate_report
 
 class SureSitePallet(Pallet):
     def build(self, config):
-        self.arcgis_services = [('BBEcon', 'MapServer')]
+        self.arcgis_services = [('BBEcon/MapService', 'MapServer')]
         self.bbecon = join(self.staging_rack, 'bbecon.gdb')
         self.destination_fc_name = 'SureSites'
         self.latlon = arcpy.SpatialReference(4326)
