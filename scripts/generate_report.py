@@ -28,8 +28,7 @@ def get_fiber(data):
     provs = []  # for preventing duplicates
     with arcpy.da.SearchCursor(settings.SERVICE_AREAS,
                                [fieldnames.ServiceClass, fieldnames.ProvName],
-                               '{} = {} AND {} <> 0'.format(fieldnames.HexID, hex_id, fieldnames.ServiceClass),
-                               sql_clause=(None, 'ORDER BY ' + fieldnames.ProvName)) as sa_cursor:
+                               '{} = {} AND {} <> 0'.format(fieldnames.HexID, hex_id, fieldnames.ServiceClass)) as sa_cursor:
         for sa in sa_cursor:
             if sa[1] not in provs:
                 records.append({fieldnames.ServiceClass: settings.FIBER_TERMS[sa[0]],
@@ -37,6 +36,7 @@ def get_fiber(data):
                 provs.append(sa[1])
     add_provider_info(records, fieldnames.ProvName)
 
+    records.sort(key=lambda row: row[fieldnames.ProvName])
     return records
 
 
