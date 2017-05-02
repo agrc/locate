@@ -7,8 +7,6 @@ deploy/
 dist/
 node_modules/
 scripts/Logs/
-scripts/settings.py
-scripts/settings/__init__.py
-scripts/sddraftToolboxes/
+scripts/settings_ib/__init__.py
 secrets.json
 src/
