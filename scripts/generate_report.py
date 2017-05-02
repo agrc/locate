@@ -1,9 +1,9 @@
 import arcpy
 import re
 import json
-import settings
+import settings_ib as settings
 
-from settings import fieldnames
+from settings_ib import fieldnames
 from os.path import basename
 from time import time
 
