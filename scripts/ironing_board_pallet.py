@@ -155,7 +155,7 @@ class BBEconPallet(Pallet):
         if arcpy.Exists(polygonData):
             arcpy.TruncateTable_management(polygonData)
         else:
-            arcpy.CreateFeatureClass_management(self.bbecon, 'PolygonData', 'POLYGON', spatial_reference=arcpy.SpatialReference(3857))
+            arcpy.CreateFeatureclass_management(self.bbecon, 'PolygonData', 'POLYGON', spatial_reference=arcpy.SpatialReference(3857))
             arcpy.AddField_management(polygonData, 'DATA', 'TEXT', field_length=1000)
             arcpy.AddField_management(polygonData, 'SOURCE', 'TEXT', field_length=50)
         with arcpy.da.InsertCursor(polygonData, ['SOURCE', 'DATA', 'SHAPE@']) as ucur:
