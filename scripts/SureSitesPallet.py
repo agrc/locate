@@ -74,6 +74,8 @@ class SureSitePallet(Pallet):
             ('Environmental_Report', ['Phase I Environmental Report Available', 'TEXT', 'NULLABLE', 255])
         ])
 
+        self.copy_data[self.bbecon]
+
     #: execute this pallet weekly
     def is_ready_to_ship(self):
         ready = strftime('%A') == 'Monday'
