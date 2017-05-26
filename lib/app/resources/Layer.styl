@@ -1,14 +1,13 @@
 // use glyphicons instead of font-awesome for awesome-bootstrap-checkbox
+.checkbox
+    input[type=checkbox]:checked + label:after
+        font-family 'Glyphicons Halflings'
+        content "\e013"
+    label:after
+        padding-left 4px
+        padding-top 2px
+        font-size 9px
 .layer
-    &.checkbox
-        input[type=checkbox]:checked + label:after
-            font-family 'Glyphicons Halflings'
-            content "\e013"
-        label:after
-            padding-left 4px
-            padding-top 2px
-            font-size 9px
-
     // FIBER LEGEND
     div[data-toggle='tooltip']
         display inline

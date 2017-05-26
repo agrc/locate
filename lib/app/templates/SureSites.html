@@ -7,43 +7,70 @@
                 <span class="glyphicon glyphicon-chevron-down"></span>
             </a>
             <ul id='${id}_sub' class='collapse' data-dojo-attach-point='filtersContainer'>
-                <label>Property Type</label>
-                <li class='checkbox layer property-type'>
-                    <input type="checkbox" id='${id}_land' value='Land'
+                <ul>
+                    <li class='checkbox layer'>
+                        <input type="checkbox" id='${id}_visibility'
+                            value='${suresitesLayerIndex}'
+                            data-dojo-attach-point='visibilityChbx'
+                            data-dojo-attach-event='change: toggleLayer'>
+                        <label for="${id}_visibility">Sure Sites</label>
+                    </li>
+                </ul>
+                <hr>
+                <ul class='indent'>
+                    <li class='radio'>
+                        <input type="radio" id='${id}_all' name='suresites_radio' checked disabled
+                            data-dojo-attach-point='allRB'
+                            data-dojo-attach-event='change: onRadioChange'>
+                        <label for="${id}_all">All</label>
+                    </li>
+                    <li class="radio">
+                        <input type="radio" id='${id}_filter' name='suresites_radio' disabled
+                            data-dojo-attach-point='filterRB'
+                            data-dojo-attach-event='change: onRadioChange'>
+                        <label for="${id}_filter">Filtered</label>
+                    </li>
+                </ul>
+                <hr>
+                <ul class='indent'>
+                    <label>Property Type</label>
+                    <li class='checkbox property-type'>
+                        <input type="checkbox" id='${id}_land' value='Land'
                         data-dojo-attach-point='landChbx'>
-                    <label for='${id}_land'> Land </label>
-                </li>
-                <li class='checkbox layer property-type'>
-                    <input type="checkbox" id='${id}_office' value='Existing Office Building'>
-                    <label for='${id}_office'> Existing Office Building </label>
-                </li>
-                <li class='checkbox layer property-type'>
-                    <input type="checkbox" id='${id}_industrial' value='Existing Industrial Building'>
-                    <label for='${id}_industrial'> Existing Industrial Building </label>
-                </li>
-                <label>County Type</label>
-                <li class='checkbox layer'>
-                    <input type="checkbox" id='${id}_urban' data-dojo-attach-point='urbanChbx'>
-                    <label for='${id}_urban'> Urban </label>
-                </li>
-                <li class='checkbox layer'>
-                    <input type="checkbox" id='${id}_rural' data-dojo-attach-point='ruralChbx'>
-                    <label for='${id}_rural'> Rural </label>
-                </li>
-                <label>Acreage</label>
-                <li class='slider-container'>
-                    <div>
-                        <span data-dojo-attach-point='acreageMin'></span> - <span data-dojo-attach-point='acreageMax'></span> ac.
-                    </div>
-                    <input type="text" value='' data-dojo-attach-point='acreageSlider' data-slider-tooltip='hide'>
-                </li>
-                <label>Total Building Sq. Ft.</label>
-                <li class='slider-container'>
-                    <div>
-                        <span data-dojo-attach-point='sqftMin'>20,000</span> - <span data-dojo-attach-point='sqftMax'>1,000,000</span> sqft.
-                    </div>
-                    <input type="text" value='' data-dojo-attach-point='sqftSlider' data-slider-tooltip='hide'>
-                </li>
+                        <label for='${id}_land'> Land </label>
+                    </li>
+                    <li class='checkbox property-type'>
+                        <input type="checkbox" id='${id}_office' value='Existing Office Building'>
+                        <label for='${id}_office'> Existing Office Building </label>
+                    </li>
+                    <li class='checkbox property-type'>
+                        <input type="checkbox" id='${id}_industrial' value='Existing Industrial Building'>
+                        <label for='${id}_industrial'> Existing Industrial Building </label>
+                    </li>
+                    <label>County Type</label>
+                    <li class='checkbox'>
+                        <input type="checkbox" id='${id}_urban' data-dojo-attach-point='urbanChbx'>
+                        <label for='${id}_urban'> Urban </label>
+                    </li>
+                    <li class='checkbox'>
+                        <input type="checkbox" id='${id}_rural' data-dojo-attach-point='ruralChbx'>
+                        <label for='${id}_rural'> Rural </label>
+                    </li>
+                    <label>Acreage</label>
+                    <li class='slider-container'>
+                        <div>
+                            <span data-dojo-attach-point='acreageMin'></span> - <span data-dojo-attach-point='acreageMax'></span> ac.
+                        </div>
+                        <input type="text" value='' data-dojo-attach-point='acreageSlider' data-slider-tooltip='hide'>
+                    </li>
+                    <label>Total Building Sq. Ft.</label>
+                    <li class='slider-container'>
+                        <div>
+                            <span data-dojo-attach-point='sqftMin'>20,000</span> - <span data-dojo-attach-point='sqftMax'>1,000,000</span> sqft.
+                        </div>
+                        <input type="text" value='' data-dojo-attach-point='sqftSlider' data-slider-tooltip='hide'>
+                    </li>
+                </ul>
             </ul>
         </li>
     </ul>
