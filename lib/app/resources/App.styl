@@ -55,18 +55,6 @@ html, body, .app
             color @color
         img.logo
             padding-top 10px
-        >p
-            text-align center
-        .mobile-menu-btn
-            display none
-            visibility hidden
-            @media $mobile-media-query
-                display inline-block
-                visibility visible
-                float right
-                background transparent
-                border none
-                color #FFFFFF
         @media $mobile-media-query
             width 100%
             max-height $mobile-header-height
@@ -76,6 +64,21 @@ html, body, .app
             &.expanded
                 max-height 100%
                 overflow-y scroll
+        .help-container
+            display flex
+            align-items center
+            justify-content space-between
+            .mobile-menu-btn
+                display none
+                visibility hidden
+                @media $mobile-media-query
+                    visibility visible
+                    display inherit
+                    font-size 17px
+                    padding 6px 7px
+                    border-color #57585A
+                    border-radius 5px
+                    margin 10px 0 10px 10px
         .footer-links
             display flex
             font-size .8em
