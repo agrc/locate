@@ -8,13 +8,19 @@
         </ul>
         <hr>
 
-        <button type='button' class='btn btn-default btn-xs mobile-menu-btn'
-            data-dojo-attach-event='click: toggleMobilePane'>
-            <span class="glyphicon glyphicon-menu-hamburger"></span>
-        </button>
-        <p>
-            Click on the map to get information about the current location.
-        </p>
+        <div class='help-container'>
+            <p class='map-help'>
+                Click on the map to get information about the current location.
+            </p>
+            <button type='button' class='btn btn-default btn-xs mobile-menu-btn'
+                data-dojo-attach-event='click: toggleMobilePane'>
+                <span data-dojo-attach-point='mobileBtnSpan'
+                    class="glyphicon glyphicon-menu-hamburger"></span>
+            </button>
+        </div>
+        <!-- <p class='mobile-menu-help'>
+            Click on the
+        </p> -->
         <div data-dojo-attach-point='layersDiv' class='layers'></div>
 
         <ul>
@@ -45,6 +51,7 @@
             <li><a href="http://www.utah.gov/translate.html" target='_blank'>Translate</a></li>
         </ul>
     </div>
-    <div data-dojo-attach-point="mapDiv" class='map'></div>
+    <div data-dojo-attach-point="mapDiv" class='map'>
+    </div>
     <div data-dojo-attach-point='sherlockMatchesTableContainer' class='sherlock'></div>
 </div>
