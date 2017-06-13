@@ -105,7 +105,7 @@ class SureSitePallet(Pallet):
 
         json_properties = [value[0] for value in self._fields.values()]
         json_properties.append('Position')
-        fields = self._fields.keys()
+        fields = list(self._fields.keys())
         fields.append('shape@')
         fields.append('Report_JSON')
         with arcpy.da.InsertCursor(in_table=self.destination_fc_name, field_names=fields) as cursor:
@@ -150,7 +150,7 @@ class SureSitePallet(Pallet):
                                       field_type=props[1],
                                       field_is_nullable=props[2],
                                       field_length=props[3])
-        for field, props in self._fields.iteritems():
+        for field, props in self._fields.items():
             if len(props) == 4:
                 add_field(field, props)
             else:
