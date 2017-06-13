@@ -6,7 +6,7 @@
                 <img src="app/resources/img/suresites_logo.svg" alt="">
                 <span class="glyphicon glyphicon-chevron-down"></span>
             </a>
-            <ul id='${id}_sub' class='collapse' data-dojo-attach-point='filtersContainer'>
+            <ul id='${id}_sub' class='collapse'>
                 <ul>
                     <li class='checkbox layer'>
                         <input type="checkbox" id='${id}_visibility'
@@ -32,7 +32,7 @@
                     </li>
                 </ul>
                 <hr>
-                <ul class='indent'>
+                <ul class='indent collapse' data-dojo-attach-point='filtersContainer'>
                     <label>Property Type</label>
                     <li class='checkbox property-type'>
                         <input type="checkbox" id='${id}_land' value='Land'
