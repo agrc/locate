@@ -101,7 +101,7 @@ class BBEconPallet(Pallet):
             arcpy.Delete_management(fc)
 
         self.log.info('making feature layer')
-        lyr = arcpy.MakeFeatureLayer_management(name, 'DissolveLayer', query)
+        lyr = arcpy.CopyFeatures_management(name, 'in_memory\\DissolveLayer', query)
 
         self.log.info('dissolving')
         arcpy.Dissolve_management(lyr, fc)
