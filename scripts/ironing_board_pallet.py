@@ -8,6 +8,7 @@ A module that contains the pallet for bb-econ
 import arcpy
 from forklift.models import Pallet
 from os import path
+from forklift import core
 
 
 class BBEconPallet(Pallet):
@@ -79,6 +80,9 @@ class BBEconPallet(Pallet):
         if not arcpy.Exists(self.bbecon):
             arcpy.CreateFileGDB_management(self.staging_rack, bbecon_name)
 
+    def requires_processing(self):
+        return True
+
     def process(self):
         for n in [1, 9]:
             self.dissolve_fiber(n)
@@ -101,16 +105,13 @@ class BBEconPallet(Pallet):
             arcpy.Delete_management(fc)
 
         self.log.info('making feature layer')
-        lyr = arcpy.FeatureClassToFeatureClass_conversion(name, 'in_memory\\DissolveLayer', where_clause=query)
+        lyr = arcpy.FeatureClassToFeatureClass_conversion(name, core.scratch_gdb_path, '{}_DissolveLayer'.format(path.basename(fc)), where_clause=query)
 
         self.log.info('dissolving')
         arcpy.Dissolve_management(lyr, fc)
 
         self.log.info('simplifing')
         arcpy.Generalize_edit(fc, 50)
-
-        self.log.info('deleting layer')
-        arcpy.Delete_management(lyr)
 
     def dissolve_fiber(self, num):
         self.log.info('{} month...'.format(num))
