@@ -80,10 +80,9 @@ class BBEconPallet(Pallet):
         if not arcpy.Exists(self.bbecon):
             arcpy.CreateFileGDB_management(self.staging_rack, bbecon_name)
 
-    def requires_processing(self):
-        return True
-
     def process(self):
+        arcpy.env.overwriteOutput = True
+
         for n in [1, 9]:
             self.dissolve_fiber(n)
 
@@ -92,18 +91,11 @@ class BBEconPallet(Pallet):
 
         self.log.info('chop up railroads by county')
         railroads_dissolved = '{}_dissolved'.format(railroads)
-        if arcpy.Exists(railroads_dissolved):
-            arcpy.Delete_management(railroads_dissolved)
         arcpy.Identity_analysis(railroads, path.join(self.sgid, 'SGID10.BOUNDARIES.Counties'), railroads_dissolved)
-        arcpy.Delete_management(railroads)
 
         self.build_polygon_data()
 
     def dissolve(self, fc, query, name):
-        if arcpy.Exists(fc):
-            self.log.info('deleting previous feature class')
-            arcpy.Delete_management(fc)
-
         self.log.info('making feature layer')
         lyr = arcpy.FeatureClassToFeatureClass_conversion(name, core.scratch_gdb_path, '{}_DissolveLayer'.format(path.basename(fc)), where_clause=query)
 
