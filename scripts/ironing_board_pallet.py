@@ -21,7 +21,7 @@ class BBEconPallet(Pallet):
 
         bbecon_name = 'bbecon.gdb'
         self.bbecon = path.join(self.staging_rack, bbecon_name)
-        self.bbecon_static = path.join(path.dirname(path.realpath(__file__)), '..', 'data', 'bbecon-static.gdb')
+        self.bbecon_static = path.join(r'C:\Scheduled\static', 'bbecon-static.gdb')
         self.broadband = path.join(self.staging_rack, 'broadband.gdb')
         self.cadastre = path.join(self.staging_rack, 'cadastre.gdb')
         self.economy = path.join(self.staging_rack, 'economy.gdb')
