@@ -21,6 +21,10 @@ from unidecode import unidecode
 import generate_report
 
 
+class EmptyGeometryError(Exception):
+    pass
+
+
 class SureSitePallet(Pallet):
     def build(self, config):
         self.arcgis_services = [('BBEcon/MapService', 'MapServer')]
@@ -110,7 +114,11 @@ class SureSitePallet(Pallet):
         fields.append('Report_JSON')
         with arcpy.da.InsertCursor(in_table=self.destination_fc_name, field_names=fields) as cursor:
             for site in sites:
-                row = self._map_site_to_row(site, json_properties)
+                try:
+                    row = self._map_site_to_row(site, json_properties)
+                except EmptyGeometryError:
+                    self.log.warn('empty geometry found for Nid: %s. Skipping...', site[self._fields['Site_ID'][0]])
+                    continue
                 point = row[-1].firstPoint
                 row.append(generate_report.get_report(point.X, point.Y))
                 try:
@@ -177,7 +185,11 @@ class SureSitePallet(Pallet):
 
             if field == 'Position':
                 #: latitude/longitude geojson string
-                geojson = loads(data)['coordinates']
+                try:
+                    geojson = loads(data)['coordinates']
+                except TypeError:
+                    #: likely empty geometry...
+                    raise EmptyGeometryError()
                 data = arcpy.PointGeometry(arcpy.Point(geojson[0], geojson[1]), self.latlon)
                 data = data.projectAs(self.webmerc)
 
