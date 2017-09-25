@@ -115,7 +115,7 @@ class SureSitePallet(Pallet):
         fields.append('Report_JSON')
         with arcpy.da.InsertCursor(in_table=self.destination_fc_name + '_temp', field_names=fields) as cursor:
             for site in sites:
-                self.log.debug('processing site: %s', site['Site_ID'])
+                self.log.debug('processing site: %s', site[self._fields['Site_ID'][0]])
                 try:
                     row = self._map_site_to_row(site, json_properties)
                 except EmptyGeometryError:
