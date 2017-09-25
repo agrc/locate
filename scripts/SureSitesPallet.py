@@ -19,10 +19,10 @@ from forklift.models import Pallet
 from unidecode import unidecode
 
 #: utah WGS coords
-xmin = -114.1
-ymin = 36.9
-xmax = -109
-ymax = 42.5
+xmin = -12721397
+ymin = 4850989
+xmax = -12105980
+ymax = 5169483
 
 
 class EmptyGeometryError(Exception):
