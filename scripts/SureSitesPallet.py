@@ -18,6 +18,12 @@ from forklift import seat
 from forklift.models import Pallet
 from unidecode import unidecode
 
+#: utah WGS coords
+xmin = -114.1
+ymin = 36.9
+xmax = -109
+ymax = 42.5
+
 
 class EmptyGeometryError(Exception):
     pass
@@ -122,14 +128,17 @@ class SureSitePallet(Pallet):
                     self.log.warn('empty geometry found for Nid: %s. Skipping...', site[self._fields['Site_ID'][0]])
                     continue
                 point = row[-1].firstPoint
-                row.append(generate_report.get_report(point.X, point.Y))
-                try:
-                    cursor.insertRow(row)
-                except Exception as e:
-                    self.log.warn('could not insert row %s. %s', row[0], e.message)
-                    for data, fields in zip(row, self._fields.values()):
-                        if data is not None:
-                            self.log.warn('%s: %d of %d, %s',  fields[0], len(data), fields[3], data)
+                if point.X >= xmin and point.X <= xmax and point.Y >= ymin and point.Y <= ymax:
+                    row.append(generate_report.get_report(point.X, point.Y))
+                    try:
+                        cursor.insertRow(row)
+                    except Exception as e:
+                        self.log.warn('could not insert row %s. %s', row[0], e.message)
+                        for data, fields in zip(row, self._fields.values()):
+                            if data is not None:
+                                self.log.warn('%s: %d of %d, %s',  fields[0], len(data), fields[3], data)
+                else:
+                    self.log.warn('point [%d, %d] is outside of the state of utah', point.X, point.Y)
 
         #: if no errors, then load temp data into production
         self._create_destination_table(self.bbecon, self.destination_fc_name)
