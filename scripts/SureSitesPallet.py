@@ -97,6 +97,9 @@ class SureSitePallet(Pallet):
         return ready
 
     def ship(self):
+        env = arcpy.env
+        arcpy.env.workspace = self.bbecon
+
         start_seconds = clock()
         r = requests.get('http://utahsuresites.com/rest/properties-all', timeout=30)
         self.log.debug('utahsuresites.com receieved in %s with response code %s', seat.format_time(clock() - start_seconds), r.status_code)
@@ -105,15 +108,16 @@ class SureSitePallet(Pallet):
         sites = r.json()
 
         self._create_workspace(self.bbecon)
-        self._create_destination_table(self.bbecon, self.destination_fc_name)
+        self._create_destination_table(self.bbecon, self.destination_fc_name + '_temp')
 
         json_properties = [value[0] for value in self._fields.values()]
         json_properties.append('Position')
         fields = list(self._fields.keys())
         fields.append('shape@')
         fields.append('Report_JSON')
-        with arcpy.da.InsertCursor(in_table=self.destination_fc_name, field_names=fields) as cursor:
+        with arcpy.da.InsertCursor(in_table=self.destination_fc_name + '_temp', field_names=fields) as cursor:
             for site in sites:
+                self.log.debug('processing site: %s', site['Site_ID'])
                 try:
                     row = self._map_site_to_row(site, json_properties)
                 except EmptyGeometryError:
@@ -129,6 +133,12 @@ class SureSitePallet(Pallet):
                         if data is not None:
                             self.log.warn('%s: %d of %d, %s',  fields[0], len(data), fields[3], data)
 
+        #: if no errors, then load temp data into production
+        self._create_destination_table(self.bbecon, self.destination_fc_name)
+        arcpy.management.Append(self.destination_fc_name + '_temp', self.destination_fc_name)
+
+        arcpy.env = env
+
     def _create_workspace(self, workspace):
         if exists(workspace):
             return
@@ -139,9 +149,6 @@ class SureSitePallet(Pallet):
         arcpy.CreateFileGDB_management(workspace, gdb_name, 'CURRENT')
 
     def _create_destination_table(self, workspace, name):
-        env = arcpy.env
-        arcpy.env.workspace = workspace
-
         try:
             arcpy.TruncateTable_management(name)
             return
@@ -166,8 +173,6 @@ class SureSitePallet(Pallet):
 
         #: add this field separately because it's not included in the json that we get from utahsuresites.com
         add_field('Report_JSON', ['Cached Report JSON', 'TEXT', 'NULLABLE', 15000])
-
-        arcpy.env = env
 
     def _map_site_to_row(self, site, fields):
         row = []
