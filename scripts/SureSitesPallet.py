@@ -6,19 +6,17 @@ SureSitePallet.py
 A forklift pallet for suresites data
 '''
 
-import arcpy
-import requests
 from collections import OrderedDict
+from json import loads
+from os.path import basename, exists, join
+from time import clock, strftime
+
+import arcpy
+import generate_report
+import requests
 from forklift import seat
 from forklift.models import Pallet
-from json import loads
-from os.path import basename
-from os.path import exists
-from os.path import join
-from time import clock
-from time import strftime
 from unidecode import unidecode
-import generate_report
 
 
 class EmptyGeometryError(Exception):
