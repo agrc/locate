@@ -1,12 +1,11 @@
-import arcpy
-import re
 import json
-import settings_ib as settings
-
-from settings_ib import fieldnames
+import re
 from os.path import basename
 from time import time
 
+import arcpy
+import settings_ib as settings
+from settings_ib import fieldnames
 
 start_time = time()
 
@@ -211,9 +210,9 @@ def get_report(x, y):
               'utilities': get_utilities(data),
               'transportation': {'roads': get_roads(data),
                                  'airports': get_airports(data)},
-              'workforce': {'schools': get_drive_time(data[basename(settings.SCHOOLS)]),
-                            'county_demographics': get_county_demographics(data),
-                            'enterprise_zone': get_enterprise_zone(data)},
+              'economy': {'schools': get_drive_time(data[basename(settings.SCHOOLS)]),
+                          'county_demographics': get_county_demographics(data),
+                          'enterprise_zone': get_enterprise_zone(data)},
               'recreation': {'nat_parks': get_drive_time(data[basename(settings.NAT_PARKS)]),
                              'state_parks': get_drive_time(data[basename(settings.STATE_PARKS)]),
                              'ski': get_drive_time(data[basename(settings.SKI)])}}
