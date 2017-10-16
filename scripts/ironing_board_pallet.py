@@ -5,10 +5,11 @@ pallet.py
 
 A module that contains the pallet for bb-econ
 '''
-import arcpy
-from forklift.models import Pallet
 from os import path
+
+import arcpy
 from forklift import core
+from forklift.models import Pallet
 
 
 class BBEconPallet(Pallet):
@@ -44,7 +45,9 @@ class BBEconPallet(Pallet):
                           self.utilities]
         self.static_data = [self.bbecon_static]
 
-        self.add_crate(('EnterpriseZones', self.sgid, self.economy))
+        self.add_crates(['EnterpriseZones', 'TaxEntities2017'],
+                        {'source_workspace': self.sgid,
+                         'destination_workspace': self.economy})
         self.add_crate(('HealthCareFacilities', self.sgid, self.health))
         self.add_crate(('LandOwnership', self.sgid, self.cadastre))
         self.add_crate(('Schools', self.sgid, self.society))
@@ -131,6 +134,7 @@ class BBEconPallet(Pallet):
                     (path.join(self.bbecon_static, 'HigherEd_DriveTime'), ['Name', 'ToBreak'], None),
                     (path.join(self.bbecon_static, 'CountyDemographics'), county_fields, None),
                     (path.join(self.economy, 'EnterpriseZones'), ['OBJECTID', 'ZONENAME', 'EXPYR', 'POC_NAME', 'POC_PHONE', 'POC_EMAIL'], None),
+                    (path.join(self.economy, 'TaxEntities2017'), ['OBJECTID', 'ENT_DESC'], 'ENT_NBR >= 8000'),
                     (path.join(self.bbecon_static, 'NatlParks_DriveTime'), ['Name', 'ToBreak'], None),
                     (path.join(self.bbecon_static, 'StParksAndMonuments_DriveTime'), ['Name', 'ToBreak'], None),
                     (path.join(self.bbecon_static, 'SkiArea_DriveTime'), ['Name', 'ToBreak'], None),

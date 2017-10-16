@@ -332,6 +332,10 @@
             "OBJECTID": 23,
             "POC_PHONE": "435-781-6767",
             "ZONENAME": "Uintah County"
+        }],
+        "tax_entities": [{
+            "OBJECTID": 1,
+            "ENT_DESC": "Some Tax Entity Description"
         }]
     }
 }

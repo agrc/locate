@@ -180,8 +180,8 @@ def get_airports(data):
     return res
 
 
-def get_enterprise_zone(data):
-    return get_records(data[basename(settings.ENTERPRISE_ZONES)], fieldnames.ENTERPRISE_FIELDS, 'OBJECTID')
+def get_economic_data(layerName, fields, data):
+    return get_records(data[layerName], fields, 'OBJECTID')
 
 
 def get_data_from_layer(lyr):
@@ -216,7 +216,8 @@ def get_report(x, y):
                                  'airports': get_airports(data)},
               'economy': {'schools': get_drive_time(data[basename(settings.SCHOOLS)]),
                           'county_demographics': get_county_demographics(data),
-                          'enterprise_zone': get_enterprise_zone(data)},
+                          'enterprise_zone': get_economic_data(basename(settings.ENTERPRISE_ZONES), fieldnames.ENTERPRISE_FIELDS, data),
+                          'tax_entities': get_economic_data(basename(settings.TAX_ENTITIES), fieldnames.TAX_ENTITIES_FIELDS, data)},
               'recreation': {'nat_parks': get_drive_time(data[basename(settings.NAT_PARKS)]),
                              'state_parks': get_drive_time(data[basename(settings.STATE_PARKS)]),
                              'ski': get_drive_time(data[basename(settings.SKI)])}}

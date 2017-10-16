@@ -47,6 +47,10 @@ POC_PHONE = 'POC_PHONE'
 POC_EMAIL = 'POC_EMAIL'
 ENTERPRISE_FIELDS = ['OBJECTID', ZONENAME, EXPYR, POC_NAME, POC_PHONE, POC_EMAIL]
 
+# TAX ENTITIES
+ENT_DESC = 'ENT_DESC'
+TAX_ENTITIES_FIELDS = ['OBJECTID', ENT_DESC]
+
 FIELDS_LU = {
     r'fiberverification.gdb\Hexagons': ['HexID'],
     r'broadband.gdb\BB_Service': ['UTProvCode'],
