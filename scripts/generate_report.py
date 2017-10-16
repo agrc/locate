@@ -168,7 +168,11 @@ def format_drive_time(mins):
 
 
 def get_airports(data):
-    drive_time = format_drive_time(data[basename(settings.AIRPORT_INT)][0].split(';')[1])
+    inter_airport = data[basename(settings.AIRPORT_INT)]
+    if len(inter_airport) > 0:
+        drive_time = format_drive_time(inter_airport[0].split(';')[1])
+    else:
+        drive_time = 'n/a'
     res = {'sl': {'drive_time': drive_time, 'name': 'Salt Lake International'},
            'regional_commercial': get_drive_time(data[basename(settings.AIRPORT_REG)]),
            'local': get_drive_time(data[basename(settings.AIRPORT_LOCAL)])}
