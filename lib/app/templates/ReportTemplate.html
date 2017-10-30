@@ -161,12 +161,20 @@
             <thead>
                 <tr>
                     <th>Description</th>
+                    <th>POC Name</th>
+                    <th>POC Phone</th>
+                    <th>POC Email</th>
+                    <th>POC Website</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each economy.tax_entities}}
                 <tr>
                     <td>{{ENT_DESC}}</td>
+                    <td>{{NAME}}</td>
+                    <td>{{PHONE}}</td>
+                    <td>{{EMAIL}}</td>
+                    <td><a href="http://{{WEBSITE}}">{{WEBSITE}}</a></td>
                 </tr>
                 {{/each}}
             </tbody>

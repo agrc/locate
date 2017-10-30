@@ -9,7 +9,9 @@ from os import path
 
 import arcpy
 from forklift import core
-from forklift.models import Pallet
+from forklift.models import Crate, Pallet
+
+taxEntities = 'TaxEntities2017'
 
 
 class BBEconPallet(Pallet):
@@ -45,7 +47,7 @@ class BBEconPallet(Pallet):
                           self.utilities]
         self.static_data = [self.bbecon_static]
 
-        self.add_crates(['EnterpriseZones', 'TaxEntities2017'],
+        self.add_crates(['EnterpriseZones', taxEntities],
                         {'source_workspace': self.sgid,
                          'destination_workspace': self.economy})
         self.add_crate(('HealthCareFacilities', self.sgid, self.health))
@@ -84,6 +86,8 @@ class BBEconPallet(Pallet):
             arcpy.CreateFileGDB_management(self.staging_rack, bbecon_name)
 
     def process(self):
+        self.joinTaxEntityCountyContacts()
+
         arcpy.env.overwriteOutput = True
 
         for n in [1, 9]:
@@ -97,6 +101,28 @@ class BBEconPallet(Pallet):
         arcpy.Identity_analysis(railroads, path.join(self.sgid, 'SGID10.BOUNDARIES.Counties'), railroads_dissolved)
 
         self.build_polygon_data()
+
+    def joinTaxEntityCountyContacts(self):
+        self.log.info('joining county contacts to tax entities')
+        #: join contact info with taxentities
+        for crate in self.get_crates():
+            if crate.destination_name == taxEntities and crate.result[0] in [Crate.CREATED, Crate.UPDATED, Crate.WARNING]:
+                new_tax_entities = path.join(self.bbecon, taxEntities)
+                if arcpy.Exists(new_tax_entities):
+                    arcpy.management.Delete(new_tax_entities)
+                arcpy.management.Copy(crate.destination, new_tax_entities)
+
+                new_fields = ['NAME', 'PHONE', 'EMAIL', 'WEBSITE']
+                for field in new_fields:
+                    arcpy.management.AddField(new_tax_entities, field, 'TEXT', field_length=100)
+
+                countyEconDevContacts = 'CountyEconDevContacts'
+                layer = arcpy.management.MakeFeatureLayer(new_tax_entities)
+                arcpy.management.AddJoin(layer, 'ENT_CO', path.join(self.bbecon_static, countyEconDevContacts), 'COUNTY_NUMBER')
+                for field in new_fields:
+                    arcpy.management.CalculateField(layer,
+                                                    '{}.{}'.format(crate.destination_name, field),
+                                                    '!{}.{}!'.format(countyEconDevContacts, field))
 
     def dissolve(self, fc, query, name):
         self.log.info('making feature layer')
@@ -134,7 +160,7 @@ class BBEconPallet(Pallet):
                     (path.join(self.bbecon_static, 'HigherEd_DriveTime'), ['Name', 'ToBreak'], None),
                     (path.join(self.bbecon_static, 'CountyDemographics'), county_fields, None),
                     (path.join(self.economy, 'EnterpriseZones'), ['OBJECTID', 'ZONENAME', 'EXPYR', 'POC_NAME', 'POC_PHONE', 'POC_EMAIL'], None),
-                    (path.join(self.economy, 'TaxEntities2017'), ['OBJECTID', 'ENT_DESC'], 'ENT_NBR >= 8000'),
+                    (path.join(self.bbecon, 'TaxEntities2017'), ['OBJECTID', 'ENT_DESC', 'NAME', 'PHONE', 'EMAIL', 'WEBSITE'], 'ENT_NBR >= 8000'),
                     (path.join(self.bbecon_static, 'NatlParks_DriveTime'), ['Name', 'ToBreak'], None),
                     (path.join(self.bbecon_static, 'StParksAndMonuments_DriveTime'), ['Name', 'ToBreak'], None),
                     (path.join(self.bbecon_static, 'SkiArea_DriveTime'), ['Name', 'ToBreak'], None),

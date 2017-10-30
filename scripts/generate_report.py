@@ -1,13 +1,13 @@
 import json
 import re
+import time
 from os.path import basename
-from time import time
 
 import arcpy
 import settings_ib as settings
 from settings_ib import fieldnames
 
-start_time = time()
+start_time = time.time()
 
 
 def timer():
@@ -237,3 +237,4 @@ if __name__ == '__main__':
     y = arcpy.GetParameterAsText(1)
 
     arcpy.SetParameterAsText(2, get_report(x, y))
+    # get_report(-12475239.86751813, 4949642.047894805)

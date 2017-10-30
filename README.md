@@ -25,3 +25,7 @@ Staging URL: [test.mapserv.utah.gov/bb-econ](http://test.mapserv.utah.gov/bbecon
 1. Publish `scripts/Toolbox.tbx/Generate Report` as `BBEcon/GenerateReport`
     - Test point: `x: -12452500, y: 4979214`
     - The `settings` folder does not get copied to the server when publishing the GenerateReport gp tool. This has to be done manually.
+
+#### Updating TaxEntities Contact Data
+1. Update table in `bbecon-static.gdb`
+1. Delete `economy.gdb\TaxEntities2017` so that the join will be triggered on next forklift run.

@@ -335,7 +335,11 @@
         }],
         "tax_entities": [{
             "OBJECTID": 1,
-            "ENT_DESC": "Some Tax Entity Description"
+            "ENT_DESC": "Some Tax Entity Description",
+            "NAME": "Scott Albrecht",
+            "PHONE": "801-123-4567",
+            "EMAIL": "test@test.com",
+            "WEBSITE": "www.waynecountyutah.org/services/county-government-services/economic-development"
         }]
     }
 }
