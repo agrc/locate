@@ -29,6 +29,7 @@
     "dojox": "v1.11.2/esri-3.18.0",
     "util": "v1.11.2/esri-3.18.0",
     "spinjs": "~2.3.2",
-    "moment": "~2.14"
+    "moment": "~2.14",
+    "dojo-themes": "~1.11"
   }
 }
