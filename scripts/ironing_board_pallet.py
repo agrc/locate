@@ -106,7 +106,7 @@ class BBEconPallet(Pallet):
         self.log.info('joining county contacts to tax entities')
         #: join contact info with taxentities
         for crate in self.get_crates():
-            if crate.destination_name == taxEntities and crate.result[0] in [Crate.CREATED, Crate.UPDATED, Crate.WARNING]:
+            if crate.destination_name == taxEntities and crate.was_updated():
                 new_tax_entities = path.join(self.bbecon, taxEntities)
                 if arcpy.Exists(new_tax_entities):
                     arcpy.management.Delete(new_tax_entities)
