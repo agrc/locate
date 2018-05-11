@@ -9,12 +9,12 @@ from os import path
 
 import arcpy
 from forklift import core
-from forklift.models import Crate, Pallet
+from forklift.models import Pallet
 
 taxEntities = 'TaxEntities2017'
 
 
-class BBEconPallet(Pallet):
+class LocatePallet(Pallet):
     def build(self, target):
         self.arcgis_services = [('BBEcon/GenerateReport', 'GPServer'),
                                 ('BBEcon/MapService', 'MapServer')]
