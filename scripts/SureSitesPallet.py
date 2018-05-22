@@ -84,9 +84,12 @@ class SureSitePallet(Pallet):
 
         self.copy_data = [self.bbecon]
 
+    def should_run(self):
+        return strftime('%A') == 'Monday' or not arcpy.Exists(join(self.bbecon, self.destination_fc_name))
+
     #: execute this pallet weekly
     def is_ready_to_ship(self):
-        ready = strftime('%A') == 'Monday'
+        ready = self.should_run()
         if not ready:
             self.success = (True, 'This pallet only runs on Monday.')
 
@@ -94,7 +97,7 @@ class SureSitePallet(Pallet):
 
     #: copy this gdb on the same schedule as ship
     def requires_processing(self):
-        ready = strftime('%A') == 'Monday'
+        ready = self.should_run()
         if not ready:
             self.success = (True, 'This pallet only copies to Prod on Monday.')
 
