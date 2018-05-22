@@ -106,8 +106,8 @@ class LocatePallet(Pallet):
         self.log.info('joining county contacts to tax entities')
         #: join contact info with taxentities
         for crate in self.get_crates():
-            if crate.destination_name == taxEntities and crate.was_updated():
-                new_tax_entities = path.join(self.bbecon, taxEntities)
+            new_tax_entities = path.join(self.bbecon, taxEntities)
+            if crate.destination_name == taxEntities and (crate.was_updated() or not arcpy.Exists(new_tax_entities)):
                 if arcpy.Exists(new_tax_entities):
                     arcpy.management.Delete(new_tax_entities)
                 arcpy.management.Copy(crate.destination, new_tax_entities)
