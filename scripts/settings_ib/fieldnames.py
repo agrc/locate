@@ -55,6 +55,11 @@ EMAIL = 'EMAIL'
 WEBSITE = 'WEBSITE'
 TAX_ENTITIES_FIELDS = ['OBJECTID', ENT_DESC, NAME, PHONE, EMAIL, WEBSITE]
 
+# QUALIFIED OPPORTUNITY_ZONES
+GEOID = 'GEOID'
+ZoneName = 'ZoneName'
+OPPORTUNITY_ZONES_FIELDS = ['OBJECTID', ZoneName, GEOID]
+
 FIELDS_LU = {
     r'fiberverification.gdb\Hexagons': ['HexID'],
     r'broadband.gdb\BB_Service': ['UTProvCode'],

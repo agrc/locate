@@ -34,6 +34,7 @@ class LocatePallet(Pallet):
         self.society = path.join(self.staging_rack, 'society.gdb')
         self.transportation = path.join(self.staging_rack, 'transportation.gdb')
         self.utilities = path.join(self.staging_rack, 'utilities.gdb')
+        self.polygon_data = path.join(self.bbecon, 'PolygonData')
 
         self.copy_data = [self.bbecon,
                           self.broadband,
@@ -84,6 +85,9 @@ class LocatePallet(Pallet):
         #: we need to manually create it if necessary
         if not arcpy.Exists(self.bbecon):
             arcpy.CreateFileGDB_management(self.staging_rack, bbecon_name)
+
+    def requires_processing(self):
+        return super(LocatePallet, self).requires_processing() or not arcpy.Exists(self.polygon_data)
 
     def process(self):
         self.joinTaxEntityCountyContacts()
@@ -164,7 +168,8 @@ class LocatePallet(Pallet):
                     (path.join(self.bbecon_static, 'NatlParks_DriveTime'), ['Name', 'ToBreak'], None),
                     (path.join(self.bbecon_static, 'StParksAndMonuments_DriveTime'), ['Name', 'ToBreak'], None),
                     (path.join(self.bbecon_static, 'SkiArea_DriveTime'), ['Name', 'ToBreak'], None),
-                    (path.join(self.bbecon, 'RoadsBuffer'), ['FULLNAME'], None)]
+                    (path.join(self.bbecon, 'RoadsBuffer'), ['FULLNAME'], None),
+                    (path.join(self.bbecon_static, 'OpportunityZones'), ['OBJECTID', 'ZoneName', 'GEOID'], None)]
 
         self.log.info('buffering roads')
         roads = path.join(self.transportation, 'Roads')
@@ -174,14 +179,13 @@ class LocatePallet(Pallet):
         arcpy.Buffer_analysis('roads_lyr', roadsBuffer, '1 Miles', dissolve_option='LIST', dissolve_field='FULLNAME')
         arcpy.Delete_management('roads_lyr')
 
-        polygonData = path.join(self.bbecon, 'PolygonData')
-        if arcpy.Exists(polygonData):
-            arcpy.TruncateTable_management(polygonData)
+        if arcpy.Exists(self.polygon_data):
+            arcpy.TruncateTable_management(self.polygon_data)
         else:
             arcpy.CreateFeatureclass_management(self.bbecon, 'PolygonData', 'POLYGON', spatial_reference=arcpy.SpatialReference(3857))
-            arcpy.AddField_management(polygonData, 'DATA', 'TEXT', field_length=1000)
-            arcpy.AddField_management(polygonData, 'SOURCE', 'TEXT', field_length=50)
-        with arcpy.da.InsertCursor(polygonData, ['SOURCE', 'DATA', 'SHAPE@']) as ucur:
+            arcpy.AddField_management(self.polygon_data, 'DATA', 'TEXT', field_length=1000)
+            arcpy.AddField_management(self.polygon_data, 'SOURCE', 'TEXT', field_length=50)
+        with arcpy.da.InsertCursor(self.polygon_data, ['SOURCE', 'DATA', 'SHAPE@']) as ucur:
             for source, fields, where in datasets:
                 self.log.info('loading: ' + source)
                 with arcpy.da.SearchCursor(source, fields + ['SHAPE@'], where_clause=where) as cur:

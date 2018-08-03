@@ -340,6 +340,11 @@
             "PHONE": "801-123-4567",
             "EMAIL": "test@test.com",
             "WEBSITE": "www.waynecountyutah.org/services/county-government-services/economic-development"
+        }],
+        "opportunity_zones": [{
+            "OBJECTID": 1,
+            "GEOID": "49035114500",
+            "ZoneName": "West Valley City & Salt Lake City"
         }]
     }
 }
