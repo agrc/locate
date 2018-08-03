@@ -33,6 +33,6 @@
     "uglify-js": "3.4.6"
   },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "test": "grunt travis"
   }
 }
