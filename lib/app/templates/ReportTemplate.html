@@ -4,51 +4,51 @@
         <span class="glyphicon glyphicon-chevron-down"></span>
     </h3>
 </a>
-<div id="broadband" class='collapse in'>
-    <h4 class='broadband'>Fiber Providers</h4>
+<div id="broadband" class="collapse in">
+    <h4 class="broadband">Fiber Providers</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover'>
+        <table class="table table-striped table-condensed table-hover">
             <thead>
                 <tr>
-                    <th class='provider'>Provider</th>
-                    <th class='url'>Web Site</th>
-                    <th class='contact-fld'>Phone</th>
-                    <th class='contact-fld'>Contact Name</th>
-                    <th class='contact-fld'>Contact Email</th>
-                    <th class='service-class'>Providing Fiber in:</th>
+                    <th class="provider">Provider</th>
+                    <th class="url">Web Site</th>
+                    <th class="contact-fld">Phone</th>
+                    <th class="contact-fld">Contact Name</th>
+                    <th class="contact-fld">Contact Email</th>
+                    <th class="service-class">Providing Fiber in:</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each broadband.fiber}}
                 <tr>
-                    <td class='provider'>{{Colloquial}}</td>
-                    <td class='url'><a href="{{URL}}">{{link URL}}</a></td>
-                    <td class='contact-fld'>{{ContactPhone}}</td>
-                    <td class='contact-fld'>{{ContactName}}</td>
-                    <td class='contact-fld'><a href='mailto:{{ContactEmail}}'>{{ContactEmail}}</a></td>
-                    <td class='service-class'>{{ServiceClass}}</td>
+                    <td class="provider">{{Colloquial}}</td>
+                    <td class="url"><a href="{{URL}}">{{link URL}}</a></td>
+                    <td class="contact-fld">{{ContactPhone}}</td>
+                    <td class="contact-fld">{{ContactName}}</td>
+                    <td class="contact-fld"><a href="mailto:{{ContactEmail}}">{{ContactEmail}}</a></td>
+                    <td class="service-class">{{ServiceClass}}</td>
                 </tr>
                 {{/each}}
                 <tr>
-                    <td colspan='6'></td>
+                    <td colspan="6"></td>
                 </tr>
                 <tr>
-                    <td colspan="6" class='header'>
+                    <td colspan="6" class="header">
                         <h4 class="broadband">Other Fixed Broadband Providers</h4>
                     </td>
                 </tr>
                 <tr>
-                    <th class='provider'>Provider</th>
-                    <th class='url'>Web Site</th>
-                    <th class='contact-fld' colspan='4'>Phone</th>
+                    <th class="provider">Provider</th>
+                    <th class="url">Web Site</th>
+                    <th class="contact-fld" colspan="4">Phone</th>
                 </tr>
-            </thead>
+            </tbody>
             <tbody>
                 {{#each broadband.fixed}}
                 <tr>
-                    <td class='provider'>{{Colloquial}}</td>
-                    <td class='url'><a href="{{URL}}">{{link URL}}</a></td>
-                    <td class='contact-fld' colspan='4'>{{ContactPhone}}</td>
+                    <td class="provider">{{Colloquial}}</td>
+                    <td class="url"><a href="{{URL}}">{{link URL}}</a></td>
+                    <td class="contact-fld" colspan="4">{{ContactPhone}}</td>
                 </tr>
                 {{/each}}
             </tbody>
@@ -65,17 +65,17 @@
 <div class="collapse in" id="utilities">
     <h4 class="utilities">Local Exchange Areas</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover'>
+        <table class="table table-striped table-condensed table-hover">
             <thead>
                 <tr>
-                    <th class='provider'>Provider</th>
+                    <th class="provider">Provider</th>
                     <th>Web Site</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each utilities.rural}}
                 <tr>
-                    <td class='provider'>{{PROVIDER}}</td>
+                    <td class="provider">{{PROVIDER}}</td>
                     <td><a href="{{WEBLINK}}">{{link WEBLINK}}</a></td>
                 </tr>
                 {{/each}}
@@ -84,17 +84,17 @@
     </div>
     <h4 class="utilities">Electric Utility Territory</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover'>
+        <table class="table table-striped table-condensed table-hover">
             <thead>
                 <tr>
-                    <th class='provider'>Provider</th>
+                    <th class="provider">Provider</th>
                     <th>Web Site</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each utilities.electrical}}
                 <tr>
-                    <td class='provider'>{{PROVIDER}}</td>
+                    <td class="provider">{{PROVIDER}}</td>
                     <td><a href="{{WEBLINK}}">{{link WEBLINK}}</a></td>
                 </tr>
                 {{/each}}
@@ -103,17 +103,17 @@
     </div>
     <h4 class="utilities">Natural Gas</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover'>
+        <table class="table table-striped table-condensed table-hover">
             <thead>
                 <tr>
-                    <th class='provider'>Provider</th>
+                    <th class="provider">Provider</th>
                     <th>Web Site</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each utilities.natural_gas}}
                 <tr>
-                    <td class='provider'>{{PROVIDER}}</td>
+                    <td class="provider">{{PROVIDER}}</td>
                     <td><a href="{{WEBLINK}}">{{link WEBLINK}}</a></td>
                 </tr>
                 {{/each}}
@@ -208,7 +208,7 @@
                     <td>{{economy.county_demographics.educationHighSchoolGraduate}}%</td>
                 </tr>
                 <tr>
-                    <td>Bachelor's Degree or Greater (Age 25 or Higher)</td>
+                    <td>Bachelor"s Degree or Greater (Age 25 or Higher)</td>
                     <td>{{economy.county_demographics.educationBachelorOrGreater}}%</td>
                 </tr>
                 <tr>
@@ -225,7 +225,7 @@
 
     <h4 class="demographics">Higher Education Schools</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover half'>
+        <table class="table table-striped table-condensed table-hover half">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -253,7 +253,7 @@
 <div id="transportation" class="collapse in">
     <h4 class="transportation">Major Roads, Freeways, US Highways and State Highways within 1 Mile</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover'>
+        <table class="table table-striped table-condensed table-hover">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -271,7 +271,7 @@
 
     <h4 class="transportation">Airports - International</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover half'>
+        <table class="table table-striped table-condensed table-hover half">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -289,7 +289,7 @@
 
     <h4 class="transportation">Airports - Regional/Commercial</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover half'>
+        <table class="table table-striped table-condensed table-hover half">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -309,7 +309,7 @@
 
     <h4 class="transportation">Airports - Local</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover half'>
+        <table class="table table-striped table-condensed table-hover half">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -328,7 +328,7 @@
     </div>
 </div>
 
-<a href='#lifestyle' data-toggle='collapse'>
+<a href="#lifestyle" data-toggle="collapse">
     <h3 class="lifestyle">
         Lifestyle/Recreation
         <span class="glyphicon glyphicon-chevron-down"></span>
@@ -337,7 +337,7 @@
 <div id="lifestyle" class="collapse in">
     <h4 class="lifestyle">National Parks</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover half'>
+        <table class="table table-striped table-condensed table-hover half">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -357,7 +357,7 @@
 
     <h4 class="lifestyle">State Parks</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover half'>
+        <table class="table table-striped table-condensed table-hover half">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -376,7 +376,7 @@
     </div>
     <h4 class="lifestyle">Ski Resorts</h4>
     <div class="table-responsive">
-        <table class='table table-striped table-condensed table-hover half'>
+        <table class="table table-striped table-condensed table-hover half">
             <thead>
                 <tr>
                     <th>Name</th>
