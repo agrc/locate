@@ -155,6 +155,30 @@
         </table>
     </div>
 
+    <h4 class="demographics">Qualified Opportunity Zones</h4>
+    <div class="table-responsive">
+        <table class="table table-striped table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>ID</th>
+                    <th>GOED Website</th>
+                    <th>Treasury Department Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each economy.opportunity_zones}}
+                <tr>
+                    <td>{{ZoneName}}</td>
+                    <td>{{GEOID}}</td>
+                    <td><a href="https://business.utah.gov/opportunity-awaits-statewide-opportunity-zones-announced/">business.utah.gov/opportunity-awaits-statewide-opportunity-zones-announced</a></td>
+                    <td><a href="https://home.treasury.gov/news/press-releases/sm0414">home.treasury.gov/news/press-releases/sm0414</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
     <h4 class="demographics">Tax Increment Areas</h4>
     <div class="table-responsive">
         <table class="table table-striped table-condensed table-hover">

@@ -59,7 +59,7 @@ def add_provider_info(items, code_field):
                            fieldnames.ContactName: prov[2],
                            fieldnames.ContactPhone: prov[3],
                            fieldnames.ContactEmail: prov[4]})
-            except:
+            except Exception:
                 it.update({fieldnames.Colloquial: 'n/a',
                            fieldnames.URL: 'n/a',
                            fieldnames.ContactName: 'n/a',
@@ -209,18 +209,21 @@ def get_report(x, y):
 
     data = get_data_from_layer(lyr)
 
-    result = {'broadband': {'fiber': get_fiber(data),
-                            'fixed': get_fixed(data)},
-              'utilities': get_utilities(data),
-              'transportation': {'roads': get_roads(data),
-                                 'airports': get_airports(data)},
-              'economy': {'schools': get_drive_time(data[basename(settings.SCHOOLS)]),
-                          'county_demographics': get_county_demographics(data),
-                          'enterprise_zone': get_economic_data(basename(settings.ENTERPRISE_ZONES), fieldnames.ENTERPRISE_FIELDS, data),
-                          'tax_entities': get_economic_data(basename(settings.TAX_ENTITIES), fieldnames.TAX_ENTITIES_FIELDS, data)},
-              'recreation': {'nat_parks': get_drive_time(data[basename(settings.NAT_PARKS)]),
-                             'state_parks': get_drive_time(data[basename(settings.STATE_PARKS)]),
-                             'ski': get_drive_time(data[basename(settings.SKI)])}}
+    result = {
+        'broadband': {'fiber': get_fiber(data),
+                      'fixed': get_fixed(data)},
+        'utilities': get_utilities(data),
+        'transportation': {'roads': get_roads(data),
+                           'airports': get_airports(data)},
+        'economy': {'schools': get_drive_time(data[basename(settings.SCHOOLS)]),
+                    'county_demographics': get_county_demographics(data),
+                    'enterprise_zone': get_economic_data(basename(settings.ENTERPRISE_ZONES), fieldnames.ENTERPRISE_FIELDS, data),
+                    'tax_entities': get_economic_data(basename(settings.TAX_ENTITIES), fieldnames.TAX_ENTITIES_FIELDS, data),
+                    'opportunity_zones': get_economic_data(basename(settings.OPPORTUNITY_ZONES), fieldnames.OPPORTUNITY_ZONES_FIELDS, data)},
+        'recreation': {'nat_parks': get_drive_time(data[basename(settings.NAT_PARKS)]),
+                       'state_parks': get_drive_time(data[basename(settings.STATE_PARKS)]),
+                       'ski': get_drive_time(data[basename(settings.SKI)])}
+    }
 
     arcpy.Delete_management(lyr)
 

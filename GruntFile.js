@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         '!stubmodule/**',
         '!util/**'
     ];
-    var deployDir = 'wwwroot/bbecon';
+    var deployDir = 'wwwroot/locate';
     var secrets;
     try {
         secrets = grunt.file.readJSON('secrets.json');
