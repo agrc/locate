@@ -1,5 +1,5 @@
 {
-  "name": "bb-econ",
+  "name": "locate",
   "version": "2.2.0-0",
   "dependencies": {
     "agrc": "agrc-widgets#~6.0",
