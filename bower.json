@@ -17,7 +17,7 @@
     "esri": "arcgis-js-api#~3.18.0",
     "jquery": "jquery#~2.2.0",
     "sherlock": "agrc-sherlock#~1.1.0",
-    "proj4": "^2.3.17"
+    "proj4": "2.3.17"
   },
   "resolutions": {
     "esri": "~3.18.0",
