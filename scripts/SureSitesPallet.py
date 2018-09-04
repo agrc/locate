@@ -109,7 +109,7 @@ class SureSitePallet(Pallet):
         arcpy.env.workspace = self.bbecon
 
         start_seconds = clock()
-        r = requests.get('http://utahsuresites.com/rest/properties-all', timeout=300)
+        r = requests.get('https://utahsuresites.com/rest/properties-all.json', timeout=300)
         self.log.debug('utahsuresites.com receieved in %s with response code %s', seat.format_time(clock() - start_seconds), r.status_code)
 
         r.raise_for_status()
