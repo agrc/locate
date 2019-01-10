@@ -6,6 +6,7 @@
 deploy/
 dist/
 node_modules/
+scripts/geocoding_cache.json
 scripts/Logs/
 scripts/settings_ib/__init__.py
 secrets.json
