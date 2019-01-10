@@ -17,12 +17,8 @@ import requests
 from forklift import seat
 from forklift.models import Pallet
 from unidecode import unidecode
-
-#: utah WGS coords
-xmin = -12721397
-ymin = 4850989
-xmax = -12105980
-ymax = 5169483
+from geocoding import Geocoder
+import settings_ib as settings
 
 
 class EmptyGeometryError(Exception):
@@ -83,28 +79,19 @@ class SureSitePallet(Pallet):
         ])
 
         self.copy_data = [self.bbecon]
-        self.sure_sites_was_updated = False
 
     def should_run(self):
         return strftime('%A') == 'Monday'
+        # return True  #: for testing only
 
-    #: execute this pallet weekly
-    def is_ready_to_ship(self):
-        ready = self.should_run() or not arcpy.Exists(join(self.bbecon, self.destination_fc_name))
-        if not ready:
-            self.success = (True, 'This pallet only runs on Monday.')
-
-        return ready
-
-    #: copy this gdb on the same schedule as ship
     def requires_processing(self):
-        ready = self.should_run() or self.sure_sites_was_updated
+        ready = self.should_run() or not arcpy.Exists(join(self.bbecon, self.destination_fc_name))
         if not ready:
             self.success = (True, 'This pallet only copies to Prod on Monday.')
 
         return ready
 
-    def ship(self):
+    def process(self):
         env = arcpy.env
         arcpy.env.workspace = self.bbecon
 
@@ -119,38 +106,40 @@ class SureSitePallet(Pallet):
         self._create_destination_table(self.bbecon, self.destination_fc_name + '_temp')
 
         json_properties = [value[0] for value in self._fields.values()]
-        json_properties.append('Position')
         fields = list(self._fields.keys())
         fields.append('shape@')
         fields.append('Report_JSON')
         with arcpy.da.InsertCursor(in_table=self.destination_fc_name + '_temp', field_names=fields) as cursor:
+            geocoder = Geocoder(settings.API_KEY, cache_results=True)
             for site in sites:
                 self.log.debug('processing site: %s', site[self._fields['Site_ID'][0]])
                 try:
-                    row = self._map_site_to_row(site, json_properties)
+                    row = self._map_site_to_row(site, json_properties, geocoder)
                 except EmptyGeometryError:
-                    self.log.warn('empty geometry found for Nid: %s. Skipping...', site[self._fields['Site_ID'][0]])
+                    self.log.warn('unable to match address (%s, %s) or find coords (%s) for Nid: %s. Skipping...',
+                                  site['Address'], site['ZIP'], site['Position'], site[self._fields['Site_ID'][0]])
                     continue
-                point = row[-1].firstPoint
-                if point.X >= xmin and point.X <= xmax and point.Y >= ymin and point.Y <= ymax:
+
+                try:
+                    point = row[-1].firstPoint
                     row.append(generate_report.get_report(point.X, point.Y))
-                    try:
-                        cursor.insertRow(row)
-                    except Exception as e:
-                        self.log.warn('could not insert row %s. %s', row[0], e.message)
-                        for data, fields in zip(row, self._fields.values()):
-                            if data is not None:
-                                self.log.warn('%s: %d of %d, %s',  fields[0], len(data), fields[3], data)
-                else:
-                    self.log.warn('point [%d, %d] is outside of the state of utah', point.X, point.Y)
+                    # row.append('report goes here')  #: for testing only
+                except Exception:
+                    row.append(None)
+
+                try:
+                    cursor.insertRow(row)
+                except Exception as e:
+                    self.log.warn('could not insert row %s. %s', row[0], e.message)
+                    for data, fields in zip(row, self._fields.values()):
+                        if data is not None:
+                            self.log.warn('%s: %d of %d, %s',  fields[0], len(data), fields[3], data)
 
         #: if no errors, then load temp data into production
         self._create_destination_table(self.bbecon, self.destination_fc_name)
         arcpy.management.Append(self.destination_fc_name + '_temp', self.destination_fc_name)
 
         arcpy.env = env
-
-        self.sure_sites_was_updated = True
 
     def _create_workspace(self, workspace):
         if exists(workspace):
@@ -187,7 +176,7 @@ class SureSitePallet(Pallet):
         #: add this field separately because it's not included in the json that we get from utahsuresites.com
         add_field('Report_JSON', ['Cached Report JSON', 'TEXT', 'NULLABLE', 15000])
 
-    def _map_site_to_row(self, site, fields):
+    def _map_site_to_row(self, site, fields, geocoder):
         row = []
         for field in fields:
             data = site[field]
@@ -201,16 +190,28 @@ class SureSitePallet(Pallet):
                 data = unidecode(data)
                 data.encode('ascii')
 
-            if field == 'Position':
-                #: latitude/longitude geojson string
-                try:
-                    geojson = loads(data)['coordinates']
-                except TypeError:
-                    #: likely empty geometry...
-                    raise EmptyGeometryError()
-                data = arcpy.PointGeometry(arcpy.Point(geojson[0], geojson[1]), self.latlon)
-                data = data.projectAs(self.webmerc)
+            row.append(data)
+
+        #: geocode address
+        try:
+            geocode_result = geocoder.locate(site['Address'], site['ZIP'])
+
+            location = geocode_result['location']
+
+            row.append(arcpy.PointGeometry(arcpy.Point(location['x'], location['y']), self.webmerc))
+
+            return row
+        except Exception as error:
+            self.log.warn(error)
+            self.log.info('attempting to use coords from "Position" field')
+
+            try:
+                geojson = loads(site['Position'])['coordinates']
+            except TypeError:
+                raise EmptyGeometryError()
+            data = arcpy.PointGeometry(arcpy.Point(geojson[0], geojson[1]), self.latlon)
+            data = data.projectAs(self.webmerc)
 
             row.append(data)
 
-        return row
+            return row
