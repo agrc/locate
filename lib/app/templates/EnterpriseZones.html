@@ -1,0 +1,13 @@
+<li class='checkbox'>
+    <input type='checkbox' id='${id}_chbx'
+        data-dojo-attach-point='checkbox' value='${layerId}'>
+    <label for='${id}_chbx'>
+        ${name}
+    </label>
+    <select data-dojo-attach-event='change: onYearChange'
+        data-dojo-attach-point='select'>
+        <option value='current'>Current Year</option>
+        <option value='historic1'>2018</option>
+        <option value='historic2'>2017</option>
+    </select>
+</li>

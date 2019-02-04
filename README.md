@@ -29,3 +29,7 @@ Staging URL: [test.mapserv.utah.gov/bb-econ](http://test.mapserv.utah.gov/bbecon
 #### Updating TaxEntities Contact Data
 1. Update table in `bbecon-static.gdb`
 1. Delete `economy.gdb\TaxEntities2017` so that the join will be triggered on next forklift run.
+
+#### Updating Historic Enterprise Zone Layers
+1. Load new data into `bbecon-static.gdb\EnterpriseZones_Historic*`. `1` is for last year and `2` is for the previous year.
+1. Update labels in `lib/app/templates/EnterpriseZones.html`
