@@ -31,5 +31,7 @@ Staging URL: [test.mapserv.utah.gov/bb-econ](http://test.mapserv.utah.gov/bbecon
 1. Delete `economy.gdb\TaxEntities2017` so that the join will be triggered on next forklift run.
 
 #### Updating Historic Enterprise Zone Layers
-1. Load new data into `bbecon-static.gdb\EnterpriseZones_Historic*`. `1` is for last year and `2` is for the previous year.
+1. Update definition queries in `maps\MapService.mxd`.
+    - `Historic1` is current year minus one. `Historic2` is current year minus two and so forth.
+    - For years 2018+ the data is contained in SGID (`ECONOMY.EnterpriseZones`) and individual years can be queried using the `EXPYR` field (e.g. `EXPYR = '2018'`).
 1. Update labels in `lib/app/templates/EnterpriseZones.html`
