@@ -8,6 +8,7 @@ A forklift pallet for suresites data
 
 from collections import OrderedDict
 from json import loads
+from json.decoder import JSONDecodeError
 from os.path import basename, exists, join
 from time import clock, strftime
 
@@ -207,7 +208,7 @@ class SureSitePallet(Pallet):
 
             try:
                 geojson = loads(site['Position'])['coordinates']
-            except TypeError:
+            except JSONDecodeError:
                 raise EmptyGeometryError()
             data = arcpy.PointGeometry(arcpy.Point(geojson[0], geojson[1]), self.latlon)
             data = data.projectAs(self.webmerc)
