@@ -130,19 +130,26 @@ class LocatePallet(Pallet):
 
     def dissolve(self, fc, query, name):
         self.log.info('making feature layer')
-        lyr = arcpy.FeatureClassToFeatureClass_conversion(name, core.scratch_gdb_path, '{}_DissolveLayer'.format(path.basename(fc)), where_clause=query)
+        arcpy.env.outputCoordinateSystem = arcpy.SpatialReference(3857)
+        arcpy.env.geographicTransformations = 'NAD_1983_To_WGS_1984_5'
+        lyr = arcpy.FeatureClassToFeatureClass_conversion(name,
+                                                          core.scratch_gdb_path,
+                                                          '{}_DissolveLayer'.format(path.basename(fc)),
+                                                          where_clause=query)
+        arcpy.env.outputCoordinateSystem = None
+        arcpy.env.geographicTransformations = None
 
         self.log.info('dissolving')
         arcpy.Dissolve_management(lyr, fc)
 
-        self.log.info('simplifing')
+        self.log.info('simplifying')
         arcpy.Generalize_edit(fc, 50)
 
     def dissolve_fiber(self, num):
         self.log.info('{} month...'.format(num))
 
         query = 'HexID IN (SELECT HexID FROM PROVIDERSERVICEAREAS WHERE ServiceClass = {})'.format(num)
-        fc = '{}\Fiber_Dissolved_{}Month'.format(self.bbecon, num)
+        fc = r'{}\Fiber_Dissolved_{}Month'.format(self.bbecon, num)
 
         self.dissolve(fc, query, path.join(self.fiberverification_sde, 'FiberVerification.FIBERADMIN.Hexagons'))
 
