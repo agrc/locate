@@ -19,7 +19,7 @@ class LocatePallet(Pallet):
         self.arcgis_services = [('BBEcon/GenerateReport', 'GPServer'),
                                 ('BBEcon/MapService', 'MapServer')]
 
-        self.sgid = path.join(self.garage, 'SGID10.sde')
+        self.sgid = path.join(self.garage, 'SGID.sde')
         self.fiberverification_sde = path.join(self.garage, 'FiberVerification.sde')
 
         bbecon_name = 'bbecon.gdb'
@@ -98,11 +98,11 @@ class LocatePallet(Pallet):
             self.dissolve_fiber(n)
 
         railroads = path.join(self.bbecon, 'Railroads')
-        self.dissolve(railroads, "TYPE = 'Heavy'", path.join(self.sgid, 'SGID10.TRANSPORTATION.Railroads'))
+        self.dissolve(railroads, "TYPE = 'Heavy'", path.join(self.sgid, 'SGID.TRANSPORTATION.Railroads'))
 
         self.log.info('chop up railroads by county')
         railroads_dissolved = '{}_dissolved'.format(railroads)
-        arcpy.Identity_analysis(railroads, path.join(self.sgid, 'SGID10.BOUNDARIES.Counties'), railroads_dissolved)
+        arcpy.Identity_analysis(railroads, path.join(self.sgid, 'SGID.BOUNDARIES.Counties'), railroads_dissolved)
 
         self.build_polygon_data()
 
