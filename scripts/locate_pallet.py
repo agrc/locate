@@ -11,7 +11,7 @@ import arcpy
 from forklift import core
 from forklift.models import Pallet
 
-taxEntities = 'TaxEntities2017'
+taxEntities = 'TaxEntities2018'
 
 
 class LocatePallet(Pallet):
@@ -171,7 +171,7 @@ class LocatePallet(Pallet):
                     (path.join(self.bbecon_static, 'HigherEd_DriveTime'), ['Name', 'ToBreak'], None),
                     (path.join(self.bbecon_static, 'CountyDemographics'), county_fields, None),
                     (path.join(self.economy, 'EnterpriseZones'), ['OBJECTID', 'ZONENAME', 'EXPYR', 'POC_NAME', 'POC_PHONE', 'POC_EMAIL'], None),
-                    (path.join(self.bbecon, 'TaxEntities2017'), ['OBJECTID', 'ENT_DESC', 'NAME', 'PHONE', 'EMAIL', 'WEBSITE'], 'ENT_NBR >= 8000'),
+                    (path.join(self.bbecon, taxEntities), ['OBJECTID', 'ENT_DESC', 'NAME', 'PHONE', 'EMAIL', 'WEBSITE'], 'ENT_NBR >= 8000'),
                     (path.join(self.bbecon_static, 'NatlParks_DriveTime'), ['Name', 'ToBreak'], None),
                     (path.join(self.bbecon_static, 'StParksAndMonuments_DriveTime'), ['Name', 'ToBreak'], None),
                     (path.join(self.bbecon_static, 'SkiArea_DriveTime'), ['Name', 'ToBreak'], None),
