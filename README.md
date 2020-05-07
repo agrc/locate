@@ -31,6 +31,13 @@ Staging URL: [test.mapserv.utah.gov/bb-econ](http://test.mapserv.utah.gov/bbecon
 1. Update table in `bbecon-static.gdb`
 1. Delete `economy.gdb\TaxEntities20**` so that the join will be triggered on next forklift run.
 
+### Incrementing TaxEntities20** Data Year
+
+1. [Update `locate_pallet.py` and `scripts/settings_ib/__init__.py`](https://github.com/agrc/locate/commit/675fe46ae5c358d961fd5933ce925043c7d860b1).
+    - `__init__.py` will need to be updated on both mapserv machines.
+1. Delete old feature class in `hashing/bbecon.gdb` and `hashing/economy.gdb`
+1. `forklift special-delivery locate_pallet.py`
+
 ### Updating Historic Enterprise Zone Layers
 
 1. Update definition queries in `maps\MapService.mxd`.
