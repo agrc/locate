@@ -15,7 +15,7 @@ ELECTRICAL = UTILITIES_GDB + r'\ElectricalService'
 RURAL_TEL = UTILITIES_GDB + r'\RuralTelcomBoundaries'
 ROADS = BB_GDB + r'\RoadsBuffer'
 ENTERPRISE_ZONES = DATA_PATH + r'\economy.gdb\EnterpriseZones'
-TAX_ENTITIES = DATA_PATH + r'\bbecon.gdb\TaxEntities2018'
+TAX_ENTITIES = DATA_PATH + r'\bbecon.gdb\TaxEntities2019'
 
 BBECON_GDB = DATA_PATH + r'\bbecon-static.gdb'
 OPPORTUNITY_ZONES = BBECON_GDB + r'\OpportunityZones'
@@ -48,5 +48,5 @@ DATASETS = ['Hexagons',
             'StParksAndMonuments_DriveTime',
             'SkiArea_DriveTime',
             'RoadsBuffer',
-            'TaxEntities2018',
+            'TaxEntities2019',
             'OpportunityZones']

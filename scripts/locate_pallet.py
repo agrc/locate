@@ -11,7 +11,7 @@ import arcpy
 from forklift import core
 from forklift.models import Pallet
 
-taxEntities = 'TaxEntities2018'
+taxEntities = 'TaxEntities2019'
 
 
 class LocatePallet(Pallet):
