@@ -37,6 +37,7 @@ Staging URL: [test.mapserv.utah.gov/bb-econ](http://test.mapserv.utah.gov/bbecon
     - `__init__.py` will need to be updated on both mapserv machines.
 1. Delete old feature class in `hashing/bbecon.gdb` and `hashing/economy.gdb`
 1. `forklift special-delivery locate_pallet.py`
+1. Update layer in `maps/MapService.mxd` and republish.
 
 ### Updating Historic Enterprise Zone Layers
 
