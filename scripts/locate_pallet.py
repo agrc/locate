@@ -53,7 +53,7 @@ class LocatePallet(Pallet):
                          'destination_workspace': self.economy})
         self.add_crate(('HealthCareFacilities', self.sgid, self.health))
         self.add_crate(('LandOwnership', self.sgid, self.cadastre))
-        self.add_crate(('Schools', self.sgid, self.society))
+        self.add_crate(('Schools_HigherEducation', self.sgid, self.society))
         self.add_crate(('ZoomLocations', self.sgid, self.location))
 
         self.add_crates(['AirportLocations',
