@@ -32,7 +32,7 @@ class NotFoundException(Exception):
 
 class Geocoder(object):
     _api_key = None
-    _url_template = "http://api.mapserv.utah.gov/api/v1/geocode/{}/{}"
+    _url_template = "https://api.mapserv.utah.gov/api/v1/geocode/{}/{}"
     _cache_results = False
     _cache_file_path = None
     _output_spatial_reference = None
