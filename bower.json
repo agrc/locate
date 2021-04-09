@@ -1,6 +1,6 @@
 {
   "name": "locate",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "dependencies": {
     "agrc": "agrc-widgets#~6.0",
     "bootstrap": "3.3.6",
