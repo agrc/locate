@@ -7,9 +7,11 @@
     "url": "https://github.com/agrc/ironing-board.git"
   },
   "devDependencies": {
+    "@agrc/wonkavision": "^1.0.2",
     "babel-plugin-transform-remove-strict-mode": "0.0.2",
     "babel-preset-latest": "^6.22.0",
     "dojo": "^1.12.8",
+    "env-cmd": "^10.1.0",
     "eslint-plugin-html": "^2.0.1",
     "grunt": "1.0.3",
     "grunt-babel": "^6.0.0",
@@ -33,6 +35,8 @@
     "uglify-js": "3.4.6"
   },
   "scripts": {
+    "deploy:prod": "env-cmd -e production wonkavision ship ./deploy/deploy.zip wwwroot/locate && env-cmd -e production wonkavision unzip wwwroot/locate",
+    "deploy:stage": "env-cmd -e staging wonkavision ship ./deploy/deploy.zip wwwroot/locate && env-cmd -e staging wonkavision unzip wwwroot/locate",
     "test": "grunt travis"
   }
 }
