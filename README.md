@@ -16,8 +16,7 @@ Staging URL: [test.mapserv.utah.gov/bb-econ](http://test.mapserv.utah.gov/bbecon
 
 [Dependency Installation](/scripts/readme.md)
 
-`scripts/ironing_board_pallet.py` updates and processes data for this app via
-`scripts/SureSitesPallet.py` - updates the sure sites data
+`scripts/locate_pallet.py` updates and processes data for this app via
 
 ### GP Scripts Deployment
 
