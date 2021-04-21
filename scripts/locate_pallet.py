@@ -6,12 +6,16 @@ pallet.py
 A module that contains the pallet for bb-econ
 '''
 from os import path
+from pathlib import Path
 
 import arcpy
 from forklift import core
 from forklift.models import Pallet
 
+from ColorHelper import ColorHelper
+
 taxEntities = 'TaxEntities2020'
+culinaryWater = 'RetailCulinaryWaterServiceAreas'
 
 
 class LocatePallet(Pallet):
@@ -66,9 +70,9 @@ class LocatePallet(Pallet):
                         {'source_workspace': self.sgid,
                          'destination_workspace': self.transportation})
 
-        self.add_crates(['ElectricalService',
+        self.add_crates([culinaryWater,
+                         'ElectricalService',
                          'NaturalGasService_Approx',
-                         'RetailCulinaryWaterServiceAreas',
                          'RuralTelcomBoundaries'],
                         {'source_workspace': self.sgid,
                          'destination_workspace': self.utilities})
@@ -105,6 +109,21 @@ class LocatePallet(Pallet):
         arcpy.Identity_analysis(railroads, path.join(self.sgid, 'SGID.BOUNDARIES.Counties'), railroads_dissolved)
 
         self.build_polygon_data()
+
+        self.post_process_culinary_water()
+
+    def post_process_culinary_water(self):
+        color4_field = 'COLOR4'
+        for crate in [crate for crate in self.get_crates() if crate.was_updated()]:
+            if crate.destination_name == culinaryWater:
+                destination = str(Path(self.bbecon) / crate.destination_name)
+                self.log.info('calculating color4 field in culinary water')
+                if arcpy.Exists(destination):
+                    arcpy.Delete_management(destination)
+                arcpy.Copy_management(crate.destination, destination)
+                arcpy.AddField_management(destination, color4_field, 'short')
+                helper = ColorHelper()
+                helper.CalculateColors(destination, color4_field)
 
     def joinTaxEntityCountyContacts(self):
         self.log.info('joining county contacts to tax entities')
