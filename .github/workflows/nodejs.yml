@@ -6,6 +6,7 @@ on:
       - "lib/**"
       - ".github/workflows/nodejs.yml"
       - "package.json"
+      - "bower.json"
 
 jobs:
   deploy-dev:
