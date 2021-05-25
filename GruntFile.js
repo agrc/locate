@@ -42,7 +42,7 @@ module.exports = function (grunt) {
             options: {
                 sourceMap: true,
                 presets: ['@babel/preset-env'],
-                plugins: ['transform-remove-strict-mode']
+                plugins: [['@babel/plugin-transform-modules-commonjs', { strictMode: false }]]
             },
             src: {
                 files: [{
@@ -84,7 +84,7 @@ module.exports = function (grunt) {
         },
         copy: {
             dist: {
-                files: [{expand: true, cwd: 'src/', src: ['*.html', 'web.config'], dest: 'dist/'}]
+                files: [{ expand: true, cwd: 'src/', src: ['*.html', 'web.config'], dest: 'dist/' }]
             },
             src: {
                 expand: true,
