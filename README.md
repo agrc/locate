@@ -1,9 +1,10 @@
 # Broadband Economic Development
 
-[![Build Status](https://travis-ci.org/agrc/bb-econ.svg?branch=master)](https://travis-ci.org/agrc/bb-econ)
+[![build status](https://github.com/agrc/locate/actions/workflows/nodejs.yml/badge.svg)](https://github.com/agrc/locate/actions/workflows/nodejs.yml)
+
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/agrc-bb-econ.svg)](https://saucelabs.com/u/agrc-bb-econ)
 
-Production URL: [locate.utah.gov](https://locate.utah.gov)  
+Production URL: [locate.utah.gov](https://locate.utah.gov)
 Staging URL: [test.mapserv.utah.gov/bb-econ](http://test.mapserv.utah.gov/bbecon)
 
 [User Stories](https://docs.google.com/a/utah.gov/document/d/1OsXuQaPs9DkRke6lsi1HiD7dWLRLVjrcKL1rO51KuQk/edit)
