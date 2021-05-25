@@ -9,7 +9,30 @@ on:
       - "bower.json"
 
 jobs:
+  test-unit:
+    runs-on: ubuntu-latest
+    environment:
+      name: dev
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - run: npm ci
+
+      - run: npm i -g grunt-cli bower
+
+      - run: bower install
+
+      - run: grunt test
+
   deploy-dev:
+    needs: [test-unit]
     runs-on: ubuntu-latest
     environment:
       name: dev
@@ -44,6 +67,7 @@ jobs:
           FIREBASE_CLI_PREVIEWS: hostingchannels
 
   deploy-prod:
+    needs: [test-unit]
     runs-on: ubuntu-latest
     environment:
       name: prod
