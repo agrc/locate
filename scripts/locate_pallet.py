@@ -15,7 +15,7 @@ from forklift.models import Pallet
 from ColorHelper import ColorHelper
 
 taxEntities = 'TaxEntities2020'
-culinaryWater = 'RetailCulinaryWaterServiceAreas'
+culinaryWater = 'CulinaryWaterServiceAreas'
 
 
 class LocatePallet(Pallet):
