@@ -9,6 +9,7 @@ on:
       - "firebase.json"
       - ".firebaserc"
       - "bower.json"
+      - "GruntFile.js"
 
 jobs:
   test-unit:
