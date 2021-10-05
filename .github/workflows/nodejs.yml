@@ -36,11 +36,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npm i -g grunt-cli bower
-
-      - run: bower install
-
-      - run: grunt test
+      - run: npm test
 
   deploy-dev:
     needs: [test-unit]
@@ -70,11 +66,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npm i -g grunt-cli bower
-
-      - run: bower install
-
-      - run: grunt build-stage
+      - run: npm run build:stage
 
       - name: Firebase Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
@@ -114,11 +106,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npm i -g grunt-cli bower
-
-      - run: bower install
-
-      - run: grunt build-prod
+      - run: npm run build:prod
 
       - name: Cache firebase
         uses: actions/cache@v2
