@@ -120,7 +120,9 @@ class LocatePallet(Pallet):
                 self.log.info('calculating color4 field in culinary water')
                 if arcpy.Exists(destination):
                     arcpy.Delete_management(destination)
-                arcpy.Copy_management(crate.destination, destination)
+                layer = arcpy.MakeFeatureLayer_management(crate.destination, 'culinary_water', where_clause='SYSTEMTYPE = \'C\'')
+                arcpy.CopyFeatures_management(layer, destination)
+                arcpy.Delete_management(layer)
                 arcpy.AddField_management(destination, color4_field, 'short')
                 helper = ColorHelper()
                 helper.CalculateColors(destination, color4_field)
