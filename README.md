@@ -43,7 +43,7 @@ Staging URL: [locate.dev.utah.gov](https://locate.dev.utah.gov)
 
 1. Update definition queries in `maps\MapService.mxd`.
     - `Historic1` is current year minus one. `Historic2` is current year minus two and so forth.
-    - For years 2018+ the data is contained in SGID (`ECONOMY.EnterpriseZones`) and individual years can be queried using the `EXPYR` field (e.g. `EXPYR = '2018'`).
+    - For years 2018+ the data is contained in SGID (`ECONOMY.EnterpriseZones`) and individual years can be queried using the `EXPYR` field (e.g. for 2020: `EXPYR NOT IN ('2018', '2019')`).
 1. Update labels in `lib/app/templates/EnterpriseZones.html`
 
 ### Updating data in `bbecon-static.gdb`
