@@ -15,7 +15,7 @@ ELECTRICAL = UTILITIES_GDB + r'\ElectricalService'
 RURAL_TEL = UTILITIES_GDB + r'\RuralTelcomBoundaries'
 ROADS = BB_GDB + r'\RoadsBuffer'
 ENTERPRISE_ZONES = DATA_PATH + r'\economy.gdb\EnterpriseZones'
-TAX_ENTITIES = DATA_PATH + r'\bbecon.gdb\TaxEntities2020'
+TAX_ENTITIES = DATA_PATH + r'\bbecon.gdb\TaxEntities2021'
 
 BBECON_GDB = DATA_PATH + r'\bbecon-static.gdb'
 OPPORTUNITY_ZONES = BBECON_GDB + r'\OpportunityZones'

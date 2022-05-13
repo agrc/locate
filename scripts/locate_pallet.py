@@ -14,7 +14,7 @@ from forklift.models import Pallet
 
 from ColorHelper import ColorHelper
 
-taxEntities = 'TaxEntities2020'
+taxEntities = 'TaxEntities2021'
 culinaryWater = 'CulinaryWaterServiceAreas'
 
 
