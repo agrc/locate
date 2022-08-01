@@ -2,7 +2,7 @@
   "name": "locate",
   "version": "2.4.10",
   "dependencies": {
-    "agrc": "agrc-widgets#~6.0",
+    "agrc": "agrc-widgets#6.1.6",
     "bootstrap": "3.3.6",
     "ijit": "agrc-ijit#3.1.0",
     "jasmine-favicon-reporter": "*",
