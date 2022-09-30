@@ -14,7 +14,6 @@ module.exports = function (grunt) {
         gruntFile
     ];
     var bumpFiles = [
-        'package.json',
         'bower.json',
         'lib/app/package.json',
         'lib/app/config.js'
@@ -56,8 +55,9 @@ module.exports = function (grunt) {
         bump: {
             options: {
                 files: bumpFiles,
-                commitFiles: bumpFiles.concat(['lib/ChangeLog.html']),
-                push: false
+                push: false,
+                commit: false,
+                createTag: false
             }
         },
         cachebreaker: {
