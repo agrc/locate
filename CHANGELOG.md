@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/agrc/locate/compare/v2.4.11...v2.5.0) (2022-11-02)
+
+
+### 🚀 Features
+
+* add qualtrics intercept survey ([9d895b9](https://github.com/agrc/locate/commit/9d895b9cf9c417fcfd4fefd722b9183976903241))
+
 ## [2.5.0-0](https://github.com/agrc/locate/compare/v2.4.11...v2.5.0-0) (2022-10-24)
 
 
