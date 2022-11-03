@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.1](https://github.com/agrc/locate/compare/v2.5.0...v2.5.1) (2022-11-03)
+
+
+### 🐛 Bug Fixes
+
+* November dependency bumps 🌲 ([4a3c6d8](https://github.com/agrc/locate/commit/4a3c6d8955abd91c8303b73fade301fefed42183))
+
 ## [2.5.0](https://github.com/agrc/locate/compare/v2.4.11...v2.5.0) (2022-11-02)
 
 
