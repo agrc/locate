@@ -156,7 +156,8 @@ module.exports = function (grunt) {
                 }
             },
             options: {
-                version: '3.8.0'
+                version: '3.8.0',
+                noSandbox: true
             }
         },
         processhtml: {
