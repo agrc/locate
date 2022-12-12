@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.5.2](https://github.com/agrc/locate/compare/v2.5.1...v2.5.2) (2022-12-12)
+
+
+### 🐛 Bug Fixes
+
+* December dependency bumps 🌲 ([fea5e04](https://github.com/agrc/locate/commit/fea5e04c5c2b8c334f52b8c393367c283e10dc04))
+* fix hanging tests ([77db258](https://github.com/agrc/locate/commit/77db258be005ce91a95a0a13b5c3ca5a60bae43f))
+* grunt jasmine task option ([537fcef](https://github.com/agrc/locate/commit/537fcefd721c0493eaf38101cb75f367839ec3ea))
+
 ## [2.5.1](https://github.com/agrc/locate/compare/v2.5.0...v2.5.1) (2022-11-03)
 
 
