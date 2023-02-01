@@ -21,7 +21,7 @@
     "dojo": "^1.17.3",
     "env-cmd": "^10.1.0",
     "eslint-plugin-html": "^7.1.0",
-    "grunt": "^1.5.3",
+    "grunt": "^1.6.1",
     "grunt-babel": "^8.0.0",
     "grunt-bump": "^0.8.0",
     "grunt-cache-breaker": "2.0.1",
