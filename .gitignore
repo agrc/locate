@@ -12,3 +12,7 @@ scripts/settings_ib/__init__.py
 src/
 .env-cmdrc.json
 lib/secrets.json
+maps/ImportLog
+maps/Index
+maps/.backups
+maps/Default.gdb
