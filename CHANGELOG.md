@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.5.3](https://github.com/agrc/locate/compare/v2.5.2...v2.5.3) (2023-02-07)
+
+
+### 🐛 Bug Fixes
+
+* add missing slash ([eb519d1](https://github.com/agrc/locate/commit/eb519d14a5b0c3c5e066309028a96f0ae5119cf5))
+* February dependency updates 🌲 ([835c69e](https://github.com/agrc/locate/commit/835c69e3fc137c6a91d45623153e165c469dc098))
+* **tests:** upgrade jasmine to latest package ([721a515](https://github.com/agrc/locate/commit/721a515d330211e79771d80ad90b0c5f99299fb2))
+* update enterprise zones for 2022 year data ([3d7e60a](https://github.com/agrc/locate/commit/3d7e60afb2942ddf2d0bceadbb5c1559379c345c)), closes [#276](https://github.com/agrc/locate/issues/276)
+
 ## [2.5.3-0](https://github.com/agrc/locate/compare/v2.5.2...v2.5.3-0) (2023-02-07)
 
 
