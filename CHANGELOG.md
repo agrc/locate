@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.4](https://github.com/agrc/locate/compare/v2.5.3...v2.5.4) (2023-04-04)
+
+
+### 🌲 Dependencies
+
+* q2 package updaets ([f0f7666](https://github.com/agrc/locate/commit/f0f76661f9bfe4c31691c621365fa97e01970480))
+
 ## [2.5.3](https://github.com/agrc/locate/compare/v2.5.2...v2.5.3) (2023-02-07)
 
 
