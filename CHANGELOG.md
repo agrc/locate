@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.5](https://github.com/agrc/locate/compare/v2.5.4...v2.5.5) (2023-07-04)
+
+
+### 🐛 Bug Fixes
+
+* Q3 Dependency Bumps 🌲 ([198fd71](https://github.com/agrc/locate/commit/198fd710808271f4d2d2db27ae2e6a2afb5d9a60))
+
 ## [2.5.4](https://github.com/agrc/locate/compare/v2.5.3...v2.5.4) (2023-04-04)
 
 
