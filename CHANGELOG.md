@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.6](https://github.com/agrc/locate/compare/v2.5.5...v2.5.6) (2023-10-09)
+
+
+### 🐛 Bug Fixes
+
+* use new GA4 analytics id and snippet ([43aa888](https://github.com/agrc/locate/commit/43aa888ddea4af22f084a4750390610c22e4c717))
+
 ## [2.5.5](https://github.com/agrc/locate/compare/v2.5.4...v2.5.5) (2023-07-04)
 
 
