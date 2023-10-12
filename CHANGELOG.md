@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.7](https://github.com/agrc/locate/compare/v2.5.6...v2.5.7) (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* upgrade custom analytic event calls ([f9673c1](https://github.com/agrc/locate/commit/f9673c1a00bb6fa753422aa67c4d11c47559ad8a))
+
 ## [2.5.6](https://github.com/agrc/locate/compare/v2.5.5...v2.5.6) (2023-10-09)
 
 
