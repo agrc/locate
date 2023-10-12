@@ -11,7 +11,7 @@
     },
     "globals": {
         "AGRC": true,
-        "ga": true
+        "gtag": true
     },
     "rules": {
         "no-bitwise": 2,
