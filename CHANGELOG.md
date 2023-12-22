@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.8-1](https://github.com/agrc/locate/compare/v2.5.8-0...v2.5.8-1) (2023-12-22)
+
+
+### 🐛 Bug Fixes
+
+* update enterprise zone drop downs ([db441f2](https://github.com/agrc/locate/commit/db441f2dbab0b1f4c0570da1edc0c07edde2ab54))
+
 ## [2.5.8-0](https://github.com/agrc/locate/compare/v2.5.7...v2.5.8-0) (2023-12-22)
 
 
