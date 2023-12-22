@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.5.8-0](https://github.com/agrc/locate/compare/v2.5.7...v2.5.8-0) (2023-12-22)
+
+
+### 🐛 Bug Fixes
+
+* update enterprize zones for 2024 ([d136d88](https://github.com/agrc/locate/commit/d136d886807bb88a3b39b85684908af5cf7426d5))
+
+
+### 🌲 Dependencies
+
+* **dev:** bump @babel/traverse from 7.23.0 to 7.23.2 ([bc4bc9c](https://github.com/agrc/locate/commit/bc4bc9c2c0ae4952ac1f5680fe39e5cb1a5cf41d))
+* **dev:** bump the safe-dependencies group with 2 updates ([31cca03](https://github.com/agrc/locate/commit/31cca03f448e297d317768e2b50d32839e85bc13))
+* **dev:** bump the safe-dependencies group with 3 updates ([3330b48](https://github.com/agrc/locate/commit/3330b48ee0c09d7abe39e1eac44647aac0ad5ecb))
+
 ## [2.5.7](https://github.com/agrc/locate/compare/v2.5.6...v2.5.7) (2023-10-12)
 
 
