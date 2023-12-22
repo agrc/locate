@@ -46,12 +46,11 @@ Staging URL: [locate.dev.utah.gov](https://locate.dev.utah.gov)
     - For years 2018+ the data is contained in SGID (`ECONOMY.EnterpriseZones`) and individual years can be queried using the `EXPYR` field (e.g. for 2020: `EXPYR NOT IN ('2018', '2019')`).
 1. Update labels in `lib/app/templates/EnterpriseZones.html`
 
-| Year | Layer | Query or Dataset |
-| --- | --- | --- |
-| 2022 | EnterpriseZones | `EXPYR IN ('2022', '2023', '2024')` |
-| 2021 | EnterpriseZones_Historic1 | `EXPYR NOT IN ('2018', '2019', '2020')` |
-| 2020 | EnterpriseZones_Historic2 | `EXPYR NOT IN ('2018', '2019')` |
-| 2019 | EnterpriseZones_Historic3 | `bbecon-static.gdb/EnterpriseZones_Historic2019` |
+| Year | Layer                     | Query or Dataset                                |
+|------|---------------------------|-------------------------------------------------|
+| 2023 | EnterpriseZones           | `EXPYR IN ('2023', '2024')`                     |
+| 2022 | EnterpriseZones_Historic1 | `EXPYR NOT IN ('2018', '2019', '2020', '2021')` |
+| 2021 | EnterpriseZones_Historic2 | `EXPYR NOT IN ('2018', '2019', '2020')`         |
 
 ### Updating data in `bbecon-static.gdb`
 
