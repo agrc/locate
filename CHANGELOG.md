@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.8-2](https://github.com/agrc/locate/compare/v2.5.8-1...v2.5.8-2) (2024-01-09)
+
+
+### 🐛 Bug Fixes
+
+* fix 2021 enterprise zones def query ([a01d2ac](https://github.com/agrc/locate/commit/a01d2ac6325c390ac7fe307176af5c6e30a8a952))
+
 ## [2.5.8-1](https://github.com/agrc/locate/compare/v2.5.8-0...v2.5.8-1) (2023-12-22)
 
 
