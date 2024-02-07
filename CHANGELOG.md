@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.5.9](https://github.com/agrc/locate/compare/v2.5.8...v2.5.9) (2024-02-07)
+
+
+### 🐛 Bug Fixes
+
+* RuralTelcomBoundaries -&gt; TelecomBoundaries ([567cb82](https://github.com/agrc/locate/commit/567cb82d605225990ad96bd86e387354c89b1aed))
+
+
+### 🌲 Dependencies
+
+* **dev:** bump the safe-dependencies group with 2 updates ([1c351be](https://github.com/agrc/locate/commit/1c351be4d255f193f0f4cf8d46de8774fb451861))
+
 ## [2.5.8](https://github.com/agrc/locate/compare/v2.5.8-1...v2.5.8) (2024-01-10)
 
 
