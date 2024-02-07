@@ -64,7 +64,7 @@ FIELDS_LU = {
     r'fiberverification.gdb\Hexagons': ['HexID'],
     r'broadband.gdb\BB_Service': ['UTProvCode'],
     r'utilities.gdb\ElectricalService': ['PROVIDER', 'WEBLINK'],
-    r'utilities.gdb\RuralTelcomBoundaries': ['PROVIDER', 'WEBLINK'],
+    r'utilities.gdb\TelecomBoundaries': ['PROVIDER', 'WEBLINK'],
     r'utilities.gdb\NaturalGasService_Approx': ['PROVIDER', 'WEBLINK'],
     r'bbecon.gdb\Airport_SLinternational_DriveTime': ['ToBreak'],
     r'bbecon.gdb\Airport_RegionalCommercial_DriveTime': ['ToBreak'],

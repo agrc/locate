@@ -73,7 +73,7 @@ class LocatePallet(Pallet):
         self.add_crates([culinaryWater,
                          'ElectricalService',
                          'NaturalGasService_Approx',
-                         'RuralTelcomBoundaries'],
+                         'TelecomBoundaries'],
                         {'source_workspace': self.sgid,
                          'destination_workspace': self.utilities})
 
@@ -184,7 +184,7 @@ class LocatePallet(Pallet):
         datasets = [(path.join(self.fiberverification, 'Hexagons'), ['HexID'], None),
                     (path.join(self.broadband, 'BB_Service'), ['UTProvCode'], 'TRANSTECH NOT IN (60, 80)'),
                     (path.join(self.utilities, 'ElectricalService'), ['PROVIDER', 'WEBLINK'], None),
-                    (path.join(self.utilities, 'RuralTelcomBoundaries'), ['PROVIDER', 'WEBLINK'], None),
+                    (path.join(self.utilities, 'TelecomBoundaries'), ['PROVIDER', 'WEBLINK'], None),
                     (path.join(self.utilities, 'NaturalGasService_Approx'), ['PROVIDER', 'WEBLINK'], None),
                     (path.join(self.bbecon_static, 'Airport_SLinternational_DriveTime'), ['Name', 'ToBreak'], None),
                     (path.join(self.bbecon_static, 'Airport_RegionalCommercial_DriveTime'), ['Name', 'ToBreak'], None),
