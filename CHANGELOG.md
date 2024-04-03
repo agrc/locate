@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.5.10](https://github.com/agrc/locate/compare/v2.5.9...v2.5.10) (2024-04-03)
+
+
+### 🌲 Dependencies
+
+* **dev:** bump the safe-dependencies group with 3 updates ([4f0efe0](https://github.com/agrc/locate/commit/4f0efe03a89214f8fca2bd1599cad33338ec3aba))
+* q4 updates ([c524636](https://github.com/agrc/locate/commit/c524636edad51632e9c6faf98a7e0beb5113d359))
+
+
+### 📖 Documentation Improvements
+
+* update badges ([96c68d6](https://github.com/agrc/locate/commit/96c68d6a8827570cffec71aab7274facc58f73da))
+
 ## [2.5.10-0](https://github.com/agrc/locate/compare/v2.5.9...v2.5.10-0) (2024-04-03)
 
 
