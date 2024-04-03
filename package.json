@@ -20,7 +20,7 @@
     "bower": "^1.8.14",
     "dojo": "^1.17.3",
     "env-cmd": "^10.1.0",
-    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-html": "^8.0.0",
     "grunt": "^1.6.1",
     "grunt-babel": "^8.0.0",
     "grunt-bump": "^0.8.0",
