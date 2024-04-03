@@ -1,8 +1,6 @@
 # Broadband Economic Development
 
-[![build status](https://github.com/agrc/locate/actions/workflows/nodejs.yml/badge.svg)](https://github.com/agrc/locate/actions/workflows/nodejs.yml)
-
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/agrc-bb-econ.svg)](https://saucelabs.com/u/agrc-bb-econ)
+[![Push Events](https://github.com/agrc/locate/actions/workflows/push.yml/badge.svg)](https://github.com/agrc/locate/actions/workflows/push.yml)
 
 Production URL: [locate.utah.gov](https://locate.utah.gov)
 Staging URL: [locate.dev.utah.gov](https://locate.dev.utah.gov)
