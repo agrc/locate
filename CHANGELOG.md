@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.11-0](https://github.com/agrc/locate/compare/v2.5.9...v2.5.11-0) (2024-04-09)
+
+
+### 🐛 Bug Fixes
+
+* migrate to SITLA vector tiles ([bc673d9](https://github.com/agrc/locate/commit/bc673d91305605db9660d8b01176075d068efecb))
+
+
 ## [2.5.10](https://github.com/agrc/locate/compare/v2.5.9...v2.5.10) (2024-04-03)
 
 
@@ -13,18 +21,6 @@
 
 * update badges ([96c68d6](https://github.com/agrc/locate/commit/96c68d6a8827570cffec71aab7274facc58f73da))
 
-## [2.5.10-0](https://github.com/agrc/locate/compare/v2.5.9...v2.5.10-0) (2024-04-03)
-
-
-### 🌲 Dependencies
-
-* **dev:** bump the safe-dependencies group with 3 updates ([4f0efe0](https://github.com/agrc/locate/commit/4f0efe03a89214f8fca2bd1599cad33338ec3aba))
-* q4 updates ([830cc02](https://github.com/agrc/locate/commit/830cc0243668e33b61f2b7e223353f6d87df3064))
-
-
-### 📖 Documentation Improvements
-
-* update badges ([837b3b7](https://github.com/agrc/locate/commit/837b3b7757bae6fb0951ea4bb9fd0500ffec136d))
 
 ## [2.5.9](https://github.com/agrc/locate/compare/v2.5.8...v2.5.9) (2024-02-07)
 
