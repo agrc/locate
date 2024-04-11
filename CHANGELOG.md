@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.11](https://github.com/agrc/locate/compare/v2.5.10...v2.5.11) (2024-04-11)
+
+
+### 🐛 Bug Fixes
+
+* migrate to SITLA vector tiles ([a39b193](https://github.com/agrc/locate/commit/a39b1931bccc158db06ff04d39b92536903a9cca))
+
 ## [2.5.11-0](https://github.com/agrc/locate/compare/v2.5.9...v2.5.11-0) (2024-04-09)
 
 
