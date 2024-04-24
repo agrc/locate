@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.12](https://github.com/agrc/locate/compare/v2.5.11...v2.5.12) (2024-04-24)
+
+
+### 🐛 Bug Fixes
+
+* remove debug mode to see if it will help collecting analytics ([8876433](https://github.com/agrc/locate/commit/8876433767b5a5cdc298c986faa8449b3ac22589))
+
 ## [2.5.11](https://github.com/agrc/locate/compare/v2.5.10...v2.5.11) (2024-04-11)
 
 
