@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.13](https://github.com/agrc/locate/compare/v2.5.12...v2.5.13) (2024-06-12)
+
+
+### 🌲 Dependencies
+
+* **dev:** bump the safe-dependencies group across 1 directory with 4 updates ([bd79b2c](https://github.com/agrc/locate/commit/bd79b2c80eaffe2fde51471e70f199069d541ea3))
+* q4 package updates ([ab4c10a](https://github.com/agrc/locate/commit/ab4c10ac2a81416c27bb6e2961945995b5bb27bb))
+
 ## [2.5.12](https://github.com/agrc/locate/compare/v2.5.11...v2.5.12) (2024-04-24)
 
 
