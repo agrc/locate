@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.14](https://github.com/agrc/locate/compare/v2.5.13...v2.5.14) (2024-07-15)
+
+
+### Bug Fixes
+
+* work-around breaking change in uglify ([0541b6f](https://github.com/agrc/locate/commit/0541b6fec00c03f8e6bc34ad2d85322800094f7c))
+
 ## [2.5.13](https://github.com/agrc/locate/compare/v2.5.12...v2.5.13) (2024-06-12)
 
 
