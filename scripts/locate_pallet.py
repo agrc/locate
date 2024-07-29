@@ -55,7 +55,7 @@ class LocatePallet(Pallet):
         self.add_crates(['EnterpriseZones', taxEntities],
                         {'source_workspace': self.sgid,
                          'destination_workspace': self.economy})
-        self.add_crate(('HealthCareFacilities', self.sgid, self.health))
+        self.add_crate(('LicensedHealthCareFacilities', self.sgid, self.health))
         self.add_crate(('LandOwnership', self.sgid, self.cadastre))
         self.add_crate(('Schools_HigherEducation', self.sgid, self.society))
         self.add_crate(('ZoomLocations', self.sgid, self.location))
