@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.15-0](https://github.com/agrc/locate/compare/v2.5.14...v2.5.15-0) (2024-08-19)
+
+
+### Bug Fixes
+
+* switch out SGID-based UTA data for UTA's portal ([813be19](https://github.com/agrc/locate/commit/813be19e00ab2df351f30a5cb6ba6105cabf2a28))
+
 ## [2.5.14](https://github.com/agrc/locate/compare/v2.5.13...v2.5.14) (2024-07-15)
 
 
