@@ -61,10 +61,6 @@ class LocatePallet(Pallet):
         self.add_crate(('ZoomLocations', self.sgid, self.location))
 
         self.add_crates(['AirportLocations',
-                         'CommuterRailRoutes_UTA',
-                         'CommuterRailStations_UTA',
-                         'LightRailStations_UTA',
-                         'LightRail_UTA',
                          'Railroads',
                          'Roads'],
                         {'source_workspace': self.sgid,
