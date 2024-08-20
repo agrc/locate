@@ -7,6 +7,9 @@
         padding-left 4px
         padding-top 2px
         font-size 9px
+    display flex
+    flex-direction row
+    align-items center
 .layer
     // FIBER LEGEND
     div[data-toggle='tooltip']
@@ -16,7 +19,6 @@
     &:last-child
         padding-bottom 5px
     img
-        position absolute
         margin-left 8px
         margin-top 2px
     &.checkbox label,
@@ -47,3 +49,6 @@
             border-bottom-right-radius 2px
     &.in
         opacity 1 !important
+
+div[data-toggle='tooltip'] .glyphicon
+    margin-left 4px
