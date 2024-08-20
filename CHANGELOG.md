@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.15-1](https://github.com/agrc/locate/compare/v2.5.15-0...v2.5.15-1) (2024-08-20)
+
+
+### Styles
+
+* align checkbox icons ([430c5fb](https://github.com/agrc/locate/commit/430c5fb963ec115d5c34e66f328e30739fcace8c))
+
 ## [2.5.15-0](https://github.com/agrc/locate/compare/v2.5.14...v2.5.15-0) (2024-08-19)
 
 
