@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.15-2](https://github.com/agrc/locate/compare/v2.5.15-1...v2.5.15-2) (2024-08-26)
+
+
+### Bug Fixes
+
+* workaround incorrect display field for trax stations layer ([3c80f46](https://github.com/agrc/locate/commit/3c80f4608445349414611dff28eebe99237a4539))
+
 ## [2.5.15-1](https://github.com/agrc/locate/compare/v2.5.15-0...v2.5.15-1) (2024-08-20)
 
 
