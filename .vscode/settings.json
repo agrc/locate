@@ -9,6 +9,7 @@
     "prebuild",
     "QUALTRICS",
     "seiyria",
-    "setversion"
+    "setversion",
+    "stationnam"
   ]
 }
