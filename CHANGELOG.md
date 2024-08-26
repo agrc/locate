@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.5.15](https://github.com/agrc/locate/compare/v2.5.14...v2.5.15) (2024-08-26)
+
+
+### Bug Fixes
+
+* switch out SGID-based UTA data for UTA's portal ([3c100bf](https://github.com/agrc/locate/commit/3c100bf2f8e3a2513bcfb8df327dc4e0fa0a5da0))
+* workaround incorrect display field for trax stations layer ([967a466](https://github.com/agrc/locate/commit/967a466f61e676876760f3cb881084b4d87ace71))
+
+
+### Styles
+
+* align checkbox icons ([cf2c645](https://github.com/agrc/locate/commit/cf2c645e50e00302f0cfeee5c8be43e386558fcb))
+
 ## [2.5.15-2](https://github.com/agrc/locate/compare/v2.5.15-1...v2.5.15-2) (2024-08-26)
 
 
