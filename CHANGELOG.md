@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.17](https://github.com/agrc/locate/compare/v2.5.16...v2.5.17) (2024-10-04)
+
+
+### Bug Fixes
+
+* pin uglify to workaround breaking change ([f3d294b](https://github.com/agrc/locate/commit/f3d294bd7810d1283e930249dda840f21d5841be))
+
 ## [2.5.16](https://github.com/agrc/locate/compare/v2.5.15...v2.5.16) (2024-10-04)
 
 
