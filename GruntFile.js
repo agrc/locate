@@ -13,26 +13,6 @@ module.exports = function (grunt) {
         jsFiles,
         gruntFile
     ];
-    var bumpFiles = [
-        'bower.json',
-        'lib/app/package.json',
-        'lib/app/config.js'
-    ];
-    var deployFiles = [
-        '**',
-        '!**/*.uncompressed.js',
-        '!**/*consoleStripped.js',
-        '!**/bootstrap/less/**',
-        '!**/bootstrap/test-infra/**',
-        '!**/tests/**',
-        '!build-report.txt',
-        '!components-jasmine/**',
-        '!favico.js/**',
-        '!jasmine-favicon-reporter/**',
-        '!jasmine-jsreporter/**',
-        '!stubmodule/**',
-        '!util/**'
-    ];
 
     // Project configuration.
     grunt.initConfig({
@@ -50,14 +30,6 @@ module.exports = function (grunt) {
                     src: ['**/*.js'],
                     dest: 'src/app/'
                 }]
-            }
-        },
-        bump: {
-            options: {
-                files: bumpFiles,
-                push: false,
-                commit: false,
-                createTag: false
             }
         },
         cachebreaker: {
