@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.16-0](https://github.com/agrc/locate/compare/v2.5.15...v2.5.16-0) (2024-10-04)
+
+
+### Dependencies
+
+* FY25Q2 dependency updates 🌲 ([318c93b](https://github.com/agrc/locate/commit/318c93b30c8feda6a29f2e8e0d9c6c592c2bf208))
+
 ## [2.5.15](https://github.com/agrc/locate/compare/v2.5.14...v2.5.15) (2024-08-26)
 
 
