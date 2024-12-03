@@ -21,34 +21,34 @@ Staging URL: [locate.dev.utah.gov](https://locate.dev.utah.gov)
 
 1. Publish `maps/MapService.mxd` as `BBEcon/MapService`
 1. Publish `scripts/Toolbox.tbx/Generate Report` as `BBEcon/GenerateReport`
-    - Test point: `x: -12452500, y: 4979214`
-    - The `settings` folder does not get copied to the server when publishing the GenerateReport gp tool. This has to be done manually.
+   - Test point: `x: -12452500, y: 4979214`
+   - The `settings` folder does not get copied to the server when publishing the GenerateReport gp tool. This has to be done manually.
 
 ### Updating TaxEntities Contact Data
 
 1. Update table in `bbecon-static.gdb`
 1. Delete `economy.gdb\TaxEntities20**` so that the join will be triggered on next forklift run.
 
-### Incrementing TaxEntities20** Data Year
+### Incrementing TaxEntities20\*\* Data Year
 
 1. [Update `locate_pallet.py` and `scripts/settings_ib/__init__.py`](https://github.com/agrc/locate/commit/675fe46ae5c358d961fd5933ce925043c7d860b1).
-    - `__init__.py` will need to be updated on both mapserv machines.
+   - `__init__.py` will need to be updated on both mapserv machines.
 1. Delete old feature class in `hashing/bbecon.gdb` and `hashing/economy.gdb`
 1. `forklift special-delivery locate_pallet.py`
 1. Update layer in `maps/MapService.mxd` and republish.
 
 ### Updating Historic Enterprise Zone Layers
 
-1. Update definition queries in `maps\MapService.mxd`.
-    - `Historic1` is current year minus one. `Historic2` is current year minus two and so forth.
-    - For years 2018+ the data is contained in SGID (`ECONOMY.EnterpriseZones`) and individual years can be queried using the `EXPYR` field (e.g. for 2020: `EXPYR NOT IN ('2018', '2019')`).
+1. Update definition queries in `maps\Maps.aprx\MapService`.
+   - `Historic1` is current year minus one. `Historic2` is current year minus two and so forth.
+   - For years 2018+ the data is contained in SGID (`ECONOMY.EnterpriseZones`) and individual years can be queried using the `EXPYR` field (e.g. for 2020: `EXPYR NOT IN ('2018', '2019')`).
 1. Update labels in `lib/app/templates/EnterpriseZones.html`
 
-| Year | Layer                     | Query or Dataset                                |
-|------|---------------------------|-------------------------------------------------|
-| 2023 | EnterpriseZones           | `EXPYR IN ('2023', '2024')`                     |
-| 2022 | EnterpriseZones_Historic1 | `EXPYR NOT IN ('2018', '2019', '2020', '2021')` |
-| 2021 | EnterpriseZones_Historic2 | `EXPYR NOT IN ('2018', '2019', '2020')`         |
+| Year | Layer           | Query or Dataset                    |
+| ---- | --------------- | ----------------------------------- |
+| 2024 | EnterpriseZones | `EXPYR = '2024'`                    |
+| 2023 | EnterpriseZones | `EXPYR IN ('2023', '2024')`         |
+| 2022 | EnterpriseZones | `EXPYR IN ('2022', '2023', '2024')` |
 
 ### Updating data in `bbecon-static.gdb`
 
