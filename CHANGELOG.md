@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.5.18-0](https://github.com/agrc/locate/compare/v2.5.17...v2.5.18-0) (2024-12-03)
+
+
+### Bug Fixes
+
+* update enterprise zone layers for 2024 ([5296026](https://github.com/agrc/locate/commit/529602605f672cf64ffb106ec18bab37e396e587))
+
+
+### Dependencies
+
+* **dev:** bump the safe-dependencies group across 1 directory with 6 updates ([2d2b26a](https://github.com/agrc/locate/commit/2d2b26a2f0bcdb97c6707132312c02d177b18938))
+
 ## [2.5.17](https://github.com/agrc/locate/compare/v2.5.16...v2.5.17) (2024-10-04)
 
 
