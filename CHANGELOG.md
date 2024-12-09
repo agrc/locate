@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.18-1](https://github.com/agrc/locate/compare/v2.5.18-0...v2.5.18-1) (2024-12-09)
+
+
+### Bug Fixes
+
+* fix map click popup ([ffa0ad4](https://github.com/agrc/locate/commit/ffa0ad4679c11d2dda9ed38d6fc05a91848505bf))
+* fix zoom to zip/city textbox ([fc664df](https://github.com/agrc/locate/commit/fc664df010e1a401bdda81ea16f810d09a52c780))
+
 ## [2.5.18-0](https://github.com/agrc/locate/compare/v2.5.17...v2.5.18-0) (2024-12-03)
 
 
