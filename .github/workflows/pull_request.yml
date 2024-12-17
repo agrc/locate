@@ -49,5 +49,5 @@ jobs:
           service-account-email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
           project-id: ${{ secrets.PROJECT_ID }}
           preview: yes
-          build-command: npm run build:stage
+          build-command: npm run build:preview
           repo-token: ${{ secrets.GITHUB_TOKEN }}

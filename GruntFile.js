@@ -78,6 +78,12 @@ module.exports = function (grunt) {
                     profiles: ['profiles/stage.build.profile.js', 'profiles/build.profile.js'] // Profile for build
                 }
             },
+            preview: {
+                options: {
+                    // You can also specify options to be used in all your tasks
+                    profiles: ['profiles/preview.build.profile.js', 'profiles/build.profile.js'] // Profile for build
+                }
+            },
             options: {
                 // You can also specify options to be used in all your tasks
                 dojo: 'src/dojo/dojo.js', // Path to dojo.js file in dojo source
@@ -238,6 +244,18 @@ module.exports = function (grunt) {
         'copy:src',
         'newer:imagemin:main',
         'dojo:stage',
+        'uglify:stage',
+        'copy:dist',
+        'processhtml:main',
+        'cachebreaker'
+    ]);
+    grunt.registerTask('build-preview', [
+        'clean:src',
+        'babel',
+        'stylus:src',
+        'copy:src',
+        'newer:imagemin:main',
+        'dojo:preview',
         'uglify:stage',
         'copy:dist',
         'processhtml:main',

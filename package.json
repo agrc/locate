@@ -10,6 +10,7 @@
     "start": "grunt",
     "build:stage": "grunt build-stage",
     "build:prod": "grunt build-prod",
+    "build:preview": "grunt build-preview",
     "postinstall": "bower install",
     "test": "grunt test"
   },
