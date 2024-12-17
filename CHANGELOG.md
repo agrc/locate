@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.5.18](https://github.com/agrc/locate/compare/v2.5.17...v2.5.18) (2024-12-17)
+
+
+### Bug Fixes
+
+* fix map click popup ([9cdb4ab](https://github.com/agrc/locate/commit/9cdb4ab682588bcd6ead8c24394e0280e49d0f45))
+* fix zoom to zip/city textbox ([d3bfa35](https://github.com/agrc/locate/commit/d3bfa351901e04c6e58c746eaf4c13f63048fc05))
+* update enterprise zone layers for 2024 ([c914af7](https://github.com/agrc/locate/commit/c914af730888abd2533e0707ab23f27c4fa40931))
+
+
+### Dependencies
+
+* **dev:** bump the safe-dependencies group across 1 directory with 6 updates ([2d2b26a](https://github.com/agrc/locate/commit/2d2b26a2f0bcdb97c6707132312c02d177b18938))
+
 ## [2.5.18-1](https://github.com/agrc/locate/compare/v2.5.18-0...v2.5.18-1) (2024-12-09)
 
 
