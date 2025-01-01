@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.19](https://github.com/agrc/locate/compare/v2.5.18...v2.5.19) (2025-01-01)
+
+
+### Bug Fixes
+
+* fix prod build by downgrading uglify ([5580ba4](https://github.com/agrc/locate/commit/5580ba43d05a31726f1124e2c889390fe92b4bba))
+
 ## [2.5.18](https://github.com/agrc/locate/compare/v2.5.17...v2.5.18) (2024-12-17)
 
 
