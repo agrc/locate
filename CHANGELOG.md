@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.20](https://github.com/agrc/locate/compare/v2.5.19...v2.5.20) (2025-01-07)
+
+
+### Dependencies
+
+* **dev:** bump the safe-dependencies group with 2 updates ([b3cff98](https://github.com/agrc/locate/commit/b3cff98d92316340a3e330d2e178fa584e42359d))
+
 ## [2.5.19](https://github.com/agrc/locate/compare/v2.5.18...v2.5.19) (2025-01-01)
 
 
