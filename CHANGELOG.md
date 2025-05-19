@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.5.22](https://github.com/agrc/locate/compare/v2.5.21...v2.5.22) (2025-05-19)
+
+
+### Dependencies
+
+* downgrade uglify ([dd947b4](https://github.com/agrc/locate/commit/dd947b4f8c51446389217b5d25cbc9e664f36afa))
+* last round of package updates ([990d6ed](https://github.com/agrc/locate/commit/990d6edc37a0a2c8754bdef6bd46fa3250b0710a))
+
+
+### Documentation
+
+* document uglify-js version ([07aa623](https://github.com/agrc/locate/commit/07aa623b6027d68f247d8cb0d219c84ab227709b))
+
 ## [2.5.21](https://github.com/agrc/locate/compare/v2.5.20...v2.5.21) (2025-05-19)
 
 
