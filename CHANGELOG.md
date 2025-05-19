@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.21](https://github.com/agrc/locate/compare/v2.5.20...v2.5.21) (2025-05-19)
+
+
+### Dependencies
+
+* fy25q4 package updates ([9c2eb13](https://github.com/agrc/locate/commit/9c2eb13c6b26b3c06c10c4bab8583a9121e61c9c))
+
 ## [2.5.20](https://github.com/agrc/locate/compare/v2.5.19...v2.5.20) (2025-01-07)
 
 
