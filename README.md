@@ -54,3 +54,7 @@ Staging URL: [locate.dev.utah.gov](https://locate.dev.utah.gov)
 
 1. Update the relevant data in `C:\forklift\data\static\bbecon-static.gdb` on the forklift machine.
 1. Delete `bbecon-static.gdb\PolygonData` so that it gets rebuilt on the next forklift run.
+
+## :robot: Dependabot
+
+- `uglify-js` greater than `3.17.4` breaks `npm run build:prod`. Last checked with `3.19.3`
