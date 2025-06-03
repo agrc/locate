@@ -22,7 +22,7 @@ Staging URL: [locate.dev.utah.gov](https://locate.dev.utah.gov)
 1. Publish `maps/MapService.mxd` as `BBEcon/MapService`
 1. Publish `scripts/Toolbox.tbx/Generate Report` as `BBEcon/GenerateReport`
    - Test point: `x: -12452500, y: 4979214`
-   - The `settings` folder does not get copied to the server when publishing the GenerateReport gp tool. This has to be done manually.
+   - Synchronous
 
 ### Updating TaxEntities Contact Data
 
