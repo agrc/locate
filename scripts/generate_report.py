@@ -53,7 +53,7 @@ def add_provider_info(items, code_field):
                                    fields,
                                    where) as prov_cursor:
             try:
-                prov = prov_cursor.next()
+                prov = next(prov_cursor)
                 it.update({fieldnames.Colloquial: prov[0],
                            fieldnames.URL: prov[1],
                            fieldnames.ContactName: prov[2],
@@ -198,10 +198,10 @@ def get_data_from_layer(lyr):
 
 
 def get_report(x, y):
-    print('getting report for {}, {}'.format(x, y))
-    if type(x) == str:
-        x = int(x)
-        y = int(y)
+    print(('getting report for {}, {}'.format(x, y)))
+    if isinstance(x, str):
+        x = float(x)
+        y = float(y)
 
     pnt = arcpy.PointGeometry(arcpy.Point(x, y), arcpy.SpatialReference(3857))
 
