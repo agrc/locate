@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.5.23](https://github.com/agrc/locate/compare/v2.5.22...v2.5.23) (2025-07-30)
+
+
+### Dependencies
+
+* audit fix ([8832204](https://github.com/agrc/locate/commit/8832204b7dbfc3925b89b40eb14a1f995753d6c7))
+* bump the npm_and_yarn group with 2 updates ([948e52e](https://github.com/agrc/locate/commit/948e52e8557cf63cf52dd17662e718beffd4fe8a))
+* **dev:** bump the safe-dependencies ([13a8688](https://github.com/agrc/locate/commit/13a8688cfa7617ebe53fb42a9e09fe597c008bee))
+
 ## [2.5.22](https://github.com/agrc/locate/compare/v2.5.21...v2.5.22) (2025-05-19)
 
 
