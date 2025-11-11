@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.5.24](https://github.com/agrc/locate/compare/v2.5.23...v2.5.24) (2025-11-11)
+
+
+### Bug Fixes
+
+* point to 2024 tax entities ([5131395](https://github.com/agrc/locate/commit/51313954790e06c76413eb492deab3fc82568798))
+
+
+### Dependencies
+
+* **dev:** bump the safe-dependencies group with 3 updates ([516ec66](https://github.com/agrc/locate/commit/516ec66bc69ebbc51aa8bd25df268bf58ba5bcb2))
+
 ## [2.5.23](https://github.com/agrc/locate/compare/v2.5.22...v2.5.23) (2025-07-30)
 
 
