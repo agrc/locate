@@ -1,11 +1,7 @@
 {
   "hosting": {
     "public": "dist",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "headers": [
       {
         "source": "*.html",
@@ -39,7 +35,7 @@
         "headers": [
           {
             "key": "X-Frame-Options",
-            "value": "SAMEORIGIN"
+            "value": "allow-from https://arcgis.com"
           }
         ]
       },
