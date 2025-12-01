@@ -1,9 +1,11 @@
 {
   "cSpell.words": [
     "cachebreaker",
+    "cooldown",
     "EXPYR",
     "firebaserc",
     "GOED",
+    "GOEO",
     "hostingchannels",
     "lightrail",
     "lyrs",
@@ -11,6 +13,16 @@
     "QUALTRICS",
     "seiyria",
     "setversion",
-    "stationnam"
-  ]
+    "stationnam",
+    "ugrc",
+    "VITE"
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }

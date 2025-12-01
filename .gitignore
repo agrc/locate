@@ -1,19 +1,28 @@
-.DS_Store
-.grunt/
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+/deploy
+/dist
+
+# secrets
+.env.local
 *.odc
 *.pyc
 *.sde
-deploy/
-dist/
-node_modules/
-scripts/Logs/
-scripts/settings_ib/__init__.py
-src/
-.env-cmdrc.json
-lib/secrets.json
-maps/ImportLog
-maps/Index
-maps/.backups
-maps/Default.gdb
-maps/Maps_index
-maps/GpMessages
+
+# misc
+.eslintcache
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# deploy
+/.firebase
+/public/assets
+/node_modules
