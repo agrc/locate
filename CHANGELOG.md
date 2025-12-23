@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/agrc/locate/compare/v2.5.24...v3.0.0) (2025-12-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* switch to iframe-wrapped experience builder app
+
+### Features
+
+* switch to iframe-wrapped experience builder app ([45065f3](https://github.com/agrc/locate/commit/45065f3abe4c6995908a796d1132be158faa7271))
+
 ## [2.5.24](https://github.com/agrc/locate/compare/v2.5.23...v2.5.24) (2025-11-11)
 
 
